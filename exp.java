@@ -23,11 +23,12 @@ int exp2 = 0;
 int levelr1 = 20;
 int levelr2 = 20;
 int bonus = 0;
-
-
+Enter enter = new Enter();
+Attack attack = new Attack();
+Emmi emmi = new Emmi();
 public void levelup()
 {
-Enter enter = new Enter();
+
  if (exp1 >= levelr1)
 {
     
@@ -51,7 +52,7 @@ Enter enter = new Enter();
 }
     if (exp2 >= levelr2)
         enter.print_slow("LEVEL UP");
-        print(level2+ " --> "+ (level2 + 1));
+         enter.print_slow(level2+ " --> "+ (level2 + 1));
         enter.print_slow("2077's health is restored fully");
         attack.HP2=attack.HP2m;
         level2 += 1;

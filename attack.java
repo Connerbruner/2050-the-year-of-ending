@@ -1,5 +1,9 @@
 class Attack
 {
+Scanner scanner = new Scanner(System.in);
+Enter enter = new Enter();
+Attack attack = new Attack();
+Emmi emmi = new Emmi();
 int damage = 0;
 int attack1_power=1;
 int attack2_power=1;
@@ -10,12 +14,11 @@ int HP1m = 50;
 int HP2 = 35;
 int HP2m = 50;
 int max_hit = 4;
+int hit = 0;
 
 //2069's code
 public void attack()
 {
-Enter enter = new Enter();
-Scanner scanner = new Scanner(System.in);
 //Fomrats attacks and dislays them 
 //Custom spaces just adds spaces to the attack
     String attack = "";
@@ -67,7 +70,7 @@ Scanner scanner = new Scanner(System.in);
     {
     if (mp1 > 0)
     {
-           int heal = enter.rnadom(10, 20);
+           int heal = enter.random(10, 20);
     enter.print_slow("2069 heals "+heal*exp.attack3_teir+ " damage");
     enter.print_slow("2077 heals "+heal*exp.attack3_teir+ " damage");
             
@@ -84,11 +87,10 @@ Scanner scanner = new Scanner(System.in);
          if (mp1 > 0)
         {
             
-            hit = random.randint(15, 20);
+            hit = enter.random(15, 20);
             mp1 -= exp.attack1_4mp;
             damage += hit*exp.attack4_teir;
             move_tier=exp.attack4_teir;
-            dungon.dungon_awareness+=2;
             enter.print_slow("2069 deals"+ hit*exp.attack4_teir+ "damage");
         }
     }
