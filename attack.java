@@ -1,9 +1,10 @@
+import java.util.Scanner; 
 class Attack
 {
 Scanner scanner = new Scanner(System.in);
 Enter enter = new Enter();
-Attack attack = new Attack();
 Emmi emmi = new Emmi();
+Exp exp = new Exp();
 int damage = 0;
 int attack1_power=1;
 int attack2_power=1;
@@ -15,7 +16,6 @@ int HP2 = 35;
 int HP2m = 50;
 int max_hit = 4;
 int hit = 0;
-
 //2069's code
 public void attack()
 {
@@ -44,9 +44,9 @@ public void attack()
     if (attack == exp.attack1_1)
     {
        enter.print_slow("2069 gains "+20*exp.attack1_teir+" mp");
-        
+
         mp1 += 20*exp.attack1_teir;
-        move_tier=exp.attack1_teir; 
+        move_tier=exp.attack1_teir;
     }
         
 //This is Lasershot
