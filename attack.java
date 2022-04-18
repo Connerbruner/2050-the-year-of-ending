@@ -1,9 +1,10 @@
+import java.util.Scanner; 
 class Attack
 {
 Scanner scanner = new Scanner(System.in);
 Enter enter = new Enter();
-Attack attack = new Attack();
 Emmi emmi = new Emmi();
+Exp exp = new Exp();
 int damage = 0;
 int attack1_power=1;
 int attack2_power=1;

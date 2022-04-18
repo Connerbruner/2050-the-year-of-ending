@@ -6,7 +6,7 @@ String emmi_type = "";
 int hit=0;
 Enter enter = new Enter();
 Attack attack = new Attack();
-Emmi emmi = new Emmi();
+Exp exp = new Exp();
     
 public void new_emmi(int type1)
 {
