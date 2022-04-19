@@ -3,6 +3,8 @@ class Main {
 Enter enter = new Enter();
 Attack attack = new Attack();
 Text text = new Text();
+Emmi emmi = new Emmi();
+Dungon dungon = new Dungon();
 Scanner scanner = new Scanner(System.in);
 int missionnum = 10;
     

@@ -17,7 +17,7 @@ int HP2m = 50;
 int max_hit = 4;
 int hit = 0;
 //2069's code
-public void attack()
+public void attack1()
 {
 //Fomrats attacks and dislays them 
 //Custom spaces just adds spaces to the attack

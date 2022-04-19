@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Text {
 Enter enter = new Enter();
 Exp exp = new Exp();
+Boss boss = new Boss();
 Attack attack = new Attack();
     public void misson1_1()
     {
@@ -310,13 +311,12 @@ Attack attack = new Attack();
 
         enter.print_slow("2069: 2020 floor it");
     }
-    public void  misson4_2()
-    {
+    public void  misson4_2() {
         enter.print_slow("2069: It appears that calfornia is very dangerous");
 
 
         enter.print_slow("2077: I bet that the group responsible for this has their headquarters in california");
-        public void misson5_1;()
+        public void misson5_1() {
         enter.print_slow("2069: We should find a 6-11 to stop and rest at");
 
 
@@ -454,7 +454,7 @@ Attack attack = new Attack();
         enter.print_slow("2077: NEVER");
         enter.print_slow("2069: You will pay for what you have done");
         enter.print_slow("2069: LETS FINSIH THIS");
-        enter.print_slow("2069:",exp.attack4_teir);
+        enter.print_slow("2069: "+exp.attack4_teir);
         enter.print_slow("Ellon musk: ...My final words");
         enter.print_slow("Ellon musk: You are the winner and I am the...");
         enter.print_slow("2077: They deserve to die alone");

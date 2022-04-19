@@ -26,7 +26,7 @@ int bonus = 0;
 Enter enter = new Enter();
 Attack attack = new Attack();
 Emmi emmi = new Emmi();
-public void levelup()
+public void level()
 {
 
  if (exp1 >= levelr1)
@@ -63,7 +63,7 @@ public void levelup()
   
 }
    
-public void bonus()
+public void gain()
 {
 Enter enter = new Enter();
     if (emmi.emmi_HP==0)
