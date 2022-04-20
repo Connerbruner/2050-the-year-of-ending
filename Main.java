@@ -3,7 +3,6 @@ import java.util.Random;
 class Main {
 int emmi_HP = 0;
 int emmi_level = 0;
-int hit=0;   
 int damage = 0;
 int attack1_power=1;
 int attack2_power=1;
@@ -49,35 +48,37 @@ String customspace_4="      ";
 String emmi_type = "";
 //place  Holders
 int num=0;
-int damage=0;
+int type_num=0;
+int speed=20;
 //obj
 Scanner scanner = new Scanner(System.in);
 
 
     
 public static void main(String[] args) {
-  
+    Main main = new Main();
+    Scanner scanner = new Scanner(System.in);
     System.out.println();
     System.out.println();
-print_slow("The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower");
-System.out.println("what should the text speed be?   ");
-      
-speed = scanner.next(int)();   
-System.out.println();
+    main.print_slow("The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower");
+    System.out.println("what should the text speed be?   ");
 
-print_slow("This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence.");
+    main.speed = scanner.nextInt();
+    System.out.println();
 
+    main.print_slow("This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence.");
+    main.game();
 
 
   }
 
 public void game()
 {
-    /*boss.bill_HP = 300;
-  boss.ellon_HP = 150;
-  boss.target = 0;
-  boss.Tri_HP = 1000;
-  boss.Mark_Zuckerberg=2000;*/
+    /*bill_HP = 300;
+  ellon_HP = 150;
+  target = 0;
+  Tri_HP = 1000;
+  Mark_Zuckerberg=2000;*/
   HP1=HP1m;
   HP2=HP2m;
   mp1=100;
@@ -97,66 +98,67 @@ if (choice == "1")
        print_slow("Mission 1: The Awakening of  The Revolution");
         if(skip())
         {
-         text.misson1_1();
-         text.misson1_2();
+         misson1_1();
+         misson1_2();
         }
-        dungon.dungon1();
+        dungon1();
         
         if(skip())
         {
-         text.misson1_3();
+         misson1_3();
         }
-        text.misson1_4();
+        misson1_4();
     
         if (missionnum<2)
         {
         missionnum=2;
         print_slow("MISSION 2 UNLOCKED");
-        emmi.emmi_type="NOT";
+        emmi_type="NOT";
         }
 }
 
     if ((choice == "2")&&(missionnum>=2))
+    {
         print_slow("Mission 2: First Encounters");
-        skip=input("Skip cutscene?   ");
-        if(skip())
-         text.misson2_1();
-        dungon.dungon2();
-        skip=input("Skip cutscene?   ");
-        if(skip())
-         text.misson2_2();
-        boss.boss_bill();
-        skip=input("Skip cutscene?   ");
-        if(skip())
-         text.misson2_3();
-        if missionnum<3:
-         missionnum=3;
-         print_slow("MISSION 3 UNLOCKED");
 
+        if(skip())
+            misson2_1();
+        dungon2();
+
+        if(skip())
+            misson2_2();
+        boss_bill();
+
+        if(skip())
+            misson2_3();
+        if (missionnum<3)
+            missionnum=3;
+        print_slow("MISSION 3 UNLOCKED");
+    }
     if ((missionnum >= 3) && (choice == "3"))
       {
         print_slow("MISSION 3: Rest In The Rubble");
         if(skip())
         {
-         text.misson3_1();   
+         misson3_1();
         }
-        dungon.dungon3();
+        dungon3();
 
         if(skip())
         {
-         text.misson3_2();   
+         misson3_2();
         }
-        boss.ellon_musk();
+        ellon_musk();
         
         if(skip())
         {
-         text.misson3_3(); 
+         misson3_3();
         }
-        dungon.dungon4();
+        dungon4();
     
        if(skip())
        {
-         text.misson3_4();   
+         misson3_4();
        }
        if (missionnum<4)
           {
@@ -166,75 +168,113 @@ if (choice == "1")
        print_slow("MISSION 3 END");
       }
     if ((missionnum >= 4)&&(choice == "4"))
-       print_slow("Mission 4: 101 battles");
-       skip=input("Skip cutscene?   ");
-       if(skip())
-        text.misson4_1();
-       dungon.dungon5();
-       skip=input("Skip cutscene?   ");
-       if(skip())
-        text.misson4_2();
-       if missionnum<5:
-           missionnum=5;
-           print_slow("MISSON 5 UNLOCKED");
-    if missionnum >= 5 and choice; == "5":
+    {
+        print_slow("Mission 4: 101 battles");
+
+        if(skip())
+        {
+            misson4_1();
+        }
+        dungon5();
+
+        if(skip())
+        {
+            misson4_2();
+        }
+        if (missionnum<5)
+        {
+            missionnum=5;
+            print_slow("MISSON 5 UNLOCKED");
+        }
+    }
+    if ((missionnum >= 5) && (choice == "5"))
+    {
         print_slow("Mission 5: Rematch Squared");
-        skip=input("Skip cutscene?   ");
+
         if(skip())
-         text.misson5_1();
-        dungon.dungon6();
-        skip=input("Skip cutscene?   ");
+        {
+            misson5_1();
+        }
+        dungon6();
+
         if(skip())
-         text.misson5_2();
-        boss.double_boss();
-        if missionnum<6:
-           missionnum=6;
-           print_slow("MISSION 6 UNLOCKED");
-    if missionnum >= 6 and choice; == "6":
+        {
+            misson5_2();
+        }
+        double_boss();
+        if (missionnum<6)
+        {
+            missionnum=6;
+            print_slow("MISSION 6 UNLOCKED");
+        }
+    }
+    if ((missionnum >= 6) && (choice == "6"))
+    {
         print_slow("Mission 6: The Smoking Gun");
-        text.misson6_1();
-        dungon.dungon8();
-        text.misson6_2();
-        if missionnum<7:
-           missionnum=7;
-           print_slow("MISSION 7 UNLOCKED");
-    if missionnum >= 7 and choice; == "7":
+        if(skip())
+        {
+            misson6_1();
+        }
+        dungon8();
+        if(skip())
+        {
+            misson6_2();
+        }
+        if (missionnum<7)
+        {
+            missionnum=7;
+            print_slow("MISSION 7 UNLOCKED");
+        }
+    }
+    if ((missionnum >= 7) &&(choice == "7"))
         print_slow("Mission 7: The Rules Of The Roomba");
-        skip=input("Skip cutscene?   ");
+
         if(skip())
-         text.misson7_1();
-        dungon.dungon7();
-        skip=input("Skip cutscene?   ");
+        {
+            misson7_1();
+        }
+        dungon7();
+
         if(skip())
-         text.misson7_2();
-         if missionnum<8:
-           missionnum=8;
-           print_slow("MISSION 8 UNLOCKED");
-    if missionnum >= 8 and choice; == "8":
+        {misson7_2();}
+         if (missionnum<8)
+      {missionnum=8;
+           print_slow("MISSION 8 UNLOCKED");}
+    if ((missionnum >= 8) && (choice == "8"))
+    {
         print_slow("MISSION 8 When I Step off");
-        text.misson8_1();
-        dungon.dungon8();
-        text.misson8_2();
-        if missionnum<9:
-           missionnum=9;
-           print_slow("MISSION 9 UNLOCKED");
-    if missionnum >= 9 and choice; == "9":
+        misson8_1();
+        dungon8();
+        misson8_2();
+        if (missionnum<9)
+        {
+            missionnum=9;
+            print_slow("MISSION 9 UNLOCKED");
+        }
+    }
+    if ((missionnum >= 9) && (choice== "9"))
+    {
         print_slow("Mission 9: Face-Off On The Grand Tower");
-        text.misson9_1();
-        boss.boss_rush();
-        text.misson9_2();
-        if missionnum<9:
-           missionnum=9;
-           print_slow("MISSION 9 UNLOCKED");
-    if missionnum >= 10 and choice; == "10":
+        misson9_1();
+        boss_rush();
+        misson9_2();
+        if (missionnum<9)
+        {
+            missionnum=9;
+            print_slow("MISSION 9 UNLOCKED");
+        }
+    }
+    if ((missionnum >= 10) && (choice == "10"))
+    {
         print_slow("Misson 10: 2 Sides Of The Same Coin");
-        text.misson10_1();
-        boss.final()
-        text.misson10_2();
+        misson10_1();
+        Final();
+        misson10_2();
         print_slow("THE END?");
+    }
     
-    if choice == "exp" and missionnum;>1:
-        gotcha.pull1();
+    if ((choice == "exp") && (missionnum>1)()
+      {pull1();}
   }
 }
 public void attack1()
@@ -326,7 +366,6 @@ public void attack1()
 //2077's code
 public void attack2()
 {
-    Enter enter = new Enter();
     print_slow("2077's turn");
     
 //starts quicktime event
@@ -351,9 +390,9 @@ public void attack2()
         if( HP2 > 0)
         {attack2();}
         bill_HP -= damage;
-        boss.attack_bill();
+        attack_bill();
 
-        if( HP2 < 0 and attack;.HP1 < 0)
+        if(( HP2 < 0) && (HP1 < 0))
     {
       restart();  
     }
@@ -367,7 +406,7 @@ public void attack2()
     public void attack_bill()
     {
 
-        bill = random(2,3);
+        int bill = random(2,3);
         if( bill_HP > 0)
 
         if( target == 0)
@@ -418,7 +457,7 @@ public void attack2()
         if( bill == 3)
         print_slow("TRIPLE SLASH");
 
-        triple = random(0,3);
+        int triple = random(0,3);
 
         while ( triple > 0)
 
@@ -448,12 +487,12 @@ public void attack2()
         attack2();
 
         ellon_HP -= damage;
-        boss.attack_ellon();
+        attack_ellon();
 
-        if( HP2 < 0 and attack;.HP1 < 0)
+        if( HP2 < 0) && (HP1 < 0)
 
 
-        restart
+        {restart();}
         exp1+=random(100,200);
         exp2+=random(100,200);
         gain();
@@ -461,7 +500,7 @@ public void attack2()
     }
     public void attack_ellon()
     {
-        bill = random(1,3);
+        int bill = random(1,3);
         if( bill == 1)
         print_slow("TOXIC");
 
@@ -492,21 +531,21 @@ public void attack2()
         print_slow("Jeff's health "+ellon_HP);
 
         if( HP1 > 0)
-        attack1();
+        {attack1();}
 
         if( HP2 > 0)
-        attack2();
+        {attack2();}
         if( bill_HP>0)
-        bill_HP -= damage;
-    else)
-        ellon_HP -= damage;
+        {bill_HP -= damage;}
+    else
+        {ellon_HP -= damage;}
         if( bill_HP>0)
-        boss.attack_bill();
-        boss.jeff_attack();
+        {attack_bill();
+        jeff_attack();}
 
-        if( HP2 < 0 and HP1 < 0)
+        if(( HP2 < 0) && (HP1 < 0))
 
-        restart();
+            {restart();}
         exp1+=random(200,400);
         exp2+=random(200,400);
         gain();
@@ -528,26 +567,27 @@ public void attack2()
         print_slow("2069 and 2077 both are now no 1 HP");
         HP1=1;
         HP2=1;
+    }
         public void boss_rush()
         {
             while ( Tri_HP>0)
         if( Tri_HP>0)
-        boss.Tri_attack();
+        {Tri_attack();}
         if( HP1>0)
-        attack1();
+        {attack1();}
         if( HP2>0)
-        attack2();
+        {attack2();}
 
         Tri_HP-=damage;
         }
-    }
+
     public void Tri_attack()
     {
         
         print_slow("TRI FORCE");
         damage=0;
-        people_num=(int)(Tri_HP/200)+1
-        person=random(1,2);
+        int people_num=(int)(Tri_HP/200)+1;
+        int person=random(1,2);
         if( person==1)
         person=2069;
         if( person==2)
@@ -557,9 +597,9 @@ public void attack2()
         print_slow("Ellon musk: "+person+" YOUR ABOUT TO FEEL IT");
         print_slow("Bill Gates: RAGE SLASH");
         num=random(10,20);
-        print_slow("Bill Gates deals "+num+" Damage and takes "+(int)(num/3)+" damage")
+        print_slow("Bill Gates deals "+num+" Damage and takes "+(int)(num/3)+" damage");
         print_slow("");
-        Tri_HP-=(int)(num/3)
+        Tri_HP-=(int)(num/3);
         damage+=num;
         print_slow("Jeff bezos) RANDOM FORCE");
         print_slow("Everyone takes a random amount of damage");
@@ -567,8 +607,8 @@ public void attack2()
         Tri_HP+=random(-10,20);
         print_slow("Ellon musk) SPEAR RUSH");
         num=random(2,7);
-        num1=random(2,7);
-        num2=random(2,7);
+        int num1=random(2,7);
+        int num2=random(2,7);
         damage+=num+num1+num2;
         print_slow("Ellon musk deals "+num+num1+num2+" Damage");
         if( people_num==3)
@@ -576,9 +616,9 @@ public void attack2()
         print_slow("Ellon musk) "+person+" YOUR ABOUT TO FEEL IT");
         print_slow("Bill Gates) RAGE SLASH");
         num=random(10,20);
-        print_slow("Bill Gates deals "+num+" Damage and takes "+(int)(num/2)+" damage")
+        print_slow("Bill Gates deals "+num+" Damage and takes "+(int)(num/2)+" damage");
         print_slow("");
-        Tri_HP-=(int)(num/2)
+        Tri_HP-=(int)(num/2);
         damage+=num;
         print_slow("Jeff bezos) RANDOM FORCE");
         print_slow("Everyone takes a random amount of damage");
@@ -622,7 +662,7 @@ public void attack2()
          Mark_Zuckerberg;
         while ( Mark_Zuckerberg>0)
         if( Mark_Zuckerberg>0)
-        boss.Mark();
+        Mark();
         if( HP1>0)
         attack1();
         status.status_update2069();
@@ -634,7 +674,7 @@ public void attack2()
          else)
         print_slow("Mark Zuckerberg) YOU HAVE NO POWER IN THIS WORLD");
         print_slow("Mark Zuckerberg takes 0 damage from your attacks");
-        public void Mark()
+        public void Mark;()
             {
                 Mark=random(1,5);
         if( Mark==3)
@@ -651,9 +691,9 @@ public void attack2()
         HP2=1;
         if( Mark==2)
         print_slow("LASH OUT");
-        HP1-=(int)((300-Mark_Zuckerberg)/4)
-        HP2-=(int)((300-Mark_Zuckerberg)/4)
-        print_slow("Both 2069 and 2077 take  "+(int)((300-Mark_Zuckerberg)/4)+" damage")
+        HP1-=(int)((300-Mark_Zuckerberg)/4);
+        HP2-=(int)((300-Mark_Zuckerberg)/4);
+        print_slow("Both 2069 and 2077 take  "+(int)((300-Mark_Zuckerberg)/4)+" damage");
         if( Mark==3)
         print_slow("DOUBLE EDGED RUSH");
         HP1-=20;
@@ -808,18 +848,13 @@ public void attack2()
 
         print_slow("2069: I got it");
     }
-    public void misson1_4()
-
-    {
-        if (mp1 > 15)
-        {
+    public void misson1_4() {
+        if (mp1 > 15) {
             print_slow("CURE");
             mp1 -= 15;
-        }
-        else
-        print_slow("old man: Goodbye. Cruel world...");
-        while True:
-    restart();
+        } else
+        {print_slow("old man: Goodbye. Cruel world...");
+        restart();}
         print_slow(
                 "old man: Thank you. I can't thank you enough. I am forever in your debt.");
 
@@ -828,41 +863,46 @@ public void attack2()
 
         String choice = "";
 
-        while ((choice != "2069") && (choice; !="2077"))
-        print_slow("Who will you give this exp to? (2069 or 2077)   ");
-        choice = Scanner.nextLine();
+        while ( (choice != "2069") && (choice !="2077"))
+        {
+            print_slow("Who will you give this exp to? (2069 or 2077)   ");
+            choice = Scanner.nextLine();
+        }
         if (choice == "2077")
-        exp2 += 100;
+        {
+            exp2 += 100;
+        }
 
         if (choice == "2069")
-        exp1 += 100;
+        {exp1 += 100;}
 
         gain();
         level();
         print_slow("Old Man: Oh I should tell you my name. Its 2020");
         print_slow("2020: I can teach you new abilities in trade for ");
-        public void misson2_2 ()
-
-        print_slow("2069: Finally, I have not ran so fast in my life");
-
-
-        print_slow("*the mech's face shield opens up*");
-
-
-        print_slow("Bill Gates: Heh...");
-
-
-        print_slow("Bill Gates: You can't be any slower, can you?");
-
-
-        print_slow("2077: Bill? You're the one behind this?");
-
-
-        print_slow("2069: You leave us no choice.");
-
-
-        print_slow("2077: FOR HUMANITY!!");
     }
+        public void misson2_2()
+        {
+            print_slow("2069: Finally, I have not ran so fast in my life");
+
+
+            print_slow("*the mech's face shield opens up*");
+
+
+            print_slow("Bill Gates: Heh...");
+
+
+            print_slow("Bill Gates: You can't be any slower, can you?");
+
+
+            print_slow("2077: Bill? You're the one behind this?");
+
+
+            print_slow("2069: You leave us no choice.");
+
+
+            print_slow("2077: FOR HUMANITY!!");
+        }
     public void misson2_3()
     {
         print_slow("Bill: You put a good fight");
@@ -1048,8 +1088,8 @@ public void attack2()
 
 
         print_slow("bill gates: Fine I guess I will join in");
-        boss.bill_HP=200;
-        boss.ellon_HP=200;
+        bill_HP=200;
+        ellon_HP=200;
     }
 
     public void misson5_3()
@@ -1177,26 +1217,32 @@ public void attack2()
     }
 public void pull1()
     {
-        expt = exp1 + exp2;
-        if expt > 0:
-        print_slow("2069 exp", exp1);
-        print_slow("2069 exp", exp2);
-        print_slow("total exp", expt);
-        num = input("How much exp would you like to use?  ");
-        num = float(num)
-        if num > expt:
-        num = expt;
-        pull_num = (int)(num / 25)
-        exp1-=num;
-        if exp1<0:
-        num=-(exp1)
-                exp1=0;
-        exp2-=num;
-        while pull_num>0:
-        gotcha.roll();
-        pull_num-=1;
-        else:
-        print_slow("YOU NEED MORE EXP POOR PERSON");
+        int expt = exp1 + exp2;
+        if (expt > 0)
+        {
+            print_slow("2069 exp "+ exp1);
+            print_slow("2069 exp "+ exp2);
+            print_slow("total exp "+ expt);
+            print_slow("how much exp would you like to use? ");
+            num = scanner.nextInt();
+            if (num > expt)
+            {num = expt;}
+            int pull_num = (int)(num / 25);
+            exp1-=num;
+            if (exp1<0)
+                num=-exp1;
+            exp1=0;
+            exp2-=num;
+            while (pull_num>0)
+            {
+                roll();
+                pull_num-=1;
+            }
+        }
+        else
+        {
+            print_slow("YOU NEED MORE EXP POOR PERSON");
+        }
 
     }
 
@@ -1206,150 +1252,209 @@ public void pull1()
 
     public void roll()
     {
-        tier = random.rand(int)(1, 10);
-        if tier == 5:
-        tier = random.rand(int)(1, 5);
-        if tier == 5:
-        tier = random.rand(int)(1, 5);
-        if tier == 10:
-        tier = random.rand(int)(6, 10);
-        if tier == 10:
-        tier = random.rand(int)(6, 10);
-        if tier == 9:
-        tier = random.rand(int)(6, 9);
-        if tier == 4:
-        tier = random.rand(int)(1, 4);
-        if tier == 1:
-        HP1m += 2;
-        print_slow("2069's max Hp increased by 2");
-        elif tier;==1 or tier;==2 or tier;==3 or tier;==4 or tier;==5:
-        num = random.rand(int)(1, 4);
-        if num == 4:
-        if tier > attack4_teir:
-        print_slow("ember leveled up");
-        print_slow(attack4_teir, "-->", tier);
-        if tier == 5:
-        attack1_4 = "explosion";
-        customspace_4 = "   ";
-        attack4_teir = 5;
-        attack1_4mp = 30;
+        int tier  = random(1, 10);
+        if (tier == 5)
+        {tier = random(1, 5);}
+        if (tier == 5)
+        {tier = random(1, 5);}
+        if (tier == 10)
+        {tier = random(6, 10);}
+        if (tier == 10)
+        {tier = random(6, 10);}
+        if (tier == 9)
+        {tier = random(6, 9);}
+        if (tier == 4)
+        {tier = random(1, 4);}
+        if (tier == 1)
+        {
+            HP1m += 2;
+            print_slow("2069's max Hp increased by 2");
+        }
+        else if(( tier==1) || (tier==2) || (tier==3) || (tier==4) || (tier==5))
+        num = random(1, 4);
+        if (num == 4)
+        {
+            if (tier > attack4_teir)
+            {
+                print_slow("ember leveled up");
+                print_slow(attack4_teir+" --> "+ tier);
+                if (tier == 5)
+                {
+                    attack1_4 = "explosion";
+                    customspace_4 = "   ";
+                    attack4_teir = 5;
+                    attack1_4mp = 30;
+                }
 
-        if tier == 4:
-        attack1_4 = "ember burst";
-        customspace_4 = " ";
-        attack4_teir = 4;
-        attack1_4mp = 30;
+                if (tier == 4)
+                {
+                    attack1_4 = "ember burst";
+                    customspace_4 = " ";
+                    attack4_teir = 4;
+                    attack1_4mp = 30;
+                }
 
-        if tier == 3:
-        attack1_4 = "flame wheel";
-        customspace_4 = " ";
-        attack4_teir = 3;
-        attack1_4mp = 30;
+                if (tier == 3)
+                {
+                    attack1_4 = "flame wheel";
+                    customspace_4 = " ";
+                    attack4_teir = 3;
+                    attack1_4mp = 30;
+                }
 
-        if tier == 2:
-        attack1_4 = "dual ember";
-        customspace_4 = "  ";
-        attack4_teir = 2;
-        attack1_4mp = 25;
-        if num == 3:
-        if tier > attack3_teir:
-        print_slow("Cure leveled up");
-        print_slow(attack3_teir, "-->", tier);
+                if (tier == 2)
+                {
+                    attack1_4 = "dual ember";
+                    customspace_4 = "  ";
+                    attack4_teir = 2;
+                    attack1_4mp = 25;
+                }
 
-        if tier == 5:
-        attack1_3 = "Triple cure";
-        customspace_3 = " ";
-        attack3_teir = 5;
-        attack1_3mp = 15;
+            }
+            if (num == 3)
+            {
+                if (tier > attack3_teir)
+                print_slow("Cure leveled up");
+                print_slow(attack3_teir+" -->"+ tier);
 
-        if tier == 4:
-        attack1_3 = "dual cure";
-        customspace_3 = "  ";
-        attack3_teir = 4;
-        attack1_3mp = 30;
+                if (tier == 5)
+                {
+                    attack1_3 = "Triple cure";
+                    customspace_3 = " ";
+                    attack3_teir = 5;
+                    attack1_3mp = 15;
+                }
 
-        if tier == 3:
-        attack1_3 = "cure burst";
-        customspace_3 = "  ";
-        attack3_teir = 3;
-        attack1_3mp = 20;
+                if (tier == 4)
+                {
+                    attack1_3 = "dual cure";
+                    customspace_3 = "  ";
+                    attack3_teir = 4;
+                    attack1_3mp = 30;
 
-        if tier == 2:
-        attack1_3 = "super cure";
-        customspace_3 = "  ";
-        attack3_teir = 2;
-        attack1_3mp = 15;
-        if num == 1:
-        if tier > attack1_teir:
-        print_slow("Charge leveled up");
-        print_slow(attack1_teir, "-->", tier);
+                }
+                if (tier == 3)
+                {
+                    attack1_3 = "cure burst";
+                    customspace_3 = "  ";
+                    attack3_teir = 3;
+                    attack1_3mp = 20;
+                }
 
-        if tier == 5:
-        attack1_1 = "recharge";
-        customspace_1 = "    ";
-        attack1_teir = 5;
-        attack1_1mp = 0;
+                if (tier == 2)
+                {
+                    attack1_3 = "super cure";
+                    customspace_3 = "  ";
+                    attack3_teir = 2;
+                    attack1_3mp = 15;
+                }
+            }
+        }
+        if (num == 1)
+        {
+            if (tier > attack1_teir)
+            {
+                print_slow("Charge leveled up");
+                print_slow(attack1_teir+" --> "+ tier);
 
-        if tier == 4:
-        attack1_1 = "dual charge";
-        customspace_1 = " ";
-        attack1_teir = 4;
-        attack1_1mp = 0;
+                if (tier == 5)
+                {
+                    attack1_1 = "recharge";
+                    customspace_1 = "    ";
+                    attack1_teir = 5;
+                    attack1_1mp = 0;
+                }
+                if (tier == 4)
+                {
+                    attack1_1 = "dual charge";
+                    customspace_1 = " ";
+                    attack1_teir = 4;
+                    attack1_1mp = 0;
+                }
 
-        if tier == 3:
-        attack1_1 = "power burst";
-        customspace_1 = " ";
-        attack1_teir = 3;
-        attack1_1mp = 0;
+                if (tier == 3)
+                {
+                    attack1_1 = "power burst";
+                    customspace_1 = " ";
+                    attack1_teir = 3;
+                    attack1_1mp = 0;
+                }
 
-        if tier == 2:
-        attack1_1 = "super charge";
-        customspace_1 = " ";
-        attack1_teir = 2;
-        attack1_1mp = 0;
-        if num == 2:
-        if tier > attack2_teir:
-        print_slow("Laser leveled up");
-        print_slow(attack2_teir, "-->", tier);
-        if tier == 5:
-        attack1_2 = "omega laser";
-        customspace_2 = "  ";
-        attack2_teir = 5;
-        attack1_2mp = 10;
+                if (tier == 2)
+                {
+                    attack1_1 = "super charge";
+                    customspace_1 = " ";
+                    attack1_teir = 2;
+                    attack1_1mp = 0;
+                }
+            }
+        }
+        if (num == 2)
+        {
+            if (tier > attack2_teir)
+            {
+                print_slow("Laser leveled up");
+                print_slow(attack2_teir+" --> "+ tier);
+                if (tier == 5)
+                {
+                    attack1_2 = "omega laser";
+                    customspace_2 = "  ";
+                    attack2_teir = 5;
+                    attack1_2mp = 10;
+                }
 
-        if tier == 4:
-        attack1_2 = "tri laser";
-        customspace_2 = "   ";
-        attack2_teir = 4;
-        attack1_2mp = 10;
+                if (tier == 4)
+                {
+                    attack1_2 = "tri laser";
+                    customspace_2 = "   ";
+                    attack2_teir = 4;
+                    attack1_2mp = 10;
+                }
 
-        if tier == 3:
-        attack1_2 = "dual laser";
-        customspace_2 = "   ";
-        attack2_teir = 3;
-        attack1_2mp = 10;
+                if (tier == 3)
+                {
+                    attack1_2 = "dual laser";
+                    customspace_2 = "   ";
+                    attack2_teir = 3;
+                    attack1_2mp = 10;
+                }
 
-        if tier == 2:
-        attack1_2 = "laserbeam";
-        customspace_2 = "    ";
-        attack2_teir = 2;
-        attack1_2mp = 10;
-        if tier == 6:
-        HP2m += 1;
-        print_slow("2077's max Hp increased by 1");
-        if tier == 7:
-        HP2m += 2;
-        print_slow("2077's max Hp increased by 2");
-        if tier == 8:
-        HP2m += 3;
-        print_slow("2077's max Hp increased by 3");
-        if tier == 9:
-        max_hit += 1;
-        print_slow("2077's max number of hits per turn increased by 1");
-        if tier == 10:
-        max_hit += 2;
-        print_slow("2077's max number of hits per turn increased by 2");
-        input("roll complete > enter <");
+                if (tier == 2)
+                {
+                    attack1_2 = "laserbeam";
+                    customspace_2 = "    ";
+                    attack2_teir = 2;
+                    attack1_2mp = 10;
+                }
+            }
+        }
+        if( tier == 6)
+        {
+            HP2m += 1;
+            print_slow("2077's max Hp increased by 1");
+        }
+        if (tier == 7)
+        {
+            HP2m += 2;
+            print_slow("2077's max Hp increased by 2");
+        }
+        if (tier == 8)
+        {
+            HP2m += 3;
+            print_slow("2077's max Hp increased by 3");
+        }
+        if (tier == 9)
+        {
+            max_hit += 1;
+            print_slow("2077's max number of hits per turn increased by 1");
+        }
+        if (tier == 10)
+        {
+            max_hit += 2;
+            print_slow("2077's max number of hits per turn increased by 2");
+        }
+        print_slow("roll complete > enter <");
+        scanner.nextLine();
     }
 public void level()
 {
@@ -1357,21 +1462,21 @@ public void level()
  if (exp1 >= levelr1)
 {
     
-    if (emmi.emmi_HP==0)
+    if (emmi_HP==0)
     {
-        int bonus=(100*emmi.emmi_level);
+        int bonus=(100*emmi_level);
          print_slow("You recivered a bonus "+bonus+" exp");
     }
-    else if (emmi.emmi_HP>=-5)
+    else if (emmi_HP>=-5)
     {
-        int bonus=(75*emmi.emmi_level)-(emmi.emmi_HP*10);
+        int bonus=(75*emmi_level)-(emmi_HP*10);
          print_slow("You recivered a bonus "+bonus+" exp");
     }
     else
     {
         int bonus=0;
-        exp1+= (emmi.emmi_level*emmi.emmi_level)+bonus;
-        exp2+=(emmi.emmi_level*emmi.emmi_level)+bonus;  
+        exp1+= (emmi_level*emmi_level)+bonus;
+        exp2+=(emmi_level*emmi_level)+bonus;
     }
 
 }
@@ -1390,30 +1495,29 @@ public void level()
    
 public void gain()
 {
-Enter enter = new Enter();
-    if (emmi.emmi_HP==0)
+    if (emmi_HP==0)
     {
-        bonus=(100*emmi.emmi_level);
+        bonus=(100*emmi_level);
         print_slow("You recivered a bonus "+bonus+" exp");   
     }
-    else if (emmi.emmi_HP>=-5)
+    else if (emmi_HP>=-5)
     {
-        bonus=(75*emmi.emmi_level)-(emmi.emmi_HP*10);
+        bonus=(75*emmi_level)-(emmi_HP*10);
         print_slow("You recivered a bonus "+bonus+" exp");
     }
     else
     {
     bonus=0;
-    exp1+= (emmi.emmi_level*emmi.emmi_level)+bonus;
-    exp2+=(emmi.emmi_level*emmi.emmi_level)+bonus;   
+    exp1+= (emmi_level*emmi_level)+bonus;
+    exp2+=(emmi_level*emmi_level)+bonus;
     }  
 }
  public void battle()
     {
-        while emmi.emmi_HP > 0:
+        while emmi_HP > 0:
         print_slow("2069 health "+ HP1);
         print_slow("2077 health "+ HP2);
-        print_slow(emmi.emmi_type+" health "+ emmi.emmi_HP);
+        print_slow(emmi_type+" health "+ emmi_HP);
         if HP1 > 0:
         attack1();
 
@@ -1426,9 +1530,9 @@ Enter enter = new Enter();
         if HP2 > HP2m:
         HP2 = HP2m;
 
-        emmi.emmi_HP -= damage;
+        emmi_HP -= damage;
         damage=0;
-        emmi.attack_emmi();
+        attack_emmi();
 
 
         if HP2 < 0  HP1 < 0:
@@ -1443,7 +1547,7 @@ Enter enter = new Enter();
         print_slow("Welcome to the underground subway(length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 5);
+        int int steps = random(1, 5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1452,14 +1556,14 @@ Enter enter = new Enter();
         else:
         print_slow("2069: Whats that!");
         max=
-                max=(int)(2.5)
-        type_num=random.rand(int)(1,max);
+                max=(int)(2.5);
+        type_num=random(1,max);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
+        type_num=random(1,9);
+        new_emmi(type_num);
 
 
-        dungon.battle();
+        battle();
     }
 
 
@@ -1470,7 +1574,7 @@ Enter enter = new Enter();
         print_slow("Welcome to rubble filled city (length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 5);
+        int int steps = random(1, 5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1478,12 +1582,12 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        type_num=random.rand(int)(1,9);
+        type_num=random(1,9);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
+        type_num=random(1,9);
+        new_emmi(type_num);
 
-        dungon.battle();
+        battle();
     }
     public void dungon3()
     {
@@ -1491,7 +1595,7 @@ Enter enter = new Enter();
         print_slow("Welcome to rubble filled 6-11 (length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 5);
+        int int steps = random(1, 5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1499,12 +1603,12 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        type_num=random.rand(int)(1,9);
+        type_num=random(1,9);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
+        type_num=random(1,9);
+        new_emmi(type_num);
 
-        dungon.battle();
+        battle();
     }
     public void dungon4()
     {
@@ -1512,7 +1616,7 @@ Enter enter = new Enter();
         print_slow("Welcome to damaged powerplant (length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 5);
+        int int steps = random(1, 5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1521,12 +1625,12 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        type_num=random.rand(int)(1,9);
+        type_num=random(1,9);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
+        type_num=random(1,9);
+        new_emmi(type_num);
 
-        dungon.battle();
+        battle();
     }
     public void dungon5()
     {
@@ -1534,7 +1638,7 @@ Enter enter = new Enter();
         print_slow("Welcome to highway 101 (length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 15);
+        int int steps = random(1, 15);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1542,20 +1646,20 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        type_num=random.rand(int)(1,9);
+        type_num=random(1,9);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
+        type_num=random(1,9);
+        new_emmi(type_num);
 
-        dungon.battle();
+        battle();
     }
-    public dungon6():
+    public void dungon6():
     {
         dungon_lenght = 5;
         print_slow("Welcome to rubble filled 6-11  (length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 5);
+        int int steps = random(1, 5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1563,12 +1667,12 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        type_num=random.rand(int)(1,9);
+        type_num=random(1,9);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
+        type_num=random(1,9);
+        new_emmi(type_num);
 
-        dungon.battle();
+        battle();
     }
     public void dungon7()
     {
@@ -1576,7 +1680,7 @@ Enter enter = new Enter();
         print_slow("Welcome to old factory (length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps = random.rand(int)(1, 5);
+        int int steps = random(1, 5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1584,9 +1688,9 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        emmi.new_emmi(1);
-        dungon.battle();
-        boss.roomba_beam();
+        new_emmi(1);
+        battle();
+        roomba_beam();
     }
     public void dungon8()
     {
@@ -1594,7 +1698,7 @@ Enter enter = new Enter();
         print_slow("Welcome to Central Fwy(length: "+ dungon_lenght+ " )");
 
         while dungon_lenght > 0:
-        steps =random.rand(int)(1,5);
+        int steps =random(1,5);
         dungon_lenght -= steps;
         print_slow("You move "+ steps+ " feet");
 
@@ -1602,26 +1706,23 @@ Enter enter = new Enter();
         print_slow("2069:We made it");
         else:
         print_slow("2069:Whats that!");
-        type_num=random.rand(int)(1,9);
+        type_num=random(1,9);
         if type_num>6:
-        type_num=random.rand(int)(1,9);
-        emmi.new_emmi(type_num);
-        dungon.battle();
+        type_num=random(1,9);
+        new_emmi(type_num);
+        battle();
     }
-Main main = new Main();
-Scanner scanner = new Scanner(System.in);
-int speed=20;
 //print method
 public void print_slow(String str)
 {
     for(int i=0; i<str.length(); i++)
     {
-    System.out.pr(int)(str.substring(i,i+1));    
+    System.out.println(str.substring(i,i+1));
     wait(speed);
     }
     System.out.println("");
     System.out.println("");
-    System.out.pr(int)("> enter <");
+    System.out.println("> enter <");
     scanner.nextLine();
 }
 //wait method
