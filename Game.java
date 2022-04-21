@@ -376,8 +376,8 @@ public void attack2()
     print_slow("2077's turn");
     
 //starts quicktime event
-    //quicktime.start(max_hit*attack1_power);
-//Makes sure that 2077 health is not over max
+    
+damage-=(quickTime())*5;
     if (HP2 > HP2m)
     {
          HP2 = HP2m;
@@ -2202,6 +2202,35 @@ public static void Edit(String filePath, ArrayList<Object> arr)
             return false;
         }
     }
+public int quickTime()
+{
+long startTime = System.currentTimeMillis();
+int i=0;
+while(startTime+10000>System.currentTimeMillis())      {
+System.out.println("Type Kick");
+while(startTime+10000>System.currentTimeMillis())
+     {
+         if (scanner.nextLine().equals("Kick"))
+         {
+             break;
+         }
 
-//main
 }
+System.out.println("Type Punch");
+while(startTime+10000>System.currentTimeMillis())
+     {
+         if (scanner.nextLine().equals("Punch"))
+         {
+             break;
+         }
+
+}
+i++;
+
+}
+return i;
+}
+
+
+}
+//main
