@@ -58,6 +58,7 @@ int Mark_Zuckerberg=300;
     String customspace_2="  ";
     String customspace_3="       ";
     String customspace_4="      ";
+    int max_hit = 5;
 
 
 //dungeon vars
@@ -68,7 +69,6 @@ int type_num=0;
 int speed=20;
 int num1=0;
 int num2=0;
-int max_hit = 4;
 int bonus = 0;
 int hit = 0;    
 int damage = 0;
@@ -401,7 +401,7 @@ public void attack2()
     
 //starts quicktime event
     
-damage-=(quickTime())*5;
+damage-=(quickTime())*max_hit;
     if (HP2 > HP2m)
     {
          HP2 = HP2m;
@@ -1940,6 +1940,7 @@ public void print_slow(String str)
         arrList.add(customspace_2);
         arrList.add(customspace_3);
         arrList.add(customspace_4);
+        arrList.add(max_hit);
         Edit("Save.txt",arrList);
         System.gc();
         long startTime = System.currentTimeMillis();
@@ -2187,7 +2188,7 @@ public static void Edit(String filePath, ArrayList<Object> arr)
     {
         ArrayList<Object> Save = Read("Save.txt");
 
-        for(int i=0; i<24; i++)
+        for(int i=0; i<25; i++)
         {
             String var = Save.get(i).toString();
             int val = 0;
@@ -2295,6 +2296,10 @@ public static void Edit(String filePath, ArrayList<Object> arr)
             if(i==24)
             {
                 customspace_4=var;
+            }
+            if(i==25)
+            {
+                max_hit=val;
             }
 
         }

@@ -11,10 +11,10 @@
 1
 1
 1
-20
-20
 0
 0
+20
+20
 charge
 lasershot
 cure
@@ -23,3 +23,4 @@ ember
   
        
       
+5
