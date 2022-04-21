@@ -5,24 +5,23 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
+//Main class
 class Game {
+//emmi is enemie vars
 int emmi_HP = 0;
 int emmi_level = 0;
-int damage = 0;
-int attack1_power=1;
-int move_tier=0;
+String emmi_type = "";
+//2069 and 2077 vars (non save)
 int mp1 = 100;
 int HP1 = 35;
 int HP2 = 35;
-int max_hit = 4;
-int hit = 0;
+// boss health
 int bill_HP = 300;
 int Elon_HP = 150;
 int target = 0;
 int Tri_HP = 1000;
 int Mark_Zuckerberg=300;
-// Arr vars
+// Array vars (placed in Save.txt)
     int missionnum = 10;
     int HP1m = 50;
     int HP2m = 50;
@@ -50,24 +49,29 @@ int Mark_Zuckerberg=300;
     String customspace_4="      ";
 
 
-int bonus = 0;
+//dungeon vars
 int dungeon_length = 0;
-String emmi_type = "";
-//place  Holders
+//misc
+int bonus = 0;
 int num=0;
 int type_num=0;
 int speed=20;
 int num1=0;
 int num2=0;
+int max_hit = 4;
+int bonus = 0;
+int hit = 0;    
+int damage = 0;
+int attack1_power=1;
+int move_tier=0;
+int dungeon_length = 0;
 //obj
 Scanner scanner = new Scanner(System.in);
 
-
-    
-
-
+//Starts up 2069
 public void game()
 {
+  //reset all health and MP values
   bill_HP = 300;
   Elon_HP = 150;
   target = 0;
@@ -76,10 +80,12 @@ public void game()
   HP1=HP1m;
   HP2=HP2m;
   mp1=100;
+  //Runs mission forever
   while (true)
   {
     String choice="STR";
       System.out.println("Type 1 -> "+missionnum+" to try that Mission");
+    //Tells you how to roll the gotcha
     if (missionnum>1)
     {
     System.out.println("Type 'exp' to trade exp for new moves");
@@ -87,7 +93,7 @@ public void game()
     System.out.println("which Mission would you like to try?   ");
     choice=scanner.nextLine();
     System.out.println("");
-    
+//mission 1
 if (choice.equals("1"))
 {
        print_slow("Mission 1: The Awakening of  The Revolution");
@@ -111,7 +117,7 @@ if (choice.equals("1"))
         emmi_type="NOT";
         }
 }
-
+//Mission 2
     if ((choice.equals("2"))&&(missionnum>=2))
     {
         print_slow("Mission 2: First Encounters");
@@ -134,6 +140,7 @@ if (choice.equals("1"))
         print_slow("MISSION 3 UNLOCKED");  
         } 
     }
+//Misson 3
     if ((missionnum >= 3) && (choice.equals("3")))
       {
         print_slow("MISSION 3: Rest In The Rubble");
@@ -166,6 +173,7 @@ if (choice.equals("1"))
           }
        print_slow("MISSION 3 END");
       }
+//Mission 4
     if ((missionnum >= 4)&&(choice.equals("4")))
     {
         print_slow("Mission 4: 101 battles");
@@ -186,6 +194,7 @@ if (choice.equals("1"))
             print_slow("mission 5 UNLOCKED");
         }
     }
+//Mission 5
     if ((missionnum >= 5) && (choice.equals("5")))
     {
         print_slow("Mission 5: Rematch Squared");
@@ -211,6 +220,7 @@ if (choice.equals("1"))
             print_slow("MISSION 6 UNLOCKED");
         }
     }
+//Mission 6
     if ((missionnum >= 6) && (choice.equals("6")))
     {
         print_slow("Mission 6: The Smoking Gun");
@@ -229,6 +239,7 @@ if (choice.equals("1"))
             print_slow("MISSION 7 UNLOCKED");
         }
     }
+//Mission 7
     if ((missionnum >= 7) &&(choice.equals("7")))
     {
         print_slow("Mission 7: The Rules Of The Roomba");
@@ -245,6 +256,7 @@ if (choice.equals("1"))
       {missionnum=8;
            print_slow("MISSION 8 UNLOCKED");}
     }
+//Mission 8
     if ((missionnum >= 8) && (choice.equals("8")))
     {
         print_slow("MISSION 8 When I Step off");
@@ -257,6 +269,7 @@ if (choice.equals("1"))
             print_slow("MISSION 9 UNLOCKED");
         }
     }
+//Mission 9
     if ((missionnum >= 9) && (choice.equals("9")))
     {
         print_slow("Mission 9: Face-Off On The Grand Tower");
@@ -269,6 +282,7 @@ if (choice.equals("1"))
             print_slow("MISSION 9 UNLOCKED");
         }
     }
+//Mission 10
     if ((missionnum >= 10) && (choice.equals("10")))
     {
         print_slow("mission 10: 2 Sides Of The Same Coin");
@@ -277,7 +291,7 @@ if (choice.equals("1"))
         mission10_2();
         print_slow("THE END?");
     }
-    
+//Gotcha system
     if ((choice.equals("exp")) && (missionnum>1))
       {
           pull1();
@@ -383,42 +397,49 @@ damage-=(quickTime())*5;
          HP2 = HP2m;
     }    
 }
+//Bill Gates boss fight
  public void boss_bill()
     {
-       while ( bill_HP>0)    
+    while ( bill_HP>0)    
     {
         print_slow("2069's health "+ HP1);
         print_slow("2077's health "+ HP2);
         print_slow("Bill's health "+ bill_HP);
-
+        //2069 attacks
         if( HP1 > 0)
         {attack1();}
-
+        //2077 attacks
         if( HP2 > 0)
         {attack2();}
         bill_HP -= damage;
+        //bill gates attacks
         attack_bill();
-
+        //checks for game over
         if(( HP2 < 0) && (HP1 < 0))
-    {
-      restart();  
-    }
+        {
+          restart();  
+        }
 
         }
+        //gives the player some exp for winning
         exp1+=random(100,200);
         exp2+=random(100,200);
         gain();
         level();
     }
+    //bill gates attack
     public void attack_bill()
     {
 
-        int bill = random(2,3);
+        int bill = random(1,3);
+        
+        
         if( bill_HP > 0)
         {
-             if( target == 0)
+//small bit of smarts
+        if( target == 0)
         {bill = 1;}
-
+//target attack
         if( bill == 1)
         {target = random(1,2);
 
@@ -431,7 +452,8 @@ damage-=(quickTime())*5;
         {print_slow("Bill is now targeting 2077.");}
 
 
-            }
+        }
+        //slash rage attack
         if( bill == 2)
         {print_slow("SLASH RAGE");
 
@@ -462,7 +484,7 @@ damage-=(quickTime())*5;
 
 
         target = 0;}
-
+        //Triple slash attack
         if( bill == 3)
         {print_slow("TRIPLE SLASH");
 
@@ -484,52 +506,55 @@ damage-=(quickTime())*5;
         }
 
     }
+    //Elon musk boss fight
     public void Elon_musk()
     {
         while ( Elon_HP>0)
         {
-            print_slow("2069's health "+ HP1);
+        print_slow("2069's health "+ HP1);
         print_slow("2077's health "+ HP2);
         print_slow("Elon's health "+ Elon_HP);
-
+        //2069 attacks
         if( HP1 > 0)
         {attack1();}
-
+        //2077 attacks
         if( HP2 > 0)
         {attack2();}
 
         Elon_HP -= damage;
+        //Elon attacks 
         attack_Elon();
-
+        //checks for games over
         if(( HP2 < 0) && (HP1 < 0))
-
-
         {restart();}
         }
+        //gives a you some exp for winning
         exp1+=random(100,200);
         exp2+=random(100,200);
         gain();
         level();
     }
+    //Elon musk attack
     public void attack_Elon()
     {
         int bill = random(1,3);
+        //heals musk
         if( bill == 1)
         {
             print_slow("HEALING MIST");
             Elon_HP+=10;
             print_slow("Elon heals 10 damage");
         }
-
+        //lowers your MP
         if( bill == 2)
         {
         print_slow("CONFUSING MIST");
 
         mp1-=10;
 
-
-        print_slow("2069 and 2077 are both confused and 2069 loses 10 mp");
+        print_slow("2069 loses 10 mp");
         }
+        //Deals damage
         if( bill == 3)
         {
         print_slow("BURNING SPEAR");
@@ -539,39 +564,43 @@ damage-=(quickTime())*5;
         print_slow("2069 and 2077 and burned and take  "+damage+" damage");
         }
         }
+        //Double boss (bill gates and Jeff bezos)
         public void double_boss()
         {
         while ( Elon_HP>0)
         {
-                    print_slow("2069's health "+ HP1);
+        print_slow("2069's health "+ HP1);
         print_slow("2077's health "+ HP2);
         print_slow("Bill's health "+ bill_HP);
         print_slow("Jeff's health "+Elon_HP);
-
+        //2069 attacks
         if( HP1 > 0)
         {attack1();}
-
+        //2077 attacks
         if( HP2 > 0)
         {attack2();}
+        
         if( bill_HP>0)
         {bill_HP -= damage;}
     else
         {Elon_HP -= damage;}
-        if( bill_HP>0)
+        //bill attack
+        if( Elon_HP>0)
         {attack_bill();
         jeff_attack();}
-
+        //checks for gameOver
         if(( HP2 < 0) && (HP1 < 0))
 
             {restart();}
         }
+        //Gives you exp
         exp1+=random(200,400);
         exp2+=random(200,400);
         gain();
         level();            
         }
 
-    
+    //jeff bezos attack
     public void jeff_attack()
     {
         print_slow("MIND BEND");
@@ -580,6 +609,7 @@ damage-=(quickTime())*5;
         HP2-=damage*random(1,3);
         print_slow("2069 and 2077 take a random amount of damage");
     }
+    //sets 2069s and 2077s hp to 1
     public void roomba_beam()
     {
         print_slow("ROOMBA BEAM");
@@ -587,7 +617,8 @@ damage-=(quickTime())*5;
         HP1=1;
         HP2=1;
     }
-        public void boss_rush()
+//Fight all the tech giants
+public void boss_rush()
         {
         while ( Tri_HP>0)
         {
@@ -1509,8 +1540,8 @@ public void level()
     else
     {
         int bonus=0;
-        exp1+= (emmi_level*emmi_level)+bonus;
-        exp2+=(emmi_level*emmi_level)+bonus;
+        exp1+= (emmi_level)+bonus;
+        exp2+=(emmi_level)+bonus;
     }
 
 }
@@ -1542,8 +1573,8 @@ public void gain()
     else
     {
     bonus=0;
-    exp1+= (emmi_level*emmi_level)+bonus;
-    exp2+=(emmi_level*emmi_level)+bonus;
+    exp1+= (emmi_level)+bonus;
+    exp2+=(emmi_level)+bonus;
     }  
 }
  public void battle()
@@ -1879,42 +1910,42 @@ public void new_emmi(int type1)
 {
         emmi_type="Dog bot";
         emmi_level=level1;
-        emmi_HP=35+(emmi_level*emmi_level*3);
+        emmi_HP=35+(emmi_level*3);
         print_slow("A Dog bot appears");
 }
     if (type1==3)
 {
         emmi_type="Robot with a sword";
         emmi_level=level1;
-        emmi_HP=30+(emmi_level*emmi_level*3);
+        emmi_HP=30+(emmi_level*3);
         print_slow("A Robot with a sword appears");
 }
     if (type1==4)
 {
         emmi_type="Robot with a spear";
         emmi_level=level1;
-        emmi_HP=25+(emmi_level*emmi_level*2);
+        emmi_HP=25+(emmi_level*2);
         print_slow("A Robot with a spear appears");
 }
     if (type1==5)
 {
             emmi_type="Robot with a gun";
         emmi_level=level1;
-        emmi_HP=40+(emmi_level*emmi_level*4);
+        emmi_HP=40+(emmi_level*4);
         print_slow("A Robot with a gun appears");
 }
     if (type1==6)
     {
         emmi_type="Mech";
         emmi_level=level1;
-        emmi_HP=200+(emmi_level*emmi_level*5);
+        emmi_HP=200+(emmi_level*5);
         print_slow("A Mech appears");
     }
     if (type1==7)
     {
         emmi_type="Giga Mech";
         emmi_level=level1;
-        emmi_HP=300+(emmi_level*emmi_level*6);
+        emmi_HP=300+(emmi_level*6);
         print_slow("Suddenly 2069 and 2077 hear loud engine sounds");
         print_slow("A Giga Mech Comes Crashing down behind 2069 and 2077");
     }
@@ -1922,14 +1953,14 @@ public void new_emmi(int type1)
     {
         emmi_type="Mini Mech";
         emmi_level=level1;
-        emmi_HP=150+(emmi_level*emmi_level*4);
+        emmi_HP=150+(emmi_level*4);
         print_slow("A Mini Mech appears");
     }
     if (type1==9)
     {
         emmi_type="Cyborg";
         emmi_level=level1;
-        emmi_HP=125+(emmi_level*emmi_level*4);
+        emmi_HP=125+(emmi_level*4);
         print_slow("A Cyborg appears");
     }
 }
@@ -1950,67 +1981,67 @@ if (emmi_type.equals("Roomba"))
     if (emmi_type.equals("Dog bot"))
     {
          print_slow("SPEED TACKLE");
-        HP1 -= 5 + (3 * emmi_level*emmi_level);
-         print_slow("2069 takes "+ 5 + (3 * emmi_level*emmi_level)+ " damage");
+        HP1 -= 5 + (3 * emmi_level);
+         print_slow("2069 takes "+ 5 + (3 * emmi_level)+ " damage");
     }
 
     if (emmi_type.equals("Robot with a sword"))
     {
         print_slow("ZERO BLADE");
-        HP2 -= 7 + (2 * emmi_level*emmi_level);
-         print_slow("2077 takes "+ 7 + (2 * emmi_level*emmi_level)+ " damage");
+        HP2 -= 7 + (2 * emmi_level);
+         print_slow("2077 takes "+ 7 + (2 * emmi_level)+ " damage");
     }
         
     if (emmi_type.equals("Robot with a spear"))
     {
          print_slow("ZERO SPEAR");
-        HP1 -=10 + (2 * emmi_level*emmi_level);
-         print_slow("2069 takes "+10 +  (2 * emmi_level*emmi_level)+"damage");
+        HP1 -=10 + (2 * emmi_level);
+         print_slow("2069 takes "+10 +  (2 * emmi_level)+"damage");
     }
         
     if (emmi_type.equals("Robot with a gun"))
     {
         print_slow("DUAL BLASTER");
-        HP1 -= 5 + (2 * emmi_level*emmi_level);
-        HP2 -= 5 + (2 * emmi_level*emmi_level);
-         print_slow("2069 takes "+ 5 + (2 * emmi_level*emmi_level)+ " damage");
-         print_slow("2077 takes "+ 5 + (2 * emmi_level*emmi_level)+ " damage");
+        HP1 -= 5 + (2 * emmi_level);
+        HP2 -= 5 + (2 * emmi_level);
+         print_slow("2069 takes "+ 5 + (2 * emmi_level)+ " damage");
+         print_slow("2077 takes "+ 5 + (2 * emmi_level)+ " damage");
     }
         
     if (emmi_type.equals("Mech"))
     {
         print_slow("DUAL CANNON");
-        HP1 -= 20 + (2 * emmi_level*emmi_level);
-        HP2 -= 20 + (2 * emmi_level*emmi_level);
-         print_slow("2069 takes "+ 20 + (2 * emmi_level*emmi_level)+ " damage");
-         print_slow("2077 takes "+ 20 + (2 * emmi_level*emmi_level)+ " damage");
+        HP1 -= 20 + (2 * emmi_level);
+        HP2 -= 20 + (2 * emmi_level);
+         print_slow("2069 takes "+ 20 + (2 * emmi_level)+ " damage");
+         print_slow("2077 takes "+ 20 + (2 * emmi_level)+ " damage");
     }
         
     if (emmi_type.equals("Giga Mech"))
     {
         print_slow("OMEGA BEAM");
-        HP1 -= 30 + (2 * emmi_level*emmi_level);
-        HP2 -= 30 + (2 * emmi_level*emmi_level);
-         print_slow("2069 takes "+ 30 + (2 * emmi_level*emmi_level)+ " damage");
-         print_slow("2077 takes "+ 30 + (2 * emmi_level*emmi_level)+ " damage");
+        HP1 -= 30 + (2 * emmi_level);
+        HP2 -= 30 + (2 * emmi_level);
+         print_slow("2069 takes "+ 30 + (2 * emmi_level)+ " damage");
+         print_slow("2077 takes "+ 30 + (2 * emmi_level)+ " damage");
     }
         
     if (emmi_type.equals("Mini Mech"))
     {
         print_slow("LASER RAIN");
-        HP1 -= 10 + (2 * emmi_level*emmi_level);
-        HP2 -= 10 + (2 * emmi_level*emmi_level);
-         print_slow("2069 takes "+ 10 + (2 * emmi_level*emmi_level)+ " damage");
-         print_slow("2077 takes "+ 10 + (2 * emmi_level*emmi_level)+ " damage");
+        HP1 -= 10 + (2 * emmi_level);
+        HP2 -= 10 + (2 * emmi_level);
+         print_slow("2069 takes "+ 10 + (2 * emmi_level)+ " damage");
+         print_slow("2077 takes "+ 10 + (2 * emmi_level)+ " damage");
     }
         
     if (emmi_type.equals("Cyborg"))
     {
         print_slow("RUSH");
-        HP1 -= 5 + (5 * emmi_level*emmi_level);
-        HP2 -= 5 + (5 * emmi_level*emmi_level);
-         print_slow("2069 takes "+ 5 + (5 * emmi_level*emmi_level)+ " damage");
-         print_slow("2077 takes "+ 5 + (5 * emmi_level*emmi_level)+ " damage"); 
+        HP1 -= 5 + (5 * emmi_level);
+        HP2 -= 5 + (5 * emmi_level);
+         print_slow("2069 takes "+ 5 + (5 * emmi_level)+ " damage");
+         print_slow("2077 takes "+ 5 + (5 * emmi_level)+ " damage"); 
     } 
 }
 public static void Edit(String filePath, ArrayList<Object> arr)
