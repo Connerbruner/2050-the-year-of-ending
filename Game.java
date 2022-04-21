@@ -68,7 +68,7 @@ Scanner scanner = new Scanner(System.in);
 
 public void game()
 {
-    bill_HP = 300;
+  bill_HP = 300;
   Elon_HP = 150;
   target = 0;
   Tri_HP = 1000;
@@ -79,15 +79,15 @@ public void game()
   while (true)
   {
     String choice="STR";
-      print_slow("Type 1 -> "+missionnum+" to try that Mission");
-      System.out.println("");
+      System.out.println("Type 1 -> "+missionnum+" to try that Mission");
     if (missionnum>1)
     {
     System.out.println("Type 'exp' to trade exp for new moves");
+    }
     System.out.println("which Mission would you like to try?   ");
     choice=scanner.nextLine();
     System.out.println("");
-    }
+    
 if (choice.equals("1"))
 {
        print_slow("Mission 1: The Awakening of  The Revolution");
