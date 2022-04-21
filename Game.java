@@ -110,8 +110,9 @@ public void game()
 //mission 1
 if (choice.equals("1"))
 {
-       print_slow("Mission 1: The Awakening of  The Revolution");
-        if(skip())
+    print_slow("CHAPTER 1: The Tower of Power");
+    print_slow("Mission 1: The Awakening of  The Revolution");
+       if(skip())
         {
          mission1_1();
          mission1_2();
@@ -303,7 +304,17 @@ if (choice.equals("1"))
         mission10_1();
         Final();
         mission10_2();
-        print_slow("THE END?");
+        if (missionnum<11)
+        {
+            missionnum=11;
+            print_slow("MISSION 11 UNLOCKED");
+        }
+    }
+    if ((missionnum >= 11) && (choice.equals("11")))
+    {
+          print_slow("CHAPTER 2: Rising Tides");
+          print_slow("mission 11: X3090");
+
     }
 //Gotcha system
     if ((choice.equals("exp")) && (missionnum>1))
@@ -1281,19 +1292,28 @@ public void mission2_3()
     public void mission10_2()
     {
         print_slow("Mark Zuckerberg: Sigh, It apears musk was right");
-        print_slow("Mark Zuckerberg: You see, as long as he is here, our fates are simply just two sides of the same coin.");
-        print_slow("2069: Who?");
-        print_slow("Mark Zuckerberg: It does not matter. KILL ME NOW");
-        print_slow("2069: Your just giving up?");
-        print_slow("Mark Zuckerberg: Sure you win this battle, but at what cost? If I leave I pay that cost.");
-        print_slow("2077: ITS OVER ZUCK");
-        print_slow("Mark Zuckerberg: Good...");
-        print_slow("2069: EMBER BURST");
-        print_slow("Mark Zuckerberg: You should have taken the easy way out");
-        print_slow("2069: We are not cowards");
-        print_slow("Mark zuckerberg colpases on to the ground");
-        print_slow("2069: What now...");
-        print_slow("2077: We build a house and live life out to its fullest");
+        print_slow("2069: What?");
+        print_slow("Mark Zuckerberg: Luckly I was ready for this");
+        print_slow("Mark Zuckerberg: I present the X3090");
+        print_slow("Mark Zuckerberg: A nuclear missile containg 1000s of the parsite Z");
+        print_slow("Mark Zuckerberg: The same parasite That killed 1000s. It takes control of technology. IT Alos is VERY hostile to humans");
+        print_slow("Mark Zuckerberg: Said missile is set to land rihgt dead center in the middle of the arctic causing rapid cimiate change and rising sea levels ");
+        print_slow("Mark Zuckerberg: All triggered by THIS BUTTON");
+        print_slow("Mark Zuckerberg: 3                              2                                           1");
+        print_slow("2077: NOOOOOOOOOOOO");
+        print_slow("2069: NOOOOOOOOOOOO");
+        print_slow("Mark Zuckerberg: GoodBye");
+        print_slow("*Mark Zuckerberg disappears*");
+    }
+    public void mission11_1()
+    {
+        print_slow("2069: 2077 Exit?");
+        print_slow("2077: Exit over there");
+        print_slow("2069: Great");
+        print_slow("2069: The Bomb should raise the sea level 750ft. Meaning most buildings are going to be submearged");
+        print_slow("2069: We have 1 hour before the sea will be submearged");
+        print_slow("2077: Lets use this Tower as out base. I need to start work on a way to move from tower to tower");
+        print_slow("2069: sounds good");
     }
 public void pull1()
     {
