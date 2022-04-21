@@ -1805,13 +1805,35 @@ public void print_slow(String str)
 }
 //wait method
 	public void wait(int time) {
-		long startTime = System.currentTimeMillis();
-		while (startTime + time > System.currentTimeMillis())
-        {
-            ArrayList<Object> arrList = new ArrayList<Object>();
-
-            Edit("save.txt",)
-        }
+        ArrayList<Object> arrList = new ArrayList<Object>();
+        arrList.add(missionnum);
+        arrList.add(HP1m);
+        arrList.add(HP2m);
+        arrList.add(attack1_1mp);
+        arrList.add(attack1_2mp);
+        arrList.add(attack1_3mp);
+        arrList.add(attack1_4mp);
+        arrList.add(attack1_tier);
+        arrList.add(attack2_tier);
+        arrList.add(attack3_tier);
+        arrList.add(attack4_tier);
+        arrList.add(level1);
+        arrList.add(level2);
+        arrList.add(exp1);
+        arrList.add(exp2);
+        arrList.add(levelr1);
+        arrList.add(levelr2);
+        arrList.add(attack1_1);
+        arrList.add(attack1_2);
+        arrList.add(attack1_3);
+        arrList.add(attack1_4);
+        arrList.add(customspace_1);
+        arrList.add(customspace_2);
+        arrList.add(customspace_3);
+        arrList.add(customspace_4);
+        Edit("Save.txt",arrList);
+        long startTime = System.currentTimeMillis();
+		while (startTime + time > System.currentTimeMillis());
 	}
 public int random(int high,int low)
 {
@@ -1990,7 +2012,7 @@ if (emmi_type.equals("Roomba"))
          print_slow("2077 takes "+ 5 + (5 * emmi_level*emmi_level)+ " damage"); 
     } 
 }
-public static void Edit(String filePath, Object[] arr)
+public static void Edit(String filePath, ArrayList<Object> arr)
     {
         File fileToBeModified = new File(filePath);
         BufferedReader reader = null;
