@@ -4,6 +4,7 @@ class Main
 {
     public static void main(String[] args) {
     Game game = new Game();
+    System.gc();
     SecurityManager sec = new SecurityManager();
     System.out.println(sec.getSecurityContext());
     sec.checkRead("Save.txt");

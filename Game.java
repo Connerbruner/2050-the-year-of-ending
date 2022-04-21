@@ -8,6 +8,7 @@ import java.util.ArrayList;
 //Main class
 class Game {
 //the Colors of gay
+public static final String ESC = "\033[H\033[2J";
 public static final String RESET = "\u001B[0m";
 public static final String BLACK = "\u001B[30m";
 public static final String RED = "\u001B[31m";
@@ -1940,6 +1941,7 @@ public void print_slow(String str)
         arrList.add(customspace_3);
         arrList.add(customspace_4);
         Edit("Save.txt",arrList);
+        System.gc();
         long startTime = System.currentTimeMillis();
 		while (startTime + time > System.currentTimeMillis());
 	}
