@@ -7,6 +7,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 //Main class
 class Game {
+//the Colors of gay
+public static final String RESET = "\u001B[0m";
+public static final String BLACK = "\u001B[30m";
+public static final String RED = "\u001B[31m";
+public static final String GREEN = "\u001B[32m";
+public static final String YELLOW = "\u001B[33m";
+public static final String BLUE = "\u001B[34m";
+public static final String PURPLE = "\u001B[35m";
+public static final String CYAN = "\u001B[36m";
+public static final String WHITE = "\u001B[37m";
 //emmi is enemie vars
 int emmi_HP = 0;
 int emmi_level = 0;
@@ -52,7 +62,6 @@ int Mark_Zuckerberg=300;
 //dungeon vars
 int dungeon_length = 0;
 //misc
-int bonus = 0;
 int num=0;
 int type_num=0;
 int speed=20;
@@ -64,7 +73,7 @@ int hit = 0;
 int damage = 0;
 int attack1_power=1;
 int move_tier=0;
-int dungeon_length = 0;
+
 //obj
 Scanner scanner = new Scanner(System.in);
 
@@ -650,7 +659,7 @@ public void Tri_attack()
         if( people_num==4)
         {print_slow("FULL ON RUSH");
         print_slow("Elon musk: "+person+" YOUR ABOUT TO FEEL IT");
-        print_slow("Bill Gates: RAGE SLASH");
+        print_slow("Bill gates: RAGE SLASH");
         num=random(10,20);
         print_slow("Bill Gates deals "+num+" Damage and takes "+ (num/3) +" damage");
         System.out.println("");
@@ -727,7 +736,7 @@ public void Final()
             {restart();}
         else
         {
-        print_slow("Mark Zuckerberg) YOU HAVE NO POWER IN THIS WORLD");
+        print_slow("Mark Zuckerberg: YOU HAVE NO POWER IN THIS WORLD");
         print_slow("Mark Zuckerberg takes 0 damage from your attacks");
         }
         }
@@ -955,10 +964,10 @@ public void mission2_2()
             print_slow("*the mech's face shield opens up*");
 
 
-            print_slow("Bill Gates: Heh...");
+            print_slow("Bill gates: Heh...");
 
 
-            print_slow("Bill Gates: You can't be any slower, can you?");
+            print_slow("Bill gates: You can't be any slower, can you?");
 
 
             print_slow("2077: Bill? You're the one behind this?");
@@ -1141,19 +1150,19 @@ public void mission2_3()
         print_slow("Suddenly 2 mechs crash down infront of 2069,2020 and 2077");
 
 
-        print_slow("jeff bezos: It appers that they have showen up early");
+        print_slow("Jeff bezos: It appers that they have showen up early");
 
 
-        print_slow("bill gates: Your guys are faster than normal");
+        print_slow("Bill gates: Your guys are faster than normal");
 
 
-        print_slow("jeff bezos: Let me take care of them");
+        print_slow("Jeff bezos: Let me take care of them");
 
 
         print_slow("2077: WE WILL TAKE YOU BOTH");
 
 
-        print_slow("bill gates: Fine I guess I will join in");
+        print_slow("Bill gates: Fine I guess I will join in");
         bill_HP=200;
         Elon_HP=200;
     }
@@ -1161,7 +1170,7 @@ public void mission2_3()
     public void mission5_3()
     {
         print_slow("Jeff bezos: You did not tell me that these kids could put up a fight");
-        print_slow("bill gates: Nevermind that we need to leave NOW");
+        print_slow("Bill gates: Nevermind that we need to leave NOW");
         print_slow("Jeff bezos: Right");
     }
     public void mission6_1()
@@ -1238,7 +1247,7 @@ public void mission2_3()
         print_slow("2077: Okay (Press up on the elevator");
         print_slow("*Suddenly the elevator stops*");
         print_slow("Elon musk: I SEE THAT YOU HAVE FOUND YOUR WAY TO OUR HIDEOUT");
-        print_slow("Bill Gates: Lets clean up this error in our plan");
+        print_slow("Bill gates: Lets clean up this error in our plan");
     }
     public void mission9_2()
     {
@@ -1825,15 +1834,82 @@ public void gain()
 //print method
 public void print_slow(String str)
 {
+    //if 2069 is talking BLUE
+    if(str.contains("2069:"))
+    {
+    for(int i=0; i<str.length(); i++)
+    {
+    System.out.print(BLUE+str.charAt(i));
+    wait(speed);
+    }
+    System.out.println();
+    System.out.println(RESET);
+    System.out.println("> enter <");
+    scanner.nextLine();
+    }
+    //if 2077 is talking CYAN
+    if(str.contains("2077:"))
+    {
+    for(int i=0; i<str.length(); i++)
+    {
+    System.out.print(CYAN+str.charAt(i));
+    wait(speed);
+    }
+    System.out.println();
+    System.out.println(RESET);
+    System.out.println("> enter <");
+    scanner.nextLine();
+    }
+    //Tech gaint talking RED
+    if(str.contains("Mark Zuckerberg:")||str.contains("Elon musk:")||str.contains("Bill gates:")||str.contains("Jeff bezos:"))
+    {
+    for(int i=0; i<str.length(); i++)
+    {
+    System.out.print(RED+str.charAt(i));
+    wait(speed);
+    }
+    System.out.println();
+    System.out.println(RESET);
+    System.out.println("> enter <");
+    scanner.nextLine();
+    }
+    //if sounds then 
+    if(str.contains("*"))
+    {
+    for(int i=0; i<str.length(); i++)
+    {
+    System.out.print(GREEN+str.charAt(i));
+    wait(speed);
+    }
+    System.out.println();
+    System.out.println(RESET);
+    System.out.println("> enter <");
+    scanner.nextLine();
+    }
+    if(str.contains("???:"))
+    {
+    for(int i=0; i<str.length(); i++)
+    {
+    System.out.print(PURPLE+str.charAt(i));
+    wait(speed);
+    }
+    System.out.println();
+    System.out.println(RESET);
+    System.out.println("> enter <");
+    scanner.nextLine();
+    }
+    else
+    {
     for(int i=0; i<str.length(); i++)
     {
     System.out.print(str.charAt(i));
     wait(speed);
     }
     System.out.println();
-    System.out.println();
+    System.out.println(RESET);
     System.out.println("> enter <");
-    scanner.nextLine();
+    scanner.nextLine();       
+    }
 }
 //wait method
 	public void wait(int time) {

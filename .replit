@@ -4,6 +4,7 @@ run = ["java", "-classpath", ".:target/dependency/*", "Main"]
 entrypoint = "Main.java"
 hidden = ["**/*.class"]
 onBoot="BOOTED"
+
 [packager]
 language = "java"
 
