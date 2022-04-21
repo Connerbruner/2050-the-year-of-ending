@@ -93,6 +93,10 @@ public void game()
   //Runs mission forever
   while (true)
   {
+    if((attack1_tier==5)&&(attack2_tier==5)&&(attack3_tier==5)&&(attack4_tier==5))
+    {
+        if(missionnum=10)
+    }
     String choice="STR";
       System.out.println("Type 1 -> "+missionnum+" to try that Mission");
     //Tells you how to roll the gotcha
