@@ -1,5 +1,9 @@
 import java.util.Scanner;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 class Game {
@@ -7,51 +11,54 @@ int emmi_HP = 0;
 int emmi_level = 0;
 int damage = 0;
 int attack1_power=1;
-int attack2_power=1;
 int move_tier=0;
 int mp1 = 100;
 int HP1 = 35;
-int HP1m = 50;
 int HP2 = 35;
-int HP2m = 50;
 int max_hit = 4;
 int hit = 0;
-int missionnum = 10;
 int bill_HP = 300;
-int ellon_HP = 150;
+int Elon_HP = 150;
 int target = 0;
 int Tri_HP = 1000;
 int Mark_Zuckerberg=300;
-int attack1_1mp = 0;
-int attack1_2mp = 10;
-int attack1_3mp = 15;
-int attack1_4mp = 20;
-int attack1_teir = 1;
-int attack2_teir= 1;
-int attack3_teir = 1;
-int attack4_teir= 1;
-int level1 = 1;
-int level2 = 1;
-int exp1 = 0;
-int exp2 = 0;
-int levelr1 = 20;
-int levelr2 = 20;
+// Arr vars
+    int missionnum = 10;
+    int HP1m = 50;
+    int HP2m = 50;
+    int attack1_1mp = 0;
+    int attack1_2mp = 10;
+    int attack1_3mp = 15;
+    int attack1_4mp = 20;
+    int attack1_tier = 1;
+    int attack2_tier= 1;
+    int attack3_tier = 1;
+    int attack4_tier= 1;
+    int level1 = 1;
+    int level2 = 1;
+    int exp1 = 0;
+    int exp2 = 0;
+    int levelr1 = 20;
+    int levelr2 = 20;
+    String attack1_1 = "charge";
+    String attack1_2 = "lasershot";
+    String attack1_3 = "cure";
+    String attack1_4 = "ember";
+    String customspace_1="     ";
+    String customspace_2="  ";
+    String customspace_3="       ";
+    String customspace_4="      ";
+
+
 int bonus = 0;
-int dungon_lenght = 0;
-int dungon_level = 0;
-String attack1_1 = "charge";
-String attack1_2 = "lasershot";
-String attack1_3 = "cure";
-String attack1_4 = "ember";
-String customspace_1="     ";
-String customspace_2="  ";
-String customspace_3="       ";
-String customspace_4="      ";
+int dungeon_length = 0;
 String emmi_type = "";
 //place  Holders
 int num=0;
 int type_num=0;
 int speed=20;
+int num1=0;
+int num2=0;
 //obj
 Scanner scanner = new Scanner(System.in);
 
@@ -61,11 +68,11 @@ Scanner scanner = new Scanner(System.in);
 
 public void game()
 {
-    /*bill_HP = 300;
-  ellon_HP = 150;
+    bill_HP = 300;
+  Elon_HP = 150;
   target = 0;
   Tri_HP = 1000;
-  Mark_Zuckerberg=2000;*/
+  Mark_Zuckerberg=2000;
   HP1=HP1m;
   HP2=HP2m;
   mp1=100;
@@ -86,16 +93,16 @@ if (choice.equals("1"))
        print_slow("Mission 1: The Awakening of  The Revolution");
         if(skip())
         {
-         misson1_1();
-         misson1_2();
+         mission1_1();
+         mission1_2();
         }
-        dungon1();
+        dungeon1();
         
         if(skip())
         {
-         misson1_3();
+         mission1_3();
         }
-        misson1_4();
+        mission1_4();
     
         if (missionnum<2)
         {
@@ -110,16 +117,16 @@ if (choice.equals("1"))
         print_slow("Mission 2: First Encounters");
 
         if(skip())
-            misson2_1();
-        dungon2();
+            mission2_1();
+        dungeon2();
 
         if(skip())
-            misson2_2();
+            mission2_2();
         boss_bill();
 
         if(skip())
         {
-          misson2_3();  
+          mission2_3();
         }  
         if (missionnum<3)
         {
@@ -132,25 +139,25 @@ if (choice.equals("1"))
         print_slow("MISSION 3: Rest In The Rubble");
         if(skip())
         {
-         misson3_1();
+         mission3_1();
         }
-        dungon3();
+        dungeon3();
 
         if(skip())
         {
-         misson3_2();
+         mission3_2();
         }
-        ellon_musk();
+        Elon_musk();
         
         if(skip())
         {
-         misson3_3();
+         mission3_3();
         }
-        dungon4();
+        dungeon4();
     
        if(skip())
        {
-         misson3_4();
+         mission3_4();
        }
        if (missionnum<4)
           {
@@ -165,18 +172,18 @@ if (choice.equals("1"))
 
         if(skip())
         {
-            misson4_1();
+            mission4_1();
         }
-        dungon5();
+        dungeon5();
 
         if(skip())
         {
-            misson4_2();
+            mission4_2();
         }
         if (missionnum<5)
         {
             missionnum=5;
-            print_slow("MISSON 5 UNLOCKED");
+            print_slow("mission 5 UNLOCKED");
         }
     }
     if ((missionnum >= 5) && (choice.equals("5")))
@@ -185,15 +192,19 @@ if (choice.equals("1"))
 
         if(skip())
         {
-            misson5_1();
+            mission5_1();
         }
-        dungon6();
+        dungeon6();
 
         if(skip())
         {
-            misson5_2();
+            mission5_2();
         }
         double_boss();
+        if(skip())
+        {
+            mission5_3();
+        }
         if (missionnum<6)
         {
             missionnum=6;
@@ -205,12 +216,12 @@ if (choice.equals("1"))
         print_slow("Mission 6: The Smoking Gun");
         if(skip())
         {
-            misson6_1();
+            mission6_1();
         }
-        dungon8();
+        dungeon8();
         if(skip())
         {
-            misson6_2();
+            mission6_2();
         }
         if (missionnum<7)
         {
@@ -223,21 +234,21 @@ if (choice.equals("1"))
 
         if(skip())
         {
-            misson7_1();
+            mission7_1();
         }
-        dungon7();
+        dungeon7();
 
         if(skip())
-        {misson7_2();}
+        {mission7_2();}
          if (missionnum<8)
       {missionnum=8;
            print_slow("MISSION 8 UNLOCKED");}
     if ((missionnum >= 8) && (choice.equals("8")))
     {
         print_slow("MISSION 8 When I Step off");
-        misson8_1();
-        dungon8();
-        misson8_2();
+        mission8_1();
+        dungeon8();
+        mission8_2();
         if (missionnum<9)
         {
             missionnum=9;
@@ -247,9 +258,9 @@ if (choice.equals("1"))
     if ((missionnum >= 9) && (choice.equals("9")))
     {
         print_slow("Mission 9: Face-Off On The Grand Tower");
-        misson9_1();
+        mission9_1();
         boss_rush();
-        misson9_2();
+        mission9_2();
         if (missionnum<9)
         {
             missionnum=9;
@@ -258,10 +269,10 @@ if (choice.equals("1"))
     }
     if ((missionnum >= 10) && (choice.equals("10")))
     {
-        print_slow("Misson 10: 2 Sides Of The Same Coin");
-        misson10_1();
+        print_slow("mission 10: 2 Sides Of The Same Coin");
+        mission10_1();
         Final();
-        misson10_2();
+        mission10_2();
         print_slow("THE END?");
     }
     
@@ -297,10 +308,10 @@ public void attack1()
 //This is charge
     if (attack.equals(attack1_1))
     {
-       print_slow("2069 gains "+20*attack1_teir+" mp");
+       print_slow("2069 gains "+20*attack1_tier+" mp");
 
-        mp1 += 20*attack1_teir;
-        move_tier=attack1_teir;
+        mp1 += 20*attack1_tier;
+        move_tier=attack1_tier;
     }
         
 //This is Lasershot
@@ -309,10 +320,10 @@ public void attack1()
   if (mp1 > 0)
       {
             hit = random(1,15);
-            damage += (hit*attack2_teir*attack1_power);
+            damage += (hit*attack2_tier*attack1_power);
             mp1 -= attack1_2mp;
-            move_tier=attack2_teir;
-            print_slow("2069 shot a ,-,laserbeam and deals"+ hit*attack2_teir+ "damage");            
+            move_tier=attack2_tier;
+            print_slow("2069 shot a ,-,laserbeam and deals"+ hit*attack2_tier+ "damage");
       }
    
 }
@@ -325,13 +336,13 @@ public void attack1()
     if (mp1 > 0)
     {
            int heal = random(10, 20);
-    print_slow("2069 heals "+heal*attack3_teir+ " damage");
-    print_slow("2077 heals "+heal*attack3_teir+ " damage");
+    print_slow("2069 heals "+heal*attack3_tier+ " damage");
+    print_slow("2077 heals "+heal*attack3_tier+ " damage");
             
-            HP2 += heal*attack3_teir;
-            HP1 += heal*attack3_teir;
+            HP2 += heal*attack3_tier;
+            HP1 += heal*attack3_tier;
             mp1 -= attack1_3mp;
-            move_tier=attack3_teir;
+            move_tier=attack3_tier;
     }
 
     }
@@ -343,15 +354,15 @@ public void attack1()
             
             hit = random(15, 20);
             mp1 -= attack1_4mp;
-            damage += hit*attack4_teir;
-            move_tier=attack4_teir;
-            print_slow("2069 deals"+ hit*attack4_teir+ "damage");
+            damage += hit*attack4_tier;
+            move_tier=attack4_tier;
+            print_slow("2069 deals"+ hit*attack4_tier+ "damage");
         }
     }
                 
     if (HP1 > HP1m)
     {
-          HP1 = HP1;   
+          HP1 = HP1m;
     }
         
 }
@@ -471,13 +482,13 @@ public void attack2()
         }
 
     }
-    public void ellon_musk()
+    public void Elon_musk()
     {
-        while ( ellon_HP>0)
+        while ( Elon_HP>0)
         {
             print_slow("2069's health "+ HP1);
         print_slow("2077's health "+ HP2);
-        print_slow("Ellon's health "+ ellon_HP);
+        print_slow("Elon's health "+ Elon_HP);
 
         if( HP1 > 0)
         {attack1();}
@@ -485,8 +496,8 @@ public void attack2()
         if( HP2 > 0)
         {attack2();}
 
-        ellon_HP -= damage;
-        attack_ellon();
+        Elon_HP -= damage;
+        attack_Elon();
 
         if(( HP2 < 0) && (HP1 < 0))
 
@@ -498,11 +509,15 @@ public void attack2()
         gain();
         level();
     }
-    public void attack_ellon()
+    public void attack_Elon()
     {
         int bill = random(1,3);
         if( bill == 1)
-        {}
+        {
+            print_slow("HEALING MIST");
+            Elon_HP+=10;
+            print_slow("Elon heals 10 damage");
+        }
 
         if( bill == 2)
         {
@@ -524,12 +539,12 @@ public void attack2()
         }
         public void double_boss()
         {
-        while ( ellon_HP>0)
+        while ( Elon_HP>0)
         {
                     print_slow("2069's health "+ HP1);
         print_slow("2077's health "+ HP2);
         print_slow("Bill's health "+ bill_HP);
-        print_slow("Jeff's health "+ellon_HP);
+        print_slow("Jeff's health "+Elon_HP);
 
         if( HP1 > 0)
         {attack1();}
@@ -539,7 +554,7 @@ public void attack2()
         if( bill_HP>0)
         {bill_HP -= damage;}
     else
-        {ellon_HP -= damage;}
+        {Elon_HP -= damage;}
         if( bill_HP>0)
         {attack_bill();
         jeff_attack();}
@@ -574,9 +589,8 @@ public void attack2()
         {
         while ( Tri_HP>0)
         {
-            if( Tri_HP>0)
-        {Tri_attack();}
-        if( HP1>0)
+            Tri_attack();
+            if( HP1>0)
         {attack1();}
         if( HP2>0)
         {attack2();}
@@ -587,14 +601,14 @@ public void attack2()
             {restart();}
         }
         }
-        }
+
 
 public void Tri_attack()
 {
         
         print_slow("TRI FORCE");
         damage=0;
-        int people_num=(int)(Tri_HP/200)+1;
+        int people_num= (Tri_HP/200) +1;
         int person=random(1,2);
         if( person==1)
         {person=2069;}
@@ -602,64 +616,64 @@ public void Tri_attack()
         {person=2077;}
         if( people_num==4)
         {print_slow("FULL ON RUSH");
-        print_slow("Ellon musk: "+person+" YOUR ABOUT TO FEEL IT");
+        print_slow("Elon musk: "+person+" YOUR ABOUT TO FEEL IT");
         print_slow("Bill Gates: RAGE SLASH");
         num=random(10,20);
-        print_slow("Bill Gates deals "+num+" Damage and takes "+(int)(num/3)+" damage");
+        print_slow("Bill Gates deals "+num+" Damage and takes "+ (num/3) +" damage");
         print_slow("");
-        Tri_HP-=(int)(num/3);
+        Tri_HP-= num/3;
         damage+=num;
         print_slow("Jeff bezos) RANDOM FORCE");
         print_slow("Everyone takes a random amount of damage");
         damage+=random(-10,20);
         Tri_HP+=random(-10,20);
-        print_slow("Ellon musk) SPEAR RUSH");
+        print_slow("Elon musk) SPEAR RUSH");
         num=random(2,7);
         int num1=random(2,7);
         int num2=random(2,7);
         damage+=num+num1+num2;
-        print_slow("Ellon musk deals "+num+num1+num2+" Damage");}
+        print_slow("Elon musk deals "+num+num1+num2+" Damage");}
         if( people_num==3)
         {print_slow("TRI RUSH");
-        print_slow("Ellon musk) "+person+" YOUR ABOUT TO FEEL IT");
+        print_slow("Elon musk) "+person+" YOUR ABOUT TO FEEL IT");
         print_slow("Bill Gates) RAGE SLASH");
         num=random(10,20);
-        print_slow("Bill Gates deals "+num+" Damage and takes "+(int)(num/2)+" damage");
+        print_slow("Bill Gates deals "+num+" Damage and takes "+ (num/2) +" damage");
         print_slow("");
-        Tri_HP-=(int)(num/2);
+        Tri_HP-= num/2;
         damage+=num;
         print_slow("Jeff bezos) RANDOM FORCE");
         print_slow("Everyone takes a random amount of damage");
         damage+=random(-20,20);
         Tri_HP+=random(-20,20);
-        print_slow("Ellon musk) SPEAR RUSH");
+        print_slow("Elon musk) SPEAR RUSH");
         num=random(2,5);
         num1=random(2,5);
         num2=random(2,5);
         damage+=num+num1+num2;
-        print_slow("Ellon musk deals "+num+num1+num2+" Damage");}
+        print_slow("Elon musk deals "+num+num1+num2+" Damage");}
         if( people_num==2)
         {print_slow("DUAL RUSH");
-        print_slow("Ellon musk) "+person+" YOUR ABOUT TO FEEL IT");
+        print_slow("Elon musk) "+person+" YOUR ABOUT TO FEEL IT");
         print_slow("Jeff bezos) RANDOM FORCE");
         print_slow("Everyone takes a random amount of damage");
         damage+=random(-20,20);
         Tri_HP+=random(-20,20);
-        print_slow("Ellon musk) SPEAR RUSH");
+        print_slow("Elon musk) SPEAR RUSH");
         num=random(2,5);
         num1=random(2,5);
         num2=random(2,5);
         damage+=num+num1+num2;
-        print_slow("Ellon musk deals "+num+num1+num2+" Damage");}
+        print_slow("Elon musk deals "+num+num1+num2+" Damage");}
         if( people_num==1)
         {print_slow("SOLO RUSH");
-        print_slow("Ellon musk) "+person+" YOUR ABOUT TO FEEL IT");
-        print_slow("Ellon musk) SPEAR RUSH");
+        print_slow("Elon musk) "+person+" YOUR ABOUT TO FEEL IT");
+        print_slow("Elon musk) SPEAR RUSH");
         num=random(2,5);
         num1=random(2,5);
         num2=random(2,5);
         damage+=num+num1+num2;
-        print_slow("Ellon musk deals "+num+num1+num2+" Damage");}
+        print_slow("Elon musk deals "+num+num1+num2+" Damage");}
         if( person==2069)
         {HP1-=damage;}
         if( person==2077)
@@ -669,9 +683,8 @@ public void Final()
 {
         while ( Mark_Zuckerberg>0)
         {
-        if(Mark_Zuckerberg>0)
-        {Mark();}
-        if( HP1>0)
+            Mark();
+            if( HP1>0)
         {attack1();}
         if( HP2>0)
         {attack2();}
@@ -706,9 +719,9 @@ public void Mark()
         HP2=1;}
         if( Mark==2)
         {print_slow("LASH OUT");
-        HP1-=(int)((300-Mark_Zuckerberg)/4);
-        HP2-=(int)((300-Mark_Zuckerberg)/4);
-        print_slow("Both 2069 and 2077 take  "+(int)((300-Mark_Zuckerberg)/4)+" damage");}
+        HP1-= (300-Mark_Zuckerberg)/4;
+        HP2-= (300-Mark_Zuckerberg)/4;
+        print_slow("Both 2069 and 2077 take  "+ ((300-Mark_Zuckerberg)/4) +" damage");}
         if( Mark==3)
         {print_slow("DOUBLE EDGED RUSH");
         HP1-=20;
@@ -745,7 +758,7 @@ public void Mark()
         {print_slow("Mark Zuckerberg: YOUR FATE HAS BEEN SEALED 2069");
         HP1=-999;}
 }
-public void misson1_1()
+public void mission1_1()
 {
         print_slow("Welcome to the year 2050. Things aren't going so well.");
 
@@ -778,7 +791,7 @@ public void misson1_1()
                 "My name is 2069. With the help of my friend 2077. We plan to get our vengeance."
         );
 }
-public void misson1_2()
+public void mission1_2()
 {
         print_slow("WAKE UP, 2069!");
 
@@ -814,7 +827,7 @@ public void misson1_2()
 
         print_slow("*Later in the subway*");
 }
-public void misson2_1() {
+public void mission2_1() {
         print_slow("*2077 pulls the kill switch in the powerplant*");
 
 
@@ -847,7 +860,7 @@ public void misson2_1() {
 
         print_slow("2077: WE ARE GOING TO KILL THAT DUMB MECH");
 }
-public void misson1_3()
+public void mission1_3()
 {
         print_slow(
                 "2069: It appears that the powerplant has taken some damage due to the power being shut off."
@@ -862,7 +875,7 @@ public void misson1_3()
 
         print_slow("2069: I got it");
 }
-public void misson1_4() {
+public void mission1_4() {
         if (mp1 > 15) 
         {
             print_slow("CURE");
@@ -901,7 +914,7 @@ public void misson1_4() {
         print_slow("Old Man: Oh I should tell you my name. Its 2020");
         print_slow("2020: I can teach you new abilities in trade for ");
 }
-public void misson2_2()
+public void mission2_2()
 {
             print_slow("2069: Finally, I have not ran so fast in my life");
 
@@ -923,18 +936,18 @@ public void misson2_2()
 
             print_slow("2077: FOR HUMANITY!!");
 }
-public void misson2_3()
+public void mission2_3()
 {
         print_slow("Bill: You put a good fight");
 
 
-        print_slow("2077: We finsh thi sright here right now");
+        print_slow("2077: We finsh this sight here right now");
 
 
         print_slow("2069: EMBER");
 
 
-        print_slow("The mech crashs down");
+        print_slow("The mech crashes down");
 
 
         print_slow("Bill: Sadly This is not over");
@@ -945,7 +958,7 @@ public void misson2_3()
 
         print_slow("The power turns back off");
     }
-    public void misson3_1()
+    public void mission3_1()
     {
         print_slow("2069: How can he just disappear");
 
@@ -979,30 +992,30 @@ public void misson2_3()
 
         print_slow("Later in texas");
     }
-    public void misson3_2()
+    public void mission3_2()
     {
-        print_slow("Ellon musk: What are you guys doing");
+        print_slow("Elon musk: What are you guys doing");
 
 
-        print_slow("Ellon musk: ....");
+        print_slow("Elon musk: ....");
 
 
-        print_slow("Ellon musk: You need to be dealt with");
+        print_slow("Elon musk: You need to be dealt with");
 
 
         print_slow("2077: We will be dealing with you ");
 
 
-        print_slow("Ellon musk pulls out a spear");
+        print_slow("Elon musk pulls out a spear");
     }
 
 
-    public void misson3_3()
+    public void mission3_3()
     {
-        print_slow("Ellon musk: I must leave I have a meeting to attend to");
+        print_slow("Elon musk: I must leave I have a meeting to attend to");
 
 
-        print_slow("Ellon musk fades away");
+        print_slow("Elon musk fades away");
 
 
         print_slow("2077: YOUR GOING PAY FOR THIS");
@@ -1016,9 +1029,9 @@ public void misson2_3()
 
         print_slow("2077: fine...");
     }
-    public void misson3_4()
+    public void mission3_4()
     {
-        print_slow("2069:Anddd ... the powers off");
+        print_slow("2069:And ... the powers off");
 
 
         print_slow("2069:Okay lets report back to 2020");
@@ -1029,7 +1042,7 @@ public void misson2_3()
 
         print_slow("2069:Its not like we are any close to being responsible");
     }
-    public void misson4_1()
+    public void mission4_1()
     {
         print_slow("2069:We should take a detour to california ");
 
@@ -1037,7 +1050,7 @@ public void misson2_3()
         print_slow("2077 and 2020: why?");
 
 
-        print_slow("2069: I have a theory both ellon musk and bill gates are part of the blackouts then maybe other tech giants are behind this like zuckerberg and he lives in california ");
+        print_slow("2069: I have a theory both Elon musk and bill gates are part of the blackouts then maybe other tech giants are behind this like zuckerberg and he lives in california ");
 
 
         print_slow("2077: True I see it happening");
@@ -1057,13 +1070,13 @@ public void misson2_3()
 
         print_slow("2069: 2020 floor it");
     }
-    public void  misson4_2() {
+    public void  mission4_2() {
         print_slow("2069: It appears that calfornia is very dangerous");
 
 
         print_slow("2077: I bet that the group responsible for this has their headquarters in california");
         }
-        public void misson5_1() {
+        public void mission5_1() {
         print_slow("2069: We should find a 6-11 to stop and rest at");
 
 
@@ -1072,7 +1085,7 @@ public void misson2_3()
 
         print_slow("2020: We are in luck there is one at the nearest exit");
     }
-    public void misson5_2()
+    public void mission5_2()
     {
         print_slow("Later in the morning");
 
@@ -1109,16 +1122,16 @@ public void misson2_3()
 
         print_slow("bill gates: Fine I guess I will join in");
         bill_HP=200;
-        ellon_HP=200;
+        Elon_HP=200;
     }
 
-    public void misson5_3()
+    public void mission5_3()
     {
         print_slow("Jeff bezos: You did not tell me that these kids could put up a fight");
         print_slow("bill gates: Nevermind that we need to leave NOW");
         print_slow("Jeff bezos: Right");
     }
-    public void misson6_1()
+    public void mission6_1()
     {
         print_slow("*Power flashs on everywhere*");
         print_slow("2069: What the...");
@@ -1131,7 +1144,7 @@ public void misson2_3()
         print_slow("2069: Worse 2 mechs right");
         print_slow("2020: We need to deal with them");
     }
-    public void misson6_2()
+    public void mission6_2()
     {
         print_slow("2077: Peice of cake ");
         print_slow("2069: Easy for you to say");
@@ -1139,7 +1152,7 @@ public void misson2_3()
         print_slow("2077: THAT JUST GREAT");
         print_slow("2069: Now we are in real danger");
     }
-    public void misson7_1()
+    public void mission7_1()
     {
         print_slow("2077: I am soooOO tired");
         print_slow("2069: When is the nearest stop");
@@ -1152,7 +1165,7 @@ public void misson2_3()
         print_slow("2069: Look a old factory");
         print_slow("2077: lets stop at the factory");
     }
-    public void misson7_2()
+    public void mission7_2()
     {
         print_slow("2069: Well the factory was less than effective");
         print_slow("2077: You can say that again");
@@ -1166,7 +1179,7 @@ public void misson2_3()
         print_slow("2020: Okay fine I will go with");
         print_slow("2069: YOUR GOING DOWN MARK ZUCKERBERG");
     }
-    public void misson8_1()
+    public void mission8_1()
     {
         print_slow("2069: We are closing in on califonia we should be their by tomorrow");
         print_slow("2077: I READY! LETS FINISH THIS");
@@ -1174,16 +1187,16 @@ public void misson2_3()
         print_slow("2069: This road should take us most of the way");
         print_slow("2077: Alright,I am ready");
     }
-    public void misson8_2()
+    public void mission8_2()
     {
         print_slow("2069: GET BACK");
-        print_slow("2069: Look its Ellon Musk");
+        print_slow("2069: Look its Elon Musk");
         print_slow("2077: We follow him into the building");
         print_slow("2069: Right,Be quite");
     }
-    public void misson9_1()
+    public void mission9_1()
     {
-        print_slow("2069: Give Ellon musk a chance to get inside");
+        print_slow("2069: Give Elon musk a chance to get inside");
         print_slow("2077: Right");
         print_slow("5 mins later");
         print_slow("2069: Now is our chance");
@@ -1191,34 +1204,34 @@ public void misson2_3()
         print_slow("2069: We need to get to the top floor");
         print_slow("2077: Okay (Press up on the elevator");
         print_slow("*Suddenly the elevator stops*");
-        print_slow("Ellon musk: I SEE THAT YOU HAVE FOUND YOUR WAY TO OUR HIDEOUT");
+        print_slow("Elon musk: I SEE THAT YOU HAVE FOUND YOUR WAY TO OUR HIDEOUT");
         print_slow("Bill Gates: Lets clean up this error in our plan");
     }
-    public void misson9_2()
+    public void mission9_2()
     {
-        print_slow("Ellon musk: ...THESE KIDS");
+        print_slow("Elon musk: ...THESE KIDS");
         print_slow("Jeff bezos: We need to retreat");
         print_slow("2077: NEVER");
         print_slow("2069: You will pay for what you have done");
         print_slow("2069: LETS FINSIH THIS");
-        print_slow("2069: "+attack4_teir);
-        print_slow("Ellon musk: ...My final words");
-        print_slow("Ellon musk: You are the winner and I am the...");
+        print_slow("2069: "+attack4_tier);
+        print_slow("Elon musk: ...My final words");
+        print_slow("Elon musk: You are the winner and I am the...");
         print_slow("2077: They deserve to die alone");
         print_slow("2069: Right to the elevator");
     }
-    public void misson10_1()
+    public void mission10_1()
     {
         print_slow("*At the top of the elevator*");
         print_slow("Mark Zuckerberg: I have been waiting");
         print_slow("2069: Zuckerberg: why what is the reasoning behind this");
         print_slow("Mark Zuckerberg: Power POWER IS EVERYTHING. I cant control humans you pesky humans. However Cyborgs on th other hand can be controlled.");
-        print_slow("2077: YOU KILLED MILLONS OF HUMANS JUST TO HAVE CONTORL");
+        print_slow("2077: YOU KILLED MILLIONS OF HUMANS JUST TO HAVE CONTROL");
         print_slow("Mark Zuckerberg: This world is mine. Humans have handed this world to me on a sliver platter. You cant just take it back");
-        print_slow("2069: This is not your world its everyones world");
+        print_slow("2069: This is not your world its everyone's world");
         print_slow("Mark Zuckerberg: YOU WILL HAVE TO OVERCOME ME");
     }
-    public void misson10_2()
+    public void mission10_2()
     {
         print_slow("Mark Zuckerberg: Sigh, It apears musk was right");
         print_slow("Mark Zuckerberg: You see, as long as he is here, our fates are simply just two sides of the same coin.");
@@ -1247,7 +1260,7 @@ public void pull1()
             num = scanner.nextInt();
             if (num > expt)
             {num = expt;}
-            int pull_num = (int)(num / 25);
+            int pull_num = num / 25;
             exp1-=num;
             if (exp1<0)
                 num=-exp1;
@@ -1290,19 +1303,19 @@ public void pull1()
             HP1m += 2;
             print_slow("2069's max Hp increased by 2");
         }
-        else if(( tier==1) || (tier==2) || (tier==3) || (tier==4) || (tier==5))
+        else if((tier==2) || (tier==3) || (tier==4) || (tier==5))
         num = random(1, 4);
         if (num == 4)
         {
-            if (tier > attack4_teir)
+            if (tier > attack4_tier)
             {
                 print_slow("ember leveled up");
-                print_slow(attack4_teir+" --> "+ tier);
+                print_slow(attack4_tier+" --> "+ tier);
                 if (tier == 5)
                 {
                     attack1_4 = "explosion";
                     customspace_4 = "   ";
-                    attack4_teir = 5;
+                    attack4_tier = 5;
                     attack1_4mp = 30;
                 }
 
@@ -1310,7 +1323,7 @@ public void pull1()
                 {
                     attack1_4 = "ember burst";
                     customspace_4 = " ";
-                    attack4_teir = 4;
+                    attack4_tier = 4;
                     attack1_4mp = 30;
                 }
 
@@ -1318,7 +1331,7 @@ public void pull1()
                 {
                     attack1_4 = "flame wheel";
                     customspace_4 = " ";
-                    attack4_teir = 3;
+                    attack4_tier = 3;
                     attack1_4mp = 30;
                 }
 
@@ -1326,22 +1339,22 @@ public void pull1()
                 {
                     attack1_4 = "dual ember";
                     customspace_4 = "  ";
-                    attack4_teir = 2;
+                    attack4_tier = 2;
                     attack1_4mp = 25;
                 }
 
             }
             if (num == 3)
             {
-                if (tier > attack3_teir)
+                if (tier > attack3_tier)
                 print_slow("Cure leveled up");
-                print_slow(attack3_teir+" -->"+ tier);
+                print_slow(attack3_tier+" -->"+ tier);
 
                 if (tier == 5)
                 {
                     attack1_3 = "Triple cure";
                     customspace_3 = " ";
-                    attack3_teir = 5;
+                    attack3_tier = 5;
                     attack1_3mp = 15;
                 }
 
@@ -1349,7 +1362,7 @@ public void pull1()
                 {
                     attack1_3 = "dual cure";
                     customspace_3 = "  ";
-                    attack3_teir = 4;
+                    attack3_tier = 4;
                     attack1_3mp = 30;
 
                 }
@@ -1357,7 +1370,7 @@ public void pull1()
                 {
                     attack1_3 = "cure burst";
                     customspace_3 = "  ";
-                    attack3_teir = 3;
+                    attack3_tier = 3;
                     attack1_3mp = 20;
                 }
 
@@ -1365,30 +1378,30 @@ public void pull1()
                 {
                     attack1_3 = "super cure";
                     customspace_3 = "  ";
-                    attack3_teir = 2;
+                    attack3_tier = 2;
                     attack1_3mp = 15;
                 }
             }
         }
         if (num == 1)
         {
-            if (tier > attack1_teir)
+            if (tier > attack1_tier)
             {
                 print_slow("Charge leveled up");
-                print_slow(attack1_teir+" --> "+ tier);
+                print_slow(attack1_tier+" --> "+ tier);
 
                 if (tier == 5)
                 {
                     attack1_1 = "recharge";
                     customspace_1 = "    ";
-                    attack1_teir = 5;
+                    attack1_tier = 5;
                     attack1_1mp = 0;
                 }
                 if (tier == 4)
                 {
                     attack1_1 = "dual charge";
                     customspace_1 = " ";
-                    attack1_teir = 4;
+                    attack1_tier = 4;
                     attack1_1mp = 0;
                 }
 
@@ -1396,7 +1409,7 @@ public void pull1()
                 {
                     attack1_1 = "power burst";
                     customspace_1 = " ";
-                    attack1_teir = 3;
+                    attack1_tier = 3;
                     attack1_1mp = 0;
                 }
 
@@ -1404,22 +1417,22 @@ public void pull1()
                 {
                     attack1_1 = "super charge";
                     customspace_1 = " ";
-                    attack1_teir = 2;
+                    attack1_tier = 2;
                     attack1_1mp = 0;
                 }
             }
         }
         if (num == 2)
         {
-            if (tier > attack2_teir)
+            if (tier > attack2_tier)
             {
                 print_slow("Laser leveled up");
-                print_slow(attack2_teir+" --> "+ tier);
+                print_slow(attack2_tier+" --> "+ tier);
                 if (tier == 5)
                 {
                     attack1_2 = "omega laser";
                     customspace_2 = "  ";
-                    attack2_teir = 5;
+                    attack2_tier = 5;
                     attack1_2mp = 10;
                 }
 
@@ -1427,7 +1440,7 @@ public void pull1()
                 {
                     attack1_2 = "tri laser";
                     customspace_2 = "   ";
-                    attack2_teir = 4;
+                    attack2_tier = 4;
                     attack1_2mp = 10;
                 }
 
@@ -1435,7 +1448,7 @@ public void pull1()
                 {
                     attack1_2 = "dual laser";
                     customspace_2 = "   ";
-                    attack2_teir = 3;
+                    attack2_tier = 3;
                     attack1_2mp = 10;
                 }
 
@@ -1443,7 +1456,7 @@ public void pull1()
                 {
                     attack1_2 = "laserbeam";
                     customspace_2 = "    ";
-                    attack2_teir = 2;
+                    attack2_tier = 2;
                     attack1_2mp = 10;
                 }
             }
@@ -1485,12 +1498,12 @@ public void level()
     if (emmi_HP==0)
     {
         int bonus=(100*emmi_level);
-         print_slow("You recivered a bonus "+bonus+" exp");
+         print_slow("You received a bonus "+bonus+" exp");
     }
     else if (emmi_HP>=-5)
     {
         int bonus=(75*emmi_level)-(emmi_HP*10);
-         print_slow("You recivered a bonus "+bonus+" exp");
+         print_slow("You received a bonus "+bonus+" exp");
     }
     else
     {
@@ -1502,7 +1515,7 @@ public void level()
 }
     if (exp2 >= levelr2)
         print_slow("LEVEL UP");
-         print_slow(level2+ " --> "+ (level2 + 1));
+        print_slow(level2+ " --> "+ (level2 + 1));
         print_slow("2077's health is restored fully");
         HP2=HP2m;
         level2 += 1;
@@ -1518,12 +1531,12 @@ public void gain()
     if (emmi_HP==0)
     {
         bonus=(100*emmi_level);
-        print_slow("You recivered a bonus "+bonus+" exp");   
+        print_slow("You received a bonus "+bonus+" exp");
     }
     else if (emmi_HP>=-5)
     {
         bonus=(75*emmi_level)-(emmi_HP*10);
-        print_slow("You recivered a bonus "+bonus+" exp");
+        print_slow("You received a bonus "+bonus+" exp");
     }
     else
     {
@@ -1564,18 +1577,18 @@ public void gain()
         level();
     }
 
-    public void dungon1()
+    public void dungeon1()
     {
-        dungon_lenght = 10;
-        print_slow("Welcome to the underground subway(length: "+ dungon_lenght+ " )");
+        dungeon_length = 10;
+        print_slow("Welcome to the underground subway(length: "+ dungeon_length + " )");
 
-        while (dungon_lenght > 0)
+        while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1593,18 +1606,18 @@ public void gain()
 
 
 
-    public void dungon2()
+    public void dungeon2()
     {
-        dungon_lenght = 20;
-        print_slow("Welcome to rubble filled city (length: "+ dungon_lenght+ " )");
+        dungeon_length = 20;
+        print_slow("Welcome to rubble filled city (length: "+ dungeon_length + " )");
 
-        while (dungon_lenght > 0)
+        while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1620,17 +1633,17 @@ public void gain()
         }
 
         }
-    public void dungon3()
+    public void dungeon3()
     {
-        dungon_lenght = 5;
-        print_slow("Welcome to rubble filled 6-11 (length: "+ dungon_lenght+ " )");
-    while (dungon_lenght > 0)
+        dungeon_length = 5;
+        print_slow("Welcome to rubble filled 6-11 (length: "+ dungeon_length + " )");
+    while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1646,18 +1659,18 @@ public void gain()
         }
 
     }
-    public void dungon4()
+    public void dungeon4()
     {
-        dungon_lenght = 20;
-        print_slow("Welcome to damaged powerplant (length: "+ dungon_lenght+ " )");
+        dungeon_length = 20;
+        print_slow("Welcome to damaged power plant (length: "+ dungeon_length + " )");
 
-            while (dungon_lenght > 0)
+            while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1672,18 +1685,18 @@ public void gain()
         }   
         }
     }
-    public void dungon5()
+    public void dungeon5()
     {
-        dungon_lenght = 100;
-        print_slow("Welcome to highway 101 (length: "+ dungon_lenght+ " )");
+        dungeon_length = 100;
+        print_slow("Welcome to highway 101 (length: "+ dungeon_length + " )");
 
-           while (dungon_lenght > 0)
+           while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1698,18 +1711,18 @@ public void gain()
         }   
         }
     }
-    public void dungon6()
+    public void dungeon6()
     {
-        dungon_lenght = 5;
-        print_slow("Welcome to rubble filled 6-11  (length: "+ dungon_lenght+ " )");
+        dungeon_length = 5;
+        print_slow("Welcome to rubble filled 6-11  (length: "+ dungeon_length + " )");
 
-            while (dungon_lenght > 0)
+            while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1724,18 +1737,18 @@ public void gain()
         }   
         }
     }
-    public void dungon7()
+    public void dungeon7()
     {
-        dungon_lenght = 20;
-        print_slow("Welcome to old factory (length: "+ dungon_lenght+ " )");
+        dungeon_length = 20;
+        print_slow("Welcome to old factory (length: "+ dungeon_length + " )");
 
-        while (dungon_lenght > 0)
+        while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1751,18 +1764,18 @@ public void gain()
         }   
         }
     }
-    public void dungon8()
+    public void dungeon8()
     {
-        dungon_lenght = 50;
-        print_slow("Welcome to Central Fwy(length: "+ dungon_lenght+ " )");
+        dungeon_length = 50;
+        print_slow("Welcome to Central Fwy(length: "+ dungeon_length + " )");
 
-    while (dungon_lenght > 0)
+    while (dungeon_length > 0)
         {
         int steps = random(1, 5);
-        dungon_lenght -= steps;
+        dungeon_length -= steps;
         print_slow("You move "+ steps+ " feet");
 
-        if (dungon_lenght <= 0)
+        if (dungeon_length <= 0)
         {print_slow("2069:We made it");}
         else
         {
@@ -1782,11 +1795,11 @@ public void print_slow(String str)
 {
     for(int i=0; i<str.length(); i++)
     {
-    System.out.print(str.substring(i,i+1));
+    System.out.print(str.charAt(i));
     wait(speed);
     }
-    System.out.println("");
-    System.out.println("");
+    System.out.println();
+    System.out.println();
     System.out.println("> enter <");
     scanner.nextLine();
 }
@@ -1798,8 +1811,7 @@ public void print_slow(String str)
 	}
 public int random(int high,int low)
 {
-Random r = new Random();
-int range = high - low + 1;
+    int range = high - low + 1;
 return (int)(Math.random() * range) + low;
 }
 
@@ -1824,14 +1836,7 @@ public boolean skip()
 {
     print_slow("Skip cutscene?   ");
     String skip=scanner.nextLine();
-    if (!skip.equals("yes"))
-    {
-        return true;   
-    }
-    else
-    {
-        return false;
-    }
+    return !skip.equals("yes");
 }
 public void new_emmi(int type1)
 {
@@ -1992,11 +1997,10 @@ public static void Edit(String filePath, Object[] arr)
         
         
         writer = new FileWriter(fileToBeModified);
-        for(int i=0; i<arr.length; i++)    
-        {
-        String print = arr[i].toString()+"\n";
-        writer.write(print);    
-        }
+            for (Object o : arr) {
+                String print = o.toString() + "\n";
+                writer.write(print);
+            }
 
         }
         catch (IOException e)
@@ -2024,7 +2028,7 @@ public static void Edit(String filePath, Object[] arr)
             File txt = new File(file);
             FileReader fileRead= new FileReader(txt);
             BufferedReader reader = new BufferedReader(fileRead);
-            ArrayList<Object> arr = new ArrayList<Object>();
+            ArrayList<Object> arr = new ArrayList<>();
             Object var = reader.readLine();
             while (var != null) 
             {    
@@ -2038,11 +2042,138 @@ public static void Edit(String filePath, Object[] arr)
              catch (IOException e)
             {
             e.printStackTrace();
-            ArrayList<Object> error = new ArrayList<Object>();
-            return error;
+                return new ArrayList<>();
             }
             
      
+    }
+    public void grabSave()
+    {
+        ArrayList<Object> Save = Read("Save.txt");
+
+        for(int i=0; i<25; i++)
+        {
+            String var = Save.get(i).toString();
+            int val = 0;
+            if(strIsInt(var))
+            {
+                val = Integer.parseInt(var);
+            }
+            if(i==0)
+            {
+                missionnum=val;
+            }
+            if(i==1)
+            {
+                HP1m=val;
+            }
+            if(i==2)
+            {
+                HP2m=val;
+            }
+            if(i==3)
+            {
+                attack1_1mp=val;
+            }
+            if(i==4)
+            {
+                attack1_2mp=val;
+            }
+            if(i==5)
+            {
+                attack1_3mp=val;
+            }
+            if(i==6)
+            {
+                attack1_4mp=val;
+            }
+            if(i==7)
+            {
+                attack1_tier=val;
+            }
+            if(i==8)
+            {
+                attack2_tier=val;
+            }
+            if(i==9)
+            {
+                attack3_tier=val;
+            }
+            if(i==10)
+            {
+                attack4_tier=val;
+            }
+            if(i==11)
+            {
+                level1=val;
+            }
+            if(i==12)
+            {
+                level2=val;
+            }
+            if(i==13)
+            {
+                levelr1=val;
+            }
+            if(i==14)
+            {
+                levelr2=val;
+            }
+            if(i==15)
+            {
+                exp1=val;
+            }
+            if(i==16)
+            {
+                exp2=val;
+            }
+            if(i==17)
+            {
+                attack1_1=var;
+            }
+            if(i==18)
+            {
+                attack1_2=var;
+            }
+            if(i==19)
+            {
+                attack1_3=var;
+            }
+            if(i==20)
+            {
+                attack1_4=var;
+
+            }
+            if(i==21)
+            {
+                customspace_1=var;
+            }
+            if(i==22)
+            {
+                customspace_2=var;
+            }
+            if(i==23)
+            {
+                customspace_3=var;
+            }
+            if(i==24)
+            {
+                customspace_4=var;
+            }
+
+
+        }
+
+
+    }
+    public boolean strIsInt(String str)
+    {
+        try {
+            int value = Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 
 //main
