@@ -1807,7 +1807,11 @@ public void print_slow(String str)
 	public void wait(int time) {
 		long startTime = System.currentTimeMillis();
 		while (startTime + time > System.currentTimeMillis())
-			;
+        {
+            ArrayList<Object> arrList = new ArrayList<Object>();
+
+            Edit("save.txt",)
+        }
 	}
 public int random(int high,int low)
 {
@@ -2051,7 +2055,7 @@ public static void Edit(String filePath, Object[] arr)
     {
         ArrayList<Object> Save = Read("Save.txt");
 
-        for(int i=0; i<25; i++)
+        for(int i=0; i<24; i++)
         {
             String var = Save.get(i).toString();
             int val = 0;
