@@ -3,6 +3,7 @@ class Main
 {
     public static void main(String[] args) {
     Game game = new Game();
+    game.grabSave();
     Scanner scanner = new Scanner(System.in);
     System.out.println();
     System.out.println();
@@ -13,7 +14,6 @@ class Main
     System.out.println();
 
     game.print_slow("This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence.");
-    game.grabSave();
     game.game();
 
 

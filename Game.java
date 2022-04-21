@@ -80,13 +80,13 @@ public void game()
   {
     String choice="STR";
       print_slow("Type 1 -> "+missionnum+" to try that Mission");
-      print_slow("");
+      System.out.println("");
     if (missionnum>1)
     {
-    print_slow("Type 'exp' to trade exp for new moves");
-    print_slow("which Mission would you like to try?   ");
+    System.out.println("Type 'exp' to trade exp for new moves");
+    System.out.println("which Mission would you like to try?   ");
     choice=scanner.nextLine();
-    print_slow("");
+    System.out.println("");
     }
 if (choice.equals("1"))
 {
@@ -230,6 +230,7 @@ if (choice.equals("1"))
         }
     }
     if ((missionnum >= 7) &&(choice.equals("7")))
+    {
         print_slow("Mission 7: The Rules Of The Roomba");
 
         if(skip())
@@ -243,6 +244,7 @@ if (choice.equals("1"))
          if (missionnum<8)
       {missionnum=8;
            print_slow("MISSION 8 UNLOCKED");}
+    }
     if ((missionnum >= 8) && (choice.equals("8")))
     {
         print_slow("MISSION 8 When I Step off");
@@ -620,7 +622,7 @@ public void Tri_attack()
         print_slow("Bill Gates: RAGE SLASH");
         num=random(10,20);
         print_slow("Bill Gates deals "+num+" Damage and takes "+ (num/3) +" damage");
-        print_slow("");
+        System.out.println("");
         Tri_HP-= num/3;
         damage+=num;
         print_slow("Jeff bezos) RANDOM FORCE");
@@ -639,7 +641,7 @@ public void Tri_attack()
         print_slow("Bill Gates) RAGE SLASH");
         num=random(10,20);
         print_slow("Bill Gates deals "+num+" Damage and takes "+ (num/2) +" damage");
-        print_slow("");
+        System.out.println("");
         Tri_HP-= num/2;
         damage+=num;
         print_slow("Jeff bezos) RANDOM FORCE");
@@ -1256,7 +1258,7 @@ public void pull1()
             print_slow("2069 exp "+ exp1);
             print_slow("2069 exp "+ exp2);
             print_slow("total exp "+ expt);
-            print_slow("how much exp would you like to use? ");
+            System.out.println("how much exp would you like to use? ");
             num = scanner.nextInt();
             if (num > expt)
             {num = expt;}
@@ -1486,8 +1488,7 @@ public void pull1()
             max_hit += 2;
             print_slow("2077's max number of hits per turn increased by 2");
         }
-        print_slow("roll complete > enter <");
-        scanner.nextLine();
+        print_slow("roll complete");
     }
 public void level()
 {
@@ -1852,15 +1853,15 @@ public void restart()
     String choice="How are you doing";
     while (!choice.equals("START"))
     {
-        print_slow("Type ¨START¨ to continue     ");
+        System.out.println("Type ¨START¨ to continue     ");
         choice=scanner.nextLine();
     }
-    print_slow("");
+    System.out.println("");
     print_slow("PUT GAME HERE");
 }
 public boolean skip()
 {
-    print_slow("Skip cutscene?   ");
+    System.out.println("Skip cutscene?   ");
     String skip=scanner.nextLine();
     return !skip.equals("yes");
 }
