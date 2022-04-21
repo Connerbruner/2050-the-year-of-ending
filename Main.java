@@ -19,6 +19,7 @@ class Main
     System.out.println();
 
     game.print_slow("This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence.");
+    System.out.flush();
     game.game();
 
 
