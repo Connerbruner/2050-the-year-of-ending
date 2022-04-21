@@ -3,12 +3,13 @@ run = ["java", "-classpath", ".:target/dependency/*", "Main"]
 
 entrypoint = "Main.java"
 hidden = ["**/*.class"]
-
+onBoot="BOOTED"
 [packager]
 language = "java"
 
 [packager.features]
 packageSearch = true
+guessImports = true
 
 [languages.java]
 pattern = "**/*.java"
