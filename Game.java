@@ -95,7 +95,8 @@ public void game()
   {
     if((attack1_tier==5)&&(attack2_tier==5)&&(attack3_tier==5)&&(attack4_tier==5))
     {
-        if(missionnum=10)
+        if(missionnum==10)
+        {}
     }
     String choice="STR";
       System.out.println("Type 1 -> "+missionnum+" to try that Mission");
@@ -780,12 +781,17 @@ public void Mark()
         HP1-= (300-Mark_Zuckerberg)/4;
         HP2-= (300-Mark_Zuckerberg)/4;
         print_slow("Both 2069 and 2077 take  "+ ((300-Mark_Zuckerberg)/4) +" damage");}
-        if( Mark==3)
-        {print_slow("DOUBLE EDGED RUSH");
-        HP1-=20;
-        HP2-=20;
-        Mark_Zuckerberg-=20;
-        print_slow("Everyone takes 20 damage");}
+        
+        if( Mark==3){
+          
+          print_slow("DOUBLE EDGED RUSH");
+          
+          HP1-=20;
+          HP2-=20;
+          Mark_Zuckerberg-=20;
+          
+          print_slow("Everyone takes 20 damage");
+          }
         if( Mark==4)
         {print_slow("DARK RUSH");
         hit=4;
@@ -1314,6 +1320,7 @@ public void mission2_3()
         print_slow("2069: We have 1 hour before the sea will be submearged");
         print_slow("2077: Lets use this Tower as out base. I need to start work on a way to move from tower to tower");
         print_slow("2069: sounds good");
+        print_slow("2069: While you do that Let me scout");
     }
 public void pull1()
     {
@@ -1855,6 +1862,56 @@ public void gain()
         battle();
         }   
         }
+    }
+    public void dungeon8()
+    {
+        dungeon_length = 10;
+        print_slow("On top of the Tower (length: "+ dungeon_length + " )");
+
+    while (dungeon_length > 0)
+        {
+        dungeon_length -= 1;
+        print_slow("You move 1 feet");
+
+        if (dungeon_length <= 0)
+        {print_slow("2069:We made it");}
+        else
+        {
+        print_slow("2069:Whats that!");
+        type_num=random(1,9);
+        }
+        if (type_num>6)
+        {
+        type_num=random(1,9);
+        new_emmi(type_num);
+        battle2();
+        }   
+        }
+    }
+ public void battle2()
+    {
+        while (emmi_HP > 0)
+        {
+        print_slow("2069 health "+ HP1);
+        print_slow(emmi_type+" health "+ emmi_HP);
+        if (HP1 > 0)
+        {attack1();}
+
+
+        if (HP1 > HP1m)
+        {HP1 = HP1m;}
+
+        emmi_HP -= damage;
+        damage=0;
+        attack_emmi();
+
+
+        if (HP1 < 0)
+        {restart();}
+        }
+        
+        gain();
+        level();
     }
 //print method
 public void print_slow(String str)
