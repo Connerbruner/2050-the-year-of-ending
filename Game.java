@@ -320,7 +320,7 @@ if (choice.equals("1"))
 //Gotcha system
     if ((choice.equals("exp")) && (missionnum>1))
       {
-          pull1();
+          pull();
       }
   }
 }
@@ -416,13 +416,43 @@ public void attack2()
     print_slow("2077's turn");
     
 //starts quicktime event
+num=quickTime()*max_hit;
+System.out.println("2077 Deals "+num+" Damage");
+damage+=num;
     
-damage+=(quickTime())*max_hit;
   System.out.println();
     if (HP2 > HP2m)
     {
          HP2 = HP2m;
     }    
+}
+public int quickTime()
+{
+long startTime = System.currentTimeMillis();
+int i=0;
+while(startTime+10000>System.currentTimeMillis())      {
+System.out.println("Type Kick");
+while(startTime+10000>System.currentTimeMillis())
+     {
+         if (scanner.nextLine().equals("Kick"))
+         {
+             break;
+         }
+
+}
+System.out.println("Type Punch");
+while(startTime+10000>System.currentTimeMillis())
+     {
+         if (scanner.nextLine().equals("Punch"))
+         {
+             break;
+         }
+
+}
+i++;
+
+}
+return i;
 }
 //Bill Gates boss fight
  public void boss_bill()
@@ -1323,7 +1353,7 @@ public void mission2_3()
         print_slow("2069: sounds good");
         print_slow("2069: While you do that Let me scout");
     }
-public void pull1()
+public void pull()
     {
         int expt = exp1 + exp2;
         if (expt > 0)
@@ -1667,10 +1697,10 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         new_emmi(type_num);
         battle();
@@ -1697,11 +1727,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         }   
@@ -1723,11 +1753,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         }   
@@ -1750,11 +1780,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         }   
@@ -1776,11 +1806,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         }   
@@ -1802,11 +1832,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         }   
@@ -1828,11 +1858,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         roomba_beam();
@@ -1855,11 +1885,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(1,8);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle();
         }   
@@ -1880,11 +1910,11 @@ public void gain()
         else
         {
         print_slow("2069:Whats that!");
-        type_num=random(1,9);
+        type_num=random(2,3);
         }
         if (type_num>6)
         {
-        type_num=random(1,9);
+        type_num=random(1,8);
         new_emmi(type_num);
         battle2();
         }   
@@ -1926,10 +1956,6 @@ public void print_slow(String str)
     System.out.print(BLUE+str.charAt(i));
     wait(speed);
     }
-    System.out.println();
-    System.out.println(RESET);
-    System.out.println("> enter <");
-    scanner.nextLine();
     }
     //if 2077 is talking CYAN
     if(str.contains("2077:"))
@@ -1939,10 +1965,7 @@ public void print_slow(String str)
     System.out.print(CYAN+str.charAt(i));
     wait(speed);
     }
-    System.out.println();
-    System.out.println(RESET);
-    System.out.println("> enter <");
-    scanner.nextLine();
+
     }
     //Tech gaint talking RED
     if(str.contains("Mark Zuckerberg:")||str.contains("Elon musk:")||str.contains("Bill gates:")||str.contains("Jeff bezos:"))
@@ -1952,10 +1975,6 @@ public void print_slow(String str)
     System.out.print(RED+str.charAt(i));
     wait(speed);
     }
-    System.out.println();
-    System.out.println(RESET);
-    System.out.println("> enter <");
-    scanner.nextLine();
     }
     //if sounds then 
     if(str.contains("*"))
@@ -1965,36 +1984,38 @@ public void print_slow(String str)
     System.out.print(GREEN+str.charAt(i));
     wait(speed);
     }
-    System.out.println();
-    System.out.println(RESET);
-    System.out.println("> enter <");
-    scanner.nextLine();
     }
+    //??? talks
     if(str.contains("???:"))
     {
     for(int i=0; i<str.length(); i++)
     {
-    System.out.print(PURPLE+str.charAt(i));
+    if(random(0,15)==10)
+    {
+        System.out.print((char)(random(0,256)));
+    }
+    else
+    {
+     System.out.print(PURPLE+str.charAt(i));   
+    }
     wait(speed);
     }
-    System.out.println();
-    System.out.println(RESET);
-    System.out.println("> enter <");
-    scanner.nextLine();
     }
+    //Anyhthing else
     else
     {
     for(int i=0; i<str.length(); i++)
     {
     System.out.print(str.charAt(i));
     wait(speed);
+    }    
     }
     System.out.println();
     System.out.println(RESET);
     System.out.println("> enter <");
-    scanner.nextLine();       
-    }
+    scanner.nextLine();   
 }
+
 //wait method
 	public void wait(int time) {
         ArrayList<Object> arrList = new ArrayList<Object>();
@@ -2084,18 +2105,19 @@ public void new_emmi(int type1)
 }
     if (type1==3)
 {
-        emmi_type="Robot with a sword";
-        emmi_level=level1;
-        emmi_HP=30+(emmi_level*3);
-        print_slow("A Robot with a sword appears");
-}
-    if (type1==4)
-{
         emmi_type="Robot with a spear";
         emmi_level=level1;
         emmi_HP=25+(emmi_level*2);
         print_slow("A Robot with a spear appears");
 }
+    if (type1==4)
+{
+        emmi_type="Robot with a sword";
+        emmi_level=level1;
+        emmi_HP=30+(emmi_level*3);
+        print_slow("A Robot with a sword appears");
+}
+
     if (type1==5)
 {
             emmi_type="Robot with a gun";
@@ -2110,22 +2132,15 @@ public void new_emmi(int type1)
         emmi_HP=200+(emmi_level*5);
         print_slow("A Mech appears");
     }
+
     if (type1==7)
-    {
-        emmi_type="Giga Mech";
-        emmi_level=level1;
-        emmi_HP=300+(emmi_level*6);
-        print_slow("Suddenly 2069 and 2077 hear loud engine sounds");
-        print_slow("A Giga Mech Comes Crashing down behind 2069 and 2077");
-    }
-    if (type1==8)
     {
         emmi_type="Mini Mech";
         emmi_level=level1;
         emmi_HP=150+(emmi_level*4);
         print_slow("A Mini Mech appears");
     }
-    if (type1==9)
+    if (type1==8)
     {
         emmi_type="Cyborg";
         emmi_level=level1;
@@ -2146,19 +2161,11 @@ if (emmi_type.equals("Roomba"))
          print_slow("2069 takes "+ hit+ " damage");
          print_slow("2077 takes "+ hit+ " damage");
 }
-        
     if (emmi_type.equals("Dog bot"))
     {
          print_slow("SPEED TACKLE");
          HP1 -= 5 + (3 * emmi_level);
          print_slow("2069 takes "+(5 + (3 * emmi_level))+ " damage");
-    }
-
-    if (emmi_type.equals("Robot with a sword"))
-    {
-        print_slow("ZERO BLADE");
-        HP2 -= 7 + (2 * emmi_level);
-         print_slow("2077 takes "+(7 + (2 * emmi_level))+ " damage");
     }
         
     if (emmi_type.equals("Robot with a spear"))
@@ -2167,7 +2174,7 @@ if (emmi_type.equals("Roomba"))
         HP1 -=10 + (2 * emmi_level);
          print_slow("2069 takes "+(10 +  (2 * emmi_level))+"damage");
     }
-        
+    
     if (emmi_type.equals("Robot with a gun"))
     {
         print_slow("DUAL BLASTER");
@@ -2176,7 +2183,12 @@ if (emmi_type.equals("Roomba"))
          print_slow("2069 takes "+ 5 + (2 * emmi_level)+ " damage");
          print_slow("2077 takes "+ 5 + (2 * emmi_level)+ " damage");
     }
-        
+        if (emmi_type.equals("Robot with a sword"))
+    {
+        print_slow("ZERO BLADE");
+        HP2 -= 7 + (2 * emmi_level);
+         print_slow("2077 takes "+(7 + (2 * emmi_level))+ " damage");
+    }  
     if (emmi_type.equals("Mech"))
     {
         print_slow("DUAL CANNON");
@@ -2188,11 +2200,11 @@ if (emmi_type.equals("Roomba"))
         
     if (emmi_type.equals("Giga Mech"))
     {
-        print_slow("OMEGA BEAM");
-        HP1 -= 30 + (2 * emmi_level);
-        HP2 -= 30 + (2 * emmi_level);
-         print_slow("2069 takes "+ 30 + (2 * emmi_level)+ " damage");
-         print_slow("2077 takes "+ 30 + (2 * emmi_level)+ " damage");
+        print_slow("LASER RAIN");
+        HP1 -= 5 + (5 * emmi_level);
+        HP2 -= 5 + (5 * emmi_level);
+         print_slow("2069 takes "+(5 + (2 * emmi_level))+ " damage");
+         print_slow("2077 takes "+(5 + (2 * emmi_level))+ " damage");
     }
         
     if (emmi_type.equals("Mini Mech"))
@@ -2200,8 +2212,8 @@ if (emmi_type.equals("Roomba"))
         print_slow("LASER RAIN");
         HP1 -= 10 + (2 * emmi_level);
         HP2 -= 10 + (2 * emmi_level);
-         print_slow("2069 takes "+ 10 + (2 * emmi_level)+ " damage");
-         print_slow("2077 takes "+ 10 + (2 * emmi_level)+ " damage");
+         print_slow("2069 takes "+(10 + (2 * emmi_level))+ " damage");
+         print_slow("2077 takes "+(10 + (2 * emmi_level))+ " damage");
     }
         
     if (emmi_type.equals("Cyborg"))
@@ -2209,9 +2221,16 @@ if (emmi_type.equals("Roomba"))
         print_slow("RUSH");
         HP1 -= 5 + (5 * emmi_level);
         HP2 -= 5 + (5 * emmi_level);
-         print_slow("2069 takes "+ 5 + (5 * emmi_level)+ " damage");
-         print_slow("2077 takes "+ 5 + (5 * emmi_level)+ " damage"); 
+         print_slow("2069 takes "+(5 + (5 * emmi_level))+ " damage");
+         print_slow("2077 takes "+(5 + (5 * emmi_level))+ " damage"); 
     } 
+}
+public void giga_mech()
+{
+        emmi_type="Giga Mech";
+        emmi_level=level1;
+        emmi_HP=200+(emmi_level*20);
+        print_slow("Giga Mech");
 }
 public static void Edit(String filePath, ArrayList<Object> arr)
     {
@@ -2406,34 +2425,7 @@ public static void Edit(String filePath, ArrayList<Object> arr)
             return false;
         }
     }
-public int quickTime()
-{
-long startTime = System.currentTimeMillis();
-int i=0;
-while(startTime+10000>System.currentTimeMillis())      {
-System.out.println("Type Kick");
-while(startTime+10000>System.currentTimeMillis())
-     {
-         if (scanner.nextLine().equals("Kick"))
-         {
-             break;
-         }
 
-}
-System.out.println("Type Punch");
-while(startTime+10000>System.currentTimeMillis())
-     {
-         if (scanner.nextLine().equals("Punch"))
-         {
-             break;
-         }
-
-}
-i++;
-
-}
-return i;
-}
 
 
 }
