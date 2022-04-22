@@ -1776,7 +1776,10 @@ public void gain()
         print_slow("You move "+ steps+ " feet");
 
         if (dungeon_length <= 0)
-        {print_slow("2069:We made it");}
+        {
+            giga_mech();
+            print_slow("2069:We made it");
+        }
         else
         {
         print_slow("2069:Whats that!");
@@ -1802,7 +1805,10 @@ public void gain()
         print_slow("You move "+ steps+ " feet");
 
         if (dungeon_length <= 0)
-        {print_slow("2069:We made it");}
+        {
+            giga_mech();
+            print_slow("2069:We made it");
+        }
         else
         {
         print_slow("2069:Whats that!");
@@ -1828,7 +1834,10 @@ public void gain()
         print_slow("You move "+ steps+ " feet");
 
         if (dungeon_length <= 0)
-        {print_slow("2069:We made it");}
+        {
+            giga_mech();
+            print_slow("2069:We made it");
+        }
         else
         {
         print_slow("2069:Whats that!");
@@ -1854,7 +1863,10 @@ public void gain()
         print_slow("You move "+ steps+ " feet");
 
         if (dungeon_length <= 0)
-        {print_slow("2069:We made it");}
+        {
+            giga_mech();
+            print_slow("2069:We made it");
+        }
         else
         {
         print_slow("2069:Whats that!");
@@ -1881,7 +1893,10 @@ public void gain()
         print_slow("You move "+ steps+ " feet");
 
         if (dungeon_length <= 0)
-        {print_slow("2069:We made it");}
+        {
+            giga_mech();
+            print_slow("2069:We made it");
+        }
         else
         {
         print_slow("2069:Whats that!");
@@ -1906,7 +1921,9 @@ public void gain()
         print_slow("You move 1 feet");
 
         if (dungeon_length <= 0)
-        {print_slow("2069:We made it");}
+        {
+            print_slow("2069:We made it");
+        }
         else
         {
         print_slow("2069:Whats that!");
