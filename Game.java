@@ -8,7 +8,7 @@ import java.util.ArrayList;
 //Main class
 class Game {
 //the Colors of gay
-public static final String ESC = "\033[H\033[2J";
+public static final String SCREEN_CLEAR = "\033[H\033[2J";
 public static final String RESET = "\u001B[0m";
 public static final String BLACK = "\u001B[30m";
 public static final String RED = "\u001B[31m";
@@ -54,21 +54,21 @@ int Mark_Zuckerberg=300;
     String attack1_2 = "lasershot";
     String attack1_3 = "cure";
     String attack1_4 = "ember";
-    String customspace_1="     ";
-    String customspace_2="  ";
-    String customspace_3="       ";
-    String customspace_4="      ";
+    String customspace_1 = "     ";
+    String customspace_2 = "  ";
+    String customspace_3 = "       ";
+    String customspace_4 = "      ";
     int max_hit = 5;
 
 
 //dungeon vars
 int dungeon_length = 0;
 //misc
-int num=0;
-int type_num=0;
-int speed=20;
-int num1=0;
-int num2=0;
+int num = 0;
+int type_num = 0;
+int speed = 20;
+int num1 = 0;
+int num2 = 0;
 int bonus = 0;
 int hit = 0;    
 int damage = 0;
@@ -86,10 +86,10 @@ public void game()
   Elon_HP = 150;
   target = 0;
   Tri_HP = 1000;
-  Mark_Zuckerberg=2000;
-  HP1=HP1m;
-  HP2=HP2m;
-  mp1=100;
+  Mark_Zuckerberg = 2000;
+  HP1 = HP1m;
+  HP2 = HP2m;
+  mp1 = 100;
   //Runs mission forever
   while (true)
   {
@@ -139,12 +139,12 @@ if (choice.equals("1"))
         print_slow("Mission 2: First Encounters");
 
         if(skip())
-            mission2_1();
-        dungeon2();
-
+        {mission2_1();}
+            dungeon2();
+      
         if(skip())
-            mission2_2();
-        boss_bill();
+        {mission2_2();}
+            boss_bill();
 
         if(skip())
         {
@@ -324,13 +324,13 @@ if (choice.equals("1"))
       }
   }
 }
-public void attack1()
-{
+public void attack1(){
 //Fomrats attacks and dislays them 
 //Custom spaces just adds spaces to the attack
+  
     String attack = "";
     print_slow("2069's turn");
-    print_slow("2096 has "+ mp1+ " mp");
+    print_slow("2069 has "+ mp1+ " mp");
     
     System.out.println("Name:        type:   mp cost:");
     System.out.println(attack1_1+ customspace_1+ "tech "+ attack1_1mp);
@@ -340,7 +340,7 @@ public void attack1()
     System.out.println(attack1_3+ customspace_3+ "magic "+ attack1_3mp);
 
     System.out.println(attack1_4+ customspace_4+ "magic "+ attack1_4mp);
-    
+    System.out.println();
 //This while loop just 
     while (!attack.equals(attack1_1) && !attack.equals(attack1_3) && !attack.equals(attack1_2) && !attack.equals(attack1_4))
 {
@@ -417,7 +417,8 @@ public void attack2()
     
 //starts quicktime event
     
-damage-=(quickTime())*max_hit;
+damage+=(quickTime())*max_hit;
+  System.out.println();
     if (HP2 > HP2m)
     {
          HP2 = HP2m;
@@ -1622,7 +1623,7 @@ public void gain()
     {
         while (emmi_HP > 0)
         {
-            print_slow("2069 health "+ HP1);
+        print_slow("2069 health "+ HP1);
         print_slow("2077 health "+ HP2);
         print_slow(emmi_type+" health "+ emmi_HP);
         if (HP1 > 0)
@@ -1667,13 +1668,14 @@ public void gain()
         {
         print_slow("2069:Whats that!");
         type_num=random(1,9);
-        }
         if (type_num>6)
         {
         type_num=random(1,9);
+        }
         new_emmi(type_num);
         battle();
-        }   
+        }
+
         }
     }
 
@@ -1863,7 +1865,7 @@ public void gain()
         }   
         }
     }
-    public void dungeon8()
+    public void dungeon9()
     {
         dungeon_length = 10;
         print_slow("On top of the Tower (length: "+ dungeon_length + " )");
@@ -2050,11 +2052,18 @@ public void restart()
     System.out.println("");
     print_slow("PUT GAME HERE");
 }
-public boolean skip()
-{
+  /**
+    *Returns false on "Yes, yes, y, or Y", Fixed formatting - Zachary Clark 4/22/22
+  */
+public boolean skip(){
     System.out.println("Skip cutscene?   ");
-    String skip=scanner.nextLine();
-    return !skip.equals("yes");
+  
+    String skip = scanner.nextLine();
+    boolean yesSkip = false;
+    if(skip.equals("yes") ||skip.equals("Yes") || skip.equals("Y") || skip.equals("y")){
+      yesSkip = true;
+    }
+  return !yesSkip;
 }
 public void new_emmi(int type1)
 {
@@ -2141,22 +2150,22 @@ if (emmi_type.equals("Roomba"))
     if (emmi_type.equals("Dog bot"))
     {
          print_slow("SPEED TACKLE");
-        HP1 -= 5 + (3 * emmi_level);
-         print_slow("2069 takes "+ 5 + (3 * emmi_level)+ " damage");
+         HP1 -= 5 + (3 * emmi_level);
+         print_slow("2069 takes "+(5 + (3 * emmi_level))+ " damage");
     }
 
     if (emmi_type.equals("Robot with a sword"))
     {
         print_slow("ZERO BLADE");
         HP2 -= 7 + (2 * emmi_level);
-         print_slow("2077 takes "+ 7 + (2 * emmi_level)+ " damage");
+         print_slow("2077 takes "+(7 + (2 * emmi_level))+ " damage");
     }
         
     if (emmi_type.equals("Robot with a spear"))
     {
          print_slow("ZERO SPEAR");
         HP1 -=10 + (2 * emmi_level);
-         print_slow("2069 takes "+10 +  (2 * emmi_level)+"damage");
+         print_slow("2069 takes "+(10 +  (2 * emmi_level))+"damage");
     }
         
     if (emmi_type.equals("Robot with a gun"))
