@@ -692,7 +692,7 @@ public void boss_rush()
         }
         }
 
-
+//Tech gaint rush
 public void Tri_attack()
 {
         
@@ -769,6 +769,7 @@ public void Tri_attack()
         if( person==2077)
         {HP2-=damage;}
     }
+    //Final boss
 public void Final()
 {
         while ( Mark_Zuckerberg>0)
@@ -790,7 +791,8 @@ public void Final()
         }
         
         }
-public void Mark()
+        //Final boss attack
+        public void Mark()
 {
         int Mark=random(1,5);
         if( Mark==3)
@@ -853,6 +855,7 @@ public void Mark()
         {print_slow("Mark Zuckerberg: YOUR FATE HAS BEEN SEALED 2069");
         HP1=-999;}
 }
+//Mission Text
 public void mission1_1()
 {
         print_slow("Welcome to the year 2050. Things aren't going so well.");
@@ -886,6 +889,7 @@ public void mission1_1()
                 "My name is 2069. With the help of my friend 2077. We plan to get our vengeance."
         );
 }
+//Mission Text
 public void mission1_2()
 {
         print_slow("WAKE UP, 2069!");
@@ -922,6 +926,7 @@ public void mission1_2()
 
         print_slow("*Later in the subway*");
 }
+
 public void mission2_1() {
         print_slow("*2077 pulls the kill switch in the powerplant*");
 
@@ -988,7 +993,7 @@ public void mission1_4() {
 
 
         String choice = "";
-
+    //old man gift
         while ( (!choice.equals("2069"))&&(!choice.equals("2077")))
         {
             print_slow("Who will you give this exp to? (2069 or 2077)   ");
@@ -1387,7 +1392,7 @@ public void pull()
 
 
 
-
+//gotcha
     public void roll()
     {
         int tier  = random(1, 10);
@@ -1410,6 +1415,7 @@ public void pull()
         }
         else if((tier==2) || (tier==3) || (tier==4) || (tier==5))
         num = random(1, 4);
+        //Ember level up
         if (num == 4)
         {
             if (tier > attack4_tier)
@@ -1449,6 +1455,7 @@ public void pull()
                 }
 
             }
+            // Cure level up
             if (num == 3)
             {
                 if (tier > attack3_tier)
@@ -1488,6 +1495,7 @@ public void pull()
                 }
             }
         }
+        //Charge level up
         if (num == 1)
         {
             if (tier > attack1_tier)
@@ -1527,6 +1535,7 @@ public void pull()
                 }
             }
         }
+        //Laser level up
         if (num == 2)
         {
             if (tier > attack2_tier)
@@ -1566,6 +1575,7 @@ public void pull()
                 }
             }
         }
+        // other rewards
         if( tier == 6)
         {
             HP2m += 1;
@@ -1593,43 +1603,34 @@ public void pull()
         }
         print_slow("roll complete");
     }
-public void level()
-{
+    //
+public void level() {
 
- if (exp1 >= levelr1)
-{
-    
-    if (emmi_HP==0)
-    {
-        int bonus=(100*emmi_level);
-         print_slow("You received a bonus "+bonus+" exp");
-    }
-    else if (emmi_HP>=-5)
-    {
-        int bonus=(75*emmi_level)-(emmi_HP*10);
-         print_slow("You received a bonus "+bonus+" exp");
-    }
-    else
-    {
-        int bonus=0;
-        exp1+= (emmi_level)+bonus;
-        exp2+=(emmi_level)+bonus;
-    }
-
-}
     if (exp2 >= levelr2)
+    {
         print_slow("LEVEL UP");
-        print_slow(level2+ " --> "+ (level2 + 1));
-        print_slow("2077's health is restored fully");
-        HP2=HP2m;
-        level2 += 1;
-        levelr2 = exp2 + 20 * (level2 * level2) / 2;
-     print_slow("2069 has"+ (levelr1 - exp1)+ "exp till leveling up");
-     print_slow("2077 has"+ (levelr2 - exp2)+ "exp till leveling up");
+    print_slow(level2 + " --> " + (level2 + 1));
+    print_slow("2077's health is restored fully");
+    HP2 = HP2m;
+    level2 += 1;
+    levelr2 = exp2 + 20 * (level2 * level2) / 2;
+    print_slow("2069 has" + (levelr1 - exp1) + "exp till leveling up");
+    print_slow("2077 has" + (levelr2 - exp2) + "exp till leveling up");
+}
+    if (exp2 >= levelr1) {
+        print_slow("LEVEL UP");
+        print_slow(level1 + " --> " + (level1 + 1));
+        print_slow("2069: max health +1");
+        HP1m++;
+        level1++;
+        levelr1 = exp1 + 20 * (level1 * level1) / 2;
+        print_slow("2069 has" + (levelr1 - exp1) + "exp till leveling up");
+        print_slow("2077 has" + (levelr2 - exp2) + "exp till leveling up");
+    }
 
   
 }
-   
+//Get bonus exp for no doing a ton of overkill
 public void gain()
 {
     if (emmi_HP==0)
@@ -1649,6 +1650,7 @@ public void gain()
     exp2+=(emmi_level)+bonus;
     }  
 }
+//fight enemies
  public void battle()
     {
         while (emmi_HP > 0)
@@ -1680,7 +1682,7 @@ public void gain()
         gain();
         level();
     }
-
+//dungeon number 1
     public void dungeon1()
     {
         dungeon_length = 10;
@@ -1710,7 +1712,7 @@ public void gain()
     }
 
 
-
+    //dungeon number 2
     public void dungeon2()
     {
         dungeon_length = 20;
@@ -1738,6 +1740,7 @@ public void gain()
         }
 
         }
+    //dungeon number 3
     public void dungeon3()
     {
         dungeon_length = 5;
@@ -1764,6 +1767,7 @@ public void gain()
         }
 
     }
+    //dungeon number 4
     public void dungeon4()
     {
         dungeon_length = 20;
@@ -1793,6 +1797,7 @@ public void gain()
         }   
         }
     }
+    //dungeon number 5
     public void dungeon5()
     {
         dungeon_length = 100;
@@ -1822,6 +1827,7 @@ public void gain()
         }   
         }
     }
+    //dungeon number 6
     public void dungeon6()
     {
         dungeon_length = 5;
@@ -1851,6 +1857,7 @@ public void gain()
         }   
         }
     }
+    //dungeon number 7
     public void dungeon7()
     {
         dungeon_length = 20;
@@ -1881,6 +1888,7 @@ public void gain()
         }   
         }
     }
+    //dungeon number 8
     public void dungeon8()
     {
         dungeon_length = 50;
@@ -1910,6 +1918,7 @@ public void gain()
         }   
         }
     }
+    //dungeon number 9
     public void dungeon9()
     {
         dungeon_length = 10;
@@ -1937,6 +1946,7 @@ public void gain()
         }   
         }
     }
+    //battle but with only 2069
  public void battle2()
     {
         while (emmi_HP > 0)
@@ -2035,6 +2045,7 @@ public void print_slow(String str)
 
 //wait method
 	public void wait(int time) {
+        //groups up all vars
         ArrayList<Object> arrList = new ArrayList<Object>();
         arrList.add(missionnum);
         arrList.add(HP1m);
@@ -2067,12 +2078,13 @@ public void print_slow(String str)
         long startTime = System.currentTimeMillis();
 		while (startTime + time > System.currentTimeMillis());
 	}
+    //random int (high to low)
 public int random(int high,int low)
 {
     int range = high - low + 1;
 return (int)(Math.random() * range) + low;
 }
-
+//Game Over
 public void restart()
 {
     print_slow("GAME OVER");
@@ -2091,7 +2103,7 @@ public void restart()
     print_slow("PUT GAME HERE");
 }
   /**
-    *Returns false on "Yes, yes, y, or Y", Fixed formatting - Zachary Clark 4/22/22
+    *Returns false on "Yes, yes, y, or Y"
   */
 public boolean skip(){
     System.out.println("Skip cutscene?   ");
@@ -2103,6 +2115,7 @@ public boolean skip(){
     }
   return !yesSkip;
 }
+//Creates new enemie
 public void new_emmi(int type1)
 {
     
@@ -2165,6 +2178,7 @@ public void new_emmi(int type1)
         print_slow("A Cyborg appears");
     }
 }
+//enemies attack
 public void attack_emmi()
 {
 if (emmi_type.equals("Roomba"))
@@ -2242,6 +2256,7 @@ if (emmi_type.equals("Roomba"))
          print_slow("2077 takes "+(5 + (5 * emmi_level))+ " damage"); 
     } 
 }
+//Create a giga mech
 public void giga_mech()
 {
         emmi_type="Giga Mech";
@@ -2249,6 +2264,7 @@ public void giga_mech()
         emmi_HP=200+(emmi_level*20);
         print_slow("Giga Mech");
 }
+//edit txt (update save)
 public static void Edit(String filePath, ArrayList<Object> arr)
     {
         File fileToBeModified = new File(filePath);
@@ -2283,6 +2299,7 @@ public static void Edit(String filePath, ArrayList<Object> arr)
             }
         }
     }
+    //Reads through txt
     public static ArrayList<Object> Read(String file)
     {
             
@@ -2310,6 +2327,7 @@ public static void Edit(String filePath, ArrayList<Object> arr)
             
      
     }
+    //uses READ to update save
     public void grabSave()
     {
         ArrayList<Object> Save = Read("Save.txt");
@@ -2433,6 +2451,7 @@ public static void Edit(String filePath, ArrayList<Object> arr)
 
 
     }
+    //checks if you can cast a str to a int
     public boolean strIsInt(String str)
     {
         try {
