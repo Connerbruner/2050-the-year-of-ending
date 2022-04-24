@@ -8,6 +8,7 @@ import java.util.ArrayList;
 //Main class
 class Game {
 //the Colors of gay
+public static final String GO_BACK="\"\\u001B[A\""; 
 public static final String SCREEN_CLEAR = "\033[H\033[2J";
 public static final String RESET = "\u001B[0m";
 public static final String BLACK = "\u001B[30m";
@@ -330,7 +331,6 @@ public void attack1(){
   
     String attack = "";
     print_slow("2069's turn");
-    print_slow("2069 has "+ mp1+ " mp");
     
     System.out.println("Name:        type:   mp cost:");
     System.out.println(attack1_1+ customspace_1+ "tech "+ attack1_1mp);
