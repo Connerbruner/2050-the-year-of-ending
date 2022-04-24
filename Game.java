@@ -25,7 +25,6 @@ class Game {
     int emmi_level = 0;
     String emmi_type = "";
     //2069 and 2077 vars (non save)
-    int mp1 = 100;
     int HP1 = 35;
     int HP2 = 35;
     // boss health
@@ -86,7 +85,6 @@ class Game {
         Mark_Zuckerberg = 2000;
         HP1 = HP1m;
         HP2 = HP2m;
-        mp1 = 100;
         //Runs mission forever
         while (true) {
             if ((attack1_tier == 5) && (attack2_tier == 5) && (attack3_tier == 5) && (attack4_tier == 5)) {
@@ -294,14 +292,14 @@ class Game {
         String attack = "";
         print_slow("2069's turn");
 
-        System.out.println("Name:        type:   mp cost:");
-        System.out.println(attack1_1 + customspace_1 + "tech " + attack1_1mp);
+        System.out.println("Name:        type:   ");
+        System.out.println(attack1_1);
 
-        System.out.println(attack1_2 + customspace_2 + "tech  " + attack1_2mp);
+        System.out.println(attack1_2);
 
-        System.out.println(attack1_3 + customspace_3 + "magic " + attack1_3mp);
+        System.out.println(attack1_3);
 
-        System.out.println(attack1_4 + customspace_4 + "magic " + attack1_4mp);
+        System.out.println(attack1_4);
         System.out.println();
 //This while loop just 
         while (!attack.equals(attack1_1) && !attack.equals(attack1_3) && !attack.equals(attack1_2) && !attack.equals(attack1_4)) {
@@ -310,45 +308,34 @@ class Game {
         }
 //This is charge
         if (attack.equals(attack1_1)) {
-            print_slow("2069 gains " + 20 * attack1_tier + " mp");
 
-            mp1 += 20 * attack1_tier;
-            move_tier = attack1_tier;
         }
 
 //This is Lasershot
         if (attack.equals(attack1_2)) {
-            if (mp1 > 0) {
                 hit = random(1, 15);
                 damage += (hit * attack2_tier * attack1_power);
-                mp1 -= attack1_2mp;
                 move_tier = attack2_tier;
                 print_slow("2069 shot a ,-,laserbeam and deals" + hit * attack2_tier + "damage");
-            }
 
         }
 
 
 //This is Cure
         if (attack.equals(attack1_3)) {
-            if (mp1 > 0) {
                 int heal = random(10, 20);
                 print_slow("2069 heals " + heal * attack3_tier + " damage");
                 print_slow("2077 heals " + heal * attack3_tier + " damage");
 
                 HP2 += heal * attack3_tier;
                 HP1 += heal * attack3_tier;
-                mp1 -= attack1_3mp;
-                move_tier = attack3_tier;
-            }
 
+                move_tier = attack3_tier;
         }
 //This is ember    
         if (attack.equals(attack1_4)) {
-            if (mp1 > 0) {
 
                 hit = random(15, 20);
-                mp1 -= attack1_4mp;
                 damage += hit * attack4_tier;
                 move_tier = attack4_tier;
                 print_slow("2069 deals" + hit * attack4_tier + "damage");
@@ -552,11 +539,21 @@ class Game {
         }
         //lowers your MP
         if (bill == 2) {
-            print_slow("CONFUSING MIST");
+            print_slow("SPEAR RUSH");
+            num=random(1,2);
+            if(num==1)
+            {
+                damage = random(5, 15);
+                HP2 -= damage;
+                print_slow("2077 take  " + damage + " damage");
+            }
+            if(num==2)
+            {
+                damage = random(5, 15);
+                HP2 -= damage;
+                print_slow("2060 take  " + damage + " damage");
+            }
 
-            mp1 -= 10;
-
-            print_slow("2069 loses 10 mp");
         }
         //Deals damage
         if (bill == 3) {
@@ -564,7 +561,7 @@ class Game {
             damage = random(5, 10);
             HP1 -= damage;
             HP2 -= damage;
-            print_slow("2069 and 2077 and burned and take  " + damage + " damage");
+            print_slow("2069 and 2077 take  " + damage + " damage");
         }
     }
 
@@ -946,13 +943,6 @@ class Game {
     }
 
     public void mission1_4() {
-        if (mp1 > 15) {
-            print_slow("CURE");
-            mp1 -= 15;
-        } else {
-            print_slow("old man: Goodbye. Cruel world...");
-            restart();
-        }
         print_slow(
                 "old man: Thank you. I can't thank you enough. I am forever in your debt.");
 
@@ -1386,28 +1376,25 @@ class Game {
                     attack1_4 = "explosion";
                     customspace_4 = "   ";
                     attack4_tier = 5;
-                    attack1_4mp = 30;
+
                 }
 
                 if (tier == 4) {
                     attack1_4 = "ember burst";
                     customspace_4 = " ";
                     attack4_tier = 4;
-                    attack1_4mp = 30;
                 }
 
                 if (tier == 3) {
                     attack1_4 = "flame wheel";
                     customspace_4 = " ";
                     attack4_tier = 3;
-                    attack1_4mp = 30;
                 }
 
                 if (tier == 2) {
                     attack1_4 = "dual ember";
                     customspace_4 = "  ";
                     attack4_tier = 2;
-                    attack1_4mp = 25;
                 }
 
             }
@@ -1421,28 +1408,24 @@ class Game {
                     attack1_3 = "Triple cure";
                     customspace_3 = " ";
                     attack3_tier = 5;
-                    attack1_3mp = 15;
                 }
 
                 if (tier == 4) {
                     attack1_3 = "dual cure";
                     customspace_3 = "  ";
                     attack3_tier = 4;
-                    attack1_3mp = 30;
 
                 }
                 if (tier == 3) {
                     attack1_3 = "cure burst";
                     customspace_3 = "  ";
                     attack3_tier = 3;
-                    attack1_3mp = 20;
                 }
 
                 if (tier == 2) {
                     attack1_3 = "super cure";
                     customspace_3 = "  ";
                     attack3_tier = 2;
-                    attack1_3mp = 15;
                 }
             }
         }
@@ -1456,27 +1439,23 @@ class Game {
                     attack1_1 = "recharge";
                     customspace_1 = "    ";
                     attack1_tier = 5;
-                    attack1_1mp = 0;
                 }
                 if (tier == 4) {
                     attack1_1 = "dual charge";
                     customspace_1 = " ";
                     attack1_tier = 4;
-                    attack1_1mp = 0;
                 }
 
                 if (tier == 3) {
                     attack1_1 = "power burst";
                     customspace_1 = " ";
                     attack1_tier = 3;
-                    attack1_1mp = 0;
                 }
 
                 if (tier == 2) {
                     attack1_1 = "super charge";
                     customspace_1 = " ";
                     attack1_tier = 2;
-                    attack1_1mp = 0;
                 }
             }
         }
@@ -1489,28 +1468,24 @@ class Game {
                     attack1_2 = "omega laser";
                     customspace_2 = "  ";
                     attack2_tier = 5;
-                    attack1_2mp = 10;
                 }
 
                 if (tier == 4) {
                     attack1_2 = "tri laser";
                     customspace_2 = "   ";
                     attack2_tier = 4;
-                    attack1_2mp = 10;
                 }
 
                 if (tier == 3) {
                     attack1_2 = "dual laser";
                     customspace_2 = "   ";
                     attack2_tier = 3;
-                    attack1_2mp = 10;
                 }
 
                 if (tier == 2) {
                     attack1_2 = "laserbeam";
                     customspace_2 = "    ";
                     attack2_tier = 2;
-                    attack1_2mp = 10;
                 }
             }
         }
@@ -1930,10 +1905,6 @@ class Game {
         arrList.add(missionnum);
         arrList.add(HP1m);
         arrList.add(HP2m);
-        arrList.add(attack1_1mp);
-        arrList.add(attack1_2mp);
-        arrList.add(attack1_3mp);
-        arrList.add(attack1_4mp);
         arrList.add(attack1_tier);
         arrList.add(attack2_tier);
         arrList.add(attack3_tier);
@@ -2198,74 +2169,63 @@ class Game {
             if (i == 2) {
                 HP2m = val;
             }
+            }
             if (i == 3) {
-                attack1_1mp = val;
-            }
-            if (i == 4) {
-                attack1_2mp = val;
-            }
-            if (i == 5) {
-                attack1_3mp = val;
-            }
-            if (i == 6) {
-                attack1_4mp = val;
-            }
-            if (i == 7) {
                 attack1_tier = val;
             }
-            if (i == 8) {
+            if (i == 4) {
                 attack2_tier = val;
             }
-            if (i == 9) {
+            if (i == 5) {
                 attack3_tier = val;
             }
-            if (i == 10) {
+            if (i == 6) {
                 attack4_tier = val;
             }
-            if (i == 11) {
+            if (i == 7) {
                 level1 = val;
             }
-            if (i == 12) {
+            if (i == 8) {
                 level2 = val;
             }
-            if (i == 13) {
+            if (i == 9) {
                 levelr1 = val;
             }
-            if (i == 14) {
+            if (i == 10) {
                 levelr2 = val;
             }
-            if (i == 15) {
+            if (i == 11) {
                 exp1 = val;
             }
-            if (i == 16) {
+            if (i == 12) {
                 exp2 = val;
             }
-            if (i == 17) {
+            if (i == 13) {
                 attack1_1 = var;
             }
-            if (i == 18) {
+            if (i == 14) {
                 attack1_2 = var;
             }
-            if (i == 19) {
+            if (i == 15) {
                 attack1_3 = var;
             }
-            if (i == 20) {
+            if (i == 16) {
                 attack1_4 = var;
 
             }
-            if (i == 21) {
+            if (i == 17) {
                 customspace_1 = var;
             }
-            if (i == 22) {
+            if (i == 18) {
                 customspace_2 = var;
             }
-            if (i == 23) {
+            if (i == 19) {
                 customspace_3 = var;
             }
-            if (i == 24) {
+            if (i == 20) {
                 customspace_4 = var;
             }
-            if (i == 25) {
+            if (i == 21) {
                 max_hit = val;
             }
 
