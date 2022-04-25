@@ -1630,6 +1630,7 @@ class Game {
         gain();
         level();
     }
+public void show_attack()
 
     //dungeon number 1
     public void dungeon1() {
@@ -1966,7 +1967,7 @@ class Game {
     }
 
     //random int (high to low)
-    public int random(int high, int low) {
+    public int random(int low, int high) {
         int range = high - low + 1;
         return (int) (Math.random() * range) + low;
     }
