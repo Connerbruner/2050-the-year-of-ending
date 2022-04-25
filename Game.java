@@ -225,7 +225,7 @@ class Game {
                 }
                 print_slow("MISSION 3 END");
             }
-//Mission 4
+//Mission
             if ((missionnum >= 4) && (choice.equals("4"))) {
                 print_slow("Mission 4: 101 battles");
 
@@ -242,7 +242,7 @@ class Game {
                     print_slow("mission 5 UNLOCKED");
                 }
             }
-//Mission 5
+//Mission
             if ((missionnum >= 5) && (choice.equals("5"))) {
                 print_slow("Mission 5: Rematch Squared");
 
@@ -263,7 +263,7 @@ class Game {
                     print_slow("MISSION 6 UNLOCKED");
                 }
             }
-//Mission 6
+//Mission
             if ((missionnum >= 6) && (choice.equals("6"))) {
                 print_slow("Mission 6: The Smoking Gun");
                 if (skip()) {
@@ -340,7 +340,7 @@ class Game {
         }
     }
 
-    public void attack1() {
+    /**public void attack1() {
 //Fomrats attacks and dislays them
 
 
@@ -412,10 +412,25 @@ class Game {
             print_slow("2069 deals" + hit * attack4_tier + "damage");
         }
     }
+*/
+
+
+
+
+
+
+
+
 
     //2077's code
     public void attack2() {
         print_slow("2077's turn");
+
+
+
+
+
+
 
 //starts quicktime event
         num = quickTime() * max_hit;
@@ -1966,7 +1981,7 @@ class Game {
     }
 
     //random int (high to low)
-    public int random(int high, int low) {
+    public int random(int low, int high) {
         int range = high - low + 1;
         return (int) (Math.random() * range) + low;
     }
