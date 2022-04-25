@@ -23,6 +23,7 @@ class Game {
     //emmi is enemie vars
     int emmi_HP = 0;
     int emmi_level = 0;
+    int emmi_attack
     String emmi_type = "";
     //2069 and 2077 vars (non save)
     int HP1 = 35;
@@ -47,10 +48,10 @@ class Game {
     int exp2 = 0;
     int levelr1 = 20;
     int levelr2 = 20;
-    String attack1_1 = "Waterfall";
-    String attack1_2 = "Lasershot";
-    String attack1_3 = "Cure";
-    String attack1_4 = "Ember";
+    String attack1 = "Waterfall";
+    String attack2 = "Lasershot";
+    String attack3 = "Cure";
+    String attack4 = "Ember";
     int max_hit = 5;
 
 
@@ -65,7 +66,6 @@ class Game {
     int bonus = 0;
     int hit = 0;
     int damage = 0;
-    int attack1_power = 1;
     int move_tier = 0;
 
     //obj
@@ -363,19 +363,29 @@ class Game {
         }
         System.out.print("Out Power or Out Speed (power or speed)")
         String style = "";
-        while (!style.equals("speed") && !style.equals("attack")) {
-         style= scanner.nextLine();
+        while (!style.equals("speed") && !style.equals("power")) {
+            style = scanner.nextLine();
+        }
+        boolean attack_type;
+        if (style.equals("power")) {
+            attack_type = false;
+        }
+        if (style.equals("speed")) {
+            attack_type = true;
         }
 
 //This is Water
         if (attack.equals(attack1_1)) {
-
+            hit = random(1, attack2_tier * 5);
+            damage += hit;
+            move_tier = attack2_tier;
+            print_slow("2069 shot a ,-,laserbeam and deals" + (hit * attack2_tier) + "damage");
         }
 
 //This is Lasershot
         if (attack.equals(attack1_2)) {
             hit = random(1, 15);
-            damage += (hit * attack2_tier * attack1_power);
+            damage += (hit * attack2_tier);
             move_tier = attack2_tier;
             print_slow("2069 shot a ,-,laserbeam and deals" + (hit * attack2_tier) + "damage");
 
@@ -453,9 +463,6 @@ class Game {
                 attack1();
             }
             //2077 attacks
-            if (HP2 > 0) {
-                attack2();
-            }
             bill_HP -= damage;
             //bill gates attacks
             attack_bill();
@@ -563,9 +570,6 @@ class Game {
                 attack1();
             }
             //2077 attacks
-            if (HP2 > 0) {
-                attack2();
-            }
 
             Elon_HP -= damage;
             //Elon attacks
@@ -629,9 +633,6 @@ class Game {
                 attack1();
             }
             //2077 attacks
-            if (HP2 > 0) {
-                attack2();
-            }
 
             if (bill_HP > 0) {
                 bill_HP -= damage;
@@ -678,9 +679,6 @@ class Game {
             Tri_attack();
             if (HP1 > 0) {
                 attack1();
-            }
-            if (HP2 > 0) {
-                attack2();
             }
 
             Tri_HP -= damage;
@@ -781,9 +779,6 @@ class Game {
             Mark();
             if (HP1 > 0) {
                 attack1();
-            }
-            if (HP2 > 0) {
-                attack2();
             }
             if (move_tier < 3) {
                 Mark_Zuckerberg -= damage;
@@ -1608,13 +1603,13 @@ class Game {
             print_slow("2069 health " + HP1);
             print_slow("2077 health " + HP2);
             print_slow(emmi_type + " health " + emmi_HP);
+
+            emmi_attack = 0;
+
             if (HP1 > 0) {
                 attack1();
             }
-
-            if (HP2 > 0) {
-                attack2();
-            }
+            attack_emmi();
 
             if (HP1 > HP1m) {
                 HP1 = HP1m;
@@ -1626,8 +1621,6 @@ class Game {
 
             emmi_HP -= damage;
             damage = 0;
-            attack_emmi();
-
 
             if ((HP2 < 0) && (HP1 < 0)) {
                 restart();
@@ -1965,10 +1958,6 @@ class Game {
         arrList.add(attack1_2);
         arrList.add(attack1_3);
         arrList.add(attack1_4);
-        arrList.add(customspace_1);
-        arrList.add(customspace_2);
-        arrList.add(customspace_3);
-        arrList.add(customspace_4);
         arrList.add(max_hit);
         Edit("Save.txt", arrList);
         System.gc();
@@ -2066,6 +2055,10 @@ class Game {
             emmi_HP = 125 + (emmi_level * 4);
             print_slow("A Cyborg appears");
         }
+    }
+
+    public void emmi_prep() {
+
     }
 
     //enemies attack
@@ -2209,18 +2202,6 @@ class Game {
 
         }
         if (i == 17) {
-            customspace_1 = var;
-        }
-        if (i == 18) {
-            customspace_2 = var;
-        }
-        if (i == 19) {
-            customspace_3 = var;
-        }
-        if (i == 20) {
-            customspace_4 = var;
-        }
-        if (i == 21) {
             max_hit = val;
         }
 
