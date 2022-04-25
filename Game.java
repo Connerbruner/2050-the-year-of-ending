@@ -23,7 +23,7 @@ class Game {
     //emmi is enemie vars
     int emmi_HP = 0;
     int emmi_level = 0;
-    int emmi_attack
+    int emmi_attack = 0;
     String emmi_type = "";
     //2069 and 2077 vars (non save)
     int HP1 = 35;
@@ -48,10 +48,10 @@ class Game {
     int exp2 = 0;
     int levelr1 = 20;
     int levelr2 = 20;
-    String attack1 = "Waterfall";
-    String attack2 = "Lasershot";
-    String attack3 = "Cure";
-    String attack4 = "Ember";
+    String attack1 = "fall";
+    String attack2 = "shot";
+    String attack3 = "";
+    String attack4 = "";
     int max_hit = 5;
 
 
@@ -348,11 +348,11 @@ class Game {
         print_slow("2069's turn");
 
         System.out.println("Name:        type:   ");
-        System.out.println(attack1_1);
+        System.out.println("Aqua"+attack1_1);
 
-        System.out.println(attack1_2);
+        System.out.println("Laser"+attack1_2);
 
-        System.out.println(attack1_3);
+        System.out.println("Cure"+attack1_3);
 
         System.out.println(attack1_4);
         System.out.println();
@@ -1605,7 +1605,7 @@ class Game {
             print_slow(emmi_type + " health " + emmi_HP);
 
             emmi_attack = 0;
-
+            
             if (HP1 > 0) {
                 attack1();
             }
@@ -2059,7 +2059,127 @@ public void show_attack()
     }
 
     public void emmi_prep() {
-
+    emmi_attack=random(1,3);
+    if (emmi_type.equals("Roomba"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("ROOMBA RUSH"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("RECHARGE");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("DARK RUSH");
+        }
+    }
+    if (emmi_type.equals("Dog bot"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("SPEED TACKLE"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("BATTERY RAM");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("BITE FURY");
+        }
+    }
+    if (emmi_type.equals("Robot with a sword"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("TRIPLE SLASH"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("BLADE OF DESTRUCTION");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("COUNTER");
+        }
+    }
+    if (emmi_type.equals("Robot with a gun"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("BULLET RUSH"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("POWER CHARGE");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("POWER SHOT");
+        }
+    }
+    if (emmi_type.equals("Robot with a spear"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("SPEAR RUSH"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("POWER CHARGE");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("ULTIMATE SPEAR");
+        }
+    }
+    if (emmi_type.equals("Mech"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("LASER RAIN"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("POWER BURST");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("ULTIMATE RUSH");
+        }
+    }
+    if (emmi_type.equals("Mini Mech"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("LASER SHOT"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("POWER BURST");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("TRIPLE SLASH");
+        }
+    }
+if (emmi_type.equals("Cyborg"))
+    {
+        if(emmi_attack==1)
+        {
+           print_slow("LASER SHOT"); 
+        }
+        if(emmi_attack==2)
+        {
+            print_slow("LASER SLASH");
+        }
+        if(emmi_attack==3)
+        {
+            print_slow("CHARGE BEAM");
+        }
+    }
     }
 
     //enemies attack
