@@ -341,20 +341,18 @@ class Game {
     }
 
     public void attack1() {
-//Fomrats attacks and dislays them
-
 
         String attack = "";
         print_slow("2069's turn");
 
         System.out.println("Name:        type:   ");
-        System.out.println("Aqua"+attack1_1);
+        System.out.println(attack1+"Aqua");
 
-        System.out.println("Laser"+attack1_2);
+        System.out.println(attack2+"Laser");
 
-        System.out.println("Cure"+attack1_3);
+        System.out.println(attack3+"Cure");
 
-        System.out.println(attack1_4);
+        System.out.println(attack4+"Ember");
         System.out.println();
 //This while loop just
         System.out.println("Which attack?    ");
@@ -374,44 +372,6 @@ class Game {
             attack_type = true;
         }
 
-//This is Water
-        if (attack.equals(attack1_1)) {
-            hit = random(1, attack2_tier * 5);
-            damage += hit;
-            move_tier = attack2_tier;
-            print_slow("2069 shot a ,-,laserbeam and deals" + (hit * attack2_tier) + "damage");
-        }
-
-//This is Lasershot
-        if (attack.equals(attack1_2)) {
-            hit = random(1, 15);
-            damage += (hit * attack2_tier);
-            move_tier = attack2_tier;
-            print_slow("2069 shot a ,-,laserbeam and deals" + (hit * attack2_tier) + "damage");
-
-        }
-
-
-//This is Cure
-        if (attack.equals(attack1_3)) {
-            int heal = random(10, 20);
-            print_slow("2069 heals " + (heal * attack3_tier) + " damage");
-            print_slow("2077 heals " + (heal * attack3_tier) + " damage");
-
-            HP2 += heal * attack3_tier;
-            HP1 += heal * attack3_tier;
-
-            move_tier = attack3_tier;
-        }
-//This is ember
-        if (attack.equals(attack1_4)) {
-
-            hit = random(15, 20);
-            damage += hit * attack4_tier;
-            move_tier = attack4_tier;
-            print_slow("2069 deals" + hit * attack4_tier + "damage");
-        }
-    }
 
     //2077's code
     public void attack2() {
@@ -1417,29 +1377,6 @@ class Game {
             if (tier > attack4_tier) {
                 print_slow("ember leveled up");
                 print_slow(attack4_tier + " --> " + tier);
-                if (tier == 5) {
-                    attack1_4 = "Explosion";
-                    attack4_tier = 5;
-
-                }
-
-                if (tier == 4) {
-                    attack1_4 = "Ember burst";
-
-                    attack4_tier = 4;
-                }
-
-                if (tier == 3) {
-                    attack1_4 = "Flame wheel";
-
-                    attack4_tier = 3;
-                }
-
-                if (tier == 2) {
-                    attack1_4 = "Dual ember";
-
-                    attack4_tier = 2;
-                }
 
             }
             // Cure level up
@@ -1449,24 +1386,24 @@ class Game {
                 print_slow(attack3_tier + " -->" + tier);
 
                 if (tier == 5) {
-                    attack1_3 = "Triple cure";
+                    attack1_3 = "Omega ";
 
                     attack3_tier = 5;
                 }
 
                 if (tier == 4) {
-                    attack1_3 = "Dual cure";
+                    attack1_3 = "Ultra ";
                     attack3_tier = 4;
 
                 }
                 if (tier == 3) {
-                    attack1_3 = "Cure burst";
+                    attack1_3 = "Tri ";
 
                     attack3_tier = 3;
                 }
 
                 if (tier == 2) {
-                    attack1_3 = "Super cure";
+                    attack1_3 = "Dual ";
 
                     attack3_tier = 2;
                 }
@@ -1479,24 +1416,24 @@ class Game {
                 print_slow(attack1_tier + " --> " + tier);
 
                 if (tier == 5) {
-                    attack1_1 = "Hydro Force";
+                    attack1_1 = "Omega "
 
                     attack1_tier = 5;
                 }
                 if (tier == 4) {
-                    attack1_1 = "Hydro pump";
+                    attack1_1 = "Ultra ";
 
                     attack1_tier = 4;
                 }
 
                 if (tier == 3) {
-                    attack1_1 = "Aqua Rush";
+                    attack1_1 = "Tri ";
 
                     attack1_tier = 3;
                 }
 
                 if (tier == 2) {
-                    attack1_1 = "Water blade";
+                    attack1_1 = "Dual ";
 
                     attack1_tier = 2;
                 }
@@ -1508,25 +1445,25 @@ class Game {
                 print_slow("Laser leveled up");
                 print_slow(attack2_tier + " --> " + tier);
                 if (tier == 5) {
-                    attack1_2 = "Omega laser";
+                    attack1_2 = "Omega ";
 
                     attack2_tier = 5;
                 }
 
                 if (tier == 4) {
-                    attack1_2 = "Tri laser";
+                    attack1_2 = "Ultra ";
 
                     attack2_tier = 4;
                 }
 
                 if (tier == 3) {
-                    attack1_2 = "Dual laser";
+                    attack1_2 = "Tri ";
 
                     attack2_tier = 3;
                 }
 
                 if (tier == 2) {
-                    attack1_2 = "Laserbeam";
+                    attack1_2 = "Dual ";
                     attack2_tier = 2;
                 }
             }
@@ -1605,7 +1542,7 @@ class Game {
             print_slow(emmi_type + " health " + emmi_HP);
 
             emmi_attack = 0;
-            
+            emmi_prep();
             if (HP1 > 0) {
                 attack1();
             }
@@ -2064,7 +2001,7 @@ public void show_attack()
     {
         if(emmi_attack==1)
         {
-           print_slow("ROOMBA RUSH"); 
+           print_slow("ROOMBA RUSH");
         }
         if(emmi_attack==2)
         {
@@ -2079,7 +2016,7 @@ public void show_attack()
     {
         if(emmi_attack==1)
         {
-           print_slow("SPEED TACKLE"); 
+           print_slow("SPEED TACKLE");
         }
         if(emmi_attack==2)
         {
@@ -2094,7 +2031,7 @@ public void show_attack()
     {
         if(emmi_attack==1)
         {
-           print_slow("TRIPLE SLASH"); 
+           print_slow("TRIPLE SLASH");
         }
         if(emmi_attack==2)
         {
@@ -2102,18 +2039,18 @@ public void show_attack()
         }
         if(emmi_attack==3)
         {
-            print_slow("COUNTER");
+            print_slow("ZERO SLASH");
         }
     }
     if (emmi_type.equals("Robot with a gun"))
     {
         if(emmi_attack==1)
         {
-           print_slow("BULLET RUSH"); 
+           print_slow("BULLET RUSH");
         }
         if(emmi_attack==2)
         {
-            print_slow("POWER CHARGE");
+            print_slow("ZERO BLAST");
         }
         if(emmi_attack==3)
         {
@@ -2124,22 +2061,37 @@ public void show_attack()
     {
         if(emmi_attack==1)
         {
-           print_slow("SPEAR RUSH"); 
+           print_slow("SPEAR RUSH");
         }
         if(emmi_attack==2)
         {
-            print_slow("POWER CHARGE");
+            print_slow("ZERO SPEAR");
         }
         if(emmi_attack==3)
         {
             print_slow("ULTIMATE SPEAR");
         }
     }
+        if (emmi_type.equals("Giga Mech"))
+        {
+            if(emmi_attack==1)
+            {
+                print_slow("LASER RAIN");
+            }
+            if(emmi_attack==2)
+            {
+                print_slow("DUAL BLADE");
+            }
+            if(emmi_attack==3)
+            {
+                print_slow("ZERO BEAM");
+            }
+        }
     if (emmi_type.equals("Mech"))
     {
         if(emmi_attack==1)
         {
-           print_slow("LASER RAIN"); 
+           print_slow("LASER RAIN");
         }
         if(emmi_attack==2)
         {
@@ -2154,7 +2106,7 @@ public void show_attack()
     {
         if(emmi_attack==1)
         {
-           print_slow("LASER SHOT"); 
+           print_slow("LASER SHOT");
         }
         if(emmi_attack==2)
         {
@@ -2169,7 +2121,7 @@ if (emmi_type.equals("Cyborg"))
     {
         if(emmi_attack==1)
         {
-           print_slow("LASER SHOT"); 
+           print_slow("LASER SHOT");
         }
         if(emmi_attack==2)
         {
@@ -2185,69 +2137,36 @@ if (emmi_type.equals("Cyborg"))
     //enemies attack
     public void attack_emmi() {
         if (emmi_type.equals("Roomba")) {
-            print_slow("ROOMBA RUSH");
-            hit = emmi_HP * 2;
-            if (hit < 0)
-                hit = 0;
-            HP1 -= hit;
-            HP2 -= hit;
-            print_slow("2069 takes " + hit + " damage");
-            print_slow("2077 takes " + hit + " damage");
+
         }
         if (emmi_type.equals("Dog bot")) {
-            print_slow("SPEED TACKLE");
-            HP1 -= 5 + (3 * emmi_level);
-            print_slow("2069 takes " + (5 + (3 * emmi_level)) + " damage");
+
         }
 
         if (emmi_type.equals("Robot with a spear")) {
-            print_slow("ZERO SPEAR");
-            HP1 -= 10 + (2 * emmi_level);
-            print_slow("2069 takes " + (10 + (2 * emmi_level)) + "damage");
+
         }
 
         if (emmi_type.equals("Robot with a gun")) {
-            print_slow("DUAL BLASTER");
-            HP1 -= 5 + (2 * emmi_level);
-            HP2 -= 5 + (2 * emmi_level);
-            print_slow("2069 takes " + 5 + (2 * emmi_level) + " damage");
-            print_slow("2077 takes " + 5 + (2 * emmi_level) + " damage");
+
         }
         if (emmi_type.equals("Robot with a sword")) {
-            print_slow("ZERO BLADE");
-            HP2 -= 7 + (2 * emmi_level);
-            print_slow("2077 takes " + (7 + (2 * emmi_level)) + " damage");
+
         }
         if (emmi_type.equals("Mech")) {
-            print_slow("DUAL CANNON");
-            HP1 -= 20 + (2 * emmi_level);
-            HP2 -= 20 + (2 * emmi_level);
-            print_slow("2069 takes " + 20 + (2 * emmi_level) + " damage");
-            print_slow("2077 takes " + 20 + (2 * emmi_level) + " damage");
+
         }
 
         if (emmi_type.equals("Giga Mech")) {
-            print_slow("LASER RAIN");
-            HP1 -= 5 + (5 * emmi_level);
-            HP2 -= 5 + (5 * emmi_level);
-            print_slow("2069 takes " + (5 + (2 * emmi_level)) + " damage");
-            print_slow("2077 takes " + (5 + (2 * emmi_level)) + " damage");
+
         }
 
         if (emmi_type.equals("Mini Mech")) {
-            print_slow("LASER RAIN");
-            HP1 -= 10 + (2 * emmi_level);
-            HP2 -= 10 + (2 * emmi_level);
-            print_slow("2069 takes " + (10 + (2 * emmi_level)) + " damage");
-            print_slow("2077 takes " + (10 + (2 * emmi_level)) + " damage");
+
         }
 
         if (emmi_type.equals("Cyborg")) {
-            print_slow("RUSH");
-            HP1 -= 5 + (5 * emmi_level);
-            HP2 -= 5 + (5 * emmi_level);
-            print_slow("2069 takes " + (5 + (5 * emmi_level)) + " damage");
-            print_slow("2077 takes " + (5 + (5 * emmi_level)) + " damage");
+
         }
     }
 
