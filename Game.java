@@ -340,80 +340,8 @@ class Game {
         }
     }
 
-    /**public void attack1() {
-//Fomrats attacks and dislays them
 
-
-        String attack = "";
-        print_slow("2069's turn");
-
-        System.out.println("Name:        type:   ");
-        System.out.println(attack1_1);
-
-        System.out.println(attack1_2);
-
-        System.out.println(attack1_3);
-
-        System.out.println(attack1_4);
-        System.out.println();
-//This while loop just
-        System.out.println("Which attack?    ");
-        while (!attack.equals(attack1_1) && !attack.equals(attack1_3) && !attack.equals(attack1_2) && !attack.equals(attack1_4)) {
-            attack = scanner.nextLine();
-        }
-        System.out.print("Out Power or Out Speed (power or speed)")
-        String style = "";
-        while (!style.equals("speed") && !style.equals("power")) {
-            style = scanner.nextLine();
-        }
-        boolean attack_type;
-        if (style.equals("power")) {
-            attack_type = false;
-        }
-        if (style.equals("speed")) {
-            attack_type = true;
-        }
-
-//This is Water
-        if (attack.equals(attack1_1)) {
-            hit = random(1, attack2_tier * 5);
-            damage += hit;
-            move_tier = attack2_tier;
-            print_slow("2069 shot a ,-,laserbeam and deals" + (hit * attack2_tier) + "damage");
-        }
-
-//This is Lasershot
-        if (attack.equals(attack1_2)) {
-            hit = random(1, 15);
-            damage += (hit * attack2_tier);
-            move_tier = attack2_tier;
-            print_slow("2069 shot a ,-,laserbeam and deals" + (hit * attack2_tier) + "damage");
-
-        }
-
-
-//This is Cure
-        if (attack.equals(attack1_3)) {
-            int heal = random(10, 20);
-            print_slow("2069 heals " + (heal * attack3_tier) + " damage");
-            print_slow("2077 heals " + (heal * attack3_tier) + " damage");
-
-            HP2 += heal * attack3_tier;
-            HP1 += heal * attack3_tier;
-
-            move_tier = attack3_tier;
-        }
-//This is ember
-        if (attack.equals(attack1_4)) {
-
-            hit = random(15, 20);
-            damage += hit * attack4_tier;
-            move_tier = attack4_tier;
-            print_slow("2069 deals" + hit * attack4_tier + "damage");
-        }
-    }
-*/
-
+    Attack attack = new Attack(Aqua,{1,10}, 1);
 
 
 
