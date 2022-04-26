@@ -26,8 +26,10 @@ class Game {
     int emmi_attack = 0;
     String emmi_type = "";
     //2069 and 2077 vars (non save)
-    int HP1 = 35;
+    int HP1;
     int HP2 = 35;
+    int attack_num=0;
+    boolean attack_type;
     // boss health
     int bill_HP = 300;
     int Elon_HP = 150;
@@ -153,7 +155,7 @@ class Game {
             }
             System.out.println("which Mission would you like to try?   ");
             choice = scanner.nextLine();
-            System.out.println("");
+            System.out.println();
 //mission 1
             if (choice.equals("1")) {
                 print_slow("CHAPTER 1: The Tower of Power");
@@ -342,29 +344,29 @@ class Game {
 
         public void attack() {
 
-            String attack = "";
+            attack_num=0;
             print_slow("2069's turn");
 
-            System.out.println("Name:        type:   ");
             System.out.println("1: "+attack1);
 
             System.out.println("2: "+attack2);
 
-            System.out.println(attack3 + "Cure");
+            System.out.println("3: "+attack3);
 
-            System.out.println(attack4 + "Ember");
+            System.out.println("4: "+attack4);
             System.out.println();
 //This while loop just
             System.out.println("Which attack?    ");
-            while (!attack.equals(attack1) && !attack.equals(attack3) && !attack.equals(attack2) && !attack.equals(attack4)) {
-                attack = scanner.nextLine();
+            while (attack_num!=4 && attack_num!=3 && attack_num!=2 && attack_num!=2) {
+                attack_num = scanner.nextInt();
+
             }
             System.out.print("Out Power or Out Speed (power or speed)");
             String style = "";
             while (!style.equals("speed") && !style.equals("power")) {
                 style = scanner.nextLine();
             }
-            boolean attack_type;
+            attack_type=true;
             if (style.equals("power")) {
                 attack_type = false;
             }
@@ -372,6 +374,30 @@ class Game {
                 attack_type = true;
             }
         }
+        public void choseAttack()
+        {
+            atta
+        }
+    public int ember()
+    {
+    return random(attack4_tier*5,attack4_tier*5);
+    }
+    public int aqua()
+    {
+        return random(attack4_tier,attack4_tier*10);
+    }
+    public int lasershot()
+    {
+        return random(attack2_tier*2,15)*attack2_tier;
+    }
+    public void cure()
+    {
+            num=random(attack2_tier*2,20);
+            HP1+=num;
+            HP2+=num;
+            print_slow("2069 and 2077 heal "+num+" damage");
+    }
+
         //2077's code
         public void attack2() {
             print_slow("2077's turn");
@@ -379,9 +405,8 @@ class Game {
 //starts quicktime event
             num = quickTime() * max_hit;
             System.out.println("2077 Deals " + num + " Damage");
-            damage += num;
+            emmi_HP -= num;
 
-            System.out.println();
             if (HP2 > HP2m) {
                 HP2 = HP2m;
             }
@@ -666,7 +691,7 @@ class Game {
                 print_slow("Bill gates: RAGE SLASH");
                 num = random(10, 20);
                 print_slow("Bill Gates deals " + num + " Damage and takes " + (num / 3) + " damage");
-                System.out.println("");
+                System.out.println();
                 Tri_HP -= num / 3;
                 damage += num;
                 print_slow("Jeff bezos) RANDOM FORCE");
@@ -686,7 +711,7 @@ class Game {
                 print_slow("Bill Gates) RAGE SLASH");
                 num = random(10, 20);
                 print_slow("Bill Gates deals " + num + " Damage and takes " + (num / 2) + " damage");
-                System.out.println("");
+                System.out.println();
                 Tri_HP -= num / 2;
                 damage += num;
                 print_slow("Jeff bezos) RANDOM FORCE");
@@ -1941,7 +1966,7 @@ class Game {
                 System.out.println("Type ¨START¨ to continue     ");
                 choice = scanner.nextLine();
             }
-            System.out.println("");
+            System.out.println();
             print_slow("PUT GAME HERE");
         }
 
@@ -2156,36 +2181,81 @@ class Game {
         //enemies attack
         public void attack_emmi() {
             if (emmi_type.equals("Roomba")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
             if (emmi_type.equals("Dog bot")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
 
             if (emmi_type.equals("Robot with a spear")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
 
             if (emmi_type.equals("Robot with a gun")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
             if (emmi_type.equals("Robot with a sword")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
             if (emmi_type.equals("Mech")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
 
             if (emmi_type.equals("Giga Mech")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
 
             if (emmi_type.equals("Mini Mech")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
 
             if (emmi_type.equals("Cyborg")) {
-
+                if(emmi_attack==1)
+                {}
+                if(emmi_attack==2)
+                {}
+                if(emmi_attack==3)
+                {}
             }
         }
 
