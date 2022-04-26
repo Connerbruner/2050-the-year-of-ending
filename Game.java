@@ -337,17 +337,18 @@ class Game {
                 pull();
             }
         }
+        }
 
 
-        public void attack1;() {
+        public void attack() {
 
             String attack = "";
             print_slow("2069's turn");
 
             System.out.println("Name:        type:   ");
-            System.out.println(attack1 + "Aqua");
+            System.out.println("1: "+attack1);
 
-            System.out.println(attack2 + "Laser");
+            System.out.println("2: "+attack2);
 
             System.out.println(attack3 + "Cure");
 
@@ -372,7 +373,7 @@ class Game {
             }
         }
         //2077's code
-        public void attack2;() {
+        public void attack2() {
             print_slow("2077's turn");
 
 //starts quicktime event
@@ -386,7 +387,7 @@ class Game {
             }
         }
 
-        public int quickTime;() {
+        public int quickTime() {
             long startTime = System.currentTimeMillis();
             int i = 0;
             while (startTime + 10000 > System.currentTimeMillis()) {
@@ -411,14 +412,14 @@ class Game {
         }
 
         //Bill Gates boss fight
-        public void boss_bill;() {
+        public void boss_bill() {
             while (bill_HP > 0) {
                 print_slow("2069's health " + HP1);
                 print_slow("2077's health " + HP2);
                 print_slow("Bill's health " + bill_HP);
                 //2069 attacks
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
                 //2077 attacks
                 bill_HP -= damage;
@@ -438,7 +439,7 @@ class Game {
         }
 
         //bill gates attack
-        public void attack_bill;() {
+        public void attack_bill() {
 
             int bill = random(1, 3);
 
@@ -518,14 +519,14 @@ class Game {
         }
 
         //Elon musk boss fight
-        public void Elon_musk;() {
+        public void Elon_musk() {
             while (Elon_HP > 0) {
                 print_slow("2069's health " + HP1);
                 print_slow("2077's health " + HP2);
                 print_slow("Elon's health " + Elon_HP);
                 //2069 attacks
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
                 //2077 attacks
 
@@ -545,7 +546,7 @@ class Game {
         }
 
         //Elon musk attack
-        public void attack_Elon;() {
+        public void attack_Elon() {
             int bill = random(1, 3);
             //heals musk
             if (bill == 1) {
@@ -580,7 +581,7 @@ class Game {
         }
 
         //Double boss (bill gates and Jeff bezos)
-        public void double_boss;() {
+        public void double_boss() {
             while (Elon_HP > 0) {
                 print_slow("2069's health " + HP1);
                 print_slow("2077's health " + HP2);
@@ -588,7 +589,7 @@ class Game {
                 print_slow("Jeff's health " + Elon_HP);
                 //2069 attacks
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
                 //2077 attacks
 
@@ -615,7 +616,7 @@ class Game {
         }
 
         //jeff bezos attack
-        public void jeff_attack;() {
+        public void jeff_attack() {
             print_slow("MIND BEND");
             damage = random(1, 4);
             HP1 -= damage * random(1, 3);
@@ -624,7 +625,7 @@ class Game {
         }
 
         //sets 2069s and 2077s hp to 1
-        public void roomba_beam;() {
+        public void roomba_beam() {
             print_slow("ROOMBA BEAM");
             print_slow("2069 and 2077 both are now no 1 HP");
             HP1 = 1;
@@ -632,11 +633,11 @@ class Game {
         }
 
         //Fight all the tech giants
-        public void boss_rush;() {
+        public void boss_rush() {
             while (Tri_HP > 0) {
                 Tri_attack();
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
 
                 Tri_HP -= damage;
@@ -647,7 +648,7 @@ class Game {
         }
 
         //Tech gaint rush
-        public void Tri_attack;() {
+        public void Tri_attack() {
 
             print_slow("TRI FORCE");
             damage = 0;
@@ -732,11 +733,11 @@ class Game {
         }
 
         //Final boss
-        public void Final;() {
+        public void Final() {
             while (Mark_Zuckerberg > 0) {
                 Mark();
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
                 if (move_tier < 3) {
                     Mark_Zuckerberg -= damage;
@@ -752,7 +753,7 @@ class Game {
         }
 
         //Final boss attack
-        public void Mark;() {
+        public void Mark() {
             int Mark = random(1, 5);
             if (Mark == 3) {
                 if (Mark_Zuckerberg - 20 <= 10) {
@@ -828,7 +829,7 @@ class Game {
         }
 
         //Mission Text
-        public void mission1_1;() {
+        public void mission1_1() {
             print_slow("Welcome to the year 2050. Things aren't going so well.");
 
 
@@ -862,7 +863,7 @@ class Game {
         }
 
         //Mission Text
-        public void mission1_2;() {
+        public void mission1_2() {
             print_slow("WAKE UP, 2069!");
 
             print_slow("2069: Okay, okay, 2077.");
@@ -898,7 +899,7 @@ class Game {
             print_slow("*Later in the subway*");
         }
 
-        public void mission2_1;() {
+        public void mission2_1() {
             print_slow("*2077 pulls the kill switch in the powerplant*");
 
 
@@ -932,7 +933,7 @@ class Game {
             print_slow("2077: WE ARE GOING TO KILL THAT DUMB MECH");
         }
 
-        public void mission1_3;() {
+        public void mission1_3() {
             print_slow(
                     "2069: It appears that the powerplant has taken some damage due to the power being shut off."
             );
@@ -947,7 +948,7 @@ class Game {
             print_slow("2069: I got it");
         }
 
-        public void mission1_4;() {
+        public void mission1_4() {
             print_slow(
                     "old man: Thank you. I can't thank you enough. I am forever in your debt.");
 
@@ -974,7 +975,7 @@ class Game {
             print_slow("2020: I can teach you new abilities in trade for ");
         }
 
-        public void mission2_2;() {
+        public void mission2_2() {
             print_slow("2069: Finally, I have not ran so fast in my life");
 
 
@@ -996,7 +997,7 @@ class Game {
             print_slow("2077: FOR HUMANITY!!");
         }
 
-        public void mission2_3;() {
+        public void mission2_3() {
             print_slow("Bill: You put a good fight");
 
 
@@ -1018,7 +1019,7 @@ class Game {
             print_slow("The power turns back off");
         }
 
-        public void mission3_1;() {
+        public void mission3_1() {
             print_slow("2069: How can he just disappear");
 
 
@@ -1052,7 +1053,7 @@ class Game {
             print_slow("Later in texas");
         }
 
-        public void mission3_2;() {
+        public void mission3_2() {
             print_slow("Elon musk: What are you guys doing");
 
 
@@ -1068,7 +1069,7 @@ class Game {
             print_slow("Elon musk pulls out a spear");
         }
 
-        public void mission3_3;() {
+        public void mission3_3() {
             print_slow("Elon musk: I must leave I have a meeting to attend to");
 
 
@@ -1087,7 +1088,7 @@ class Game {
             print_slow("2077: fine...");
         }
 
-        public void mission3_4;() {
+        public void mission3_4() {
             print_slow("2069:And ... the powers off");
 
 
@@ -1100,7 +1101,7 @@ class Game {
             print_slow("2069:Its not like we are any close to being responsible");
         }
 
-        public void mission4_1;() {
+        public void mission4_1() {
             print_slow("2069:We should take a detour to california ");
 
 
@@ -1128,14 +1129,14 @@ class Game {
             print_slow("2069: 2020 floor it");
         }
 
-        public void mission4_2;() {
+        public void mission4_2() {
             print_slow("2069: It appears that calfornia is very dangerous");
 
 
             print_slow("2077: I bet that the group responsible for this has their headquarters in california");
         }
 
-        public void mission5_1;() {
+        public void mission5_1() {
             print_slow("2069: We should find a 6-11 to stop and rest at");
 
 
@@ -1145,7 +1146,7 @@ class Game {
             print_slow("2020: We are in luck there is one at the nearest exit");
         }
 
-        public void mission5_2;() {
+        public void mission5_2() {
             print_slow("Later in the morning");
 
 
@@ -1184,13 +1185,13 @@ class Game {
             Elon_HP = 200;
         }
 
-        public void mission5_3;() {
+        public void mission5_3() {
             print_slow("Jeff bezos: You did not tell me that these kids could put up a fight");
             print_slow("Bill gates: Nevermind that we need to leave NOW");
             print_slow("Jeff bezos: Right");
         }
 
-        public void mission6_1;() {
+        public void mission6_1() {
             print_slow("*Power flashs on everywhere*");
             print_slow("2069: What the...");
             print_slow("mark zuckerberg (on tv): Hello everyone it appears that 4 of us are rebeling againest our new way of life");
@@ -1203,7 +1204,7 @@ class Game {
             print_slow("2020: We need to deal with them");
         }
 
-        public void mission6_2;() {
+        public void mission6_2() {
             print_slow("2077: Peice of cake ");
             print_slow("2069: Easy for you to say");
             print_slow("2020: We have a issue the car has broken down we are going to have to walk the rest of the way");
@@ -1211,7 +1212,7 @@ class Game {
             print_slow("2069: Now we are in real danger");
         }
 
-        public void mission7_1;() {
+        public void mission7_1() {
             print_slow("2077: I am soooOO tired");
             print_slow("2069: When is the nearest stop");
             print_slow("2020: About 5 miles");
@@ -1224,7 +1225,7 @@ class Game {
             print_slow("2077: lets stop at the factory");
         }
 
-        public void mission7_2;() {
+        public void mission7_2() {
             print_slow("2069: Well the factory was less than effective");
             print_slow("2077: You can say that again");
             print_slow("2020: Boys...");
@@ -1238,7 +1239,7 @@ class Game {
             print_slow("2069: YOUR GOING DOWN MARK ZUCKERBERG");
         }
 
-        public void mission8_1;() {
+        public void mission8_1() {
             print_slow("2069: We are closing in on califonia we should be their by tomorrow");
             print_slow("2077: I READY! LETS FINISH THIS");
             print_slow("2069: Right,This final push will be the hardest");
@@ -1246,14 +1247,14 @@ class Game {
             print_slow("2077: Alright,I am ready");
         }
 
-        public void mission8_2;() {
+        public void mission8_2() {
             print_slow("2069: GET BACK");
             print_slow("2069: Look its Elon Musk");
             print_slow("2077: We follow him into the building");
             print_slow("2069: Right,Be quite");
         }
 
-        public void mission9_1;() {
+        public void mission9_1() {
             print_slow("2069: Give Elon musk a chance to get inside");
             print_slow("2077: Right");
             print_slow("5 mins later");
@@ -1266,7 +1267,7 @@ class Game {
             print_slow("Bill gates: Lets clean up this error in our plan");
         }
 
-        public void mission9_2;() {
+        public void mission9_2() {
             print_slow("Elon musk: ...THESE KIDS");
             print_slow("Jeff bezos: We need to retreat");
             print_slow("2077: NEVER");
@@ -1279,7 +1280,7 @@ class Game {
             print_slow("2069: Right to the elevator");
         }
 
-        public void mission10_1;() {
+        public void mission10_1() {
             print_slow("*At the top of the elevator*");
             print_slow("Mark Zuckerberg: I have been waiting");
             print_slow("2069: Zuckerberg: why what is the reasoning behind this");
@@ -1290,7 +1291,7 @@ class Game {
             print_slow("Mark Zuckerberg: YOU WILL HAVE TO OVERCOME ME");
         }
 
-        public void mission10_2;() {
+        public void mission10_2() {
             print_slow("Mark Zuckerberg: Sigh, It apears musk was right");
             print_slow("2069: What?");
             print_slow("Mark Zuckerberg: Luckly I was ready for this");
@@ -1306,7 +1307,7 @@ class Game {
             print_slow("*Mark Zuckerberg disappears*");
         }
 
-        public void mission11_1;() {
+        public void mission11_1() {
             print_slow("2069: 2077 Exit?");
             print_slow("2077: Exit over there");
             print_slow("2069: Great");
@@ -1317,7 +1318,7 @@ class Game {
             print_slow("2069: While you do that Let me scout");
         }
 
-        public void pull;() {
+        public void pull() {
             int expt = exp1 + exp2;
             if (expt > 0) {
                 print_slow("2069 exp " + exp1);
@@ -1345,7 +1346,7 @@ class Game {
         }
 
         //gotcha
-        public void roll;() {
+        public void roll() {
             int tier = random(1, 10);
             if (tier == 5) {
                 tier = random(1, 5);
@@ -1375,6 +1376,28 @@ class Game {
                 if (tier > attack4_tier) {
                     print_slow("ember leveled up");
                     print_slow(attack4_tier + " --> " + tier);
+                    if (tier == 5) {
+                        attack1 = "Omega Ember";
+
+                        attack1_tier = 5;
+                    }
+
+                    if (tier == 4) {
+                        attack1 = "Ultra Ember";
+                        attack1_tier = 4;
+
+                    }
+                    if (tier == 3) {
+                        attack1 = "Tri Ember";
+
+                        attack1_tier = 3;
+                    }
+
+                    if (tier == 2) {
+                        attack1 = "Dual Ember";
+
+                        attack1_tier = 2;
+                    }
 
                 }
                 // Cure level up
@@ -1384,24 +1407,24 @@ class Game {
                     print_slow(attack3_tier + " -->" + tier);
 
                     if (tier == 5) {
-                        attack3 = "Omega ";
+                        attack3 = "Omega Cure";
 
                         attack3_tier = 5;
                     }
 
                     if (tier == 4) {
-                        attack3 = "Ultra ";
+                        attack3 = "Ultra Cure";
                         attack3_tier = 4;
 
                     }
                     if (tier == 3) {
-                        attack3 = "Tri ";
+                        attack3 = "Tri Cure";
 
                         attack3_tier = 3;
                     }
 
                     if (tier == 2) {
-                        attack3 = "Dual ";
+                        attack3 = "Dual Cure";
 
                         attack3_tier = 2;
                     }
@@ -1410,28 +1433,28 @@ class Game {
             //Charge level up
             if (num == 1) {
                 if (tier > attack1_tier) {
-                    print_slow("Charge leveled up");
+                    print_slow("Aqua leveled up");
                     print_slow(attack1_tier + " --> " + tier);
 
                     if (tier == 5) {
-                        attack1 = "Omega ";
+                        attack1 = "Omega Aqua";
 
                         attack1_tier = 5;
                     }
                     if (tier == 4) {
-                        attack1 = "Ultra ";
+                        attack1 = "Ultra Aqua";
 
                         attack1_tier = 4;
                     }
 
                     if (tier == 3) {
-                        attack1 = "Tri ";
+                        attack1 = "Tri Aqua";
 
                         attack1_tier = 3;
                     }
 
                     if (tier == 2) {
-                        attack1 = "Dual ";
+                        attack1 = "Dual Aqua";
 
                         attack1_tier = 2;
                     }
@@ -1443,25 +1466,25 @@ class Game {
                     print_slow("Laser leveled up");
                     print_slow(attack2_tier + " --> " + tier);
                     if (tier == 5) {
-                        attack2 = "Omega ";
+                        attack2 = "Omega Laser";
 
                         attack2_tier = 5;
                     }
 
                     if (tier == 4) {
-                        attack2 = "Ultra ";
+                        attack2 = "Ultra Laser";
 
                         attack2_tier = 4;
                     }
 
                     if (tier == 3) {
-                        attack2 = "Tri ";
+                        attack2 = "Tri Laser";
 
                         attack2_tier = 3;
                     }
 
                     if (tier == 2) {
-                        attack2 = "Dual ";
+                        attack2 = "Dual Laser";
                         attack2_tier = 2;
                     }
                 }
@@ -1491,7 +1514,7 @@ class Game {
         }
 
         //
-        public void level;() {
+        public void level() {
 
             if (exp2 >= levelr2) {
                 print_slow("LEVEL UP");
@@ -1518,7 +1541,7 @@ class Game {
         }
 
         //Get bonus exp for no doing a ton of overkill
-        public void gain;() {
+        public void gain() {
             if (emmi_HP == 0) {
                 bonus = (100 * emmi_level);
                 print_slow("You received a bonus " + bonus + " exp");
@@ -1533,7 +1556,7 @@ class Game {
         }
 
         //fight enemies
-        public void battle;() {
+        public void battle() {
             while (emmi_HP > 0) {
                 print_slow("2069 health " + HP1);
                 print_slow("2077 health " + HP2);
@@ -1542,7 +1565,7 @@ class Game {
                 emmi_attack = 0;
                 emmi_prep();
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
                 attack_emmi();
 
@@ -1565,10 +1588,8 @@ class Game {
             gain();
             level();
         }
-        public void show_attack;()
-
         //dungeon number 1
-        public void dungeon1;() {
+        public void dungeon1() {
             dungeon_length = 10;
             print_slow("Welcome to the underground subway(length: " + dungeon_length + " )");
 
@@ -1593,7 +1614,7 @@ class Game {
         }
 
         //dungeon number 2
-        public void dungeon2;() {
+        public void dungeon2() {
             dungeon_length = 20;
             print_slow("Welcome to rubble filled city (length: " + dungeon_length + " )");
 
@@ -1618,7 +1639,7 @@ class Game {
         }
 
         //dungeon number 3
-        public void dungeon3;() {
+        public void dungeon3() {
             dungeon_length = 5;
             print_slow("Welcome to rubble filled 6-11 (length: " + dungeon_length + " )");
             while (dungeon_length > 0) {
@@ -1642,7 +1663,7 @@ class Game {
         }
 
         //dungeon number 4
-        public void dungeon4;() {
+        public void dungeon4() {
             dungeon_length = 20;
             print_slow("Welcome to damaged power plant (length: " + dungeon_length + " )");
 
@@ -1667,7 +1688,7 @@ class Game {
         }
 
         //dungeon number 5
-        public void dungeon5;() {
+        public void dungeon5() {
             dungeon_length = 100;
             print_slow("Welcome to highway 101 (length: " + dungeon_length + " )");
 
@@ -1692,7 +1713,7 @@ class Game {
         }
 
         //dungeon number 6
-        public void dungeon6;() {
+        public void dungeon6() {
             dungeon_length = 5;
             print_slow("Welcome to rubble filled 6-11  (length: " + dungeon_length + " )");
 
@@ -1717,7 +1738,7 @@ class Game {
         }
 
         //dungeon number 7
-        public void dungeon7;() {
+        public void dungeon7() {
             dungeon_length = 20;
             print_slow("Welcome to old factory (length: " + dungeon_length + " )");
 
@@ -1743,7 +1764,7 @@ class Game {
         }
 
         //dungeon number 8
-        public void dungeon8;() {
+        public void dungeon8() {
             dungeon_length = 50;
             print_slow("Welcome to Central Fwy(length: " + dungeon_length + " )");
 
@@ -1768,7 +1789,7 @@ class Game {
         }
 
         //dungeon number 9
-        public void dungeon9;() {
+        public void dungeon9() {
             dungeon_length = 10;
             print_slow("On top of the Tower (length: " + dungeon_length + " )");
 
@@ -1791,12 +1812,12 @@ class Game {
         }
 
         //battle but with only 2069
-        public void battle2;() {
+        public void battle2() {
             while (emmi_HP > 0) {
                 print_slow("2069 health " + HP1);
                 print_slow(emmi_type + " health " + emmi_HP);
                 if (HP1 > 0) {
-                    attack1();
+                    attack();
                 }
 
 
@@ -1874,7 +1895,7 @@ class Game {
         }
 
         //wait method
-        public void wait;(int time;) {
+        public void wait(int time) {
             //groups up all vars
             ArrayList<Object> arrList = new ArrayList<Object>();
             arrList.add(missionnum);
@@ -1902,13 +1923,13 @@ class Game {
         }
 
         //random int (high to low)
-        public int random;(int low, int high;) {
+        public int random(int low, int high) {
             int range = high - low + 1;
             return (int) (Math.random() * range) + low;
         }
 
         //Game Over
-        public void restart;() {
+        public void restart() {
             print_slow("GAME OVER");
             print_slow("???: You seem to be overwhelmed");
             print_slow("???: I may be able to help");
@@ -1927,7 +1948,7 @@ class Game {
         /**
          * Returns false on "Yes, yes, y, or Y"
          */
-        public boolean skip;() {
+        public boolean skip() {
             System.out.println("Skip cutscene?   ");
 
             String skip = scanner.nextLine();
@@ -1939,7 +1960,7 @@ class Game {
         }
 
         //Creates new enemie
-        public void new_emmi;(int type1;) {
+        public void new_emmi(int type1) {
 
             if (type1 == 1) {
                 emmi_type = "Roomba";
@@ -1993,7 +2014,7 @@ class Game {
             }
         }
 
-        public void emmi_prep;() {
+        public void emmi_prep() {
             emmi_attack=random(1,3);
             if (emmi_type.equals("Roomba"))
             {
@@ -2133,7 +2154,7 @@ class Game {
         }
 
         //enemies attack
-        public void attack_emmi;() {
+        public void attack_emmi() {
             if (emmi_type.equals("Roomba")) {
 
             }
@@ -2169,7 +2190,7 @@ class Game {
         }
 
         //Create a giga mech
-        public void giga_mech;() {
+        public void giga_mech() {
             emmi_type = "Giga Mech";
             emmi_level = level1;
             emmi_HP = 200 + (emmi_level * 20);
@@ -2177,10 +2198,10 @@ class Game {
         }
 
         //uses READ to update save
-        public void grabSave;() {
+        public void grabSave() {
             ArrayList<Object> Save = Read("Save.txt");
 
-            for (int i = 0; i < 25; i++) {
+            for (int i = 0; i < 17; i++) {
                 String var = Save.get(i).toString();
                 int val = 0;
                 if (strIsInt(var)) {
@@ -2250,7 +2271,7 @@ class Game {
         }
 
 //checks if you can cast a str to a int
-        public boolean strIsInt;(String string){
+        public boolean strIsInt(String string){
             try{
                 int value=Integer.parseInt(string);
                 return true;
