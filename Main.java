@@ -2,6 +2,7 @@ import java.util.Scanner;
 import java.lang.SecurityManager;
 class Main
 {
+    
     public static void main(String[] args) {
     Game game = new Game();
     System.gc();
