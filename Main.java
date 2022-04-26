@@ -6,10 +6,7 @@ class Main
     public static void main(String[] args) {
     Game game = new Game();
     System.gc();
-    SecurityManager sec = new SecurityManager();
-    System.out.println(sec.getSecurityContext());
     //Debug stuff
-    sec.checkRead("Save.txt");
     System.out.println("Save found and no SecurityException");
     game.grabSave(); 
     //clears the screen

@@ -374,7 +374,7 @@ class Game {
                 attack_type = true;
             }
         }
-        public void choseAttack(int power)
+        public void choseAttack(double power)
         {
             if(attack_num==1){
             aqua(power);    
@@ -389,21 +389,21 @@ class Game {
             ember(power);
             }
         }
-    public int ember(int power)
+    public int ember(double power)
     {
-    return random(attack4_tier*5,attack4_tier*5)*power;
+    return (int)(random(attack4_tier*5,attack4_tier*5)*power);
     }
-    public int aqua(int power)
+    public int aqua(double power)
     {
-        return random(attack1_tier,attack1_tier*10))*power;
+        return (int)(random( attack1_tier,attack1_tier*10)*power);
     }
-    public int lasershot(int power)
+    public int lasershot(double power)
     {
-        return (random(attack2_tier*2,15)*attack2_tier))*power;
+        return (int)((random(attack2_tier*2,15)*attack2_tier)*power);
     }
-    public void cure(int power)
+    public void cure(double power)
     {
-            num=random(attack3_tier*2,20)*power;
+            num=(int)(random(attack3_tier*2,20)*power);
             HP1+=num;
             HP2+=num;
             print_slow("2069 and 2077 heal "+num+" damage");
@@ -2191,14 +2191,14 @@ class Game {
 
         //enemies attack
         public void attack_emmi() {
-            int power=0
+            double power=0;
             if (emmi_type.equals("Roomba")) {
                 if(emmi_attack==1)
                 {
                     if(attack_type)
                     {
-                        power=1;
-                        if(attack_num==4)
+                        power=1.5;
+                        if(attack_num==2)
                         {
                           power=2;
                         }
@@ -2207,27 +2207,48 @@ class Game {
                     {
                         power=0;
                         print_slow("ROOMBA RUSH");
-                        
+                        num=emmi_HP*2;
+                        HP1-=num;
+                        HP2-=num;
+                        print_slow("Roomba deals "+num+" damage");
                     }
                 }
                 if(emmi_attack==2)
                 {
-                    if(attack_type)
+                    if(!attack_type)
                     {
+                        power=2;
                         if(attack_num==4)
                         {
-                            
+                            power=3;
                         }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("RECHARGE");
+                        num=(int)(emmi_HP*0.5);
+                        print_slow("Roomba heals "+num+" damage");
                     }
                 }
                 if(emmi_attack==3)
                 {
-                    if(attack_type)
+                    if(!attack_type)
                     {
-                        if(attack_num==4)
+                        power=1.1;
+                        if(attack_num==1)
                         {
-                            
+                             power=1.5;
                         }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("CHARGE BEAM");
+                        num=(emmi_HP*random(1,3));
+                        HP1-=num;
+                        HP2-=num;
+                        print_slow("Roomba deals "+num+" damage");
                     }
                 }
             }
@@ -2236,30 +2257,60 @@ class Game {
                 {
                     if(attack_type)
                     {
-                        if(attack_num==4)
+                        power=1;
+                        if(attack_num==1)
                         {
-                            
+                        power=1.5;
                         }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("SPEED TACKLE");
+                        num=random(10,15);
+                        HP1-=num;
+                        HP2-=num;
+                        print_slow("Dog Bot deals "+num+" damage");
                     }
                 }
                 if(emmi_attack==2)
                 {
                     if(attack_type)
                     {
-                        if(attack_num==4)
+                        power=1;
+                        if(attack_num==2)
                         {
-                            
+                            power=1.5;
                         }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("BATTERY RAM");
+                        num=random(10,50);
+                        HP1-=num;
+                        HP2-=num;
+                        print_slow("Dog Bot deals "+num+" damage");
                     }
                 }
                 if(emmi_attack==3)
                 {
                     if(attack_type)
                     {
-                        if(attack_num==4)
+                        power=1;
+                        if(attack_num==3)
                         {
-                            
+                            power=1.5;
                         }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("BITE RUSH");
+                        num=random(5,25);
+                        HP1-=num;
+                        HP2-=num;
+                        print_slow("Dog Bot deals "+num+" damage");
                     }
                 }
             }
@@ -2269,10 +2320,20 @@ class Game {
                 {
                     if(attack_type)
                     {
+                        power=1;
                         if(attack_num==4)
                         {
-                            
+                            power=1.5;
                         }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("SPEAR RUSH");
+                        num=random(5,20);
+                        HP1-=num;
+                        HP2-=num;
+                        print_slow("Robot with a spear deals "+num+" damage");
                     }
                 }
                 if(emmi_attack==2)
