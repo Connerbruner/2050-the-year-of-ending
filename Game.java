@@ -28,7 +28,6 @@ class Game {
     //2069 and 2077 vars (non save)
     int HP1 = 35;
     int HP2 = 35;
-    String attack = "";
     // boss health
     int bill_HP = 300;
     int Elon_HP = 150;
@@ -103,6 +102,8 @@ class Game {
         }
     }
 
+        if(HP1 >HP1m)
+
     //Reads through txt
     public static ArrayList<Object> Read(String file) {
 
@@ -115,6 +116,7 @@ class Game {
             while (var != null) {
                 arr.add(var);
                 var = reader.readLine();
+
             }
             reader.close();
             return arr;
@@ -126,7 +128,7 @@ class Game {
 
     }
 
-
+}
 
     //Starts up 2069
     public void game() {
@@ -152,7 +154,7 @@ class Game {
             }
             System.out.println("which Mission would you like to try?   ");
             choice = scanner.nextLine();
-            System.out.println();
+            System.out.println("");
 //mission 1
             if (choice.equals("1")) {
                 print_slow("CHAPTER 1: The Tower of Power");
@@ -344,20 +346,20 @@ class Game {
         print_slow("2069's turn");
 
         System.out.println("Name:        type:   ");
-        System.out.println(attack1);
+        System.out.println(attack1+"Aqua");
 
-        System.out.println(attack2);
+        System.out.println(attack2+"Laser");
 
-        System.out.println(attack3);
+        System.out.println(attack3+"Cure");
 
-        System.out.println(attack4);
+        System.out.println(attack4+"Ember");
         System.out.println();
 //This while loop just
         System.out.println("Which attack?    ");
-        while (!attack.equals(attack1) && !attack.equals(attack3) && !attack.equals(attack2) && !attack.equals(attack4)) {
+        while (!attack.equals(attack1_1) && !attack.equals(attack1_3) && !attack.equals(attack1_2) && !attack.equals(attack1_4)) {
             attack = scanner.nextLine();
         }
-        System.out.print("Out Power or Out Speed (power or speed)");
+        System.out.print("Out Power or Out Speed (power or speed)")
         String style = "";
         while (!style.equals("speed") && !style.equals("power")) {
             style = scanner.nextLine();
@@ -369,7 +371,7 @@ class Game {
         if (style.equals("speed")) {
             attack_type = true;
         }
-    }
+
 
     //2077's code
     public void attack2() {
@@ -665,7 +667,7 @@ class Game {
             print_slow("Bill gates: RAGE SLASH");
             num = random(10, 20);
             print_slow("Bill Gates deals " + num + " Damage and takes " + (num / 3) + " damage");
-            System.out.println();
+            System.out.println("");
             Tri_HP -= num / 3;
             damage += num;
             print_slow("Jeff bezos) RANDOM FORCE");
@@ -685,7 +687,7 @@ class Game {
             print_slow("Bill Gates) RAGE SLASH");
             num = random(10, 20);
             print_slow("Bill Gates deals " + num + " Damage and takes " + (num / 2) + " damage");
-            System.out.println();
+            System.out.println("");
             Tri_HP -= num / 2;
             damage += num;
             print_slow("Jeff bezos) RANDOM FORCE");
@@ -1376,28 +1378,6 @@ class Game {
                 print_slow("ember leveled up");
                 print_slow(attack4_tier + " --> " + tier);
 
-                if (tier == 5) {
-                    attack3 = "Omega ember";
-
-                    attack3_tier = 5;
-                }
-
-                if (tier == 4) {
-                    attack3 = "Ultra ember";
-                    attack3_tier = 4;
-
-                }
-                if (tier == 3) {
-                    attack3 = "Tri ember";
-
-                    attack3_tier = 3;
-                }
-
-                if (tier == 2) {
-                    attack3 = "Dual ember";
-
-                    attack3_tier = 2;
-                }
             }
             // Cure level up
             if (num == 3) {
@@ -1406,24 +1386,24 @@ class Game {
                 print_slow(attack3_tier + " -->" + tier);
 
                 if (tier == 5) {
-                    attack3 = "Omega Cure";
+                    attack1_3 = "Omega ";
 
                     attack3_tier = 5;
                 }
 
                 if (tier == 4) {
-                    attack3 = "Ultra Cure";
+                    attack1_3 = "Ultra ";
                     attack3_tier = 4;
 
                 }
                 if (tier == 3) {
-                    attack3 = "Tri Cure";
+                    attack1_3 = "Tri ";
 
                     attack3_tier = 3;
                 }
 
                 if (tier == 2) {
-                    attack3 = "Dual Cure";
+                    attack1_3 = "Dual ";
 
                     attack3_tier = 2;
                 }
@@ -1432,28 +1412,28 @@ class Game {
         //Charge level up
         if (num == 1) {
             if (tier > attack1_tier) {
-                print_slow("Aqua leveled up");
+                print_slow("Charge leveled up");
                 print_slow(attack1_tier + " --> " + tier);
 
                 if (tier == 5) {
-                    attack1 = "Omega Aqua";
+                    attack1_1 = "Omega "
 
                     attack1_tier = 5;
                 }
                 if (tier == 4) {
-                    attack1 = "Ultra Aqua";
+                    attack1_1 = "Ultra ";
 
                     attack1_tier = 4;
                 }
 
                 if (tier == 3) {
-                    attack1 = "Tri Aqua";
+                    attack1_1 = "Tri ";
 
                     attack1_tier = 3;
                 }
 
                 if (tier == 2) {
-                    attack1 = "Dual Aqua";
+                    attack1_1 = "Dual ";
 
                     attack1_tier = 2;
                 }
@@ -1465,25 +1445,25 @@ class Game {
                 print_slow("Laser leveled up");
                 print_slow(attack2_tier + " --> " + tier);
                 if (tier == 5) {
-                    attack2 = "Omega Laser";
+                    attack1_2 = "Omega ";
 
                     attack2_tier = 5;
                 }
 
                 if (tier == 4) {
-                    attack2 = "Ultra Laser";
+                    attack1_2 = "Ultra ";
 
                     attack2_tier = 4;
                 }
 
                 if (tier == 3) {
-                    attack2 = "Tri Laser";
+                    attack1_2 = "Tri ";
 
                     attack2_tier = 3;
                 }
 
                 if (tier == 2) {
-                    attack2 = "Dual Laser";
+                    attack1_2 = "Dual ";
                     attack2_tier = 2;
                 }
             }
@@ -1587,6 +1567,8 @@ class Game {
         gain();
         level();
     }
+public void show_attack()
+
     //dungeon number 1
     public void dungeon1() {
         dungeon_length = 10;
@@ -1896,7 +1878,7 @@ class Game {
     //wait method
     public void wait(int time) {
         //groups up all vars
-        ArrayList<Object> arrList = new ArrayList<>();
+        ArrayList<Object> arrList = new ArrayList<Object>();
         arrList.add(missionnum);
         arrList.add(HP1m);
         arrList.add(HP2m);
@@ -1910,10 +1892,10 @@ class Game {
         arrList.add(exp2);
         arrList.add(levelr1);
         arrList.add(levelr2);
-        arrList.add(attack1);
-        arrList.add(attack2);
-        arrList.add(attack3);
-        arrList.add(attack4);
+        arrList.add(attack1_1);
+        arrList.add(attack1_2);
+        arrList.add(attack1_3);
+        arrList.add(attack1_4);
         arrList.add(max_hit);
         Edit("Save.txt", arrList);
         System.gc();
@@ -1940,7 +1922,7 @@ class Game {
             System.out.println("Type ¨START¨ to continue     ");
             choice = scanner.nextLine();
         }
-        System.out.println();
+        System.out.println("");
         print_slow("PUT GAME HERE");
     }
 
@@ -2200,7 +2182,7 @@ if (emmi_type.equals("Cyborg"))
     public void grabSave() {
         ArrayList<Object> Save = Read("Save.txt");
 
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 25; i++) {
             String var = Save.get(i).toString();
             int val = 0;
             if (strIsInt(var)) {
@@ -2215,7 +2197,7 @@ if (emmi_type.equals("Cyborg"))
             if (i == 2) {
                 HP2m = val;
             }
-
+        }
         if (i == 3) {
             attack1_tier = val;
         }
@@ -2247,16 +2229,16 @@ if (emmi_type.equals("Cyborg"))
             exp2 = val;
         }
         if (i == 13) {
-            attack1 = var;
+            attack1_1 = var;
         }
         if (i == 14) {
-            attack2 = var;
+            attack1_2 = var;
         }
         if (i == 15) {
-            attack3 = var;
+            attack1_3 = var;
         }
         if (i == 16) {
-            attack4 = var;
+            attack1_4 = var;
 
         }
         if (i == 17) {
