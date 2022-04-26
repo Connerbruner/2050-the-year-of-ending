@@ -374,25 +374,36 @@ class Game {
                 attack_type = true;
             }
         }
-        public void choseAttack()
+        public void choseAttack(int power)
         {
-            atta
+            if(attack_num==1){
+            aqua(power);    
+            }
+            if(attack_num==2){
+            lasershot(power);
+            }
+            if(attack_num==3){
+            cure(power);
+            }
+            if(attack_num==4){
+            ember(power);
+            }
         }
-    public int ember()
+    public int ember(int power)
     {
-    return random(attack4_tier*5,attack4_tier*5);
+    return random(attack4_tier*5,attack4_tier*5)*power;
     }
-    public int aqua()
+    public int aqua(int power)
     {
-        return random(attack4_tier,attack4_tier*10);
+        return random(attack1_tier,attack1_tier*10))*power;
     }
-    public int lasershot()
+    public int lasershot(int power)
     {
-        return random(attack2_tier*2,15)*attack2_tier;
+        return (random(attack2_tier*2,15)*attack2_tier))*power;
     }
-    public void cure()
+    public void cure(int power)
     {
-            num=random(attack2_tier*2,20);
+            num=random(attack3_tier*2,20)*power;
             HP1+=num;
             HP2+=num;
             print_slow("2069 and 2077 heal "+num+" damage");
@@ -2180,82 +2191,306 @@ class Game {
 
         //enemies attack
         public void attack_emmi() {
+            int power=0
             if (emmi_type.equals("Roomba")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        power=1;
+                        if(attack_num==4)
+                        {
+                          power=2;
+                        }
+                    }
+                    else
+                    {
+                        power=0;
+                        print_slow("ROOMBA RUSH");
+                        
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
             if (emmi_type.equals("Dog bot")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
 
             if (emmi_type.equals("Robot with a spear")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
 
             if (emmi_type.equals("Robot with a gun")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
             if (emmi_type.equals("Robot with a sword")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
             if (emmi_type.equals("Mech")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
 
             if (emmi_type.equals("Giga Mech")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
 
             if (emmi_type.equals("Mini Mech")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
 
             if (emmi_type.equals("Cyborg")) {
                 if(emmi_attack==1)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==2)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
                 if(emmi_attack==3)
-                {}
+                {
+                    if(attack_type)
+                    {
+                        if(attack_num==4)
+                        {
+                            
+                        }
+                    }
+                }
             }
         }
 
