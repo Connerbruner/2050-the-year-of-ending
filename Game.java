@@ -341,7 +341,7 @@ class Game {
     }
 
 
-    public void attack() {
+    public void attack()  {
 
         attack_num = 0;
         print_slow("2069's turn");
