@@ -30,6 +30,7 @@ class Game {
     int HP2 = 35;
     int attack_num = 0;
     boolean attack_type;
+    int last_attack=0;
     // boss health
     int bill_HP = 300;
     int Elon_HP = 150;
@@ -355,16 +356,12 @@ class Game {
         System.out.println("4: " + attack4);
         System.out.println();
 //This while loop just
-        System.out.println("Which attack?    ");
-        while (attack_num != 4 && attack_num != 3 && attack_num != 2 && attack_num != 2) {
-            attack_num = scanner.nextInt();
+        System.out.println("Which attack? (1-4)   ");
+        attack_num = scanner.nextInt();
 
-        }
         System.out.print("Out Power or Out Speed (power or speed)");
-        String style = "";
-        while (!style.equals("speed") && !style.equals("power")) {
-            style = scanner.nextLine();
-        }
+        String style = scanner.nextLine();
+
         attack_type = !style.equals("power");
         if (style.equals("speed")) {
             attack_type = true;
@@ -384,9 +381,11 @@ class Game {
         if (attack_num == 4) {
             ember(power);
         }
+        last_attack=attack_num;
     }
 
     public int ember(double power) {
+
         return (int) (random(attack4_tier * 5, attack4_tier * 5) * power);
     }
 
@@ -403,6 +402,23 @@ class Game {
         HP1 += num;
         HP2 += num;
         print_slow("2069 and 2077 heal " + num + " damage");
+    }
+    public int climate_Rush()
+    {
+        if(attack_num==4 && last_attack==1)
+        {
+            if(!attack_type)
+            {
+                print_slow("BURNING FREEZE");
+                return (int)((1.1*attack4_tier)*(1.1*attack1_tier));
+            }
+            if(attack_type)
+            {
+                print_slow("BURNING FLOOD");
+                return (int)((1.25*attack4_tier)*(0.9*attack1_tier));
+            }
+        }
+        return 0;
     }
 
     //2077's code
@@ -2299,66 +2315,179 @@ class Game {
                     if (attack_num == 2) {
                         power = 1.5;
                     }
+                } else {
+                    power = 0;
+                    print_slow("BULLET RUSH");
+                    num = random(1, 30);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Robot with a gun deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 2) {
                 if (attack_type) {
-                    if (attack_num == 4) {
-
+                    power = 1.5;
+                    if (attack_num == 1) {
+                        power = 1;
                     }
+                } else {
+                    power = 0;
+                    print_slow("ZERO BLAST");
+                    num = random(10, 15);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Robot with a gun deals deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 3) {
-                if (attack_type) {
+                if (!attack_type) {
+                    power = 1.5;
                     if (attack_num == 4) {
-
+                        power = 1.5;
                     }
+                } else {
+                    power = 0;
+                    print_slow("CHARGE SHOT");
+                    num = random(30, 50);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Robot with a gun deals " + num + " damage");
+
                 }
             }
         }
         if (emmi_type.equals("Robot with a sword")) {
             if (emmi_attack == 1) {
-                if (attack_type) {
-                    if (attack_num == 4) {
-
+                if (!attack_type) {
+                    if (attack_num == 1) {
                     }
+                } else {
+                    power = 0;
+                    print_slow("TRIPLE SLASH");
+                    num = random(5, 15);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Robot with a sword deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 2) {
-                if (attack_type) {
+                if (!attack_type) {
+                    power = 1.5;
                     if (attack_num == 4) {
-
+                        power = 2.5;
                     }
+
+                } else {
+                    power = 0;
+                    print_slow("BLADE OF DESTRUCTION");
+                    num = random(1, 100);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Robot with a sword  deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 3) {
                 if (attack_type) {
-                    if (attack_num == 4) {
-
+                    power=1;
+                    if (attack_num == 2) {
+                        power=1.5;
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("ZERO SLASH");
+                    num = random(5, 15);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Robot with a sword  deals " + num + " damage");
+
                 }
             }
         }
+
+
         if (emmi_type.equals("Mech")) {
             if (emmi_attack == 1) {
-                if (attack_type) {
-                    if (attack_num == 4) {
+                power=1.5;
+                if (!attack_type) {
+                    if (attack_num == 3) {
+                        power=2;
+                    }
+                    else {
+                        power = 0.75;
+                        print_slow("LASER RAIN");
+                        num = random(20, 30);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Mech deals " + num + " damage");
 
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("LASER RAIN");
+                    num = random(10, 30);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Mech deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 2) {
-                if (attack_type) {
-                    if (attack_num == 4) {
+                if (!attack_type) {
+                    power=1.5;
+                    if (attack_num == 2) {
+                        power=2.5;
+                    }
+                    else {
+                        power = 0.75;
+                        print_slow("POWER BURST");
+                        num = random(30, 50);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Mech deals " + num + " damage");
 
                     }
                 }
+                else {
+                    power = 0;
+                    print_slow("POWER BURST");
+                    num = random(20, 40);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Mech deals " + num + " damage");
+
+                }
+
             }
             if (emmi_attack == 3) {
                 if (attack_type) {
+                    power=1.5;
                     if (attack_num == 4) {
+                        power=2.5;
+                    }
+                    else {
+                        power = 0.5;
+                        print_slow("ULTIMATE RUSH");
+                        num = random(30, 50);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Mech deals " + num + " damage");
 
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("ULTIMATE RUSH");
+                    num = random(25, 40);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Mech deals " + num + " damage");
+
                 }
             }
         }
