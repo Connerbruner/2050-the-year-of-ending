@@ -74,61 +74,9 @@ class Game {
     //obj
     Scanner scanner = new Scanner(System.in);
 
-    {
-        HP1 = HP1m;
-    }
-
-    //edit txt (update save)
-    public static void Edit(String filePath, ArrayList<Object> arr) {
-        File fileToBeModified = new File(filePath);
-        BufferedReader reader = null;
-        FileWriter writer = null;
-
-        try {
 
 
-            writer = new FileWriter(fileToBeModified);
-            for (Object o : arr) {
-                String print = o.toString() + "\n";
-                writer.write(print);
-            }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                //Closing the resources
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-
-    //Reads through txt
-    public static ArrayList<Object> Read(String file) {
-
-        try {
-            File txt = new File(file);
-            FileReader fileRead = new FileReader(txt);
-            BufferedReader reader = new BufferedReader(fileRead);
-            ArrayList<Object> arr = new ArrayList<>();
-            Object var = reader.readLine();
-            while (var != null) {
-                arr.add(var);
-                var = reader.readLine();
-
-            }
-            reader.close();
-            return arr;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-
-
-    }
 
 
     //Starts up 2069
@@ -341,7 +289,7 @@ class Game {
         }
     }
 
-
+//shows you what attacks you can use
     public void attack()  {
 
         attack_num = 0;
@@ -367,7 +315,7 @@ class Game {
             attack_type = true;
         }
     }
-
+//choses a method
     public void choseAttack(double power) {
         if (attack_num == 1) {
             aqua(power);
@@ -383,20 +331,20 @@ class Game {
         }
         last_attack=attack_num;
     }
-
+//embers method
     public int ember(double power) {
 
         return (int) (random(attack4_tier * 5, attack4_tier * 5) * power);
     }
-
+//Aqua method
     public int aqua(double power) {
         return (int) (random(attack1_tier, attack1_tier * 10) * power);
     }
-
+//lasershot method
     public int lasershot(double power) {
         return (int) ((random(attack2_tier * 2, 15) * attack2_tier) * power);
     }
-
+//cure method
     public void cure(double power) {
         num = (int) (random(attack3_tier * 2, 20) * power);
         HP1 += num;
@@ -405,6 +353,7 @@ class Game {
     }
     public int climate_Rush()
     {
+        //if ember is first
         if(attack_num==4 && last_attack==1)
         {
             if(!attack_type)
@@ -418,6 +367,21 @@ class Game {
                 return (int)((1.25*attack4_tier)*(0.9*attack1_tier));
             }
         }
+        //if water is first
+        if(attack_num==1 && last_attack==4)
+        {
+            if(!attack_type)
+            {
+                print_slow("BURNING FREEZE");
+                return (int)((1.1*attack4_tier)*(1.1*attack1_tier));
+            }
+            if(attack_type)
+            {
+                print_slow("BURNING FLOOD");
+                return (int)((1.25*attack4_tier)*(0.9*attack1_tier));
+            }
+        }
+        
         return 0;
     }
 
@@ -2059,7 +2023,7 @@ class Game {
             print_slow("A Cyborg appears");
         }
     }
-
+//shows the player what attack is coming for them
     public void emmi_prep() {
         emmi_attack = random(1, 3);
         if (emmi_type.equals("Roomba")) {
@@ -2166,6 +2130,7 @@ class Game {
     //enemies attack
     public void attack_emmi() {
         double power = 0;
+        //Roomba attacks
         if (emmi_type.equals("Roomba")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2211,6 +2176,7 @@ class Game {
                 }
             }
         }
+        //Dog bot attacks
         if (emmi_type.equals("Dog bot")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2258,7 +2224,7 @@ class Game {
                 }
             }
         }
-
+        //Robot with a spear attacks
         if (emmi_type.equals("Robot with a spear")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2307,7 +2273,7 @@ class Game {
                 }
             }
         }
-
+        //Robot with a gun attacks
         if (emmi_type.equals("Robot with a gun")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2358,6 +2324,7 @@ class Game {
                 }
             }
         }
+        //Robot with a sword attack
         if (emmi_type.equals("Robot with a sword")) {
             if (emmi_attack == 1) {
                 if (!attack_type) {
@@ -2409,7 +2376,7 @@ class Game {
             }
         }
 
-
+        //Mechs Attack
         if (emmi_type.equals("Mech")) {
             if (emmi_attack == 1) {
                 power=1.5;
@@ -2491,7 +2458,7 @@ class Game {
                 }
             }
         }
-
+        //Giga mech attack
         if (emmi_type.equals("Giga Mech")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2515,7 +2482,7 @@ class Game {
                 }
             }
         }
-
+        //mini mech attacks
         if (emmi_type.equals("Mini Mech")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2539,7 +2506,7 @@ class Game {
                 }
             }
         }
-
+        //Cyborg attack
         if (emmi_type.equals("Cyborg")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
@@ -2655,8 +2622,54 @@ class Game {
             return false;
         }
     }
+//edit txt (update save)
+    public static void Edit(String filePath, ArrayList<Object> arr) {
+        File fileToBeModified = new File(filePath);
+        BufferedReader reader = null;
+        FileWriter writer = null;
 
+        try {
+
+
+            writer = new FileWriter(fileToBeModified);
+            for (Object o : arr) {
+                String print = o.toString() + "\n";
+                writer.write(print);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //Closing the resources
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+        //Reads through txt
+    public static ArrayList<Object> Read(String file) {
+
+        try {
+            File txt = new File(file);
+            FileReader fileRead = new FileReader(txt);
+            BufferedReader reader = new BufferedReader(fileRead);
+            ArrayList<Object> arr = new ArrayList<>();
+            Object var = reader.readLine();
+            while (var != null) {
+                arr.add(var);
+                var = reader.readLine();
+
+            }
+            reader.close();
+            return arr;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+
+
+    }
+//dont pass this comment
 }
-
-
-//main
