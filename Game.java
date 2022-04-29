@@ -303,7 +303,7 @@ class Game {
 
         System.out.println("4: " + attack4);
         System.out.println();
-//This while loop just
+        //This while loop just
         System.out.println("Which attack? (1-4)   ");
         attack_num = scanner.nextInt();
 
@@ -2461,24 +2461,71 @@ class Game {
         //Giga mech attack
         if (emmi_type.equals("Giga Mech")) {
             if (emmi_attack == 1) {
-                if (attack_type) {
-                    if (attack_num == 4) {
-
+                if (!attack_type) {
+                    power=1.5;
+                    if (attack_num == 3) {
+                        power=2;
                     }
+                    else {
+                        power = 0.75;
+                        print_slow("LASER RAIN");
+                        num = random(20, 40);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Giga Mech deals " + num + " damage");
+                    }
+                }
+                else {
+                    power = 0;
+                    print_slow("LASER RAIN");
+                    num = random(20, 30);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Giga Mech deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 2) {
                 if (attack_type) {
+                    power=1;
                     if (attack_num == 4) {
+                    power=2;
+                    }
+                    else {
+                        power = 0;
+                        print_slow("DUAL BLADE");
+                        num = random(10, 40);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Giga Mech deals " + num + " damage");
 
                     }
                 }
             }
             if (emmi_attack == 3) {
                 if (attack_type) {
-                    if (attack_num == 4) {
+                    power=1;
+                    if (attack_num == 2) {
+                    power=2;
+                    }
+                    else {
+                        power = 0.75;
+                        print_slow("ZERO BEAM");
+                        num = random(15, 35);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Giga Mech deals " + num + " damage");
 
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("ZERO BEAM");
+                    num = random(20, 30);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Giga Mech deals " + num + " damage");
+
                 }
             }
         }
@@ -2487,8 +2534,26 @@ class Game {
             if (emmi_attack == 1) {
                 if (attack_type) {
                     if (attack_num == 4) {
+                    power=1.5;
+                    }
+                    else {
+                        power = 0.75;
+                        print_slow("LASER SHOT");
+                        num = random(10, 35);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Mini Mech deals " + num + " damage");
 
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("LASER SHOT");
+                    num = random(15, 45);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Mini Mech deals " + num + " damage");
+
                 }
             }
             if (emmi_attack == 2) {
