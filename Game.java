@@ -2558,16 +2558,51 @@ class Game {
             }
             if (emmi_attack == 2) {
                 if (attack_type) {
-                    if (attack_num == 4) {
+                    power=1;
+                    if (attack_num == 2) {
+                    power=2;
+                    }
+                    else {
+                        power = 0.75;
+                        print_slow("LASER SHOT");
+                        num = random(10, 30);
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Mini Mech deals " + num + " damage");
 
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("LASER SHOT");
+                    num = random(5, 35);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Mini Mech deals " + num + " damage");
                 }
             }
             if (emmi_attack == 3) {
                 if (attack_type) {
-                    if (attack_num == 4) {
-
+                    power=1;
+                    if (attack_num ==3) {
+                    power=2;
                     }
+                    else {
+                        power = 0.75;
+                        print_slow("TRIPLE SLASH");
+                        num = random(5, 10)*3;
+                        HP1 -= num;
+                        HP2 -= num;
+                        print_slow("Mini Mech deals " + num + " damage");
+                    }
+                }
+                else {
+                    power = 0;
+                    print_slow("TRIPLE SLASH");
+                    num = random(10, 15)*3;
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Mini Mech deals " + num + " damage");
                 }
             }
         }
@@ -2575,26 +2610,55 @@ class Game {
         if (emmi_type.equals("Cyborg")) {
             if (emmi_attack == 1) {
                 if (attack_type) {
-                    if (attack_num == 4) {
-
+                    power=1;
+                    if (attack_num == 2) {
+                    power=1.5;
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("LASER SHOT");
+                    num = random(5, 25);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Cyborg deals " + num + " damage");
                 }
             }
             if (emmi_attack == 2) {
                 if (attack_type) {
-                    if (attack_num == 4) {
-
+                    power=1;
+                    if (attack_num == 3) {
+                    power=1.5;
                     }
+                }
+                else {
+                    power = 0;
+                    print_slow("LASER SLASH");
+                    num = random(7, 20);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Cyborg deals " + num + " damage");
                 }
             }
             if (emmi_attack == 3) {
-                if (attack_type) {
+                if (!attack_type) {
+                    power=1;
                     if (attack_num == 4) {
-
+                    power=2.5;
                     }
                 }
+                else {
+                    power = 0;
+                    print_slow("CHARGE BEAM");
+                    num = random(7, 20);
+                    HP1 -= num;
+                    HP2 -= num;
+                    print_slow("Cyborg deals " + num + " damage");
+                }
+
             }
         }
+        choseAttack(power);
     }
 
     //Create a giga mech
