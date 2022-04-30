@@ -334,7 +334,18 @@ class Game {
 //embers method
     public int ember(double power) {
 
-        return (int) (random(attack4_tier * 5, attack4_tier * 5) * power);
+        if(attack_type)
+        {
+            print_slow(attack4+" Rush");
+            num=(int) (random(attack4_tier * 3, attack4_tier * 5) * power)*3;
+        }
+        else
+        {
+            print_slow(" ");
+            num=(int) (random(attack4_tier * 5, attack4_tier * 20) * power);
+        }
+        return num;
+
     }
 //Aqua method
     public int aqua(double power) {

@@ -94,10 +94,6 @@ Save editing order:
     missionnum
     HP1m
     HP2m
-    attack1_1mp
-    attack1_2mp
-    attack1_3mp
-    attack1_4mp
     attack1_tier
     attack2_tier
     attack3_tier
@@ -112,8 +108,4 @@ Save editing order:
     String attack1_2
     String attack1_3
     String attack1_4
-    String customspace_1
-    String customspace_2
-    String customspace_3
-    String customspace_4
     max_hit
