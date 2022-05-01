@@ -93,19 +93,18 @@ VARIABLES:
 Save editing order:
     missionnum
     HP1m
-    HP2m
     attack1_tier
     attack2_tier
     attack3_tier
-    attack4_tier 
+    attack4_tier
     level1
     level2
     exp1
     exp2
     levelr1
     levelr2
-    String attack1_1
-    String attack1_2
-    String attack1_3
-    String attack1_4
+    String attack1
+    String attack2
+    String attack3
+    String attack4
     max_hit

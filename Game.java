@@ -27,7 +27,6 @@ class Game {
     String emmi_type = "";
     //2069 and 2077 vars (non save)
     int HP1;
-    int HP2 = 35;
     int attack_num = 0;
     boolean attack_type;
     int last_attack=0;
@@ -40,21 +39,17 @@ class Game {
     // Array vars (placed in Save.txt)
     int missionnum = 10;
     int HP1m = 50;
-    int HP2m = 50;
     int attack1_tier = 1;
     int attack2_tier = 1;
     int attack3_tier = 1;
     int attack4_tier = 1;
     int level1 = 1;
-    int level2 = 1;
     int exp1 = 0;
-    int exp2 = 0;
     int levelr1 = 20;
-    int levelr2 = 20;
-    String attack1 = "fall";
-    String attack2 = "shot";
-    String attack3 = "";
-    String attack4 = "";
+    String attack1 = "Aqua";
+    String attack2 = "LaserShot";
+    String attack3 = "Cure";
+    String attack4 = "Ember";
     int max_hit = 5;
 
 
@@ -88,7 +83,6 @@ class Game {
         Tri_HP = 1000;
         Mark_Zuckerberg = 2000;
         HP1 = HP1m;
-        HP2 = HP2m;
         //Runs mission forever
         while (true) {
             if ((attack1_tier == 5) && (attack2_tier == 5) && (attack3_tier == 5) && (attack4_tier == 5)) {
@@ -293,7 +287,7 @@ class Game {
     public void attack()  {
 
         attack_num = 0;
-        print_slow("2069's turn");
+        System.out.println("2069's turn");
 
         System.out.println("1: " + attack1);
 
@@ -307,29 +301,30 @@ class Game {
         System.out.println("Which attack? (1-4)   ");
         attack_num = scanner.nextInt();
 
-        System.out.print("Out Power or Out Speed (power or speed)");
-        String style = scanner.nextLine();
+        System.out.println();
 
-        attack_type = !style.equals("power");
-        if (style.equals("speed")) {
-            attack_type = true;
-        }
+        System.out.println("Out Power or Out Speed (Power=false)(Speed=true)");
+        attack_type = scanner.nextBoolean();
+
+
+
     }
 //choses a method
-    public void choseAttack(double power) {
+    public int choseAttack(double power) {
         if (attack_num == 1) {
-            aqua(power);
+           num = aqua(power);
         }
         if (attack_num == 2) {
-            lasershot(power);
+            num = lasershot(power);
         }
         if (attack_num == 3) {
-            cure(power);
+           cure(power);
         }
         if (attack_num == 4) {
-            ember(power);
+            num = ember(power);
         }
         last_attack=attack_num;
+        return num;
     }
 //embers method
     public int ember(double power) {
@@ -337,30 +332,61 @@ class Game {
         if(attack_type)
         {
             print_slow(attack4+" Rush");
-            num=(int) (random(attack4_tier * 3, attack4_tier * 5) * power)*3;
+            num=(int) (random(attack4_tier * 3, attack4_tier * 6) * power)*3;
         }
         else
         {
-            print_slow(" ");
-            num=(int) (random(attack4_tier * 5, attack4_tier * 20) * power);
+            print_slow("Powerful "+attack4);
+            num=(int) (random(attack4_tier * 7, attack4_tier * 30) * power);
         }
+        print_slow("2069 deals "+num+" damage");
         return num;
 
     }
 //Aqua method
     public int aqua(double power) {
-        return (int) (random(attack1_tier, attack1_tier * 10) * power);
+        if(attack_type)
+        {
+            print_slow(attack1+" Rush");
+            num=(int) (random(attack1_tier * 2, attack1_tier * 4) * power)*4;
+        }
+        else
+        {
+            print_slow("Frozen "+attack1);
+            num=(int) (random(attack1_tier * 3, attack1_tier * 15) * power);
+        }
+        print_slow("2069 deals "+num+" damage");
+        return num;
     }
 //lasershot method
     public int lasershot(double power) {
-        return (int) ((random(attack2_tier * 2, 15) * attack2_tier) * power);
+        if(attack_type)
+        {
+            print_slow(attack2+" Rush");
+            num=(int) (random(attack1_tier * 2, attack1_tier * 5) * power)*2;
+        }
+        else
+        {
+            print_slow("Zero "+attack2);
+            num=(int) (random(attack1_tier * 5, attack1_tier * 20) * power);
+        }
+        print_slow("2069 deals "+num+" damage");
+        return num;
     }
 //cure method
     public void cure(double power) {
-        num = (int) (random(attack3_tier * 2, 20) * power);
+        if(attack_type)
+        {
+            print_slow("dodging "+attack3);
+            num=(int) (random(attack1_tier * 2, attack1_tier * 5) * power)*2;
+        }
+        else
+        {
+            print_slow(attack3+" shield");
+            num=(int) (random(attack1_tier * 5, attack1_tier * 20) * power);
+        }
         HP1 += num;
-        HP2 += num;
-        print_slow("2069 and 2077 heal " + num + " damage");
+        print_slow("2069's heal " + num + " damage");
     }
     public int climate_Rush()
     {
@@ -397,17 +423,14 @@ class Game {
     }
 
     //2077's code
-    public void attack2() {
+    public int attack2() {
         print_slow("2077's turn");
 
 //starts quicktime event
         num = quickTime() * max_hit;
         System.out.println("2077 Deals " + num + " Damage");
-        emmi_HP -= num;
+        return num;
 
-        if (HP2 > HP2m) {
-            HP2 = HP2m;
-        }
     }
 
     public int quickTime() {
@@ -438,7 +461,6 @@ class Game {
     public void boss_bill() {
         while (bill_HP > 0) {
             print_slow("2069's health " + HP1);
-            print_slow("2077's health " + HP2);
             print_slow("Bill's health " + bill_HP);
             //2069 attacks
             if (HP1 > 0) {
@@ -449,14 +471,13 @@ class Game {
             //bill gates attacks
             attack_bill();
             //checks for game over
-            if ((HP2 < 0) && (HP1 < 0)) {
+            if (HP1 < 0) {
                 restart();
             }
 
         }
         //gives the player some exp for winning
         exp1 += random(100, 200);
-        exp2 += random(100, 200);
         gain();
         level();
     }
@@ -500,7 +521,6 @@ class Game {
 
                 if (target == 2) {
                     hit = random(5, 15);
-                    HP2 -= hit;
                     print_slow("Bill deals  " + hit + "  damage to 2077");
                 }
 
@@ -526,7 +546,6 @@ class Game {
                 while (triple > 0) {
                     if (target == 2) {
                         print_slow("Bill deals 5 damage to 2077.");
-                        HP2 -= 5;
                     }
 
                     if (target == 1) {
@@ -545,7 +564,6 @@ class Game {
     public void Elon_musk() {
         while (Elon_HP > 0) {
             print_slow("2069's health " + HP1);
-            print_slow("2077's health " + HP2);
             print_slow("Elon's health " + Elon_HP);
             //2069 attacks
             if (HP1 > 0) {
@@ -557,13 +575,12 @@ class Game {
             //Elon attacks
             attack_Elon();
             //checks for games over
-            if ((HP2 < 0) && (HP1 < 0)) {
+            if (HP1 < 0) {
                 restart();
             }
         }
         //gives a you some exp for winning
         exp1 += random(100, 200);
-        exp2 += random(100, 200);
         gain();
         level();
     }
@@ -583,12 +600,10 @@ class Game {
             num = random(1, 2);
             if (num == 1) {
                 damage = random(5, 15);
-                HP2 -= damage;
                 print_slow("2077 take  " + damage + " damage");
             }
             if (num == 2) {
                 damage = random(5, 15);
-                HP2 -= damage;
                 print_slow("2060 take  " + damage + " damage");
             }
 
@@ -598,7 +613,6 @@ class Game {
             print_slow("BURNING SPEAR");
             damage = random(5, 10);
             HP1 -= damage;
-            HP2 -= damage;
             print_slow("2069 and 2077 take  " + damage + " damage");
         }
     }
@@ -607,7 +621,6 @@ class Game {
     public void double_boss() {
         while (Elon_HP > 0) {
             print_slow("2069's health " + HP1);
-            print_slow("2077's health " + HP2);
             print_slow("Bill's health " + bill_HP);
             print_slow("Jeff's health " + Elon_HP);
             //2069 attacks
@@ -627,13 +640,12 @@ class Game {
                 jeff_attack();
             }
             //checks for gameOver
-            if ((HP2 < 0) && (HP1 < 0)) {
+            if (HP1 < 0) {
                 restart();
             }
         }
         //Gives you exp
         exp1 += random(200, 400);
-        exp2 += random(200, 400);
         gain();
         level();
     }
@@ -643,7 +655,6 @@ class Game {
         print_slow("MIND BEND");
         damage = random(1, 4);
         HP1 -= damage * random(1, 3);
-        HP2 -= damage * random(1, 3);
         print_slow("2069 and 2077 take a random amount of damage");
     }
 
@@ -652,7 +663,6 @@ class Game {
         print_slow("ROOMBA BEAM");
         print_slow("2069 and 2077 both are now no 1 HP");
         HP1 = 1;
-        HP2 = 1;
     }
 
     //Fight all the tech giants
@@ -664,7 +674,7 @@ class Game {
             }
 
             Tri_HP -= damage;
-            if ((HP2 < 0) && (HP1 < 0)) {
+            if  (HP1 < 0) {
                 restart();
             }
         }
@@ -751,7 +761,6 @@ class Game {
             HP1 -= damage;
         }
         if (person == 2077) {
-            HP2 -= damage;
         }
     }
 
@@ -765,7 +774,7 @@ class Game {
             if (move_tier < 3) {
                 Mark_Zuckerberg -= damage;
             }
-            if ((HP2 < 0) && (HP1 < 0)) {
+            if(HP1 < 0) {
                 restart();
             } else {
                 print_slow("Mark Zuckerberg: YOU HAVE NO POWER IN THIS WORLD");
@@ -786,19 +795,17 @@ class Game {
         if (Mark_Zuckerberg < 50) {
             Mark = 2;
         }
-        if ((HP2 != 1) && (HP1 != 1)) {
+        if ( HP1 != 1) {
             Mark = 1;
         }
         if (Mark == 1) {
             print_slow("FINAL SLASH");
             print_slow("2069 and 2077 both are now no 1 HP");
             HP1 = 1;
-            HP2 = 1;
         }
         if (Mark == 2) {
             print_slow("LASH OUT");
             HP1 -= (300 - Mark_Zuckerberg) / 4;
-            HP2 -= (300 - Mark_Zuckerberg) / 4;
             print_slow("Both 2069 and 2077 take  " + ((300 - Mark_Zuckerberg) / 4) + " damage");
         }
 
@@ -807,7 +814,6 @@ class Game {
             print_slow("DOUBLE EDGED RUSH");
 
             HP1 -= 20;
-            HP2 -= 20;
             Mark_Zuckerberg -= 20;
 
             print_slow("Everyone takes 20 damage");
@@ -823,7 +829,6 @@ class Game {
                     hit = random(0, 3);
                 }
                 if (num == 2) {
-                    HP2 -= 5;
                     print_slow("2077 takes 5 damage");
                     hit = random(0, 3);
                 }
@@ -837,17 +842,8 @@ class Game {
                 print_slow("2069 takes 30 damage");
             }
             if (num == 1) {
-                HP2 -= 30;
                 print_slow("2077 takes 30 damage");
             }
-        }
-        if ((HP1 < 0) && (HP2 > 0)) {
-            print_slow("Mark Zuckerberg: YOUR FATE HAS BEEN SEALED 2077");
-            HP2 = -999;
-        }
-        if ((HP1 > 0) && (HP2 < 0)) {
-            print_slow("Mark Zuckerberg: YOUR FATE HAS BEEN SEALED 2069");
-            HP1 = -999;
         }
     }
 
@@ -985,7 +981,6 @@ class Game {
             choice = scanner.nextLine();
         }
         if (choice.equals("2077")) {
-            exp2 += 100;
         }
 
         if (choice.equals("2069")) {
@@ -1342,22 +1337,16 @@ class Game {
     }
 
     public void pull() {
-        int expt = exp1 + exp2;
-        if (expt > 0) {
+
+        if (exp1 > 0) {
             print_slow("2069 exp " + exp1);
-            print_slow("2069 exp " + exp2);
-            print_slow("total exp " + expt);
             System.out.println("how much exp would you like to use? ");
             num = scanner.nextInt();
-            if (num > expt) {
-                num = expt;
-            }
             int pull_num = num / 25;
             exp1 -= num;
             if (exp1 < 0)
                 num = -exp1;
             exp1 = 0;
-            exp2 -= num;
             while (pull_num > 0) {
                 roll();
                 pull_num -= 1;
@@ -1514,15 +1503,12 @@ class Game {
         }
         // other rewards
         if (tier == 6) {
-            HP2m += 1;
             print_slow("2077's max Hp increased by 1");
         }
         if (tier == 7) {
-            HP2m += 2;
             print_slow("2077's max Hp increased by 2");
         }
         if (tier == 8) {
-            HP2m += 3;
             print_slow("2077's max Hp increased by 3");
         }
         if (tier == 9) {
@@ -1539,17 +1525,8 @@ class Game {
     //
     public void level() {
 
-        if (exp2 >= levelr2) {
-            print_slow("LEVEL UP");
-            print_slow(level2 + " --> " + (level2 + 1));
-            print_slow("2077's health is restored fully");
-            HP2 = HP2m;
-            level2 += 1;
-            levelr2 = exp2 + 20 * (level2 * level2) / 2;
-            print_slow("2069 has" + (levelr1 - exp1) + "exp till leveling up");
-            print_slow("2077 has" + (levelr2 - exp2) + "exp till leveling up");
-        }
-        if (exp2 >= levelr1) {
+
+        if (exp1 >= levelr1) {
             print_slow("LEVEL UP");
             print_slow(level1 + " --> " + (level1 + 1));
             print_slow("2069: max health +1");
@@ -1557,7 +1534,6 @@ class Game {
             level1++;
             levelr1 = exp1 + 20 * (level1 * level1) / 2;
             print_slow("2069 has" + (levelr1 - exp1) + "exp till leveling up");
-            print_slow("2077 has" + (levelr2 - exp2) + "exp till leveling up");
         }
 
 
@@ -1574,36 +1550,24 @@ class Game {
         } else {
             bonus = 0;
             exp1 += (emmi_level) + bonus;
-            exp2 += (emmi_level) + bonus;
         }
     }
 
     //fight enemies
     public void battle() {
         while (emmi_HP > 0) {
-            print_slow("2069 health " + HP1);
-            print_slow("2077 health " + HP2);
-            print_slow(emmi_type + " health " + emmi_HP);
-
+            System.out.println("2069 health " + HP1);
+            System.out.println(emmi_type + " health " + emmi_HP);
             emmi_attack = 0;
             emmi_prep();
-            if (HP1 > 0) {
-                attack();
-            }
+            attack();
             attack_emmi();
 
             if (HP1 > HP1m) {
                 HP1 = HP1m;
             }
 
-            if (HP2 > HP2m) {
-                HP2 = HP2m;
-            }
-
-            emmi_HP -= damage;
-            damage = 0;
-
-            if ((HP2 < 0) && (HP1 < 0)) {
+            if (HP1 < 0) {
                 restart();
             }
         }
@@ -1830,38 +1794,10 @@ class Game {
             if (type_num > 6) {
                 type_num = random(1, 8);
                 new_emmi(type_num);
-                battle2();
             }
         }
     }
 
-    //battle but with only 2069
-    public void battle2() {
-        while (emmi_HP > 0) {
-            print_slow("2069 health " + HP1);
-            print_slow(emmi_type + " health " + emmi_HP);
-            if (HP1 > 0) {
-                attack();
-            }
-
-
-            if (HP1 > HP1m) {
-                HP1 = HP1m;
-            }
-
-            emmi_HP -= damage;
-            damage = 0;
-            attack_emmi();
-
-
-            if (HP1 < 0) {
-                restart();
-            }
-        }
-
-        gain();
-        level();
-    }
 
     //print method
     public void print_slow(String str) {
@@ -1924,24 +1860,19 @@ class Game {
         ArrayList<Object> arrList = new ArrayList<Object>();
         arrList.add(missionnum);
         arrList.add(HP1m);
-        arrList.add(HP2m);
         arrList.add(attack1_tier);
         arrList.add(attack2_tier);
         arrList.add(attack3_tier);
         arrList.add(attack4_tier);
         arrList.add(level1);
-        arrList.add(level2);
         arrList.add(exp1);
-        arrList.add(exp2);
         arrList.add(levelr1);
-        arrList.add(levelr2);
         arrList.add(attack1);
         arrList.add(attack2);
         arrList.add(attack3);
         arrList.add(attack4);
         arrList.add(max_hit);
         Edit("Save.txt", arrList);
-        System.gc();
         long startTime = System.currentTimeMillis();
         while (startTime + time > System.currentTimeMillis()) ;
     }
@@ -2154,7 +2085,6 @@ class Game {
                     print_slow("ROOMBA RUSH");
                     num = emmi_HP * 2;
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Roomba deals " + num + " damage");
                 }
             }
@@ -2182,7 +2112,6 @@ class Game {
                     print_slow("CHARGE BEAM");
                     num = (emmi_HP * random(1, 3));
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Roomba deals " + num + " damage");
                 }
             }
@@ -2200,7 +2129,6 @@ class Game {
                     print_slow("SPEED TACKLE");
                     num = random(10, 15);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Dog Bot deals " + num + " damage");
                 }
             }
@@ -2215,7 +2143,6 @@ class Game {
                     print_slow("BATTERY RAM");
                     num = random(10, 50);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Dog Bot deals " + num + " damage");
                 }
             }
@@ -2230,7 +2157,6 @@ class Game {
                     print_slow("BITE RUSH");
                     num = random(5, 25);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Dog Bot deals " + num + " damage");
                 }
             }
@@ -2248,7 +2174,6 @@ class Game {
                     print_slow("SPEAR RUSH");
                     num = random(5, 20);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a spear deals " + num + " damage");
                 }
             }
@@ -2263,7 +2188,6 @@ class Game {
                     print_slow("ZERO SPEAR");
                     num = random(10, 15);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a spear deals " + num + " damage");
                 }
             }
@@ -2278,7 +2202,6 @@ class Game {
                     print_slow("ULTIMATE SPEAR");
                     num = random(30, 50);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a spear deals " + num + " damage");
 
                 }
@@ -2297,7 +2220,6 @@ class Game {
                     print_slow("BULLET RUSH");
                     num = random(1, 30);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a gun deals " + num + " damage");
 
                 }
@@ -2313,7 +2235,6 @@ class Game {
                     print_slow("ZERO BLAST");
                     num = random(10, 15);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a gun deals deals " + num + " damage");
 
                 }
@@ -2329,7 +2250,6 @@ class Game {
                     print_slow("CHARGE SHOT");
                     num = random(30, 50);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a gun deals " + num + " damage");
 
                 }
@@ -2346,7 +2266,6 @@ class Game {
                     print_slow("TRIPLE SLASH");
                     num = random(5, 15);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a sword deals " + num + " damage");
 
                 }
@@ -2363,7 +2282,6 @@ class Game {
                     print_slow("BLADE OF DESTRUCTION");
                     num = random(1, 100);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a sword  deals " + num + " damage");
 
                 }
@@ -2380,7 +2298,6 @@ class Game {
                     print_slow("ZERO SLASH");
                     num = random(5, 15);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Robot with a sword  deals " + num + " damage");
 
                 }
@@ -2400,7 +2317,6 @@ class Game {
                         print_slow("LASER RAIN");
                         num = random(20, 30);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Mech deals " + num + " damage");
 
                     }
@@ -2410,7 +2326,6 @@ class Game {
                     print_slow("LASER RAIN");
                     num = random(10, 30);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Mech deals " + num + " damage");
 
                 }
@@ -2426,7 +2341,6 @@ class Game {
                         print_slow("POWER BURST");
                         num = random(30, 50);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Mech deals " + num + " damage");
 
                     }
@@ -2436,7 +2350,6 @@ class Game {
                     print_slow("POWER BURST");
                     num = random(20, 40);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Mech deals " + num + " damage");
 
                 }
@@ -2453,7 +2366,6 @@ class Game {
                         print_slow("ULTIMATE RUSH");
                         num = random(30, 50);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Mech deals " + num + " damage");
 
                     }
@@ -2463,7 +2375,6 @@ class Game {
                     print_slow("ULTIMATE RUSH");
                     num = random(25, 40);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Mech deals " + num + " damage");
 
                 }
@@ -2482,7 +2393,6 @@ class Game {
                         print_slow("LASER RAIN");
                         num = random(20, 40);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Giga Mech deals " + num + " damage");
                     }
                 }
@@ -2491,7 +2401,6 @@ class Game {
                     print_slow("LASER RAIN");
                     num = random(20, 30);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Giga Mech deals " + num + " damage");
 
                 }
@@ -2507,7 +2416,6 @@ class Game {
                         print_slow("DUAL BLADE");
                         num = random(10, 40);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Giga Mech deals " + num + " damage");
 
                     }
@@ -2524,7 +2432,6 @@ class Game {
                         print_slow("ZERO BEAM");
                         num = random(15, 35);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Giga Mech deals " + num + " damage");
 
                     }
@@ -2534,7 +2441,6 @@ class Game {
                     print_slow("ZERO BEAM");
                     num = random(20, 30);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Giga Mech deals " + num + " damage");
 
                 }
@@ -2552,7 +2458,6 @@ class Game {
                         print_slow("LASER SHOT");
                         num = random(10, 35);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Mini Mech deals " + num + " damage");
 
                     }
@@ -2562,7 +2467,6 @@ class Game {
                     print_slow("LASER SHOT");
                     num = random(15, 45);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Mini Mech deals " + num + " damage");
 
                 }
@@ -2578,7 +2482,6 @@ class Game {
                         print_slow("LASER SHOT");
                         num = random(10, 30);
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Mini Mech deals " + num + " damage");
 
                     }
@@ -2588,7 +2491,6 @@ class Game {
                     print_slow("LASER SHOT");
                     num = random(5, 35);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Mini Mech deals " + num + " damage");
                 }
             }
@@ -2603,7 +2505,6 @@ class Game {
                         print_slow("TRIPLE SLASH");
                         num = random(5, 10)*3;
                         HP1 -= num;
-                        HP2 -= num;
                         print_slow("Mini Mech deals " + num + " damage");
                     }
                 }
@@ -2612,7 +2513,6 @@ class Game {
                     print_slow("TRIPLE SLASH");
                     num = random(10, 15)*3;
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Mini Mech deals " + num + " damage");
                 }
             }
@@ -2631,7 +2531,6 @@ class Game {
                     print_slow("LASER SHOT");
                     num = random(5, 25);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Cyborg deals " + num + " damage");
                 }
             }
@@ -2647,7 +2546,6 @@ class Game {
                     print_slow("LASER SLASH");
                     num = random(7, 20);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Cyborg deals " + num + " damage");
                 }
             }
@@ -2663,13 +2561,12 @@ class Game {
                     print_slow("CHARGE BEAM");
                     num = random(7, 20);
                     HP1 -= num;
-                    HP2 -= num;
                     print_slow("Cyborg deals " + num + " damage");
                 }
 
             }
         }
-        choseAttack(power);
+        emmi_HP -= choseAttack(power);
     }
 
     //Create a giga mech
@@ -2684,7 +2581,7 @@ class Game {
     public void grabSave() {
         ArrayList<Object> Save = Read("Save.txt");
 
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 14; i++) {
             String var = Save.get(i).toString();
             int val = 0;
             if (strIsInt(var)) {
@@ -2697,53 +2594,39 @@ class Game {
                 HP1m = val;
             }
             if (i == 2) {
-                HP2m = val;
-            }
-
-            if (i == 3) {
                 attack1_tier = val;
             }
-            if (i == 4) {
+            if (i == 3) {
                 attack2_tier = val;
             }
-            if (i == 5) {
+            if (i == 4) {
                 attack3_tier = val;
             }
-            if (i == 6) {
+            if (i == 5) {
                 attack4_tier = val;
             }
-            if (i == 7) {
+            if (i == 6) {
                 level1 = val;
             }
-            if (i == 8) {
-                level2 = val;
-            }
-            if (i == 9) {
+            if (i == 7) {
                 levelr1 = val;
             }
-            if (i == 10) {
-                levelr2 = val;
-            }
-            if (i == 11) {
+            if (i == 8) {
                 exp1 = val;
             }
-            if (i == 12) {
-                exp2 = val;
-            }
-            if (i == 13) {
+            if (i == 9) {
                 attack1 = var;
             }
-            if (i == 14) {
+            if (i == 10) {
                 attack2 = var;
             }
-            if (i == 15) {
+            if (i == 11) {
                 attack3 = var;
             }
-            if (i == 16) {
+            if (i == 12) {
                 attack4 = var;
-
             }
-            if (i == 17) {
+            if (i == 13) {
                 max_hit = val;
             }
 
