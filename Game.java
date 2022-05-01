@@ -56,6 +56,7 @@ class Game {
     //dungeon vars
     int dungeon_length = 0;
     //misc
+    double power = 0;
     int num = 0;
     int type_num = 0;
     int speed = 20;
@@ -337,7 +338,7 @@ class Game {
         else
         {
             print_slow("Powerful "+attack4);
-            num=(int) (random(attack4_tier * 7, attack4_tier * 30) * power);
+            num=(int) (random(attack4_tier * 5, attack4_tier * 15) * power);
         }
         print_slow("2069 deals "+num+" damage");
         return num;
@@ -348,12 +349,12 @@ class Game {
         if(attack_type)
         {
             print_slow(attack1+" Rush");
-            num=(int) (random(attack1_tier * 2, attack1_tier * 4) * power)*4;
+            num=(int) (random(attack1_tier * 2, attack1_tier * 3) * power)*3;
         }
         else
         {
             print_slow("Frozen "+attack1);
-            num=(int) (random(attack1_tier * 3, attack1_tier * 15) * power);
+            num=(int) (random(attack1_tier * 7, attack1_tier * 12) * power);
         }
         print_slow("2069 deals "+num+" damage");
         return num;
@@ -368,7 +369,7 @@ class Game {
         else
         {
             print_slow("Zero "+attack2);
-            num=(int) (random(attack1_tier * 5, attack1_tier * 20) * power);
+            num=(int) (random(attack1_tier * 5, attack1_tier * 10) * power);
         }
         print_slow("2069 deals "+num+" damage");
         return num;
@@ -390,36 +391,28 @@ class Game {
     }
     public int climate_Rush()
     {
+        num=0;
         //if ember is first
-        if(attack_num==4 && last_attack==1)
+        if((attack_num==4 && last_attack==1)&&(attack_num==1 && last_attack==4))
         {
+            print_slow("CLIMATE RUSH OPENING");
             if(!attack_type)
             {
                 print_slow("BURNING FREEZE");
-                return (int)((1.1*attack4_tier)*(1.1*attack1_tier));
+                num = (int)((1.1*attack4_tier)*(1.1*attack1_tier));
             }
             if(attack_type)
             {
                 print_slow("BURNING FLOOD");
-                return (int)((1.25*attack4_tier)*(0.9*attack1_tier));
+                num =  (int)((1.25*attack4_tier)*(0.9*attack1_tier));
             }
         }
-        //if water is first
-        if(attack_num==1 && last_attack==4)
+
+        if(num>0)
         {
-            if(!attack_type)
-            {
-                print_slow("BURNING FREEZE");
-                return (int)((1.1*attack4_tier)*(1.1*attack1_tier));
-            }
-            if(attack_type)
-            {
-                print_slow("BURNING FLOOD");
-                return (int)((1.25*attack4_tier)*(0.9*attack1_tier));
-            }
+            print_slow("2069 deals "+num+" damage");
         }
-        
-        return 0;
+        return num;
     }
 
     //2077's code
@@ -428,7 +421,7 @@ class Game {
 
 //starts quicktime event
         num = quickTime() * max_hit;
-        System.out.println("2077 Deals " + num + " Damage");
+        print_slow("2077 Deals " + num + " Damage");
         return num;
 
     }
@@ -1559,9 +1552,20 @@ class Game {
             System.out.println("2069 health " + HP1);
             System.out.println(emmi_type + " health " + emmi_HP);
             emmi_attack = 0;
+
             emmi_prep();
             attack();
             attack_emmi();
+            if(power>0)
+            {
+                emmi_HP -= choseAttack(power);
+            }
+
+            if(power>0)
+            {
+                emmi_HP-= attack2();
+                emmi_HP-=climate_Rush();
+            }
 
             if (HP1 > HP1m) {
                 HP1 = HP1m;
@@ -1809,7 +1813,7 @@ class Game {
             }
         }
         //if 2077 is talking CYAN
-        if (str.contains("2077:")) {
+        else if (str.contains("2077:")) {
             for (int i = 0; i < str.length(); i++) {
                 System.out.print(CYAN + str.charAt(i));
                 wait(speed);
@@ -1817,21 +1821,21 @@ class Game {
 
         }
         //Tech gaint talking RED
-        if (str.contains("Mark Zuckerberg:") || str.contains("Elon musk:") || str.contains("Bill gates:") || str.contains("Jeff bezos:")) {
+        else if (str.contains("Mark Zuckerberg:") || str.contains("Elon musk:") || str.contains("Bill gates:") || str.contains("Jeff bezos:")) {
             for (int i = 0; i < str.length(); i++) {
                 System.out.print(RED + str.charAt(i));
                 wait(speed);
             }
         }
         //if sounds then
-        if (str.contains("*")) {
+        else if (str.contains("*")) {
             for (int i = 0; i < str.length(); i++) {
                 System.out.print(GREEN + str.charAt(i));
                 wait(speed);
             }
         }
         //??? talks
-        if (str.contains("???:")) {
+        else if (str.contains("???:")) {
             for (int i = 0; i < str.length(); i++) {
                 if (random(0, 15) == 10) {
                     System.out.print((char) (random(0, 256)));
@@ -2071,7 +2075,7 @@ class Game {
 
     //enemies attack
     public void attack_emmi() {
-        double power = 0;
+        power = 0;
         //Roomba attacks
         if (emmi_type.equals("Roomba")) {
             if (emmi_attack == 1) {
@@ -2566,7 +2570,6 @@ class Game {
 
             }
         }
-        emmi_HP -= choseAttack(power);
     }
 
     //Create a giga mech
