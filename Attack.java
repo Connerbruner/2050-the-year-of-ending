@@ -1,4 +1,4 @@
-class Attack extends Game{
+class Attack extends Tools{
     /**
      * @param name
      * self explanitory
@@ -7,12 +7,13 @@ class Attack extends Game{
      * @param damRange
      * low, high
      */
-    String attackName = "";
-    int speed = 0;
+    String attackName;
+    int speed;
     int high;
     int low;
-    int attackTier = 1;
-    int stun = 0;
+    int attackTier;
+    int stun;
+    int num;
 
     /**
      *
@@ -22,11 +23,10 @@ class Attack extends Game{
      * @param spd
      * @param stn
      */
-    public Attack(String name, int l, int h, int spd, int stn){
-
+    public Attack(String name, int l, int h, int spd, int stn) {
         attackName = name;
-        high=h;
-        low=l;
+        low = l;
+        high = h;
         speed = spd;
         stun = stn;
     }
@@ -34,16 +34,30 @@ class Attack extends Game{
         return attackName;
     }
 
-    public int getSpeed() {
-        return speed;
+    public int getSpeed(boolean style) {
+        if(style)
+        {
+            return speed/2;
+        }
+        else
+        {
+            return speed*2;
+        }
     }
 
     public int getAttackTier() {
         return attackTier;
     }
 
-    public int getStun() {
-        return stun;
+    public int getStun(boolean style) {
+        if(style)
+        {
+            return stun/2;
+        }
+        else
+        {
+            return stun*2;
+        }
     }
 
     public void setAttackTier(int attackTier) {
@@ -54,13 +68,16 @@ class Attack extends Game{
     public int attack(double power, boolean style){
         if(style)
         {
-            print_slow("Fast "+attackName);
-            return (int)((random(low,high)*attackTier)*(power*2));
+            sPrint("Fast "+attackName);
+            num = (int)((random(low,high)*attackTier)*(power*2));
         }
         else
         {
-            print_slow("Powerful "+attackName);
-            return (int)((random(low,high)*attackTier)*power);
+            sPrint("Powerful "+attackName);
+            num = (int)((random(low,high)*attackTier)*power);
+            
         }
+        sPrint("2069 deals "+num+" damage");    
+        return num;
     }
 }
