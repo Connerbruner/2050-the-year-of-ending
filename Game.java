@@ -299,6 +299,8 @@ class Game {
         System.out.println("4: " + attack4);
         System.out.println();
         //This while loop just
+        long start_Time = System.currentTimeMillis();
+
         System.out.println("Which attack? (1-4)   ");
         attack_num = scanner.nextInt();
 
@@ -307,8 +309,8 @@ class Game {
         System.out.println("Out Power or Out Speed (Power=false)(Speed=true)");
         attack_type = scanner.nextBoolean();
 
-
-
+        long end_Time = System.currentTimeMillis();
+        int total = (int)((end_Time-start_Time)/1000);
     }
 //choses a method
     public int choseAttack(double power) {
