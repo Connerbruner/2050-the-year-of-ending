@@ -39,17 +39,12 @@ class Game {
     // Array vars (placed in Save.txt)
     int missionnum = 10;
     int HP1m = 50;
-    int attack1_tier = 1;
-    int attack2_tier = 1;
-    int attack3_tier = 1;
-    int attack4_tier = 1;
+    int cure_tier = 1;
     int level1 = 1;
     int exp1 = 0;
     int levelr1 = 20;
-    String attack1 = "Aqua";
-    String attack2 = "LaserShot";
-    String attack3 = "Cure";
-    String attack4 = "Ember";
+
+    int cureTier = 1;
     int max_hit = 5;
 
 
@@ -66,11 +61,13 @@ class Game {
     int hit = 0;
     int damage = 0;
     int move_tier = 0;
+    int totalTime;
 
     //obj
     Scanner scanner = new Scanner(System.in);
-
-
+    Attack aqua = new Attack("Aqua",7,15,4,3);
+    Attack lasershot = new     Attack("Lasershot",7,10,2,1);
+    Attack ember = new Attack("Ember",5,30,10,10);
 
 
 
@@ -86,10 +83,6 @@ class Game {
         HP1 = HP1m;
         //Runs mission forever
         while (true) {
-            if ((attack1_tier == 5) && (attack2_tier == 5) && (attack3_tier == 5) && (attack4_tier == 5)) {
-                if (missionnum == 10) {
-                }
-            }
             String choice = "STR";
             System.out.println("Type 1 -> " + missionnum + " to try that Mission");
             //Tells you how to roll the gotcha
@@ -284,19 +277,19 @@ class Game {
         }
     }
 
-//shows you what attacks you can use
+    //shows you what attacks you can use
     public void attack()  {
 
         attack_num = 0;
         System.out.println("2069's turn");
 
-        System.out.println("1: " + attack1);
+        System.out.println("1: " + aqua.attackName);
 
-        System.out.println("2: " + attack2);
+        System.out.println("2: " + lasershot.attackName);
 
-        System.out.println("3: " + attack3);
+        System.out.println("3: Cure");
 
-        System.out.println("4: " + attack4);
+        System.out.println("4: " + ember.attackName);
         System.out.println();
         //This while loop just
         long start_Time = System.currentTimeMillis();
@@ -310,112 +303,55 @@ class Game {
         attack_type = scanner.nextBoolean();
 
         long end_Time = System.currentTimeMillis();
-        int total = (int)((end_Time-start_Time)/1000);
+        totalTime = (int)((end_Time-start_Time)/1000);
+        if(attack_num==1)
+        {
+            totalTime+=aqua.speed;
+        }
+        if(attack_num==2)
+        {
+            totalTime+=lasershot.speed;
+        }
+        if(attack_num==4)
+        {
+            totalTime+=ember.speed;
+        }
     }
-//choses a method
+    //choses a method
     public int choseAttack(double power) {
         if (attack_num == 1) {
-           num = aqua(power);
+            num = aqua.attack(power,attack_type);
         }
         if (attack_num == 2) {
-            num = lasershot(power);
+            num = lasershot.attack(power,attack_type);
         }
         if (attack_num == 3) {
-           cure(power);
+            cure(power);
         }
         if (attack_num == 4) {
-            num = ember(power);
+            num = ember.attack(power,attack_type);
         }
         last_attack=attack_num;
         return num;
     }
-//embers method
-    public int ember(double power) {
+    //embers method
 
-        if(attack_type)
-        {
-            print_slow(attack4+" Rush");
-            num=(int) (random(attack4_tier * 3, attack4_tier * 6) * power)*3;
-        }
-        else
-        {
-            print_slow("Powerful "+attack4);
-            num=(int) (random(attack4_tier * 5, attack4_tier * 15) * power);
-        }
-        print_slow("2069 deals "+num+" damage");
-        return num;
-
-    }
-//Aqua method
-    public int aqua(double power) {
-        if(attack_type)
-        {
-            print_slow(attack1+" Rush");
-            num=(int) (random(attack1_tier * 2, attack1_tier * 3) * power)*3;
-        }
-        else
-        {
-            print_slow("Frozen "+attack1);
-            num=(int) (random(attack1_tier * 7, attack1_tier * 12) * power);
-        }
-        print_slow("2069 deals "+num+" damage");
-        return num;
-    }
-//lasershot method
-    public int lasershot(double power) {
-        if(attack_type)
-        {
-            print_slow(attack2+" Rush");
-            num=(int) (random(attack1_tier * 2, attack1_tier * 5) * power)*2;
-        }
-        else
-        {
-            print_slow("Zero "+attack2);
-            num=(int) (random(attack1_tier * 5, attack1_tier * 10) * power);
-        }
-        print_slow("2069 deals "+num+" damage");
-        return num;
-    }
-//cure method
+    //cure method
     public void cure(double power) {
         if(attack_type)
         {
-            print_slow("dodging "+attack3);
-            num=(int) (random(attack1_tier * 2, attack1_tier * 5) * power)*2;
+            print_slow("dodging Cure");
+            num=(int) (random(cure_tier * 2, cure_tier * 5) * power)*2;
         }
         else
         {
-            print_slow(attack3+" shield");
-            num=(int) (random(attack1_tier * 5, attack1_tier * 20) * power);
+            print_slow("Cure shield");
+            num=(int) (random(cure_tier * 5, cure_tier * 20) * power);
         }
         HP1 += num;
         print_slow("2069's heal " + num + " damage");
     }
-    public int climate_Rush()
-    {
-        num=0;
-        //if ember is first
-        if((attack_num==4 && last_attack==1)&&(attack_num==1 && last_attack==4))
-        {
-            print_slow("CLIMATE RUSH OPENING");
-            if(!attack_type)
-            {
-                print_slow("BURNING FREEZE");
-                num = (int)((1.1*attack4_tier)*(1.1*attack1_tier));
-            }
-            if(attack_type)
-            {
-                print_slow("BURNING FLOOD");
-                num =  (int)((1.25*attack4_tier)*(0.9*attack1_tier));
-            }
-        }
 
-        if(num>0)
-        {
-            print_slow("2069 deals "+num+" damage");
-        }
-        return num;
-    }
 
     //2077's code
     public int attack2() {
@@ -1286,7 +1222,7 @@ class Game {
         print_slow("2077: NEVER");
         print_slow("2069: You will pay for what you have done");
         print_slow("2069: LETS FINSIH THIS");
-        print_slow("2069: " + attack4_tier);
+        print_slow("2069: " + ember.attackName);
         print_slow("Elon musk: ...My final words");
         print_slow("Elon musk: You are the winner and I am the...");
         print_slow("2077: They deserve to die alone");
@@ -1354,25 +1290,8 @@ class Game {
 
     //gotcha
     public void roll() {
-        int tier = random(1, 10);
-        if (tier == 5) {
-            tier = random(1, 5);
-        }
-        if (tier == 5) {
-            tier = random(1, 5);
-        }
-        if (tier == 10) {
-            tier = random(6, 10);
-        }
-        if (tier == 10) {
-            tier = random(6, 10);
-        }
-        if (tier == 9) {
-            tier = random(6, 9);
-        }
-        if (tier == 4) {
-            tier = random(1, 4);
-        }
+        int[] odds = new int[] {1,1,1,1,2,2,2,3,3,3,4,4,5,6,7};
+        int tier = random(0,odds.length-1);
         if (tier == 1) {
             HP1m += 2;
             print_slow("2069's max Hp increased by 2");
@@ -1380,137 +1299,49 @@ class Game {
             num = random(1, 4);
         //Ember level up
         if (num == 4) {
-            if (tier > attack4_tier) {
+            if (tier > ember.attackTier) {
                 print_slow("ember leveled up");
-                print_slow(attack4_tier + " --> " + tier);
-                if (tier == 5) {
-                    attack1 = "Omega Ember";
+                print_slow(ember.attackTier + " --> " + tier);
+                ember.setAttackTier(tier);
 
-                    attack1_tier = 5;
-                }
-
-                if (tier == 4) {
-                    attack1 = "Ultra Ember";
-                    attack1_tier = 4;
-
-                }
-                if (tier == 3) {
-                    attack1 = "Tri Ember";
-
-                    attack1_tier = 3;
-                }
-
-                if (tier == 2) {
-                    attack1 = "Dual Ember";
-
-                    attack1_tier = 2;
-                }
 
             }
             // Cure level up
             if (num == 3) {
-                if (tier > attack3_tier)
+                if (tier > cure_tier)
+                {
                     print_slow("Cure leveled up");
-                print_slow(attack3_tier + " -->" + tier);
-
-                if (tier == 5) {
-                    attack3 = "Omega Cure";
-
-                    attack3_tier = 5;
+                    print_slow(cure_tier + " -->" + tier);
+                    cure_tier=tier;
                 }
 
-                if (tier == 4) {
-                    attack3 = "Ultra Cure";
-                    attack3_tier = 4;
-
-                }
-                if (tier == 3) {
-                    attack3 = "Tri Cure";
-
-                    attack3_tier = 3;
-                }
-
-                if (tier == 2) {
-                    attack3 = "Dual Cure";
-
-                    attack3_tier = 2;
-                }
             }
         }
-        //Charge level up
+        //aqua level up
         if (num == 1) {
-            if (tier > attack1_tier) {
+            if (tier > aqua.attackTier) {
                 print_slow("Aqua leveled up");
-                print_slow(attack1_tier + " --> " + tier);
+                print_slow(aqua.attackName + " --> " + tier);
+                aqua.setAttackTier(tier);
 
-                if (tier == 5) {
-                    attack1 = "Omega Aqua";
 
-                    attack1_tier = 5;
-                }
-                if (tier == 4) {
-                    attack1 = "Ultra Aqua";
 
-                    attack1_tier = 4;
-                }
-
-                if (tier == 3) {
-                    attack1 = "Tri Aqua";
-
-                    attack1_tier = 3;
-                }
-
-                if (tier == 2) {
-                    attack1 = "Dual Aqua";
-
-                    attack1_tier = 2;
-                }
             }
         }
         //Laser level up
         if (num == 2) {
-            if (tier > attack2_tier) {
+            if (tier > lasershot.attackTier) {
                 print_slow("Laser leveled up");
-                print_slow(attack2_tier + " --> " + tier);
-                if (tier == 5) {
-                    attack2 = "Omega Laser";
+                print_slow(lasershot.attackTier + " --> " + tier);
+                lasershot.setAttackTier(tier);
 
-                    attack2_tier = 5;
-                }
-
-                if (tier == 4) {
-                    attack2 = "Ultra Laser";
-
-                    attack2_tier = 4;
-                }
-
-                if (tier == 3) {
-                    attack2 = "Tri Laser";
-
-                    attack2_tier = 3;
-                }
-
-                if (tier == 2) {
-                    attack2 = "Dual Laser";
-                    attack2_tier = 2;
-                }
             }
         }
-        // other rewards
         if (tier == 6) {
-            print_slow("2077's max Hp increased by 1");
-        }
-        if (tier == 7) {
-            print_slow("2077's max Hp increased by 2");
-        }
-        if (tier == 8) {
-            print_slow("2077's max Hp increased by 3");
-        }
-        if (tier == 9) {
             max_hit += 1;
             print_slow("2077's power of each hit incressesed by 1");
         }
-        if (tier == 10) {
+        if (tier == 7) {
             max_hit += 2;
             print_slow("2077's power of each hit incressesed by 2");
         }
@@ -1566,7 +1397,6 @@ class Game {
             if(power>0)
             {
                 emmi_HP-= attack2();
-                emmi_HP-=climate_Rush();
             }
 
             if (HP1 > HP1m) {
@@ -1866,17 +1696,14 @@ class Game {
         ArrayList<Object> arrList = new ArrayList<Object>();
         arrList.add(missionnum);
         arrList.add(HP1m);
-        arrList.add(attack1_tier);
-        arrList.add(attack2_tier);
-        arrList.add(attack3_tier);
-        arrList.add(attack4_tier);
+        arrList.add(aqua.attackTier);
+        arrList.add(lasershot.attackTier);
+        arrList.add(cure_tier);
+        arrList.add(ember.attackTier);
         arrList.add(level1);
         arrList.add(exp1);
         arrList.add(levelr1);
-        arrList.add(attack1);
-        arrList.add(attack2);
-        arrList.add(attack3);
-        arrList.add(attack4);
+
         arrList.add(max_hit);
         Edit("Save.txt", arrList);
         long startTime = System.currentTimeMillis();
@@ -1971,7 +1798,7 @@ class Game {
             print_slow("A Cyborg appears");
         }
     }
-//shows the player what attack is coming for them
+    //shows the player what attack is coming for them
     public void emmi_prep() {
         emmi_attack = random(1, 3);
         if (emmi_type.equals("Roomba")) {
@@ -2415,7 +2242,7 @@ class Game {
                 if (attack_type) {
                     power=1;
                     if (attack_num == 4) {
-                    power=2;
+                        power=2;
                     }
                     else {
                         power = 0;
@@ -2431,7 +2258,7 @@ class Game {
                 if (attack_type) {
                     power=1;
                     if (attack_num == 2) {
-                    power=2;
+                        power=2;
                     }
                     else {
                         power = 0.75;
@@ -2457,7 +2284,7 @@ class Game {
             if (emmi_attack == 1) {
                 if (attack_type) {
                     if (attack_num == 4) {
-                    power=1.5;
+                        power=1.5;
                     }
                     else {
                         power = 0.75;
@@ -2481,7 +2308,7 @@ class Game {
                 if (attack_type) {
                     power=1;
                     if (attack_num == 2) {
-                    power=2;
+                        power=2;
                     }
                     else {
                         power = 0.75;
@@ -2504,7 +2331,7 @@ class Game {
                 if (attack_type) {
                     power=1;
                     if (attack_num ==3) {
-                    power=2;
+                        power=2;
                     }
                     else {
                         power = 0.75;
@@ -2529,7 +2356,7 @@ class Game {
                 if (attack_type) {
                     power=1;
                     if (attack_num == 2) {
-                    power=1.5;
+                        power=1.5;
                     }
                 }
                 else {
@@ -2544,7 +2371,7 @@ class Game {
                 if (attack_type) {
                     power=1;
                     if (attack_num == 3) {
-                    power=1.5;
+                        power=1.5;
                     }
                 }
                 else {
@@ -2559,7 +2386,7 @@ class Game {
                 if (!attack_type) {
                     power=1;
                     if (attack_num == 4) {
-                    power=2.5;
+                        power=2.5;
                     }
                 }
                 else {
@@ -2598,18 +2425,6 @@ class Game {
             if (i == 1) {
                 HP1m = val;
             }
-            if (i == 2) {
-                attack1_tier = val;
-            }
-            if (i == 3) {
-                attack2_tier = val;
-            }
-            if (i == 4) {
-                attack3_tier = val;
-            }
-            if (i == 5) {
-                attack4_tier = val;
-            }
             if (i == 6) {
                 level1 = val;
             }
@@ -2619,17 +2434,17 @@ class Game {
             if (i == 8) {
                 exp1 = val;
             }
-            if (i == 9) {
-                attack1 = var;
-            }
-            if (i == 10) {
-                attack2 = var;
-            }
             if (i == 11) {
-                attack3 = var;
+                aqua.attackTier = val;
             }
             if (i == 12) {
-                attack4 = var;
+                lasershot.attackTier = val;
+            }
+            if (i == 11) {
+                cure_tier = val;
+            }
+            if (i == 12) {
+                ember.attackTier = val;
             }
             if (i == 13) {
                 max_hit = val;
@@ -2650,7 +2465,7 @@ class Game {
             return false;
         }
     }
-//edit txt (update save)
+    //edit txt (update save)
     public static void Edit(String filePath, ArrayList<Object> arr) {
         File fileToBeModified = new File(filePath);
         BufferedReader reader = null;
@@ -2676,7 +2491,7 @@ class Game {
             }
         }
     }
-        //Reads through txt
+    //Reads through txt
     public static ArrayList<Object> Read(String file) {
 
         try {
