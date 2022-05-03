@@ -8,6 +8,49 @@ import java.util.ArrayList;
 
 //Main class
 class Game extends Tools {
+        //emmi is enemie vars
+    int emmi_HP = 0;
+    int emmi_level = 0;
+    int emmi_attack = 0;
+    String emmi_type = "";
+    //2069 and 2077 vars (non save)
+    int HP1;
+    int attack_num = 0;
+    boolean attack_type;
+    int last_attack=0;
+    // boss health
+    int bill_HP = 300;
+    int Elon_HP = 150;
+    int target = 0;
+    int Tri_HP = 1000;
+    int Mark_Zuckerberg = 300;
+    // Array vars (placed in Save.txt)
+    int missionnum = 10;
+    int HP1m = 50;
+    int cure_tier = 1;
+    int level1 = 1;
+    int exp1 = 0;
+    int levelr1 = 20;
+
+    int cureTier = 1;
+    int max_hit = 5;
+
+
+    //dungeon vars
+    int dungeon_length = 0;
+    //misc
+    double power = 0;
+    int num = 0;
+    int type_num = 0;
+    int speed = 20;
+    int num1 = 0;
+    int num2 = 0;
+    int bonus = 0;
+    int hit = 0;
+    int damage = 0;
+    int move_tier = 0;
+    int attackTime = 0;
+    int attackStun = 0;
     //obj
     Dungeon subway = new Dungeon("Underground subway",20,false);
     
