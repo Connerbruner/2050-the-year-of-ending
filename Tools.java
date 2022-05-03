@@ -42,7 +42,7 @@ class Tools
             }
 
         }
-        //Tech gaint talking RED
+        //Tech giant talking RED
         else if (str.contains("Mark Zuckerberg:") || str.contains("Elon musk:") || str.contains("Bill gates:") || str.contains("Jeff bezos:")) {
             for (int i = 0; i < str.length(); i++) {
                 System.out.print(RED + str.charAt(i));

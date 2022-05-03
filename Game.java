@@ -417,7 +417,7 @@ class Game extends Tools {
         //gives the player some exp for winning
         exp1 += random(100, 200);
         gain();
-        level();
+
     }
 
     //bill gates attack
@@ -520,7 +520,7 @@ class Game extends Tools {
         //gives a you some exp for winning
         exp1 += random(100, 200);
         gain();
-        level();
+
     }
 
     //Elon musk attack
@@ -585,7 +585,7 @@ class Game extends Tools {
         //Gives you exp
         exp1 += random(200, 400);
         gain();
-        level();
+
     }
 
     //jeff bezos attack
@@ -926,7 +926,7 @@ class Game extends Tools {
         }
 
         gain();
-        level();
+
         sPrintln("Old Man: Oh I should tell you my name. Its 2020");
         sPrintln("2020: I can teach you new abilities in trade for ");
     }
@@ -1355,10 +1355,18 @@ class Game extends Tools {
         sPrintln("roll complete");
     }
 
-    //
-    public void level() {
 
-
+    public void gain(){
+        if (emmi_HP == 0) {
+            bonus = (100 * emmi_level);
+            sPrintln("You received a bonus " + bonus + " exp");
+        } else if (emmi_HP >= -5) {
+            bonus = (75 * emmi_level) - (emmi_HP * 10);
+            sPrintln("You received a bonus " + bonus + " exp");
+        } else {
+            bonus = 0;
+            exp1 += (emmi_level) + bonus;
+        }
         if (exp1 >= levelr1) {
             sPrintln("LEVEL UP");
             sPrintln(level1 + " --> " + (level1 + 1));
@@ -1370,23 +1378,11 @@ class Game extends Tools {
         }
 
 
+
     }
 
-    //Get bonus exp for no doing a ton of overkill
-    public void gain() {
-        if (emmi_HP == 0) {
-            bonus = (100 * emmi_level);
-            sPrintln("You received a bonus " + bonus + " exp");
-        } else if (emmi_HP >= -5) {
-            bonus = (75 * emmi_level) - (emmi_HP * 10);
-            sPrintln("You received a bonus " + bonus + " exp");
-        } else {
-            bonus = 0;
-            exp1 += (emmi_level) + bonus;
-        }
-    }
 
-    //fight enemies
+        //fight enemies
     public void battle() {
         while (emmi_HP > 0) {
             sPrint("2069 health " + HP1);
@@ -1418,7 +1414,7 @@ class Game extends Tools {
         }
 
         gain();
-        level();
+
     }
 
     //dungeon number 1
