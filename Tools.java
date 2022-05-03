@@ -1,26 +1,22 @@
 import java.util.Scanner;
 
 class Tools {
+    
+    
     int tSpeed;
     //the Colors of gay
     public static final String GO_BACK = "\"\\u001B[A\"";
     public static final String SCREEN_CLEAR = "\033[H\033[2J";
     public static final String RESET = "\u001B[0m";
-    enum Colors{
-        RED("\u001B[31m"),
-        GREEN("\u001B[32m"),
-        YELLOW("\u001B[33m"),
-        BLUE("\u001B[34m"),
-        PURPLE("\u001B[35m"),
-        CYAN("\u001B[36m"),
-        WHITE("\u001B[37m"),
-        BLACK("\u001B[30m");
-
-        public final String label;
-        private Colors(String label) {
-            this.label = label;
-        }
-        }
+    public static final String BLACK = "\u001B[30m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String WHITE = "\u001B[37m";
+        String[] colors = new String[]{RED,GREEN,BLUE,PURPLE,CYAN};
 
     Scanner scanner = new Scanner(System.in);
     public boolean isGay = false;
@@ -38,13 +34,14 @@ class Tools {
     public void sPrintln(String str) {
         //if 2069 is talking BLUE
         if (isGay) {
-            for(int i = 0; i < str.length(); i++) {
-                System.out.print(Colors.values()[i%8] + str.charAt(i));
+        for(int i = 0; i < str.length(); i++) {
+            System.out.print(str.charAt(i)); 
+            System.out.print(colors[i%colors.length]);
                 wait(tSpeed);
             }
         } else if (str.contains("2069:")) {
                 for (int i = 0; i < str.length(); i++) {
-                    System.out.print(Colors.BLUE.label + str.charAt(i));
+                    System.out.print(BLUE + str.charAt(i));
                     wait(tSpeed);
                 }
             }
@@ -52,7 +49,7 @@ class Tools {
         //if 2077 is talking CYAN
         else if (str.contains("2077:")) {
             for (int i = 0; i < str.length(); i++) {
-                System.out.print(Colors.CYAN.label + str.charAt(i));
+                System.out.print(CYAN + str.charAt(i));
                 wait(tSpeed);
             }
 
@@ -60,14 +57,14 @@ class Tools {
         //Tech giant talking RED
         else if (str.contains("Mark Zuckerberg:") || str.contains("Elon musk:") || str.contains("Bill gates:") || str.contains("Jeff bezos:")) {
             for (int i = 0; i < str.length(); i++) {
-                System.out.print(Colors.RED.label + str.charAt(i));
+                System.out.print(RED + str.charAt(i));
                 wait(tSpeed);
             }
         }
         //if sounds then
         else if (str.contains("*")) {
             for (int i = 0; i < str.length(); i++) {
-                System.out.print(Colors.GREEN.label + str.charAt(i));
+                System.out.print(GREEN + str.charAt(i));
                 wait(tSpeed);
             }
         }
@@ -77,7 +74,7 @@ class Tools {
                 if (random(0, 15) == 10) {
                     System.out.print((char) (random(0, 256)));
                 } else {
-                    System.out.print(Colors.PURPLE.label + str.charAt(i));
+                    System.out.print(PURPLE + str.charAt(i));
                 }
                 wait(tSpeed);
             }

@@ -8,58 +8,13 @@ import java.util.ArrayList;
 
 //Main class
 class Game extends Tools {
-    //emmi is enemie vars
-    int emmi_HP = 0;
-    int emmi_level = 0;
-    int emmi_attack = 0;
-    String emmi_type = "";
-    //2069 and 2077 vars (non save)
-    int HP1;
-    int attack_num = 0;
-    boolean attack_type;
-    int last_attack=0;
-    // boss health
-    int bill_HP = 300;
-    int Elon_HP = 150;
-    int target = 0;
-    int Tri_HP = 1000;
-    int Mark_Zuckerberg = 300;
-    // Array vars (placed in Save.txt)
-    int missionnum = 10;
-    int HP1m = 50;
-    int cure_tier = 1;
-    int level1 = 1;
-    int exp1 = 0;
-    int levelr1 = 20;
-
-    int cureTier = 1;
-    int max_hit = 5;
-
-
-    //dungeon vars
-    int dungeon_length = 0;
-    //misc
-    double power = 0;
-    int num = 0;
-    int type_num = 0;
-    int speed = 20;
-    int num1 = 0;
-    int num2 = 0;
-    int bonus = 0;
-    int hit = 0;
-    int damage = 0;
-    int move_tier = 0;
-    int attackTime = 0;
-    int attackStun = 0;
-
     //obj
+    Dungeon subway = new Dungeon("Underground subway",20,false);
+    
     Scanner scanner = new Scanner(System.in);
     Attack aqua = new Attack("Aqua",7,15,7,8);
     Attack lasershot = new  Attack("Lasershot",7,10,5,6);
     Attack ember = new Attack("Ember",17,30,10,10);
-
-
-
 
     //Starts up 2069
     public void game() {
@@ -89,7 +44,6 @@ class Game extends Tools {
                     mission1_1();
                     mission1_2();
                 }
-                dungeon1();
 
                 if (skip()) {
                     mission1_3();
@@ -109,7 +63,6 @@ class Game extends Tools {
                 if (skip()) {
                     mission2_1();
                 }
-                dungeon2();
 
                 if (skip()) {
                     mission2_2();
@@ -130,7 +83,6 @@ class Game extends Tools {
                 if (skip()) {
                     mission3_1();
                 }
-                dungeon3();
 
                 if (skip()) {
                     mission3_2();
@@ -140,7 +92,6 @@ class Game extends Tools {
                 if (skip()) {
                     mission3_3();
                 }
-                dungeon4();
 
                 if (skip()) {
                     mission3_4();
@@ -158,7 +109,6 @@ class Game extends Tools {
                 if (skip()) {
                     mission4_1();
                 }
-                dungeon5();
 
                 if (skip()) {
                     mission4_2();
@@ -175,7 +125,6 @@ class Game extends Tools {
                 if (skip()) {
                     mission5_1();
                 }
-                dungeon6();
 
                 if (skip()) {
                     mission5_2();
@@ -195,7 +144,7 @@ class Game extends Tools {
                 if (skip()) {
                     mission6_1();
                 }
-                dungeon8();
+                
                 if (skip()) {
                     mission6_2();
                 }
@@ -211,7 +160,6 @@ class Game extends Tools {
                 if (skip()) {
                     mission7_1();
                 }
-                dungeon7();
 
                 if (skip()) {
                     mission7_2();
@@ -225,7 +173,7 @@ class Game extends Tools {
             if ((missionnum >= 8) && (choice.equals("8"))) {
                 sPrintln("MISSION 8 When I Step off");
                 mission8_1();
-                dungeon8();
+
                 mission8_2();
                 if (missionnum < 9) {
                     missionnum = 9;
@@ -1417,227 +1365,7 @@ class Game extends Tools {
 
     }
 
-    //dungeon number 1
-    public void dungeon1() {
-        dungeon_length = 10;
-        sPrintln("Welcome to the underground subway(length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-                if (type_num > 6) {
-                    type_num = random(1, 8);
-                }
-                new_emmi(type_num);
-                battle();
-            }
-
-        }
-    }
-
-    //dungeon number 2
-    public void dungeon2() {
-        dungeon_length = 20;
-        sPrintln("Welcome to rubble filled city (length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-            }
-        }
-
-    }
-
-    //dungeon number 3
-    public void dungeon3() {
-        dungeon_length = 5;
-        sPrintln("Welcome to rubble filled 6-11 (length: " + dungeon_length + " )");
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-            }
-        }
-
-    }
-
-    //dungeon number 4
-    public void dungeon4() {
-        dungeon_length = 20;
-        sPrintln("Welcome to damaged power plant (length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                giga_mech();
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-            }
-        }
-    }
-
-    //dungeon number 5
-    public void dungeon5() {
-        dungeon_length = 100;
-        sPrintln("Welcome to highway 101 (length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                giga_mech();
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-            }
-        }
-    }
-
-    //dungeon number 6
-    public void dungeon6() {
-        dungeon_length = 5;
-        sPrintln("Welcome to rubble filled 6-11  (length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                giga_mech();
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-            }
-        }
-    }
-
-    //dungeon number 7
-    public void dungeon7() {
-        dungeon_length = 20;
-        sPrintln("Welcome to old factory (length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                giga_mech();
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-                roomba_beam();
-            }
-        }
-    }
-
-    //dungeon number 8
-    public void dungeon8() {
-        dungeon_length = 50;
-        sPrintln("Welcome to Central Fwy(length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            int steps = random(1, 5);
-            dungeon_length -= steps;
-            sPrintln("You move " + steps + " feet");
-
-            if (dungeon_length <= 0) {
-                giga_mech();
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(1, 8);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-                battle();
-            }
-        }
-    }
-
-    //dungeon number 9
-    public void dungeon9() {
-        dungeon_length = 10;
-        sPrintln("On top of the Tower (length: " + dungeon_length + " )");
-
-        while (dungeon_length > 0) {
-            dungeon_length -= 1;
-            sPrintln("You move 1 feet");
-
-            if (dungeon_length <= 0) {
-                sPrintln("2069:We made it");
-            } else {
-                sPrintln("2069:Whats that!");
-                type_num = random(2, 3);
-            }
-            if (type_num > 6) {
-                type_num = random(1, 8);
-                new_emmi(type_num);
-            }
-        }
-    }
+    
 
 
 
@@ -1670,163 +1398,8 @@ class Game extends Tools {
         return !yesSkip;
     }
 
-    //Creates new enemie
-    public void new_emmi(int type1) {
 
-        if (type1 == 1) {
-            emmi_type = "Roomba";
-            emmi_level = level1;
-            emmi_HP = 30 + (emmi_level * 2);
-            sPrintln("A Roomba appears");
-        }
-        if (type1 == 2) {
-            emmi_type = "Dog bot";
-            emmi_level = level1;
-            emmi_HP = 35 + (emmi_level * 3);
-            sPrintln("A Dog bot appears");
-        }
-        if (type1 == 3) {
-            emmi_type = "Robot with a spear";
-            emmi_level = level1;
-            emmi_HP = 25 + (emmi_level * 2);
-            sPrintln("A Robot with a spear appears");
-        }
-        if (type1 == 4) {
-            emmi_type = "Robot with a sword";
-            emmi_level = level1;
-            emmi_HP = 30 + (emmi_level * 3);
-            sPrintln("A Robot with a sword appears");
-        }
-
-        if (type1 == 5) {
-            emmi_type = "Robot with a gun";
-            emmi_level = level1;
-            emmi_HP = 40 + (emmi_level * 4);
-            sPrintln("A Robot with a gun appears");
-        }
-        if (type1 == 6) {
-            emmi_type = "Mech";
-            emmi_level = level1;
-            emmi_HP = 200 + (emmi_level * 5);
-            sPrintln("A Mech appears");
-        }
-
-        if (type1 == 7) {
-            emmi_type = "Mini Mech";
-            emmi_level = level1;
-            emmi_HP = 150 + (emmi_level * 4);
-            sPrintln("A Mini Mech appears");
-        }
-        if (type1 == 8) {
-            emmi_type = "Cyborg";
-            emmi_level = level1;
-            emmi_HP = 125 + (emmi_level * 4);
-            sPrintln("A Cyborg appears");
-        }
-    }
-    //shows the player what attack is coming for them
-    public void emmi_prep() {
-        emmi_attack = random(1, 3);
-        if (emmi_type.equals("Roomba")) {
-            if (emmi_attack == 1) {
-                sPrintln("ROOMBA RUSH");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("RECHARGE");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("DARK RUSH");
-            }
-        }
-        if (emmi_type.equals("Dog bot")) {
-            if (emmi_attack == 1) {
-                sPrintln("SPEED TACKLE");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("BATTERY RAM");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("BITE FURY");
-            }
-        }
-        if (emmi_type.equals("Robot with a sword")) {
-            if (emmi_attack == 1) {
-                sPrintln("TRIPLE SLASH");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("BLADE OF DESTRUCTION");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("ZERO SLASH");
-            }
-        }
-        if (emmi_type.equals("Robot with a gun")) {
-            if (emmi_attack == 1) {
-                sPrintln("BULLET RUSH");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("ZERO BLAST");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("POWER SHOT");
-            }
-        }
-        if (emmi_type.equals("Robot with a spear")) {
-            if (emmi_attack == 1) {
-                sPrintln("SPEAR RUSH");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("ZERO SPEAR");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("ULTIMATE SPEAR");
-            }
-        }
-        if (emmi_type.equals("Giga Mech")) {
-            if (emmi_attack == 1) {
-                sPrintln("LASER RAIN");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("DUAL BLADE");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("ZERO BEAM");
-            }
-        }
-        if (emmi_type.equals("Mech")) {
-            if (emmi_attack == 1) {
-                sPrintln("LASER RAIN");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("POWER BURST");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("ULTIMATE RUSH");
-            }
-        }
-        if (emmi_type.equals("Mini Mech")) {
-            if (emmi_attack == 1) {
-                sPrintln("LASER SHOT");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("POWER BURST");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("TRIPLE SLASH");
-            }
-        }
-        if (emmi_type.equals("Cyborg")) {
-            if (emmi_attack == 1) {
-                sPrintln("LASER SHOT");
-            }
-            if (emmi_attack == 2) {
-                sPrintln("LASER SLASH");
-            }
-            if (emmi_attack == 3) {
-                sPrintln("CHARGE BEAM");
-            }
-        }
-    }
+   
 
     //enemies attack
     public void attack_emmi() {
