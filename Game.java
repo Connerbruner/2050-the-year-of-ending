@@ -1,23 +1,15 @@
-import java.util.Scanner;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 //Main class
 class Game extends Tools {
-        //emmi is enemie vars
-    int emmi_HP = 0;
-    int emmi_level = 0;
-    int emmi_attack = 0;
-    String emmi_type = "";
+
     //2069 and 2077 vars (non save)
     int HP1;
     int attack_num = 0;
     boolean attack_type;
-    int last_attack=0;
+    int last_attack = 0;
     // boss health
     int bill_HP = 300;
     int Elon_HP = 150;
@@ -25,39 +17,92 @@ class Game extends Tools {
     int Tri_HP = 1000;
     int Mark_Zuckerberg = 300;
     // Array vars (placed in Save.txt)
-    int missionnum = 10;
+    int missionNum = 10;
     int HP1m = 50;
     int cure_tier = 1;
     int level1 = 1;
     int exp1 = 0;
-    int levelr1 = 20;
+    int levelR1 = 20;
 
     int cureTier = 1;
     int max_hit = 5;
 
 
     //dungeon vars
-    int dungeon_length = 0;
     //misc
-    double power = 0;
     int num = 0;
-    int type_num = 0;
-    int speed = 20;
     int num1 = 0;
     int num2 = 0;
-    int bonus = 0;
     int hit = 0;
     int damage = 0;
     int move_tier = 0;
     int attackTime = 0;
     int attackStun = 0;
     //obj
-    Dungeon subway = new Dungeon("Underground subway",20,false);
-    
+    Dungeon subway = new Dungeon("Underground subway", 20);
+    Dungeon local6_11 = new Dungeon("Rubble filled 6-11", 10);
+    Dungeon factory = new Dungeon("Run down Factory", 30);
+    Dungeon city = new Dungeon("Rubble filled City", 35);
+    Dungeon highway = new Dungeon("Highway 101", 30);
+
+
     Scanner scanner = new Scanner(System.in);
-    Attack aqua = new Attack("Aqua",7,15,7,8);
-    Attack lasershot = new  Attack("Lasershot",7,10,5,6);
-    Attack ember = new Attack("Ember",17,30,10,10);
+    Attack aqua = new Attack("Aqua", 7, 15, 7, 8);
+    Attack lasershot = new Attack("Lasershot", 7, 10, 5, 6);
+    Attack ember = new Attack("Ember", 17, 30, 10, 10);
+
+    //edit txt (update save)
+    public static void Edit(String filePath, ArrayList<Object> arr) {
+        File fileToBeModified = new File(filePath);
+        FileWriter writer = null;
+
+        try {
+
+
+            writer = new FileWriter(fileToBeModified);
+            for (Object o : arr) {
+                String print = o.toString() + "\n";
+                writer.write(print);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //Closing the resources
+                assert writer != null;
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * @return array of saved vars
+     */
+    public static ArrayList<Object> Read(String file) {
+
+        try {
+            File txt = new File(file);
+            FileReader fileRead = new FileReader(txt);
+            BufferedReader reader = new BufferedReader(fileRead);
+            ArrayList<Object> arr = new ArrayList<>();
+            Object var = reader.readLine();
+            while (var != null) {
+                arr.add(var);
+                var = reader.readLine();
+
+            }
+            reader.close();
+            return arr;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
+
+
+    }
 
     //Starts up 2069
     public void game() {
@@ -70,41 +115,50 @@ class Game extends Tools {
         HP1 = HP1m;
         //Runs mission forever
         while (true) {
-            String choice = "STR";
-            sPrint("Type 1 -> " + missionnum + " to try that Mission");
+            String choice;
+            sPrint("Type 1 -> " + missionNum + " to try that Mission");
             //Tells you how to roll the gotcha
-            if (missionnum > 1) {
+            if (missionNum > 1) {
                 sPrint("Type 'exp' to trade exp for new moves");
             }
             sPrint("which Mission would you like to try?   ");
             choice = scanner.nextLine();
-            System.out.println();;
-//mission 1
+            System.out.println();
+            //mission 1
             if (choice.equals("1")) {
-                sPrintln("CHAPTER 1: The Tower of Power");
                 sPrintln("Mission 1: The Awakening of  The Revolution");
                 if (skip()) {
                     mission1_1();
                     mission1_2();
                 }
+                subway.start();
+                while (subway.dungeonLength > subway.amountMoved) {
+                    subway.move();
+                    battle();
+                }
+
 
                 if (skip()) {
                     mission1_3();
                 }
                 mission1_4();
 
-                if (missionnum < 2) {
-                    missionnum = 2;
+                if (missionNum < 2) {
+                    missionNum = 2;
                     sPrintln("MISSION 2 UNLOCKED");
-                    emmi_type = "NOT";
                 }
             }
 //Mission 2
-            if ((choice.equals("2")) && (missionnum >= 2)) {
+            if ((choice.equals("2")) && (missionNum >= 2)) {
                 sPrintln("Mission 2: First Encounters");
 
                 if (skip()) {
                     mission2_1();
+                }
+                city.start();
+                while (city.dungeonLength > city.amountMoved) {
+                    city.move();
+                    battle();
                 }
 
                 if (skip()) {
@@ -115,16 +169,21 @@ class Game extends Tools {
                 if (skip()) {
                     mission2_3();
                 }
-                if (missionnum < 3) {
-                    missionnum = 3;
+                if (missionNum < 3) {
+                    missionNum = 3;
                     sPrintln("MISSION 3 UNLOCKED");
                 }
             }
-//Misson 3
-            if ((missionnum >= 3) && (choice.equals("3"))) {
+//Mission 3
+            if ((missionNum >= 3) && (choice.equals("3"))) {
                 sPrintln("MISSION 3: Rest In The Rubble");
                 if (skip()) {
                     mission3_1();
+                }
+                local6_11.start();
+                while (local6_11.dungeonLength > local6_11.amountMoved) {
+                    local6_11.move();
+                    battle();
                 }
 
                 if (skip()) {
@@ -139,34 +198,44 @@ class Game extends Tools {
                 if (skip()) {
                     mission3_4();
                 }
-                if (missionnum < 4) {
-                    missionnum = 4;
+                if (missionNum < 4) {
+                    missionNum = 4;
                     sPrintln("MISSION 4 UNLOCKED");
                 }
                 sPrintln("MISSION 3 END");
             }
 //Mission 4
-            if ((missionnum >= 4) && (choice.equals("4"))) {
+            if ((missionNum >= 4) && (choice.equals("4"))) {
                 sPrintln("Mission 4: 101 battles");
 
                 if (skip()) {
                     mission4_1();
                 }
+                highway.start();
+                while (highway.dungeonLength > highway.amountMoved) {
+                    highway.move();
+                    battle();
+                }
 
                 if (skip()) {
                     mission4_2();
                 }
-                if (missionnum < 5) {
-                    missionnum = 5;
+                if (missionNum < 5) {
+                    missionNum = 5;
                     sPrintln("mission 5 UNLOCKED");
                 }
             }
 //Mission 5
-            if ((missionnum >= 5) && (choice.equals("5"))) {
+            if ((missionNum >= 5) && (choice.equals("5"))) {
                 sPrintln("Mission 5: Rematch Squared");
 
                 if (skip()) {
                     mission5_1();
+                }
+                local6_11.start();
+                while (local6_11.dungeonLength > local6_11.amountMoved) {
+                    local6_11.move();
+                    battle();
                 }
 
                 if (skip()) {
@@ -176,102 +245,121 @@ class Game extends Tools {
                 if (skip()) {
                     mission5_3();
                 }
-                if (missionnum < 6) {
-                    missionnum = 6;
+                if (missionNum < 6) {
+                    missionNum = 6;
                     sPrintln("MISSION 6 UNLOCKED");
                 }
             }
 //Mission 6
-            if ((missionnum >= 6) && (choice.equals("6"))) {
+            if ((missionNum >= 6) && (choice.equals("6"))) {
                 sPrintln("Mission 6: The Smoking Gun");
                 if (skip()) {
                     mission6_1();
                 }
-                
+                highway.start();
+                while (highway.dungeonLength > highway.amountMoved) {
+                    highway.move();
+                    battle();
+                }
+
                 if (skip()) {
                     mission6_2();
                 }
-                if (missionnum < 7) {
-                    missionnum = 7;
+                if (missionNum < 7) {
+                    missionNum = 7;
                     sPrintln("MISSION 7 UNLOCKED");
                 }
             }
 //Mission 7
-            if ((missionnum >= 7) && (choice.equals("7"))) {
+            if ((missionNum >= 7) && (choice.equals("7"))) {
                 sPrintln("Mission 7: The Rules Of The Roomba");
 
                 if (skip()) {
                     mission7_1();
                 }
+                factory.start();
+                while (factory.dungeonLength > factory.amountMoved) {
+                    factory.move();
+                    battle();
+                }
+                Emmi giga = new Emmi(level1);
+                battle();
 
                 if (skip()) {
                     mission7_2();
                 }
-                if (missionnum < 8) {
-                    missionnum = 8;
+                if (missionNum < 8) {
+                    missionNum = 8;
                     sPrintln("MISSION 8 UNLOCKED");
                 }
             }
 //Mission 8
-            if ((missionnum >= 8) && (choice.equals("8"))) {
+            if ((missionNum >= 8) && (choice.equals("8"))) {
                 sPrintln("MISSION 8 When I Step off");
                 mission8_1();
+                highway.start();
+                while (highway.dungeonLength > highway.amountMoved) {
+                    highway.move();
+                    battle();
+                }
+                Emmi giga = new Emmi(level1);
+                battle();
 
                 mission8_2();
-                if (missionnum < 9) {
-                    missionnum = 9;
+                if (missionNum < 9) {
+                    missionNum = 9;
                     sPrintln("MISSION 9 UNLOCKED");
                 }
             }
 //Mission 9
-            if ((missionnum >= 9) && (choice.equals("9"))) {
+            if ((missionNum >= 9) && (choice.equals("9"))) {
                 sPrintln("Mission 9: Face-Off On The Grand Tower");
+                Emmi giga = new Emmi(level1);
+                battle();
+
                 mission9_1();
                 boss_rush();
                 mission9_2();
-                if (missionnum < 9) {
-                    missionnum = 9;
+                if (missionNum < 9) {
+                    missionNum = 9;
                     sPrintln("MISSION 9 UNLOCKED");
                 }
             }
 //Mission 10
-            if ((missionnum >= 10) && (choice.equals("10"))) {
+            if ((missionNum >= 10) && (choice.equals("10"))) {
                 sPrintln("mission 10: 2 Sides Of The Same Coin");
                 mission10_1();
                 Final();
                 mission10_2();
-                if (missionnum < 11) {
-                    missionnum = 11;
+                if (missionNum < 11) {
+                    missionNum = 11;
                     sPrintln("MISSION 11 UNLOCKED");
                 }
             }
-            if ((missionnum >= 11) && (choice.equals("11"))) {
-                sPrintln("CHAPTER 2: Rising Tides");
-                sPrintln("mission 11: X3090");
 
-            }
 //Gotcha system
-            if ((choice.equals("exp")) && (missionnum > 1)) {
+            if ((choice.equals("exp")) && (missionNum > 1)) {
                 pull();
             }
-                ArrayList<Object> arrList = new ArrayList<Object>();
-        arrList.add(missionnum);
-        arrList.add(HP1m);
-        arrList.add(aqua.attackTier);
-        arrList.add(lasershot.attackTier);
-        arrList.add(cure_tier);
-        arrList.add(ember.attackTier);
-        arrList.add(level1);
-        arrList.add(exp1);
-        arrList.add(levelr1);
-        arrList.add(max_hit);
-        Edit("Save.txt", arrList);
+            ArrayList<Object> arrList = new ArrayList<>();
+            arrList.add(missionNum);
+            arrList.add(HP1m);
+            arrList.add(aqua.attackTier);
+            arrList.add(lasershot.attackTier);
+            arrList.add(cure_tier);
+            arrList.add(ember.attackTier);
+            arrList.add(level1);
+            arrList.add(exp1);
+            arrList.add(levelR1);
+            arrList.add(max_hit);
+            Edit("Save.txt", arrList);
         }
-        
+
     }
+    //embers method
 
     //shows you what attacks you can use
-    public void attack()  {
+    public void attack() {
 
         attack_num = 0;
         sPrint("2069's turn");
@@ -283,75 +371,77 @@ class Game extends Tools {
         sPrint("3: Cure");
 
         sPrint("4: " + ember.attackName);
-        System.out.println();;
+        System.out.println();
         //This while loop just
         long start_Time = System.currentTimeMillis();
 
         sPrint("Which attack? (1-4)   ");
         attack_num = scanner.nextInt();
 
-        System.out.println();;
+        System.out.println();
 
         sPrint("Out Power or Out Speed (Power=false)(Speed=true)");
         attack_type = scanner.nextBoolean();
-        System.out.println();;
+        System.out.println();
 
         long end_Time = System.currentTimeMillis();
-        attackTime = (int)((end_Time-start_Time)/1000);
-        if(attack_num==1)
-        {
-            attackTime+=aqua.getSpeed(attack_type);
-            attackStun=aqua.getSpeed(attack_type);
-        }
-        if(attack_num==2)
-        {
-            attackTime+=lasershot.getSpeed(attack_type);
-            attackStun=lasershot.getStun(attack_type);
-
-        }
-        if(attack_num==4)
-        {
-            attackTime+=ember.getSpeed(attack_type);
-            attackStun=ember.getSpeed(attack_type);
-        }
-    }
-    //choses a method
-    public int choseAttack(double power) {
+        attackTime = (int) ((end_Time - start_Time) / 1000);
         if (attack_num == 1) {
-            num = aqua.attack(power,attack_type);
+            attackTime += aqua.getSpeed(attack_type);
+            attackStun = aqua.getSpeed(attack_type);
         }
         if (attack_num == 2) {
-            num = lasershot.attack(power,attack_type);
+            attackTime += lasershot.getSpeed(attack_type);
+            attackStun = lasershot.getStun(attack_type);
+
+        }
+        if (attack_num == 4) {
+            attackTime += ember.getSpeed(attack_type);
+            attackStun = ember.getSpeed(attack_type);
+        }
+    }
+
+    /**
+     * @return how much damage you did
+     */
+    public int choseAttack(double power) {
+        if (attack_num == 1) {
+            num = aqua.attack(power, attack_type);
+        }
+        if (attack_num == 2) {
+            num = lasershot.attack(power, attack_type);
         }
         if (attack_num == 3) {
             cure(power);
         }
         if (attack_num == 4) {
-            num = ember.attack(power,attack_type);
+            num = ember.attack(power, attack_type);
         }
-        last_attack=attack_num;
+        last_attack = attack_num;
         return num;
     }
-    //embers method
 
+    /**
+     *
+     */
     //cure method
     public void cure(double power) {
-        if(attack_type)
-        {
+        if (attack_type) {
             sPrintln("dodging Cure");
-            num=(int) (random(cure_tier * 2, cure_tier * 5) * power)*2;
-        }
-        else
-        {
+            num = (int) (random(cure_tier * 2, cure_tier * 5) * power) * 2;
+        } else {
             sPrintln("Cure shield");
-            num=(int) (random(cure_tier * 5, cure_tier * 20) * power);
+            num = (int) (random(cure_tier * 5, cure_tier * 20) * power);
         }
         HP1 += num;
         sPrintln("2069's heal " + num + " damage");
     }
 
-
     //2077's code
+
+    /**
+     * @return 2077s damage dealt
+     */
     public int attack2() {
         sPrintln("2077's turn");
 
@@ -361,6 +451,10 @@ class Game extends Tools {
         return num;
 
     }
+
+    /**
+     * @return 2077s damage dealt
+     */
 
     public int quickTime() {
         long startTime = System.currentTimeMillis();
@@ -407,7 +501,7 @@ class Game extends Tools {
         }
         //gives the player some exp for winning
         exp1 += random(100, 200);
-        gain();
+        levelUp();
 
     }
 
@@ -415,8 +509,6 @@ class Game extends Tools {
     public void attack_bill() {
 
         int bill = random(1, 3);
-
-
         if (bill_HP > 0) {
 //small bit of smarts
             if (target == 0) {
@@ -489,7 +581,7 @@ class Game extends Tools {
 
     }
 
-    //Elon musk boss fight
+    //Elon's musk boss fight
     public void Elon_musk() {
         while (Elon_HP > 0) {
             sPrintln("2069's health " + HP1);
@@ -508,9 +600,9 @@ class Game extends Tools {
                 restart();
             }
         }
-        //gives a you some exp for winning
+        //gives you some exp for winning
         exp1 += random(100, 200);
-        gain();
+        levelUp();
 
     }
 
@@ -575,7 +667,7 @@ class Game extends Tools {
         }
         //Gives you exp
         exp1 += random(200, 400);
-        gain();
+        levelUp();
 
     }
 
@@ -603,13 +695,13 @@ class Game extends Tools {
             }
 
             Tri_HP -= damage;
-            if  (HP1 < 0) {
+            if (HP1 < 0) {
                 restart();
             }
         }
     }
 
-    //Tech gaint rush
+    //The trio boss rush
     public void Tri_attack() {
 
         sPrintln("TRI FORCE");
@@ -628,7 +720,7 @@ class Game extends Tools {
             sPrintln("Bill gates: RAGE SLASH");
             num = random(10, 20);
             sPrintln("Bill Gates deals " + num + " Damage and takes " + (num / 3) + " damage");
-            System.out.println();;
+            System.out.println();
             Tri_HP -= num / 3;
             damage += num;
             sPrintln("Jeff bezos) RANDOM FORCE");
@@ -648,7 +740,7 @@ class Game extends Tools {
             sPrintln("Bill Gates) RAGE SLASH");
             num = random(10, 20);
             sPrintln("Bill Gates deals " + num + " Damage and takes " + (num / 2) + " damage");
-            System.out.println();;
+            System.out.println();
             Tri_HP -= num / 2;
             damage += num;
             sPrintln("Jeff bezos) RANDOM FORCE");
@@ -689,8 +781,6 @@ class Game extends Tools {
         if (person == 2069) {
             HP1 -= damage;
         }
-        if (person == 2077) {
-        }
     }
 
     //Final boss
@@ -703,7 +793,7 @@ class Game extends Tools {
             if (move_tier < 3) {
                 Mark_Zuckerberg -= damage;
             }
-            if(HP1 < 0) {
+            if (HP1 < 0) {
                 restart();
             } else {
                 sPrintln("Mark Zuckerberg: YOU HAVE NO POWER IN THIS WORLD");
@@ -724,7 +814,7 @@ class Game extends Tools {
         if (Mark_Zuckerberg < 50) {
             Mark = 2;
         }
-        if ( HP1 != 1) {
+        if (HP1 != 1) {
             Mark = 1;
         }
         if (Mark == 1) {
@@ -783,14 +873,10 @@ class Game extends Tools {
 
         sPrintln("It began with the question: What was causing climate change?");
 
-        sPrintln(
-                "Some thought it was the new technology, the politician's denial, or people's aversion to change."
-        );
+        sPrintln("Some thought it was the new technology, the politician's denial, or people's aversion to change.");
         sPrintln("Some thought it was the wizards.");
 
-        sPrintln(
-                "After all, any sufficiently advanced technology had become indistinguishable from magic."
-        );
+        sPrintln("After all, any sufficiently advanced technology had become indistinguishable from magic.");
 
         sPrintln("But now that we're here, does it really matter anyway?");
 
@@ -798,16 +884,12 @@ class Game extends Tools {
 
         sPrintln("Blackouts suddenly swept the whole world");
 
-        sPrintln(
-                "Soon after, every robot had been taken over. Roombas eating the small and weak"
-        );
+        sPrintln("Soon after, every robot had been taken over. Roomba eating the small and weak");
 
         sPrintln("Now, we are the only living humans left on this planet");
 
 
-        sPrintln(
-                "My name is 2069. With the help of my friend 2077. We plan to get our vengeance."
-        );
+        sPrintln("My name is 2069. With the help of my friend 2077. We plan to get our vengeance.");
     }
 
     //Mission Text
@@ -819,9 +901,7 @@ class Game extends Tools {
         sPrintln("2077: It's October 12th, 2050");
 
 
-        sPrintln(
-                "2077: Today. It's the day we begin our journey to take back the world. Don't you remember?"
-        );
+        sPrintln("2077: Today. It's the day we begin our journey to take back the world. Don't you remember?");
 
         sPrintln("2069: I could never forget.");
 
@@ -834,12 +914,10 @@ class Game extends Tools {
         sPrintln("2077: We need to turn off the power!");
 
 
-        sPrintln(
-                "2077: The only reason they would turn it on would be to control the world"
-        );
+        sPrintln("2077: The only reason they would turn it on would be to control the world");
 
 
-        sPrintln("2077: The powerplant is in the underground subway.");
+        sPrintln("2077: The power plant is in the underground subway.");
 
 
         sPrintln("2069: Right - let's go.");
@@ -847,12 +925,47 @@ class Game extends Tools {
         sPrintln("*Later in the subway*");
     }
 
+    public void mission1_3() {
+        sPrintln("2069: It appears that the power plant has taken some damage due to the power being shut off.");
+
+
+        sPrintln("old man: Help...please help");
+
+
+        sPrintln("2077: 2069 we need to help him");
+
+
+        sPrintln("2069: I got it");
+    }
+
+    public void mission1_4() {
+        sPrintln("old man: Thank you. I can't thank you enough. I am forever in your debt.");
+
+        sPrintln("old man: As a gift here is 100xp");
+
+
+        String choice = "";
+        //old man gift
+        while ((!choice.equals("2069")) && (!choice.equals("2077"))) {
+            sPrintln("Who will you give this exp to? (2069 or 2077)   ");
+            choice = scanner.nextLine();
+        }
+
+        if (choice.equals("2069")) {
+            exp1 += 100;
+        }
+
+        levelUp();
+
+        sPrintln("Old Man: Oh I should tell you my name. Its 2020");
+        sPrintln("2020: I can teach you new abilities in trade for ");
+    }
+
     public void mission2_1() {
-        sPrintln("*2077 pulls the kill switch in the powerplant*");
+        sPrintln("*2077 pulls the kill switch in the power plant*");
 
 
-        sPrintln(
-                "2069 (yelling): Alright, we should head back to the surface!");
+        sPrintln("2069 (yelling): Alright, we should head back to the surface!");
 
         sPrintln("2077: Right!");
 
@@ -862,9 +975,7 @@ class Game extends Tools {
         sPrintln("2069: It's good to see that everything is powered off");
 
 
-        sPrintln(
-                "2077: Quick! Look at that mech flying to the top of the tower!"
-        );
+        sPrintln("2077: Quick! Look at that mech flying to the top of the tower!");
 
 
         sPrintln("2069: WAIT!");
@@ -879,47 +990,6 @@ class Game extends Tools {
         sPrintln("2069: Down the drain...");
 
         sPrintln("2077: WE ARE GOING TO KILL THAT DUMB MECH");
-    }
-
-    public void mission1_3() {
-        sPrintln(
-                "2069: It appears that the powerplant has taken some damage due to the power being shut off."
-        );
-
-
-        sPrintln("old man: Help...please help");
-
-
-        sPrintln("2077: 2069 we need to help him");
-
-
-        sPrintln("2069: I got it");
-    }
-
-    public void mission1_4() {
-        sPrintln(
-                "old man: Thank you. I can't thank you enough. I am forever in your debt.");
-
-        sPrintln("old man: As a gift here is 100xp");
-
-
-        String choice = "";
-        //old man gift
-        while ((!choice.equals("2069")) && (!choice.equals("2077"))) {
-            sPrintln("Who will you give this exp to? (2069 or 2077)   ");
-            choice = scanner.nextLine();
-        }
-        if (choice.equals("2077")) {
-        }
-
-        if (choice.equals("2069")) {
-            exp1 += 100;
-        }
-
-        gain();
-
-        sPrintln("Old Man: Oh I should tell you my name. Its 2020");
-        sPrintln("2020: I can teach you new abilities in trade for ");
     }
 
     public void mission2_2() {
@@ -948,7 +1018,7 @@ class Game extends Tools {
         sPrintln("Bill: You put a good fight");
 
 
-        sPrintln("2077: We finsh this sight here right now");
+        sPrintln("2077: We finish this sight here right now");
 
 
         sPrintln("2069: EMBER");
@@ -970,7 +1040,7 @@ class Game extends Tools {
         sPrintln("2069: How can he just disappear");
 
 
-        sPrintln("2077: We shoud hunt down bill gates");
+        sPrintln("2077: We should hunt down bill gates");
 
 
         sPrintln("2069: lets head for washington");
@@ -985,7 +1055,7 @@ class Game extends Tools {
         sPrintln("2020: I amy be able to help");
 
 
-        sPrintln("2020: Meet the bill gates proff car");
+        sPrintln("2020: Meet the bill gates proof car");
 
 
         sPrintln("2020: It uses oxygen to power its self and cant be hacked");
@@ -1007,13 +1077,13 @@ class Game extends Tools {
         sPrintln("Elon musk: ....");
 
 
-        sPrintln("Elon musk: You need to be dealt with");
+        sPrintln("Elon musk: The 2...");
 
 
         sPrintln("2077: We will be dealing with you ");
 
 
-        sPrintln("Elon musk pulls out a spear");
+        sPrintln("*Elon musk pulls out a spear*");
     }
 
     public void mission3_3() {
@@ -1077,7 +1147,7 @@ class Game extends Tools {
     }
 
     public void mission4_2() {
-        sPrintln("2069: It appears that calfornia is very dangerous");
+        sPrintln("2069: It appears that california is very dangerous");
 
 
         sPrintln("2077: I bet that the group responsible for this has their headquarters in california");
@@ -1109,13 +1179,13 @@ class Game extends Tools {
         sPrintln("Later in washington");
 
 
-        sPrintln("2069:It appers that the power is on");
+        sPrintln("2069:It appears that the power is on");
 
 
-        sPrintln("Suddenly 2 mechs crash down infront of 2069,2020 and 2077");
+        sPrintln("Suddenly 2 mechs crash down in-front of 2069,2020 and 2077");
 
 
-        sPrintln("Jeff bezos: It appers that they have showen up early");
+        sPrintln("Jeff bezos: It appears that they have shown up early");
 
 
         sPrintln("Bill gates: Your guys are faster than normal");
@@ -1134,14 +1204,14 @@ class Game extends Tools {
 
     public void mission5_3() {
         sPrintln("Jeff bezos: You did not tell me that these kids could put up a fight");
-        sPrintln("Bill gates: Nevermind that we need to leave NOW");
+        sPrintln("Bill gates: Never-mind that we need to leave NOW");
         sPrintln("Jeff bezos: Right");
     }
 
     public void mission6_1() {
-        sPrintln("*Power flashs on everywhere*");
+        sPrintln("*Power flashes on everywhere*");
         sPrintln("2069: What the...");
-        sPrintln("mark zuckerberg (on tv): Hello everyone it appears that 4 of us are rebeling againest our new way of life");
+        sPrintln("mark zuckerberg (on tv): Hello everyone it appears that 4 of us are rebelling against our new way of life");
         sPrintln("2077: We need to get to california and fast");
         sPrintln("2069: right lets go!");
         sPrintln("2020: Got the car started");
@@ -1152,7 +1222,7 @@ class Game extends Tools {
     }
 
     public void mission6_2() {
-        sPrintln("2077: Peice of cake ");
+        sPrintln("2077: Piece of cake ");
         sPrintln("2069: Easy for you to say");
         sPrintln("2020: We have a issue the car has broken down we are going to have to walk the rest of the way");
         sPrintln("2077: THAT JUST GREAT");
@@ -1160,12 +1230,12 @@ class Game extends Tools {
     }
 
     public void mission7_1() {
-        sPrintln("2077: I am soooOO tired");
+        sPrintln("2077: I am so tired");
         sPrintln("2069: When is the nearest stop");
         sPrintln("2020: About 5 miles");
-        sPrintln("2069 and 2077: YOU HAVE GOT TO BE KINDING ME");
+        sPrintln("2069 and 2077: YOU HAVE GOT TO BE KIDDING ME");
         sPrintln("2020: Look at the map");
-        sPrintln("2069: It appers that there is a stop in 3 miles");
+        sPrintln("2069: It appears that there is a stop in 3 miles");
         sPrintln("2077: I miss that car ");
         sPrintln("*Later*");
         sPrintln("2069: Look a old factory");
@@ -1178,8 +1248,8 @@ class Game extends Tools {
         sPrintln("2020: Boys...");
         sPrintln("2069: 2020 You good");
         sPrintln("2020: Your going to have to go on without me");
-        sPrintln("2020: Go You are the heroś");
-        sPrintln("2077: NO WE ARE THE HEROS");
+        sPrintln("2020: Go You are the hero's");
+        sPrintln("2077: NO WE ARE THE HERO'S");
         sPrintln("2020: Boys...");
         sPrintln("2077: ALL 3 OF US");
         sPrintln("2020: Okay fine I will go with");
@@ -1204,7 +1274,7 @@ class Game extends Tools {
     public void mission9_1() {
         sPrintln("2069: Give Elon musk a chance to get inside");
         sPrintln("2077: Right");
-        sPrintln("5 mins later");
+        sPrintln("5 minutes later");
         sPrintln("2069: Now is our chance");
         sPrintln("2077: Right");
         sPrintln("2069: We need to get to the top floor");
@@ -1219,7 +1289,7 @@ class Game extends Tools {
         sPrintln("Jeff bezos: We need to retreat");
         sPrintln("2077: NEVER");
         sPrintln("2069: You will pay for what you have done");
-        sPrintln("2069: LETS FINSIH THIS");
+        sPrintln("2069: LETS FINISH THIS");
         sPrintln("2069: " + ember.attackName);
         sPrintln("Elon musk: ...My final words");
         sPrintln("Elon musk: You are the winner and I am the...");
@@ -1239,30 +1309,14 @@ class Game extends Tools {
     }
 
     public void mission10_2() {
-        sPrintln("Mark Zuckerberg: Sigh, It apears musk was right");
+        sPrintln("Mark Zuckerberg: Sigh, It appears musk was right");
         sPrintln("2069: What?");
-        sPrintln("Mark Zuckerberg: Luckly I was ready for this");
-        sPrintln("Mark Zuckerberg: I present the X3090");
-        sPrintln("Mark Zuckerberg: A nuclear missile containg 1000s of the parsite Z");
-        sPrintln("Mark Zuckerberg: The same parasite That killed 1000s. It takes control of technology. IT Alos is VERY hostile to humans");
-        sPrintln("Mark Zuckerberg: Said missile is set to land rihgt dead center in the middle of the arctic causing rapid cimiate change and rising sea levels ");
-        sPrintln("Mark Zuckerberg: All triggered by THIS BUTTON");
-        sPrintln("Mark Zuckerberg: 3                              2                                           1");
-        sPrintln("2077: NOOOOOOOOOOOO");
-        sPrintln("2069: NOOOOOOOOOOOO");
-        sPrintln("Mark Zuckerberg: GoodBye");
-        sPrintln("*Mark Zuckerberg disappears*");
-    }
+        sPrintln("Mark Zuckerberg: Should have been ready for you guys");
+        sPrintln("2077: ITS OVER");
+        sPrintln("2069: " + ember.attackName);
+        sPrint("Mark Zuckerberg: NooOOooOo");
+        sPrintln("*Mark Zuckerberg fall through a window*");
 
-    public void mission11_1() {
-        sPrintln("2069: 2077 Exit?");
-        sPrintln("2077: Exit over there");
-        sPrintln("2069: Great");
-        sPrintln("2069: The Bomb should raise the sea level 750ft. Meaning most buildings are going to be submearged");
-        sPrintln("2069: We have 1 hour before the sea will be submearged");
-        sPrintln("2077: Lets use this Tower as out base. I need to start work on a way to move from tower to tower");
-        sPrintln("2069: sounds good");
-        sPrintln("2069: While you do that Let me scout");
     }
 
     public void pull() {
@@ -1273,8 +1327,7 @@ class Game extends Tools {
             num = scanner.nextInt();
             int pull_num = num / 25;
             exp1 -= num;
-            if (exp1 < 0)
-                num = -exp1;
+            if (exp1 < 0) num = -exp1;
             exp1 = 0;
             while (pull_num > 0) {
                 roll();
@@ -1288,29 +1341,25 @@ class Game extends Tools {
 
     //gotcha
     public void roll() {
-        int[] odds = new int[] {1,1,1,1,2,2,2,3,3,3,4,4,5,6,7};
-        int tier = random(0,odds.length-1);
+        int[] odds = new int[]{1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, 7};
+        int tier = odds[random(0, odds.length - 1)];
         if (tier == 1) {
             HP1m += 2;
             sPrintln("2069's max Hp increased by 2");
-        } else if ((tier == 2) || (tier == 3) || (tier == 4) || (tier == 5))
-            num = random(1, 4);
+        } else if ((tier == 2) || (tier == 3) || (tier == 4) || (tier == 5)) num = random(1, 4);
         //Ember level up
         if (num == 4) {
             if (tier > ember.attackTier) {
                 sPrintln("ember leveled up");
                 sPrintln(ember.attackTier + " --> " + tier);
                 ember.setAttackTier(tier);
-
-
             }
             // Cure level up
             if (num == 3) {
-                if (tier > cure_tier)
-                {
+                if (tier > cure_tier) {
                     sPrintln("Cure leveled up");
                     sPrintln(cure_tier + " -->" + tier);
-                    cure_tier=tier;
+                    cure_tier = tier;
                 }
 
             }
@@ -1321,9 +1370,6 @@ class Game extends Tools {
                 sPrintln("Aqua leveled up");
                 sPrintln(aqua.attackName + " --> " + tier);
                 aqua.setAttackTier(tier);
-
-
-
             }
         }
         //Laser level up
@@ -1337,97 +1383,83 @@ class Game extends Tools {
         }
         if (tier == 6) {
             max_hit += 1;
-            sPrintln("2077's power of each hit incressesed by 1");
+            sPrintln("2077's power of each hit increases by 1");
         }
         if (tier == 7) {
             max_hit += 2;
-            sPrintln("2077's power of each hit incressesed by 2");
+            sPrintln("2077's power of each hit increases by 2");
         }
         sPrintln("roll complete");
     }
 
-
-    public void gain(){
-        if (emmi_HP == 0) {
-            bonus = (100 * emmi_level);
-            sPrintln("You received a bonus " + bonus + " exp");
-        } else if (emmi_HP >= -5) {
-            bonus = (75 * emmi_level) - (emmi_HP * 10);
-            sPrintln("You received a bonus " + bonus + " exp");
-        } else {
-            bonus = 0;
-            exp1 += (emmi_level) + bonus;
-        }
-        if (exp1 >= levelr1) {
+    public void levelUp() {
+        if (exp1 >= levelR1) {
             sPrintln("LEVEL UP");
             sPrintln(level1 + " --> " + (level1 + 1));
             sPrintln("2069: max health +1");
             HP1m++;
             level1++;
-            levelr1 = exp1 + 20 * (level1 * level1) / 2;
-            sPrintln("2069 has" + (levelr1 - exp1) + "exp till leveling up");
+            levelR1 = exp1 + 20 * (level1 * level1) / 2;
+            sPrintln("2069 has" + (levelR1 - exp1) + "exp till leveling up");
         }
-
 
 
     }
 
-
-        //fight enemies
+    //fight enemies
     public void battle() {
-        while (emmi_HP > 0) {
+        Emmi emmi = new Emmi(random(1, 7), level1);
+        while (emmi.emmi_HP > 0) {
             sPrint("2069 health " + HP1);
-            sPrint(emmi_type + " health " + emmi_HP);
-            System.out.println();;
-            emmi_attack = 0;
-            emmi_prep();
-            
+            sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
+            System.out.println();
+            emmi.emmi_attack = 0;
+            emmi.emmi_prep();
             attack();
-            
-            attack_emmi();
-            if(power>0)
-            {
-                emmi_HP -= choseAttack(power);
+            num = 0;
+            double[] arr = emmi.attack_emmi(attackTime, attackStun);
+            emmi.emmi_HP -= choseAttack(arr[1]);
+            if (arr[1] > 0) {
+                emmi.emmi_HP -= attack2();
+            } else {
+                HP1 -= arr[0];
             }
-
-            if(power>0)
-            {
-                emmi_HP-= attack2();
-            }
-
             if (HP1 > HP1m) {
                 HP1 = HP1m;
             }
+            restart();
 
-            if (HP1 < 0) {
-                restart();
-            }
         }
 
-        gain();
+        levelUp();
 
     }
 
-    
+
+    //enemies attack
 
 
-
+    //Create a giga mech
 
     //Game Over
     public void restart() {
-        sPrintln("GAME OVER");
-        sPrintln("???: You seem to be overwhelmed");
-        sPrintln("???: I may be able to help");
-        sPrintln("???: Your only hope now is to turn back the hands of time");
-        sPrintln("2077:I see nothing wrong with that");
-        sPrintln("2069: Please help us");
-        String choice = "How are you doing";
-        while (!choice.equals("START")) {
-            sPrint("Type ¨START¨ to continue     ");
-            choice = scanner.nextLine();
+        if (HP1 < 0) {
+            sPrintln("GAME OVER");
+            sPrintln("???: You seem to be overwhelmed");
+            sPrintln("???: I may be able to help");
+            sPrintln("???: Your only hope now is to turn back the hands of time");
+            sPrintln("2077:I see nothing wrong with that");
+            sPrintln("2069: Please help us");
+            String choice = "How are you doing";
+            while (!choice.equals("START")) {
+                sPrint("Type ¨START¨ to continue     ");
+                choice = scanner.nextLine();
+            }
+            System.out.println();
+
+            sPrintln("PUT GAME HERE");
         }
-        System.out.println();;
-        sPrintln("PUT GAME HERE");
+
     }
 
     /**
@@ -1435,313 +1467,23 @@ class Game extends Tools {
      */
     public boolean skip() {
         sPrint("Skip cutscene?   ");
-
         String skip = scanner.nextLine();
         boolean yesSkip = skip.equals("yes") || skip.equals("Yes") || skip.equals("Y") || skip.equals("y");
         return !yesSkip;
-    }
-
-
-   
-
-    //enemies attack
-    public void attack_emmi() {
-        power = 1;
-        //Roomba attacks
-        if (emmi_type.equals("Roomba")) {
-            if (emmi_attack == 1 && attackTime<23 &&attackStun<5) {
-            
-                    power = 0.3;
-                    sPrintln("ROOMBA RUSH");
-                    num = emmi_HP * 2;
-                    HP1 -= num;
-                    sPrintln("Roomba deals " + num + " damage");
-                }
-            
-            if (emmi_attack == 2 && attackTime<15 &&attackStun<3) {
-                    
-                    sPrintln("RECHARGE");
-                    num = (int) (emmi_HP * 0.5);
-                    sPrintln("Roomba heals " + num + " damage");
-                }
-            
-            if (emmi_attack == 3 && attackTime<15 &&attackStun<6) {
-                    power = 0.6;
-                    sPrintln("CHARGE BEAM");
-                    num = (emmi_HP * random(1, 3));
-                    HP1 -= num;
-                    sPrintln("Roomba deals " + num + " damage");
-                }
-            
-        }
-        //Dog bot attacks
-        if (emmi_type.equals("Dog bot")) {
-            if (emmi_attack == 1 && attackTime<12 &&attackStun<3) {
-
-                    power = 0.9;
-                    sPrintln("SPEED TACKLE");
-                    num = random(10, 15);
-                    HP1 -= num;
-                    sPrintln("Dog Bot deals " + num + " damage");
-                }
-    
-            if (emmi_attack == 2 && attackTime<27 &&attackStun<7) {
-               
-                    power = 0.2;
-                    sPrintln("BATTERY RAM");
-                    num = random(10, 50);
-                    HP1 -= num;
-                    sPrintln("Dog Bot deals " + num + " damage");
-                }
-            
-            if (emmi_attack == 3 && attackTime<15 &&attackStun<4) {
-                    power = 0.75;
-                    sPrintln("BITE RUSH");
-                    num = random(5, 25);
-                    HP1 -= num;
-                    sPrintln("Dog Bot deals " + num + " damage");
-                }   
-        }
-        //Robot with a spear attacks
-        if (emmi_type.equals("Robot with a spear")) {
-            if (emmi_attack == 1 && attackTime<15 &&attackStun<4) {
-
-                    power = 0.75;
-                    sPrintln("SPEAR RUSH");
-                    num = random(5, 20);
-                    HP1 -= num;
-                    sPrintln("Robot with a spear deals " + num + " damage");
-                }
-            if (emmi_attack == 2 && attackTime<13 &&attackStun<3) {
-
-                    power = 0.7;
-                    sPrintln("ZERO SPEAR");
-                    num = random(10, 15);
-                    HP1 -= num;
-                    sPrintln("Robot with a spear deals " + num + " damage");
-                }
-            
-            if (emmi_attack == 3 && attackTime<27 &&attackStun<8) {
-
-                    power = 0.3;
-                    sPrintln("ULTIMATE SPEAR");
-                    num = random(30, 50);
-                    HP1 -= num;
-                    sPrintln("Robot with a spear deals " + num + " damage");
-
-                }
-        }
-        //Robot with a gun attacks
-        if (emmi_type.equals("Robot with a gun")) {
-            if (emmi_attack == 1 && attackTime<17 &&attackStun<3) {
-                    power = 0.7;
-                    sPrintln("BULLET RUSH");
-                    num = random(1, 30);
-                    HP1 -= num;
-                    sPrintln("Robot with a gun deals " + num + " damage");
-
-                }
-            
-            if (emmi_attack == 2 && attackTime<14 &&attackStun<4) {
-                    power = 0.8;
-                    sPrintln("ZERO BLAST");
-                    num = random(10, 15);
-                    HP1 -= num;
-                    sPrintln("Robot with a gun deals deals " + num + " damage");
-
-                }
-            
-            if (emmi_attack == 3 && attackTime<25 &&attackStun<7) {
-               
-                    power = 0.3;
-                    sPrintln("CHARGE SHOT");
-                    num = random(30, 50);
-                    HP1 -= num;
-                    sPrintln("Robot with a gun deals " + num + " damage");
-
-                }
-            
-        }
-        //Robot with a sword attack
-        if (emmi_type.equals("Robot with a sword")) {
-            if (emmi_attack == 1 && attackTime<14 &&attackStun<4) {
-                    power = 0.6;
-                    sPrintln("TRIPLE SLASH");
-                    num = random(5, 15);
-                    HP1 -= num;
-                    sPrintln("Robot with a sword deals " + num + " damage");
-
-                }
-            
-            if (emmi_attack == 2 && attackTime<30 &&attackStun<7) {
-                    power = 0.25;
-                    sPrintln("BLADE OF DESTRUCTION");
-                    num = random(1, 100);
-                    HP1 -= num;
-                    sPrintln("Robot with a sword  deals " + num + " damage");
-
-                }
-            
-            if (emmi_attack == 3 && attackTime<15 &&attackStun<3) {
-
-                    power = 0.67;
-                    sPrintln("ZERO SLASH");
-                    num = random(5, 15);
-                    HP1 -= num;
-                    sPrintln("Robot with a sword  deals " + num + " damage");
-
-                }
-            }
-        
-
-        //Mechs Attack
-        if (emmi_type.equals("Mech")) {
-            if (emmi_attack == 1 && attackTime<23 &&attackStun<6) {
-                        power = 0.3;
-                        sPrintln("LASER RAIN");
-                        num = random(20, 30);
-                        HP1 -= num;
-                        sPrintln("Mech deals " + num + " damage");
-                    }
-
-            if (emmi_attack == 2 && attackTime<27 &&attackStun<7) {
-
-                        power = 0.3;
-                        sPrintln("POWER BURST");
-                        num = random(30, 50);
-                        HP1 -= num;
-                        sPrintln("Mech deals " + num + " damage");
-
-            }
-            if (emmi_attack == 3 && attackTime<40 &&attackStun<7) {
-
-                        power = 0.1;
-                        sPrintln("ULTIMATE RUSH");
-                        num = random(30, 50);
-                        HP1 -= num;
-                        sPrintln("Mech deals " + num + " damage");
-
-                }
-
-            }
-        
-        //Giga mech attack
-        if (emmi_type.equals("Giga Mech")) {
-            if (emmi_attack == 1 && attackTime<25 &&attackStun<6) {
-                
-                        power = 0.75;
-                        sPrintln("LASER RAIN");
-                        num = random(20, 40);
-                        HP1 -= num;
-                        sPrintln("Giga Mech deals " + num + " damage");
-                    }
-                
-            if (emmi_attack == 2 && attackTime<10 &&attackStun<3) {
-                
-                        power = 0.8;
-                        sPrintln("DUAL BLADE");
-                        num = random(10, 40);
-                        HP1 -= num;
-                        sPrintln("Giga Mech deals " + num + " damage");
-
-                    }
-                
-            
-            if (emmi_attack == 3 && attackTime<13 &&attackStun<6) {
-                        power = 0.75;
-                        sPrintln("ZERO BEAM");
-                        num = random(15, 35);
-                        HP1 -= num;
-                        sPrintln("Giga Mech deals " + num + " damage");
-
-                    }
-
-            }
-        
-        //mini mech attacks
-        if (emmi_type.equals("Mini Mech")) {
-            if (emmi_attack == 1 && attackTime<15 &&attackStun<6) {
-
-                        power = 0.67;
-                        sPrintln("LASER SHOT");
-                        num = random(10, 35);
-                        HP1 -= num;
-                        sPrintln("Mini Mech deals " + num + " damage");
-
-                    }
-                
-                
-            if (emmi_attack == 2 && attackTime<15 &&attackStun<5) {
-
-                        power = 0.5;
-                        sPrintln("LASER SHOT");
-                        num = random(10, 30);
-                        HP1 -= num;
-                        sPrintln("Mini Mech deals " + num + " damage");
-            }
-            if (emmi_attack == 3 && attackTime<17 &&attackStun>6) {
-               
-                        power = 0.56;
-                        sPrintln("TRIPLE SLASH");
-                        num = random(5, 10)*3;
-                        HP1 -= num;
-                        sPrintln("Mini Mech deals " + num + " damage");
-                    }
-                
-            }
-        
-        //Cyborg attack
-        if (emmi_type.equals("Cyborg")) {
-            if (emmi_attack == 1 && attackTime<15 &&attackStun>6) {
-
-                    power = 0.65;
-                    sPrintln("LASER SHOT");
-                    num = random(5, 25);
-                    HP1 -= num;
-                    sPrintln("Cyborg deals " + num + " damage");
-                }
-            
-            if (emmi_attack == 2 && attackTime<20 &&attackStun>6) {
-                    power = 0;
-                    sPrintln("LASER SLASH");
-                    num = random(7, 20);
-                    HP1 -= num;
-                    sPrintln("Cyborg deals " + num + " damage");
-                }
-            
-            if (emmi_attack == 3 && attackTime<25 &&attackStun>6) {
-
-                    power = 0;
-                    sPrintln("CHARGE BEAM");
-                    num = random(7, 20);
-                    HP1 -= num;
-                    sPrintln("Cyborg deals " + num + " damage");
-                }
-
-            }
-        }
-    
-
-    //Create a giga mech
-    public void giga_mech() {
-        emmi_type = "Giga Mech";
-        emmi_level = level1;
-        emmi_HP = 200 + (emmi_level * 20);
-        sPrintln("Giga Mech");
     }
 
     //uses READ to update save
     public void grabSave() {
         ArrayList<Object> Save = Read("Save.txt");
 
-        for (int i = 0; i < 9; i++) {
+        for (int i = 0; i < 10; i++) {
             String var = Save.get(i).toString();
             int val = 0;
             if (strIsInt(var)) {
                 val = Integer.parseInt(var);
             }
             if (i == 0) {
-                missionnum = val;
+                missionNum = val;
             }
             if (i == 1) {
                 HP1m = val;
@@ -1750,7 +1492,7 @@ class Game extends Tools {
                 level1 = val;
             }
             if (i == 3) {
-                levelr1 = val;
+                levelR1 = val;
             }
             if (i == 4) {
                 exp1 = val;
@@ -1777,7 +1519,9 @@ class Game extends Tools {
 
     }
 
-    //checks if you can cast a str to a int
+    /**
+     * @return Is that string castable
+     */
     public boolean strIsInt(String string) {
         try {
             int value = Integer.parseInt(string);
@@ -1786,54 +1530,5 @@ class Game extends Tools {
             return false;
         }
     }
-    //edit txt (update save)
-    public static void Edit(String filePath, ArrayList<Object> arr) {
-        File fileToBeModified = new File(filePath);
-        BufferedReader reader = null;
-        FileWriter writer = null;
-
-        try {
-
-
-            writer = new FileWriter(fileToBeModified);
-            for (Object o : arr) {
-                String print = o.toString() + "\n";
-                writer.write(print);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                //Closing the resources
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-    //Reads through txt
-    public static ArrayList<Object> Read(String file) {
-
-        try {
-            File txt = new File(file);
-            FileReader fileRead = new FileReader(txt);
-            BufferedReader reader = new BufferedReader(fileRead);
-            ArrayList<Object> arr = new ArrayList<>();
-            Object var = reader.readLine();
-            while (var != null) {
-                arr.add(var);
-                var = reader.readLine();
-
-            }
-            reader.close();
-            return arr;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return new ArrayList<>();
-        }
-
-
-    }
-//dont pass this comment
+//don't pass this comment
 }

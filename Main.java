@@ -15,9 +15,9 @@ class Main {
         tools.setTSpeed(20);
         //main starts here
         tools.sPrint("ENTER CHEAT CODE (or not)");
-        String cheatcode = "";
-        cheatcode = scanner.nextLine();
-        if (cheatcode.equals("gay")) {
+        String cheatCode;
+        cheatCode = scanner.nextLine();
+        if (cheatCode.equals("gay")) {
             tools.isGay = true;
         }
 
