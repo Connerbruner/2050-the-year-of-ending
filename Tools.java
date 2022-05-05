@@ -1,3 +1,5 @@
+import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 class Tools {
@@ -120,4 +122,76 @@ class Tools {
 
 
     }
+    /**
+     * @return Is that string castable
+     */
+    public boolean strIsInt(String string) {
+        try {
+            int value = Integer.parseInt(string);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+    /**
+     * Returns false on "Yes, yes, y, or Y"
+     */
+    public boolean skip() {
+        sPrint("Skip cutscene?   ");
+        String skip = scanner.nextLine();
+        boolean yesSkip = skip.equals("yes") || skip.equals("Yes") || skip.equals("Y") || skip.equals("y");
+        return !yesSkip;
+    }
+    public static void Edit(String filePath, Object[] arr) {
+        File fileToBeModified = new File(filePath);
+        FileWriter writer = null;
+
+        try {
+
+
+            writer = new FileWriter(fileToBeModified);
+            for (Object o : arr) {
+                String print = o.toString() + "\n";
+                writer.write(print);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                //Closing the resources
+                assert writer != null;
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * @return array of saved vars
+     */
+    public static Object[] Read(String file) {
+
+        try {
+            File txt = new File(file);
+            FileReader fileRead = new FileReader(txt);
+            BufferedReader reader = new BufferedReader(fileRead);
+            Object[] arr = new Object[9];
+            Object var = reader.readLine();
+            while (var != null) {
+                for (int i = 0; i < 9; i++)
+                     arr[i]=var;
+
+            }
+            reader.close();
+            return arr;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new Object[9];
+        }
+
+
+    }
+
 }
