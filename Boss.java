@@ -1,24 +1,26 @@
-public class boss extends  Tools{
+class Boss extends Tools {
     // boss health
-    int bill_HP = 300;
-    int Elon_HP = 150;
-    int target = 0;
-    int Tri_HP = 1000;
-    int Mark_Zuckerberg = 300;
+
     //Bill Gates boss fight
+    int[] healthBars;
+    BossAttack[] attacks;
 
+    public Boss(int[] health, BossAttack[] attack) {
+        healthBars = health;
+        attacks = attack;
+    }
 
-    //bill gates attack
-    public void attack_bill() {
+    /** PLEASE READ THROUGH CODE FOR ATTACK TYPES
+     public void attack_bill() {
 
-        int bill = random(1, 3);
-        if (bill_HP > 0) {
-//small bit of smarts
-            if (target == 0) {
-                bill = 1;
-            }
-//target attack
-            if (bill == 1) {
+     int bill = random(1, 3);
+     if (bill_HP > 0) {
+     //small bit of smarts
+     if (target == 0) {
+     bill = 1;
+     }
+     //target attack
+     if (bill == 1) {
                 target = random(1, 2);
 
                 if (target == 1) {
@@ -272,14 +274,15 @@ public class boss extends  Tools{
         }
         if (Mark == 5) {
             sPrintln("FIRE BLADE OF DARKNESS");
-            num = random(1, 2);
-            if (num == 1) {
-                HP1 -= 30;
-                sPrintln("2069 takes 30 damage");
-            }
-            if (num == 1) {
-                sPrintln("2077 takes 30 damage");
-            }
-        }
-    }
+     num = random(1, 2);
+     if (num == 1) {
+     HP1 -= 30;
+     sPrintln("2069 takes 30 damage");
+     }
+     if (num == 1) {
+     sPrintln("2077 takes 30 damage");
+     }
+     }
+     }
+     **/
 }

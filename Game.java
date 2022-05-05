@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 //Main class
@@ -92,7 +91,6 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission2_2();
                 }
-                boss_bill();
 
                 if (skip()) {
                     text.mission2_3();
@@ -117,7 +115,6 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission3_2();
                 }
-                Elon_musk();
 
                 if (skip()) {
                     text.mission3_3();
@@ -169,7 +166,6 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission5_2();
                 }
-                double_boss();
                 if (skip()) {
                     text.mission5_3();
                 }
