@@ -1,16 +1,7 @@
-class Boss extends Tools {
-    // boss health
-
-    //Bill Gates boss fight
-    int[] healthBars;
-    BossAttack[] attacks;
-
-    public Boss(int[] health, BossAttack[] attack) {
-        healthBars = health;
-        attacks = attack;
-    }
-
-    /** PLEASE READ THROUGH CODE FOR ATTACK TYPES
+public class BossAttack {
+    public BossAttack(int l,int h,int type)
+}
+/** PLEASE READ THROUGH CODE FOR ATTACK TYPES
      public void attack_bill() {
 
      int bill = random(1, 3);
