@@ -10,6 +10,11 @@ class Attack extends Tools {
 
     /**
      *
+     * @param name
+     * @param l
+     * @param h
+     * @param spd
+     * @param stn
      */
     public Attack(String name, int l, int h, int spd, int stn) {
         attackName = name;
@@ -25,6 +30,8 @@ class Attack extends Tools {
 
     /**
      *
+     * @param style
+     * @return
      */
     public int getSpeed(boolean style) {
         if (style) {
@@ -40,6 +47,7 @@ class Attack extends Tools {
 
     /**
      *
+     * @param attackTier
      */
     public void setAttackTier(int attackTier) {
         this.attackTier = attackTier;
@@ -47,7 +55,10 @@ class Attack extends Tools {
 
     /**
      *
+     * @param style
+     * @return
      */
+
     public int getStun(boolean style) {
         if (style) {
             return stun / 2;
@@ -58,6 +69,9 @@ class Attack extends Tools {
 
     /**
      *
+     * @param power
+     * @param style
+     * @return
      */
     public int attack(double power, boolean style) {
         if (style) {
