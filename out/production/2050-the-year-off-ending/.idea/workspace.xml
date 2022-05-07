@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="ATTACK IS DONE" />
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Boss is here just need to fix a couple of small things also new code spacing style">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -18,6 +29,9 @@
     <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="28JiixBV0OfYmxFjH39iKGGUPLs" />
+  <component name="ProjectLevelVcsManager">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,7 +43,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/ConnerBrunner/IdeaProjects/2050-the-year-off-ending&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
 }</component>
   <component name="RunManager">
@@ -140,7 +154,42 @@
       <option name="project" value="LOCAL" />
       <updated>1651430881233</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixing attack becuase 2069 can level cities">
+      <created>1651460982476</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1651460982476</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Setup for fixing boss">
+      <created>1651720074255</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1651720074255</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Boss update">
+      <created>1651883218741</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1651883218741</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Boss is here just need to fix a couple of small things also new code spacing style">
+      <created>1651955340591</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651955340591</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Boss is here just need to fix a couple of small things also new code spacing style">
+      <created>1651955376899</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651955376899</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +211,10 @@
     <MESSAGE value="Done with killer robot stuff" />
     <MESSAGE value="Ember stuff" />
     <MESSAGE value="ATTACK IS DONE" />
-    <option name="LAST_COMMIT_MESSAGE" value="ATTACK IS DONE" />
+    <MESSAGE value="Fixing attack becuase 2069 can level cities" />
+    <MESSAGE value="Setup for fixing boss" />
+    <MESSAGE value="Boss update" />
+    <MESSAGE value="Boss is here just need to fix a couple of small things also new code spacing style" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boss is here just need to fix a couple of small things also new code spacing style" />
   </component>
 </project>

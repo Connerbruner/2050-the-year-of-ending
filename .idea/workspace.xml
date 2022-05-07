@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Boss is here just need to fix a couple of small things also new code spacing style">
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Boss is fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/Attack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Phase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2022_3_43_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2022_3_43_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2022_3_51_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/shelf/Uncommitted_changes_before_Update_at_4_27_2022_3_51_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +200,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651955376899</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Boss is fixed">
+      <created>1651963193923</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651963193923</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -215,6 +233,7 @@
     <MESSAGE value="Setup for fixing boss" />
     <MESSAGE value="Boss update" />
     <MESSAGE value="Boss is here just need to fix a couple of small things also new code spacing style" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boss is here just need to fix a couple of small things also new code spacing style" />
+    <MESSAGE value="Boss is fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boss is fixed" />
   </component>
 </project>
