@@ -34,8 +34,10 @@ class Game extends Tools {
     BossAttack revenge = new BossAttack(7,15,"REVENGE OF THE SPEAR");
     BossAttack powerful = new BossAttack( 1,30,"POWERFUL SPEAR" );
     BossAttack[] attacksElon = {spear,powerful,revenge};
+
     Phase phase1 = new Phase( attacksElon,500,"Elon musk",15,5 );
-    Boss elonBoss = new Boss(phase1);
+    Phase[] arr= {phase1};
+    Boss elonBoss = new Boss(arr);
 
 
 
@@ -51,6 +53,7 @@ class Game extends Tools {
         HP1 = HP1m;
         //Runs mission forever
         while ( true ) {
+            bossFight( elonBoss );
             String choice;
             sPrint( "Type 1 -> " + missionNum + " to try that Mission" );
             //Tells you how to roll the gotcha
@@ -606,12 +609,15 @@ class Game extends Tools {
 
     }
 
-    public void fight ( Boss boss ) {
+    public void bossFight ( Boss boss ) {
 
         while ( ! boss.differntPhases.isEmpty( ) ) {
 
             boss.checkArray( );
             Phase current = boss.differntPhases.get( 0 );
+
+            sPrint( current.name+"'s Health "+current.getHP() );
+            sPrint( "2069's Health "+HP1 );
 
             current.pickAttack( );
             attack( );

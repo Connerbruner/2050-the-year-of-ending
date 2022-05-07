@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Boss update">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Boss is here just need to fix a couple of small things also new code spacing style">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BossAttack.java" beforeDir="false" afterPath="$PROJECT_DIR$/BossAttack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Phase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Phase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651883218741</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Boss is here just need to fix a couple of small things also new code spacing style">
+      <created>1651955340591</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1651955340591</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Boss is here just need to fix a couple of small things also new code spacing style">
+      <created>1651955376899</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1651955376899</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -202,6 +214,7 @@
     <MESSAGE value="Fixing attack becuase 2069 can level cities" />
     <MESSAGE value="Setup for fixing boss" />
     <MESSAGE value="Boss update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boss update" />
+    <MESSAGE value="Boss is here just need to fix a couple of small things also new code spacing style" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boss is here just need to fix a couple of small things also new code spacing style" />
   </component>
 </project>

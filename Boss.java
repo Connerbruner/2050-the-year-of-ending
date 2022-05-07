@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
 class Boss extends Tools {
-    public ArrayList < Phase > differntPhases;
+    public ArrayList < Phase > differntPhases = new ArrayList<>();
 
-    public Boss ( ) {}
-
-    public Boss ( Phase p ) {
-        addPhase( p );
+    public Boss ( ) {
     }
 
-    public void addPhase ( Phase newStuff ) {
-        differntPhases.add( newStuff );
+    public Boss ( Phase[] arr ) {
+        for ( int i = 0; i < arr.length; i++ )
+            differntPhases.add( arr[ i ] );
     }
+
+
 
     public void checkArray ( ) {
         if ( differntPhases.get( 0 ).getHP( ) <= 0 ) {

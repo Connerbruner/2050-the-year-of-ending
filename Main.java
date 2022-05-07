@@ -5,7 +5,6 @@ class Main {
     public static void main(String[] args) {
         Tools tools = new Tools();
         Game game = new Game();
-        System.gc();
         //Debug stuff
         game.grabSave();
         //clears the screen
