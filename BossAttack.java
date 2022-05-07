@@ -1,5 +1,41 @@
-public class BossAttack {
-    public BossAttack(int l,int h,int type)
+public class BossAttack extends  Tools{
+    int high;
+    int low;
+    String type;
+    String name;
+    Phase currentPhase;
+
+    public BossAttack(int l,int h,String n)
+    {
+        type="";
+        low=l;
+        high=h;
+        name=n;
+    }
+    public BossAttack(String t,Phase cur,String n)
+    {
+        type=t;
+        currentPhase=cur;
+        name=n;
+    }
+    public int do_damage()
+    {
+
+        if(type=="p")
+        {
+            return currentPhase.getHP()/2;
+        }
+        if(type=="r")
+        {
+            return currentPhase.getHPM()-currentPhase.getHP();
+        }
+        if(type=="")
+        {
+            return random(low,high);
+        }
+
+        return 0;
+    }
 }
 /** PLEASE READ THROUGH CODE FOR ATTACK TYPES
      public void attack_bill() {
