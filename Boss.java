@@ -1,21 +1,24 @@
 import java.util.ArrayList;
+
 class Boss extends Tools {
-    // boss health
+    public ArrayList < Phase > differntPhases;
 
-    //Bill Gates boss fight
-    ArrayList<Phase> differntPhases;
+    public Boss ( ) {}
 
-public void addPhase(Phase newStuff)
-{
-    differntPhases.add(newStuff);
-}
-    public void checkArray()
-    {
-        if(differntPhases.get(0).getHP()<=0)
-        {
-        differntPhases.remove(0);
+    public Boss ( Phase p ) {
+        addPhase( p );
+    }
+
+    public void addPhase ( Phase newStuff ) {
+        differntPhases.add( newStuff );
+    }
+
+    public void checkArray ( ) {
+        if ( differntPhases.get( 0 ).getHP( ) <= 0 ) {
+            differntPhases.remove( 0 );
         }
     }
+
 
 }
 
