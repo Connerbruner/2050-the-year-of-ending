@@ -27,6 +27,7 @@ class Game extends Tools {
     Dungeon factory = new Dungeon( "Run down Factory" , 30 );
     Dungeon city = new Dungeon( "Rubble filled City" , 35 );
     Dungeon highway = new Dungeon( "Highway 101" , 30 );
+
     //bill gates
     BossAttack triSlash = new BossAttack( 7 , 21 , "TRI SLASH" );
     BossAttack powerSlash  = new BossAttack( 1 , 30 , "POWER SLASH" );
@@ -37,11 +38,30 @@ class Game extends Tools {
     BossAttack revenge = new BossAttack( 7 , 15 , "REVENGE OF THE SPEAR" );
     BossAttack powerful = new BossAttack( 1 , 30 , "POWERFUL SPEAR" );
     BossAttack[] attacksElon = { spear , powerful , revenge };
+    //jeff bezos
+    BossAttack roomba = new BossAttack( 15 , 25 , "ROOMBA INVASION" );
+    BossAttack mech = new BossAttack( 10 , 30 , "MECH CANNON" );
+    BossAttack laser = new BossAttack( 1 , 50 , "DUAL LASER" );
+    BossAttack[] attacksJeff = { roomba , mech , laser };
+    //Mark Zuckerberg
+    BossAttack finalSlash = new BossAttack( 0 , 75 , "ROOMBA INVASION" );
+    BossAttack dualHit  = new BossAttack( 15 , 30 , "DOUBLE SLASH" );
+    BossAttack zero = new BossAttack( 30 , 35 , "ZERO SLASH" );
+    BossAttack[] attacksMark = { roomba , mech , laser };
 
 
     Phase Elon = new Phase( attacksElon , 500 , "Elon Musk" , 20 , 10 );
     Phase Gates = new Phase( attacksElon , 500 , "Bill Gates" , 20 , 5 );
-    Phase Mark_Zuckerberg = new Phase(  )
+    Phase Jeff = new Phase( attacksElon , 500 , "Bill Gates" , 30 , 5 );
+
+    Phase ElonP = new Phase( attacksElon , 750 , "Elon Musk" , 15 , 12 );
+    Phase GatesP  = new Phase( attacksElon , 750 , "Bill Gates" , 12 , 12 );
+    Phase JeffP = new Phase( attacksElon , 750 , "Bill Gates" , 20 , 7 );
+
+
+    Phase[] arrTri1 = {Elon,Gates,Jeff};
+    Phase[] arrTri2 = {ElonP,GatesP,JeffP};
+
 
 
 
@@ -319,7 +339,7 @@ class Game extends Tools {
         attackTime = ( int ) ( ( end_Time - start_Time ) / 1000 );
         if ( attackNum == 1 ) {
             attackTime += aqua.getSpeed( attackType );
-            attackStun = aqua.getSpeed( attackType );
+            attackStun = aqua.getStun( attackType );
         }
         if ( attackNum == 2 ) {
             attackTime += lasershot.getSpeed( attackType );
@@ -328,7 +348,11 @@ class Game extends Tools {
         }
         if ( attackNum == 4 ) {
             attackTime += ember.getSpeed( attackType );
-            attackStun = ember.getSpeed( attackType );
+            attackStun = ember.getStun( attackType );
+        }
+        if( attackNum==3 )
+        {
+            attackStun=0;
         }
     }
 
@@ -549,9 +573,9 @@ class Game extends Tools {
     //Game Over
     public void restart ( ) {
         if ( HP2069 < 0 ) {
-            sPrintln( "GAME OVER" );
-            sPrintln( "???: You seem to be overwhelmed" );
-            sPrintln( "???: I may be able to help" );
+            sPrintln( "The world around you begins to fade to black" );
+            sPrintln( "???: Welcome back to this world of nothingness " );
+            sPrintln( "2069: no..." );
             sPrintln( "???: Your only hope now is to turn back the hands of time" );
             sPrintln( "2077:I see nothing wrong with that" );
             sPrintln( "2069: Please help us" );
