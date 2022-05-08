@@ -18,7 +18,6 @@ class Game extends Tools {
     int exp1 = 0;
     int levelR1 = 20;
     int maxHit = 5;
-
     //misc
     int num = 0;
     //obj
@@ -300,7 +299,8 @@ class Game extends Tools {
             if ( ( choice.equals( "exp" ) ) && ( missionNum > 1 ) ) {
                 pull( );
             }
-            Object[] arrList = new Object[]{ missionNum , HPmax , aqua.attackTier , lasershot.attackTier , cureTier , ember.attackTier , level2069 , exp1 , levelR1 , maxHit };
+            Object[] arrList = new Object[]{ missionNum , HPmax , level2069, exp1, 
+ levelR1,aqua.att};
 
 
             Edit( "Save.txt" , arrList );
@@ -596,11 +596,9 @@ class Game extends Tools {
     public void grabSave ( ) {
         Object[] Save = Read( "Save.txt" );
 
-        for ( int i = 0; i < 9; i++ ) {
+        for ( int i = 1; i < Save.length-1; i++ ) {
             String var = Save[ i ].toString( );
-            int val = 0;
-            if ( strIsInt( var ) ) {
-                val = Integer.parseInt( var );
+            val = Integer.parseInt( var );
             }
             if ( i == 0 ) {
                 missionNum = val;

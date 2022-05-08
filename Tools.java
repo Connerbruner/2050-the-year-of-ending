@@ -26,8 +26,6 @@ class Tools {
         FileWriter writer = null;
 
         try {
-
-
             writer = new FileWriter( fileToBeModified );
             for ( Object o : arr ) {
                 String print = o.toString( ) + "\n";
@@ -56,10 +54,10 @@ class Tools {
             File txt = new File( file );
             FileReader fileRead = new FileReader( txt );
             BufferedReader reader = new BufferedReader( fileRead );
-            Object[] arr = new Object[ 9 ];
+            Object[] arr = new Object[ 10 ];
             Object var = reader.readLine( );
 
-            for ( int i = 0; i < 9; i++ ) {
+            for ( int i = 0; i < 10; i++ ) {
                 if ( var != null ) {
                     arr[ i ] = var;
                 }
