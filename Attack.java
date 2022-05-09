@@ -21,6 +21,7 @@ class Attack extends Tools {
         high = h;
         speed = spd;
         stun = stn;
+        attackTier=1;
     }
 
     public String getAttackName ( ) {

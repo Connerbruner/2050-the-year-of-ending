@@ -67,9 +67,9 @@ class Game extends Tools {
 
 
     Scanner scanner = new Scanner( System.in );
-    Attack aqua = new Attack( "Aqua" , 7 , 15 , 7 , 8 );
-    Attack lasershot = new Attack( "Lasershot" , 7 , 10 , 5 , 6 );
-    Attack ember = new Attack( "Ember" , 17 , 30 , 10 , 10 );
+    Attack aqua = new Attack( "Aqua" , 7 , 15 , 10 ,8  );
+    Attack lasershot = new Attack( "Lasershot" , 7 , 10 , 8, 6 );
+    Attack ember = new Attack( "Ember" , 17 , 30 , 15 , 10 );
 
     Text text = new Text( );
 
@@ -299,8 +299,8 @@ class Game extends Tools {
             if ( ( choice.equals( "exp" ) ) && ( missionNum > 1 ) ) {
                 pull( );
             }
-            Object[] arrList = new Object[]{ missionNum , HPmax , level2069, exp1, 
- levelR1,aqua.att};
+            Object[] arrList = new Object[]{ missionNum , HPmax , level2069, levelR1,
+ exp1,aqua.attackTier,lasershot.attackTier,cureTier,ember.attackTier,maxHit};
 
 
             Edit( "Save.txt" , arrList );
@@ -596,41 +596,43 @@ class Game extends Tools {
     public void grabSave ( ) {
         Object[] Save = Read( "Save.txt" );
 
-        for ( int i = 1; i < Save.length-1; i++ ) {
-            String var = Save[ i ].toString( );
-            val = Integer.parseInt( var );
-            }
-            if ( i == 0 ) {
-                missionNum = val;
-            }
-            if ( i == 1 ) {
-                HPmax = val;
-            }
-            if ( i == 2 ) {
-                level2069 = val;
-            }
-            if ( i == 3 ) {
-                levelR1 = val;
-            }
-            if ( i == 4 ) {
-                exp1 = val;
-            }
-            if ( i == 5 ) {
-                aqua.attackTier = val;
-            }
-            if ( i == 6 ) {
-                lasershot.attackTier = val;
-            }
-            if ( i == 7 ) {
-                cureTier = val;
-            }
-            if ( i == 8 ) {
-                ember.attackTier = val;
-            }
-            if ( i == 9 ) {
-                maxHit = val;
-            }
+        for ( int s = 0; s < Save.length; s++ ) {
 
+            if(Save[s]!=null) {
+                int val = Integer.parseInt( Save[ s ].toString( ) );
+
+
+                if ( s == 0 ) {
+                    missionNum = val;
+                }
+                if ( s == 1 ) {
+                    HPmax = val;
+                }
+                if ( s == 2 ) {
+                    level2069 = val;
+                }
+                if ( s == 3 ) {
+                    levelR1 = val;
+                }
+                if ( s == 4 ) {
+                    exp1 = val;
+                }
+                if ( s == 5 ) {
+                    aqua.attackTier = val;
+                }
+                if ( s == 6 ) {
+                    lasershot.attackTier = val;
+                }
+                if ( s == 7 ) {
+                    cureTier = val;
+                }
+                if ( s == 8 ) {
+                    ember.attackTier = val;
+                }
+                if ( s == 9 ) {
+                    maxHit = val;
+                }
+            }
         }
         sPrint( "Save grabbed" );
 

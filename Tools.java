@@ -24,11 +24,10 @@ class Tools {
     public static void Edit ( String filePath , Object[] arr ) {
         File fileToBeModified = new File( filePath );
         FileWriter writer = null;
-
         try {
             writer = new FileWriter( fileToBeModified );
-            for ( Object o : arr ) {
-                String print = o.toString( ) + "\n";
+            for (int i =0; i < arr.length; i++) {
+                String print = arr[i].toString( ) + "\n";
                 writer.write( print );
             }
 
@@ -55,18 +54,18 @@ class Tools {
             FileReader fileRead = new FileReader( txt );
             BufferedReader reader = new BufferedReader( fileRead );
             Object[] arr = new Object[ 10 ];
-            Object var = reader.readLine( );
 
-            for ( int i = 0; i < 10; i++ ) {
-                if ( var != null ) {
-                    arr[ i ] = var;
-                }
+            for ( int r = 0; r<arr.length; r++ ) {
+                Object var = reader.readLine( );
+                arr[ r ] = var;
+
             }
             reader.close( );
+            System.out.println( "READ DONE" );
             return arr;
         } catch ( IOException e ) {
             e.printStackTrace( );
-            return new Object[ 9 ];
+            return new Object[ 10 ];
         }
 
 

@@ -3,6 +3,7 @@ import java.util.Scanner;
 class Main {
 
     public static void main(String[] args) {
+        System.out.println(  );
         Tools tools = new Tools();
         Game game = new Game();
         //Debug stuff

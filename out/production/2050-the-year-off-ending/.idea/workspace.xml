@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Boss is here just need to fix a couple of small things also new code spacing style">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Boss.java" beforeDir="false" afterPath="$PROJECT_DIR$/Boss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-    </list>
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="boss is done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -189,7 +185,28 @@
       <option name="project" value="LOCAL" />
       <updated>1651955376899</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Boss is fixed">
+      <created>1651963193923</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1651963193923</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Starting making some bosses plus boss class was tested">
+      <created>1651967487469</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1651967487469</updated>
+    </task>
+    <task id="LOCAL-00015" summary="boss is done">
+      <created>1652047317766</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652047317766</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -215,6 +232,9 @@
     <MESSAGE value="Setup for fixing boss" />
     <MESSAGE value="Boss update" />
     <MESSAGE value="Boss is here just need to fix a couple of small things also new code spacing style" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boss is here just need to fix a couple of small things also new code spacing style" />
+    <MESSAGE value="Boss is fixed" />
+    <MESSAGE value="Starting making some bosses plus boss class was tested" />
+    <MESSAGE value="boss is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="boss is done" />
   </component>
 </project>
