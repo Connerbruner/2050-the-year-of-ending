@@ -28,13 +28,13 @@ class Game extends Tools {
     Dungeon highway = new Dungeon( "Highway 101" , 30 );
 
     //bill gates
-    BossAttack triSlash = new BossAttack( 7 , 21 , "TRI SLASH" );
-    BossAttack powerSlash  = new BossAttack( 1 , 30 , "POWER SLASH" );
-    BossAttack laserBlast = new BossAttack( 10 , 15 , "LASER BLAST" );
-    BossAttack[] attackGates = { triSlash , powerSlash , laserBlast };
+    Attack triSlash = new BossAttack("TRIPLE SLASH",7,21,15,3 );
+    Attack ultraSlash  = new Attack("ULTRA SLASH",10,20,20,5);
+    Attack laserBlast = new Attack("LASER BLAST",5,30,30,10);
+    Attack[] attackGates = { triSlash , ultraSlash , laserBlast };
     //Elon musk
-    BossAttack spear = new BossAttack( 5 , 20 , "SPEAR RUSH" );
-    BossAttack revenge = new BossAttack( 7 , 15 , "REVENGE OF THE SPEAR" );
+    BossAttack spear = new BossAttack("SPEAR RUSH");
+    BossAttack revenge = new BossAttack("REVENGE OF THE SPEAR",1,30,20,5);
     BossAttack powerful = new BossAttack( 1 , 30 , "POWERFUL SPEAR" );
     BossAttack[] attacksElon = { spear , powerful , revenge };
     //jeff bezos
@@ -60,10 +60,6 @@ class Game extends Tools {
 
     Phase[] arrTri1 = {Elon,Gates,Jeff};
     Phase[] arrTri2 = {ElonP,GatesP,JeffP};
-
-
-
-
 
 
     Scanner scanner = new Scanner( System.in );

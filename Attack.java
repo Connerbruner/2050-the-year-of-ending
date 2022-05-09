@@ -72,6 +72,16 @@ class Attack extends Tools {
      *
      * @return
      */
+    public void incoming(boolean style)
+    {
+    if(style) {
+        sPrint( "Fast " + attackName ); 
+    }
+    else {
+        sPrint( "Powerful " + attackName );
+    }
+    
+    }
     public int attack ( double power , boolean style ) {
         if ( style ) {
             sPrint( "Fast " + attackName );

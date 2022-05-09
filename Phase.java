@@ -1,16 +1,15 @@
 class Phase extends Tools {
     int HP;
-    BossAttack[] attacks;
+    Attack[] attacks;
     int HPM;
     String name;
     int curAttack;
     int speed;
     int stun;
 
-    public Phase ( BossAttack[] arr , int health , String n , int sd , int st ) {
+    public Phase ( Attack[] arr , int health , String n , int sd , int st ) {
         attacks = arr;
         HP = health;
-        HPM = health;
         name = n;
         speed = sd;
         stun = st;
@@ -20,9 +19,6 @@ class Phase extends Tools {
         return HP;
     }
 
-    public int getHPM ( ) {
-        return HPM;
-    }
 
     public void loseHP ( int HP ) {
         this.HP -= HP;
@@ -33,12 +29,4 @@ class Phase extends Tools {
         sPrint( attacks[ curAttack ].name );
     }
 
-    public int useAttack ( ) {
-        return attacks[ curAttack ].do_damage( );
-    }
-    public void printAttack(int num)
-    {
-        sPrint(attacks[curAttack].name);
-        sPrint( name+" deals "+num );
-    }
 }
