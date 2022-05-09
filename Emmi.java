@@ -92,7 +92,6 @@ class Emmi extends Tools {
             if (emmi_attackNum == 3) {
                 sPrintln("DARK RUSH");
                 emmi_attack = new Attack(emmi_type,"DARK RUSH",1,15,15);
-
             }
         }
         if (emmi_type.equals("Dog bot")) {
