@@ -28,34 +28,35 @@ class Game extends Tools {
     Dungeon highway = new Dungeon( "Highway 101" , 30 );
 
     //bill gates
-    Attack triSlash = new BossAttack("TRIPLE SLASH",7,21,15,3 );
-    Attack ultraSlash  = new Attack("ULTRA SLASH",10,20,20,5);
-    Attack laserBlast = new Attack("LASER BLAST",5,30,30,10);
+    Attack triSlash = new Attack("Bill Gates","TRIPLE SLASH",7,21,15);
+    Attack ultraSlash  = new Attack("Bill Gates","ULTRA SLASH",10,20,20);
+    Attack laserBlast = new Attack("Bill Gates","LASER BLAST",5,30,30);
     Attack[] attackGates = { triSlash , ultraSlash , laserBlast };
     //Elon musk
-    BossAttack spear = new BossAttack("SPEAR RUSH");
-    BossAttack revenge = new BossAttack("REVENGE OF THE SPEAR",1,30,20,5);
-    BossAttack powerful = new BossAttack( 1 , 30 , "POWERFUL SPEAR" );
-    BossAttack[] attacksElon = { spear , powerful , revenge };
+    Attack spear = new Attack("Elon musk","SPEAR RUSH",10,20,10);
+    Attack revenge = new Attack("REVENGE OF THE SPEAR",5,25,20,10);
+    Attack powerful = new Attack("ULTRA SPEAR",1,30,20,10);
+    Attack[] attacksElon = { spear , powerful , revenge };
     //jeff bezos
-    BossAttack roomba = new BossAttack( 15 , 25 , "ROOMBA INVASION" );
-    BossAttack mech = new BossAttack( 10 , 30 , "MECH CANNON" );
-    BossAttack laser = new BossAttack( 1 , 50 , "DUAL LASER" );
-    BossAttack[] attacksJeff = { roomba , mech , laser };
+    Attack roomba = new Attack("ROOMBA INVASION" ,15,25,15,7);
+    Attack mech = new Attack("MECH CANNON",10,30,25,7 );
+    Attack laser = new Attack("DUAL LASER",12,25,15,7);
+    Attack[] attacksJeff = { roomba , mech , laser };
     //Mark Zuckerberg
-    BossAttack finalSlash = new BossAttack( 0 , 75 , "ROOMBA INVASION" );
-    BossAttack dualHit  = new BossAttack( 15 , 30 , "DOUBLE SLASH" );
-    BossAttack zero = new BossAttack( 30 , 35 , "ZERO SLASH" );
-    BossAttack[] attacksMark = { roomba , mech , laser };
+    Attack finalSlash = new Attack("FINAL SLASH",1,100,30,10 );
+    Attack dualHit  = new Attack("DUAL SLASH",25,50,15,5);
+    Attack zero = new Attack("ZERO SLASH",5,10,1,50);
+    Attack[] attacksMark = { roomba , mech , laser };
+    
 
 
-    Phase Elon = new Phase( attacksElon , 500 , "Elon Musk" , 20 , 10 );
-    Phase Gates = new Phase( attacksElon , 500 , "Bill Gates" , 20 , 5 );
-    Phase Jeff = new Phase( attacksElon , 500 , "Bill Gates" , 30 , 5 );
+    Phase Elon = new Phase( attacksElon , 500 , "Elon Musk");
+    Phase Gates = new Phase( attacksElon , 500 , "Bill Gates");
+    Phase Jeff = new Phase( attacksElon , 500 , "Bill Gates");
 
-    Phase ElonP = new Phase( attacksElon , 750 , "Elon Musk" , 15 , 12 );
-    Phase GatesP  = new Phase( attacksElon , 750 , "Bill Gates" , 12 , 12 );
-    Phase JeffP = new Phase( attacksElon , 750 , "Bill Gates" , 20 , 7 );
+    Phase ElonP = new Phase( attacksElon , 750 , "Elon Musk");
+    Phase GatesP  = new Phase( attacksElon , 750 , "Bill Gates");
+    Phase JeffP = new Phase( attacksElon , 750 , "Bill Gates");
 
 
     Phase[] arrTri1 = {Elon,Gates,Jeff};
@@ -634,36 +635,31 @@ class Game extends Tools {
 
     }
 
-    public void bossFight ( Boss boss ) {
+public void bossFight ( Boss boss ) {
 
-        while ( ! boss.differntPhases.isEmpty( ) ) {
+    while ( ! boss.differntPhases.isEmpty( ) ) {
 
-            boss.checkArray( );
-            Phase current = boss.differntPhases.get( 0 );
+        boss.checkArray( );
+        Phase current = boss.differntPhases.get( 0 );
+        sPrint( current.name + "'s Health " + current.getHP( ) );
+        sPrintln( "2069's Health " + HP2069 );
 
-            sPrint( current.name + "'s Health " + current.getHP( ) );
-            sPrintln( "2069's Health " + HP2069 );
-
-            current.pickAttack( );
-            attack( );
-
-            if ( attackTime < current.speed ) {
-                current.loseHP( choseAttack( 1 ) );
-
-                if ( attackStun > current.stun ) {
-                    current.loseHP( attack2( ) );
-
-                }
-            }
-            if ( attackStun < current.stun ) {
-                num = current.useAttack( );
-                current.printAttack( num );
-                HP2069 -= num;
-            }
-            restart( );
+        current.pickAttack( );
+        Attack bossAttack =current.attacks[current.curAttack];
+        attack( );
+        if( attackTime <= bossAttack.speed ) {
+            current.loseHP( choseAttack(1) );
         }
-        exp1+=100;
-        levelUp( );
+        else if( attackStun < bossAttack.stun ||  attackTime > bossAttack.speed){
+            HP2069 -= bossAttack.attack();
+        }
+
+        
+        
+        
     }
+exp1+=100;
+levelUp( );
+}
 //don't pass this comment
 }
