@@ -78,6 +78,7 @@ class Emmi extends Tools {
         double power = 1;
         int num = 0;
         
+        
         return new double[]{num, power};
     }
 
