@@ -79,7 +79,7 @@ class Emmi extends Tools {
         int num = 0;
         //Roomba attacks
         if (emmi_type.equals("Roomba")) {
-            if (emmi_attack == 1 && attackTime < 23 && attackStun < 5) {
+            if (emmi_attack == 1 && attackStun < 5) {
 
                 power = 0.3;
                 sPrintln("ROOMBA RUSH");
@@ -87,14 +87,14 @@ class Emmi extends Tools {
                 sPrintln("Roomba deals " + num + " damage");
             }
 
-            if (emmi_attack == 2 && attackTime < 15 && attackStun < 3) {
+            if (emmi_attack == 2 &&  attackStun < 3) {
 
                 sPrintln("RECHARGE");
                 num = (int) (emmi_HP * 0.5);
                 sPrintln("Roomba heals " + num + " damage");
             }
 
-            if (emmi_attack == 3 && attackTime < 15 && attackStun < 6) {
+            if (emmi_attack == 3 && attackStun < 6) {
                 power = 0.6;
                 sPrintln("CHARGE BEAM");
                 num = (emmi_HP * random(1, 3));
@@ -112,7 +112,7 @@ class Emmi extends Tools {
                 sPrintln("Dog Bot deals " + num + " damage");
             }
 
-            if (emmi_attack == 2 && attackTime < 27 && attackStun < 7) {
+            if (emmi_attack == 2 && attackStun < 7) {
 
                 power = 0.2;
                 sPrintln("BATTERY RAM");
@@ -120,7 +120,7 @@ class Emmi extends Tools {
                 sPrintln("Dog Bot deals " + num + " damage");
             }
 
-            if (emmi_attack == 3 && attackTime < 15 && attackStun < 4) {
+            if (emmi_attack == 3 && attackStun < 4) {
                 power = 0.75;
                 sPrintln("BITE RUSH");
                 num = random(5, 25);

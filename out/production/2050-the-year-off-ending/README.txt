@@ -94,8 +94,8 @@ Save editing order:
     missionnum
     HP1m
     level1
-    levelr1
     exp1
+    levelr1
     attack1_tier
     attack2_tier
     attack3_tier
