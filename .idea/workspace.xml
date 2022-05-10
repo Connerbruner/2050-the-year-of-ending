@@ -1,18 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="boss is done">
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Worked on battle and FOMRATED CODE">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/Attack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Emmi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Emmi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Save.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +35,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/ConnerBrunner/IdeaProjects/2050-the-year-off-ending&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/ConnerBrunner/IdeaProjects/2050-the-year-off-ending",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-18" />
@@ -218,7 +212,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652047317766</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Txt is fixed also emmi does not work">
+      <created>1652061415445</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652061415445</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Worked on battle and FOMRATED CODE">
+      <created>1652141053956</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652141053956</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,6 +255,8 @@
     <MESSAGE value="Boss is fixed" />
     <MESSAGE value="Starting making some bosses plus boss class was tested" />
     <MESSAGE value="boss is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="boss is done" />
+    <MESSAGE value="Txt is fixed also emmi does not work" />
+    <MESSAGE value="Worked on battle and FOMRATED CODE" />
+    <option name="LAST_COMMIT_MESSAGE" value="Worked on battle and FOMRATED CODE" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 class Boss extends Tools {
-    public ArrayList < Phase > differntPhases = new ArrayList<>();
+    public ArrayList < Phase > differntPhases = new ArrayList <>( );
 
     public Boss ( ) {
     }
@@ -10,7 +10,6 @@ class Boss extends Tools {
         for ( int i = 0; i < arr.length; i++ )
             differntPhases.add( arr[ i ] );
     }
-
 
 
     public void checkArray ( ) {

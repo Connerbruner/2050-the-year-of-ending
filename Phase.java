@@ -4,15 +4,13 @@ class Phase extends Tools {
     int HPM;
     String name;
     int curAttack;
-    int speed;
-    int stun;
 
-    public Phase ( Attack[] arr , int health , String n , int sd , int st ) {
+
+    public Phase ( Attack[] arr , int health , String n ) {
         attacks = arr;
         HP = health;
         name = n;
-        speed = sd;
-        stun = st;
+
     }
 
     public int getHP ( ) {
@@ -26,7 +24,7 @@ class Phase extends Tools {
 
     public void pickAttack ( ) {
         curAttack = random( 0 , attacks.length - 1 );
-        sPrint( attacks[ curAttack ].name );
+        sPrint( attacks[ curAttack ].attackName );
     }
 
 }

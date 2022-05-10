@@ -7,6 +7,7 @@ class Attack extends Tools {
     int attackTier;
     int stun;
     int num;
+    String attackUser;
 
     /**
      * @param name
@@ -21,7 +22,16 @@ class Attack extends Tools {
         high = h;
         speed = spd;
         stun = stn;
-        attackTier=1;
+        attackTier = 1;
+    }
+
+    public Attack ( String user , String name , int l , int h , int spd ) {
+        attackName = name;
+        low = l;
+        high = h;
+        speed = spd;
+        attackUser = user;
+        attackTier = 1;
     }
 
     public String getAttackName ( ) {
@@ -35,7 +45,7 @@ class Attack extends Tools {
      */
     public int getSpeed ( boolean style ) {
         if ( style ) {
-            return speed / 2;
+            return speed;
         } else {
             return speed * 2;
         }
@@ -66,22 +76,6 @@ class Attack extends Tools {
         }
     }
 
-    /**
-     * @param power
-     * @param style
-     *
-     * @return
-     */
-    public void incoming(boolean style)
-    {
-    if(style) {
-        sPrint( "Fast " + attackName ); 
-    }
-    else {
-        sPrint( "Powerful " + attackName );
-    }
-    
-    }
     public int attack ( double power , boolean style ) {
         if ( style ) {
             sPrint( "Fast " + attackName );
@@ -94,4 +88,13 @@ class Attack extends Tools {
         sPrintln( "2069 deals " + num + " damage" );
         return num;
     }
+
+    public int attack ( ) {
+
+        sPrint( attackName );
+        num = random( low , high );
+        sPrintln( attackUser + " deals " + num + " damage" );
+        return num;
+    }
 }
+

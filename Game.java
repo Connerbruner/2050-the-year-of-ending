@@ -4,73 +4,67 @@ import java.util.Scanner;
 class Game extends Tools {
 
     //2069 and 2077 vars (non save)
-    int HP2069;
-    int attackNum = 0;
+    int     HP2069;
+    int     attackNum  = 0;
     boolean attackType;
-    int lastAttack = 0;
-    int attackTime = 0;
-    int attackStun = 0;
+    int     lastAttack = 0;
+    int     attackTime = 0;
+    int     attackStun = 0;
     // Array vars (placed in Save.txt)
-    int missionNum = 10;
-    int HPmax = 50;
-    int cureTier = 1;
-    int level2069 = 1;
-    int exp1 = 0;
-    int levelR1 = 20;
-    int maxHit = 5;
+    int     missionNum = 10;
+    int     HPmax      = 50;
+    int     cureTier   = 1;
+    int     level2069  = 1;
+    int     exp1       = 0;
+    int     levelR1    = 20;
+    int     maxHit     = 5;
     //misc
-    int num = 0;
+    int     num        = 0;
     //obj
-    Dungeon subway = new Dungeon( "Underground subway" , 20 );
-    Dungeon local6_11 = new Dungeon( "Rubble filled 6-11" , 10 );
-    Dungeon factory = new Dungeon( "Run down Factory" , 30 );
-    Dungeon city = new Dungeon( "Rubble filled City" , 35 );
-    Dungeon highway = new Dungeon( "Highway 101" , 30 );
+    Dungeon subway     = new Dungeon( "Underground subway" , 20 );
+    Dungeon local6_11  = new Dungeon( "Rubble filled 6-11" , 10 );
+    Dungeon factory    = new Dungeon( "Run down Factory" , 30 );
+    Dungeon city       = new Dungeon( "Rubble filled City" , 35 );
+    Dungeon highway    = new Dungeon( "Highway 101" , 30 );
 
     //bill gates
-    Attack triSlash = new BossAttack("TRIPLE SLASH",7,21,15,3 );
-    Attack ultraSlash  = new Attack("ULTRA SLASH",10,20,20,5);
-    Attack laserBlast = new Attack("LASER BLAST",5,30,30,10);
+    Attack   triSlash    = new Attack( "Bill Gates" , "TRIPLE SLASH" , 7 , 21 , 15 );
+    Attack   ultraSlash  = new Attack( "Bill Gates" , "ULTRA SLASH" , 10 , 20 , 20 );
+    Attack   laserBlast  = new Attack( "Bill Gates" , "LASER BLAST" , 5 , 30 , 30 );
     Attack[] attackGates = { triSlash , ultraSlash , laserBlast };
     //Elon musk
-    BossAttack spear = new BossAttack("SPEAR RUSH");
-    BossAttack revenge = new BossAttack("REVENGE OF THE SPEAR",1,30,20,5);
-    BossAttack powerful = new BossAttack( 1 , 30 , "POWERFUL SPEAR" );
-    BossAttack[] attacksElon = { spear , powerful , revenge };
+    Attack   spear       = new Attack( "Elon musk" , "SPEAR RUSH" , 10 , 20 , 10 );
+    Attack   revenge     = new Attack( "REVENGE OF THE SPEAR" , 5 , 25 , 20 , 10 );
+    Attack   powerful    = new Attack( "ULTRA SPEAR" , 1 , 30 , 20 , 10 );
+    Attack[] attacksElon = { spear , powerful , revenge };
+    Phase    Elon        = new Phase( attacksElon , 500 , "Elon Musk" );
+    Phase    Gates       = new Phase( attacksElon , 500 , "Bill Gates" );
+    Phase    Jeff        = new Phase( attacksElon , 500 , "Bill Gates" );
+    Phase[]  arrTri1     = { Elon , Gates , Jeff };
+    Phase    ElonP       = new Phase( attacksElon , 750 , "Elon Musk" );
+    Phase    GatesP      = new Phase( attacksElon , 750 , "Bill Gates" );
+    Phase    JeffP       = new Phase( attacksElon , 750 , "Bill Gates" );
+    Phase[]  arrTri2     = { ElonP , GatesP , JeffP };
     //jeff bezos
-    BossAttack roomba = new BossAttack( 15 , 25 , "ROOMBA INVASION" );
-    BossAttack mech = new BossAttack( 10 , 30 , "MECH CANNON" );
-    BossAttack laser = new BossAttack( 1 , 50 , "DUAL LASER" );
-    BossAttack[] attacksJeff = { roomba , mech , laser };
+    Attack   roomba      = new Attack( "ROOMBA INVASION" , 15 , 25 , 15 , 7 );
+    Attack   mech        = new Attack( "MECH CANNON" , 10 , 30 , 25 , 7 );
+    Attack   laser       = new Attack( "DUAL LASER" , 12 , 25 , 15 , 7 );
+    Attack[] attacksJeff = { roomba , mech , laser };
     //Mark Zuckerberg
-    BossAttack finalSlash = new BossAttack( 0 , 75 , "ROOMBA INVASION" );
-    BossAttack dualHit  = new BossAttack( 15 , 30 , "DOUBLE SLASH" );
-    BossAttack zero = new BossAttack( 30 , 35 , "ZERO SLASH" );
-    BossAttack[] attacksMark = { roomba , mech , laser };
-
-
-    Phase Elon = new Phase( attacksElon , 500 , "Elon Musk" , 20 , 10 );
-    Phase Gates = new Phase( attacksElon , 500 , "Bill Gates" , 20 , 5 );
-    Phase Jeff = new Phase( attacksElon , 500 , "Bill Gates" , 30 , 5 );
-
-    Phase ElonP = new Phase( attacksElon , 750 , "Elon Musk" , 15 , 12 );
-    Phase GatesP  = new Phase( attacksElon , 750 , "Bill Gates" , 12 , 12 );
-    Phase JeffP = new Phase( attacksElon , 750 , "Bill Gates" , 20 , 7 );
-
-
-    Phase[] arrTri1 = {Elon,Gates,Jeff};
-    Phase[] arrTri2 = {ElonP,GatesP,JeffP};
-
-
-    Scanner scanner = new Scanner( System.in );
-    Attack aqua = new Attack( "Aqua" , 7 , 15 , 10 ,8  );
-    Attack lasershot = new Attack( "Lasershot" , 7 , 10 , 8, 6 );
-    Attack ember = new Attack( "Ember" , 17 , 30 , 15 , 10 );
+    Attack   finalSlash  = new Attack( "FINAL SLASH" , 1 , 100 , 30 , 10 );
+    Attack   dualHit     = new Attack( "DUAL SLASH" , 25 , 50 , 15 , 5 );
+    Attack   zero        = new Attack( "ZERO SLASH" , 5 , 10 , 1 , 50 );
+    Attack[] attacksMark = { roomba , mech , laser };
+    Scanner  scanner     = new Scanner( System.in );
+    Attack   aqua        = new Attack( "Aqua" , 7 , 15 , 10 , 8 );
+    Attack   lasershot   = new Attack( "Lasershot" , 7 , 10 , 8 , 6 );
+    Attack   ember       = new Attack( "Ember" , 17 , 30 , 15 , 10 );
 
     Text text = new Text( );
 
     //Starts up 2069
-    public void game ( ) {
+    public
+    void game ( ) {
         HP2069 = HPmax;
         //Runs mission forever
         while ( true ) {
@@ -295,8 +289,8 @@ class Game extends Tools {
             if ( ( choice.equals( "exp" ) ) && ( missionNum > 1 ) ) {
                 pull( );
             }
-            Object[] arrList = new Object[]{ missionNum , HPmax , level2069, levelR1,
- exp1,aqua.attackTier,lasershot.attackTier,cureTier,ember.attackTier,maxHit};
+            Object[] arrList = new Object[]{ missionNum , HPmax , level2069 , levelR1 , exp1 , aqua.attackTier ,
+                                             lasershot.attackTier , cureTier , ember.attackTier , maxHit };
 
 
             Edit( "Save.txt" , arrList );
@@ -306,7 +300,8 @@ class Game extends Tools {
     //embers method
 
     //shows you what attacks you can use
-    public void attack ( ) {
+    public
+    void attack ( ) {
 
         attackNum = 0;
         sPrint( "2069's turn" );
@@ -346,16 +341,16 @@ class Game extends Tools {
             attackTime += ember.getSpeed( attackType );
             attackStun = ember.getStun( attackType );
         }
-        if( attackNum==3 )
-        {
-            attackStun=0;
+        if ( attackNum == 3 ) {
+            attackStun = 0;
         }
     }
 
     /**
      * @return how much damage you did
      */
-    public int choseAttack ( double power ) {
+    public
+    int choseAttack ( double power ) {
         if ( attackNum == 1 ) {
             num = aqua.attack( power , attackType );
         }
@@ -376,11 +371,13 @@ class Game extends Tools {
      *
      */
     //cure method
-    public void cure ( double power ) {
+    public
+    void cure ( double power ) {
         if ( attackType ) {
             sPrintln( "dodging Cure" );
             num = ( int ) ( random( cureTier * 2 , cureTier * 5 ) * power ) * 2;
-        } else {
+        }
+        else {
             sPrintln( "Cure shield" );
             num = ( int ) ( random( cureTier * 5 , cureTier * 20 ) * power );
         }
@@ -393,12 +390,13 @@ class Game extends Tools {
     /**
      * @return 2077s damage dealt
      */
-    public int attack2 ( ) {
+    public
+    int attack2 ( ) {
         sPrintln( "2077's turn" );
 
 //starts quicktime event
         long startTime = System.currentTimeMillis( );
-        int i = 0;
+        int  i         = 0;
         while ( startTime + 10000 > System.currentTimeMillis( ) ) {
             sPrint( "Type Kick" );
             while ( startTime + 10000 > System.currentTimeMillis( ) ) {
@@ -424,7 +422,8 @@ class Game extends Tools {
     }
 
 
-    public void mission1_4 ( ) {
+    public
+    void mission1_4 ( ) {
         sPrintln( "old man: Thank you. I can't thank you enough. I am forever in your debt." );
 
         sPrintln( "old man: As a gift here is 100xp" );
@@ -448,7 +447,8 @@ class Game extends Tools {
     //Mission Text
 
 
-    public void pull ( ) {
+    public
+    void pull ( ) {
 
         if ( exp1 > 0 ) {
             sPrintln( "2069 exp " + exp1 );
@@ -464,11 +464,12 @@ class Game extends Tools {
             while ( pull_num > 0 ) {
 
                 int[] odds = new int[]{ 1 , 1 , 1 , 1 , 2 , 2 , 2 , 3 , 3 , 3 , 4 , 4 , 5 , 6 , 7 };
-                int tier = odds[ random( 0 , odds.length - 1 ) ];
+                int   tier = odds[ random( 0 , odds.length - 1 ) ];
                 if ( tier == 1 ) {
                     HPmax += 2;
                     sPrintln( "2069's max Hp increased by 2" );
-                } else if ( ( tier == 2 ) || ( tier == 3 ) || ( tier == 4 ) || ( tier == 5 ) ) num = random( 1 , 4 );
+                }
+                else if ( ( tier == 2 ) || ( tier == 3 ) || ( tier == 4 ) || ( tier == 5 ) ) num = random( 1 , 4 );
                 //Ember level up
                 if ( num == 4 ) {
                     if ( tier > ember.attackTier ) {
@@ -514,14 +515,16 @@ class Game extends Tools {
                 sPrintln( "roll complete" );
                 pull_num -= 1;
             }
-        } else {
+        }
+        else {
             sPrintln( "YOU NEED MORE EXP POOR PERSON" );
         }
 
     }
 
 
-    public void levelUp ( ) {
+    public
+    void levelUp ( ) {
         if ( exp1 >= levelR1 ) {
             sPrintln( "LEVEL UP" );
             sPrintln( level2069 + " --> " + ( level2069 + 1 ) );
@@ -536,28 +539,20 @@ class Game extends Tools {
     }
 
     //fight enemies
-    public void battle ( ) {
+    public
+    void battle ( ) {
         Emmi emmi = new Emmi( random( 1 , 7 ) , level2069 );
         while ( emmi.emmi_HP > 0 ) {
             sPrint( "2069 health " + HP2069 );
             sPrint( emmi.emmi_type + " health " + emmi.emmi_HP );
             System.out.println( );
-            emmi.emmi_attack = 0;
-            emmi.emmi_prep( );
-            attack( );
-            num = 0;
-            double[] arr = emmi.attack_emmi( attackTime , attackStun );
-            emmi.emmi_HP -= choseAttack( arr[ 1 ] );
-            if ( arr[ 1 ] > 0 ) {
-                emmi.emmi_HP -= attack2( );
-            } else {
-                HP2069 -= arr[ 0 ];
+            if ( attackTime < emmi.emmi_attack.speed ) {
+                emmi.emmi_HP-=choseAttack( 1 );
             }
-            if ( HP2069 > HPmax ) {
-                HP2069 = HPmax;
+            if( attackTime > emmi.emmi_attack.speed || attackStun<random( 7,15 )){
+                HP2069-=emmi.emmi_attack.attack();
             }
             restart( );
-
         }
 
         levelUp( );
@@ -567,7 +562,8 @@ class Game extends Tools {
     //Create a giga mech
 
     //Game Over
-    public void restart ( ) {
+    public
+    void restart ( ) {
         if ( HP2069 < 0 ) {
             sPrintln( "The world around you begins to fade to black" );
             sPrintln( "???: Welcome back to this world of nothingness " );
@@ -589,12 +585,13 @@ class Game extends Tools {
 
 
     //uses READ to update save
-    public void grabSave ( ) {
+    public
+    void grabSave ( ) {
         Object[] Save = Read( "Save.txt" );
 
-        for ( int s = 0; s < Save.length; s++ ) {
+        for ( int s = 0 ; s < Save.length ; s++ ) {
 
-            if(Save[s]!=null) {
+            if ( Save[ s ] != null ) {
                 int val = Integer.parseInt( Save[ s ].toString( ) );
 
 
@@ -634,35 +631,29 @@ class Game extends Tools {
 
     }
 
-    public void bossFight ( Boss boss ) {
+    public
+    void bossFight ( Boss boss ) {
 
         while ( ! boss.differntPhases.isEmpty( ) ) {
 
             boss.checkArray( );
             Phase current = boss.differntPhases.get( 0 );
-
             sPrint( current.name + "'s Health " + current.getHP( ) );
             sPrintln( "2069's Health " + HP2069 );
 
             current.pickAttack( );
+            Attack bossAttack = current.attacks[ current.curAttack ];
             attack( );
-
-            if ( attackTime < current.speed ) {
+            if ( attackTime <= bossAttack.speed ) {
                 current.loseHP( choseAttack( 1 ) );
-
-                if ( attackStun > current.stun ) {
-                    current.loseHP( attack2( ) );
-
-                }
             }
-            if ( attackStun < current.stun ) {
-                num = current.useAttack( );
-                current.printAttack( num );
-                HP2069 -= num;
+            if ( attackStun < random( 8,20 ) || attackTime < bossAttack.speed ) {
+                HP2069 -= bossAttack.attack( );
             }
-            restart( );
+
+
         }
-        exp1+=100;
+        exp1 += 100;
         levelUp( );
     }
 //don't pass this comment

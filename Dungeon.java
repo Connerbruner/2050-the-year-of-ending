@@ -8,21 +8,21 @@ class Dungeon extends Tools {
     /**
      *
      */
-    public Dungeon(String name, int length) {
+    public Dungeon ( String name , int length ) {
 
         dungeonName = name;
         dungeonLength = length;
     }
 
-    public void start() {
-        sPrint("Welcome to the " + dungeonName + " (length: " + dungeonLength + " )");
+    public void start ( ) {
+        sPrint( "Welcome to the " + dungeonName + " (length: " + dungeonLength + " )" );
         amountMoved = 0;
     }
 
-    public void move() {
-        int steps = random(1, 5);
+    public void move ( ) {
+        int steps = random( 1 , 5 );
         amountMoved = steps;
-        sPrintln("You move " + steps + " feet");
+        sPrintln( "You move " + steps + " feet" );
     }
 
 }
