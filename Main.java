@@ -19,6 +19,8 @@ class Main {
         cheatCode = scanner.nextLine( );
         if ( cheatCode.equals( "gay" ) ) {
             tools.isGay = true;
+        } else if (cheatCode.equals("backwards")) {
+            tools.isBackwards = true;
         }
 
         tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );

@@ -17,6 +17,7 @@ class Tools {
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
     public boolean isGay = false;
+    public boolean isBackwards = false;
     int tSpeed;
     String[] colors = new String[]{ RED , GREEN , BLUE , PURPLE , CYAN };
     Scanner scanner = new Scanner( System.in );
@@ -73,13 +74,14 @@ class Tools {
 
     /**
      *
+     * @param num
      */
     public void setTSpeed ( int num ) {
         tSpeed = num;
     }
 
     /**
-     * @return RANDOM NUMBER LETS GO
+     * @return RANDOM NUMBER between low and high iirc LETS GO
      */
     public int random ( int low , int high ) {
         int range = high - low + 1;
@@ -98,7 +100,13 @@ class Tools {
                 System.out.print( colors[ i % colors.length ] );
                 wait( tSpeed );
             }
-        } else if ( str.contains( "2069:" ) ) {
+        }else if (isBackwards) {
+            for (int i = str.length()-1; i > 0; i--){
+                System.out.print(str.charAt(i));
+                wait(tSpeed);
+            }
+
+        }else if ( str.contains( "2069:" ) ) {
             for ( int i = 0; i < str.length( ); i++ ) {
                 System.out.print( BLUE + str.charAt( i ) );
                 wait( tSpeed );
