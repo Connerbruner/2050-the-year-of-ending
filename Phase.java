@@ -6,7 +6,7 @@ class Phase extends Tools {
     int curAttack;
 
 
-    public Phase ( Attack[] arr , int health , String n) {
+    public Phase ( Attack[] arr , int health , String n ) {
         attacks = arr;
         HP = health;
         name = n;
