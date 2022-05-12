@@ -47,13 +47,14 @@ class Attack extends Tools {
         if ( style ) {
             return speed;
         } else {
-            return speed * 2;
+            return (int)(speed * 1.5);
         }
     }
 
     public int getAttackTier ( ) {
         return attackTier;
     }
+    
 
     /**
      * @param attackTier

@@ -3,10 +3,13 @@ import java.util.ArrayList;
 class Boss extends Tools {
     public ArrayList < Phase > differntPhases = new ArrayList <>( );
 
-    public Boss ( ) {
+    public Boss (Phase boss ) {
+        differntPhases.clear();
+        differntPhases.add(boss);
     }
 
     public Boss ( Phase[] arr ) {
+        differntPhases.clear();
         for ( int i = 0; i < arr.length; i++ )
             differntPhases.add( arr[ i ] );
     }

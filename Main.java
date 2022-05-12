@@ -6,11 +6,8 @@ class Main {
         System.out.println( );
         Tools tools = new Tools( );
         Game game = new Game( );
-        //Debug stuff
-        game.grabSave( );
         //clears the screen
-        System.out.print( "\033[H\033[2J" );
-        System.out.flush( );
+        
         Scanner scanner = new Scanner( System.in );
         tools.setTSpeed( 20 );
         //main starts here
@@ -29,7 +26,18 @@ class Main {
         System.out.println( );
 
         tools.sPrintln( Tools.RED + "This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence." );
-        System.out.flush( );
+        System.out.println("BEGIN LOADING IN 3");
+        tools.wait(500);
+        System.out.println("BEGIN LOADING IN 2");
+        tools.wait(500);
+        System.out.println("BEGIN LOADING IN 1");
+        tools.wait(500);
+        game.grabSave( );
+        tools.loading( );
+        System.out.println("LOAD COMPLETE");
+        tools.wait(1000);
+        System.out.println(tools.SCREEN_CLEAR);
+        System.out.flush();
         game.game( );
 
 

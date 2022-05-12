@@ -201,5 +201,22 @@ class Tools {
         boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
         return ! yesSkip;
     }
+    public void loading()
+    {
+          int i=176;
+      long startTime = System.currentTimeMillis( );
+      while ( startTime + 2000 > System.currentTimeMillis( ) )
+       {
+           System.out.print((char)(i));
+           i++;
+           if(i==2000)
+           {
+               i=176;
+           }
+       }
+      System.out.println("\033[H\033[2J");
+      System.out.flush( );
+
+  }
 
 }

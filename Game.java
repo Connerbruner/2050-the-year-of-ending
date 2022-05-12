@@ -34,41 +34,46 @@ class Game extends Tools {
     Attack[] attackGates = { triSlash , ultraSlash , laserBlast };
     //Elon musk
     Attack   spear       = new Attack( "Elon musk" , "SPEAR RUSH" , 10 , 20 , 10 );
-    Attack   revenge     = new Attack( "REVENGE OF THE SPEAR" , 5 , 25 , 20 , 10 );
-    Attack   powerful    = new Attack( "ULTRA SPEAR" , 1 , 30 , 20 , 10 );
+    Attack   revenge     = new Attack("Elon musk" , "REVENGE OF THE SPEAR" , 5 , 25 , 20 );
+    Attack   powerful    = new Attack("Elon musk" , "ULTRA SPEAR" , 1 , 30 , 20 );
     Attack[] attacksElon = { spear , powerful , revenge };
     Phase    Elon        = new Phase( attacksElon , 500 , "Elon Musk" );
     Phase    Gates       = new Phase( attacksElon , 500 , "Bill Gates" );
-    Phase    Jeff        = new Phase( attacksElon , 500 , "Bill Gates" );
+    Phase    Jeff        = new Phase( attacksElon , 500 , "Jeff bezos" );
     Phase[]  arrTri1     = { Elon , Gates , Jeff };
     Phase    ElonP       = new Phase( attacksElon , 750 , "Elon Musk" );
     Phase    GatesP      = new Phase( attacksElon , 750 , "Bill Gates" );
     Phase    JeffP       = new Phase( attacksElon , 750 , "Bill Gates" );
     Phase[]  arrTri2     = { ElonP , GatesP , JeffP };
     //jeff bezos
-    Attack   roomba      = new Attack( "ROOMBA INVASION" , 15 , 25 , 15 , 7 );
-    Attack   mech        = new Attack( "MECH CANNON" , 10 , 30 , 25 , 7 );
-    Attack   laser       = new Attack( "DUAL LASER" , 12 , 25 , 15 , 7 );
+    Attack   roomba      = new Attack("Jeff bezos", "ROOMBA INVASION" , 15 , 25 , 25  );
+    Attack   mech        = new Attack("Jeff bezos", "MECH CANNON" , 10 , 30 , 30 );
+    Attack   laser       = new Attack("Jeff bezos", "DUAL LASER" , 12 , 25 , 15  );
     Attack[] attacksJeff = { roomba , mech , laser };
     //Mark Zuckerberg
-    Attack   finalSlash  = new Attack( "FINAL SLASH" , 1 , 100 , 30 , 10 );
-    Attack   dualHit     = new Attack( "DUAL SLASH" , 25 , 50 , 15 , 5 );
-    Attack   zero        = new Attack( "ZERO SLASH" , 5 , 10 , 1 , 50 );
-    Attack[] attacksMark = { roomba , mech , laser };
+    Attack   finalSlash  = new Attack("Mark Zuckerberg", "FINAL SLASH" , 1 , 100 , 30  );
+    Attack   dualHit     = new Attack("Mark Zuckerberg", "DUAL SLASH" , 25 , 50 , 15  );
+    Attack   zero        = new Attack("Mark Zuckerberg", "ZERO SLASH" , 5 , 10 , 1  );
+    Attack[] attacksMark = { finalSlash , dualHit , zero };
+
+    
     Scanner  scanner     = new Scanner( System.in );
+    //2069 attacks
     Attack   aqua        = new Attack( "Aqua" , 7 , 15 , 10 , 8 );
     Attack   lasershot   = new Attack( "Lasershot" , 7 , 10 , 8 , 6 );
     Attack   ember       = new Attack( "Ember" , 17 , 30 , 15 , 10 );
+Boss boss = new Boss(arrTri1);
 
     Text text = new Text( );
 
     //Starts up 2069
     public
     void game ( ) {
-        HP2069 = HPmax;
+
         //Runs mission forever
         while ( true ) {
             String choice;
+            HP2069=HPmax;
             sPrint( "Type 1 -> " + missionNum + " to try that Mission" );
             //Tells you how to roll the gotcha
             if ( missionNum > 1 ) {
@@ -297,7 +302,6 @@ class Game extends Tools {
         }
 
     }
-    //embers method
 
     //shows you what attacks you can use
     public
@@ -322,10 +326,30 @@ class Game extends Tools {
 
         System.out.println( );
 
-        sPrint( "Out Power or Out Speed (Power=false)(Speed=true)" );
-        attackType = scanner.nextBoolean( );
+        String tackType = "";
+        
+        boolean typeDetermined = false;
+        //loop that determines the type without making you want to break a glass jar
+        while(!typeDetermined){
+          
+        sPrint( "Out Power or Out Speed" );
+          
+        tackType = scanner.nextLine();
+          
+        if(tackType.equals("Power")){
+          attackType = false;
+          typeDetermined = true;
+        }else if(tackType.equals("Speed")){
+          attackType = true;
+          typeDetermined = true;
+        }
+          
         System.out.println( );
-
+          
+        }
+        typeDetermined = false;
+        tackType = "";
+        
         long end_Time = System.currentTimeMillis( );
         attackTime = ( int ) ( ( end_Time - start_Time ) / 1000 );
         if ( attackNum == 1 ) {
@@ -382,8 +406,13 @@ class Game extends Tools {
             num = ( int ) ( random( cureTier * 5 , cureTier * 20 ) * power );
         }
         HP2069 += num;
-        sPrintln( "2069's heal " + num + " damage" );
+        sPrintln( "2069 heals " + num + " damage" );
+    if(HP2069>HPmax)
+    {
+        HP2069=HPmax;
     }
+        }
+    
 
     //2077's code
 
@@ -537,19 +566,50 @@ class Game extends Tools {
 
 
     }
+    public void chainAttack(int HP)
+    {
+        int health=HP;
+        int damage=0;
+        int speed=15;
+        int mul=1;
+        sPrintln("2051: I SEE AN OPENING");
+        sPrintln("CHAIN ATTACK START");
+        for(int round=1; speed>30; round++)
+        {
+        sPrint("Round: "+round);
+        sPrint("2051: You have "+speed+" time left before the opening is gone");
+        attack();
+        if(speed<attackTime)
+        {
+            damage+=choseAttack(mul);
+            mul+=attackStun/10;
+            damage+=attack2();
+            
+        }
+        }
+
+        
+    }
 
     //fight enemies
     public
     void battle ( ) {
-        Emmi emmi = new Emmi( random( 1 , 7 ) , level2069 );
+        num=level2069;
+        if(num>8)
+        {
+            num=8;
+        }
+        Emmi emmi = new Emmi( random( 1 , num ) , level2069 );
         while ( emmi.emmi_HP > 0 ) {
             sPrint( "2069 health " + HP2069 );
             sPrint( emmi.emmi_type + " health " + emmi.emmi_HP );
             System.out.println( );
+            emmi.emmi_prep();
+            attack();
             if ( attackTime < emmi.emmi_attack.speed ) {
                 emmi.emmi_HP-=choseAttack( 1 );
             }
-            if( attackTime > emmi.emmi_attack.speed || attackStun<random( 7,15 )){
+            if( attackTime > emmi.emmi_attack.speed || attackStun<(emmi.emmi_num*2)){
                 HP2069-=emmi.emmi_attack.attack();
             }
             restart( );
@@ -559,7 +619,6 @@ class Game extends Tools {
 
     }
 
-    //Create a giga mech
 
     //Game Over
     public
@@ -647,10 +706,10 @@ class Game extends Tools {
             if ( attackTime <= bossAttack.speed ) {
                 current.loseHP( choseAttack( 1 ) );
             }
-            if ( attackStun < random( 8,20 ) || attackTime < bossAttack.speed ) {
+            else if ( attackStun > 10 || attackTime > bossAttack.speed ) {
                 HP2069 -= bossAttack.attack( );
             }
-
+            restart();
 
         }
         exp1 += 100;
