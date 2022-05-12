@@ -11,6 +11,7 @@ class Main {
         Scanner scanner = new Scanner( System.in );
         tools.setTSpeed( 20 );
         //main starts here
+        //cheat code start
         tools.sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );
@@ -18,8 +19,10 @@ class Main {
             tools.isGay = true;
         } else if (cheatCode.equals("backwards")) {
             tools.isBackwards = true;
+        } else if (cheatCode.equals("Roomba")) {
+            tools.isRoomba = true;
         }
-
+        //cheat code end
         tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
         tools.sPrint( "what should the text speed be?   " );
         tools.setTSpeed( scanner.nextInt( ) );

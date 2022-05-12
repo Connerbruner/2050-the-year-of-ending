@@ -31,7 +31,19 @@ ATTACK  methods:
 
 Void - attack1() 2069s attack method
 Void - attack2() 2077s attack method
-int - quickTime() starts a quickTime event
+
+Star methods:
+The star setter and getters are for changing the difficulty of missions
+They're a little complicated but basically, the star setter method will only work if stars are unlocked
+Stars are unlocked after beating the mission once
+Each star adds 1 enemy level above the current player level
+If you wish to add another dungeon, you must check if the stars are unlocked upon each calling of the object
+
+Dungeons:
+Dungeons take 4 variables, and each dungeon that is added must be put in the dungeon list as well
+The dungeon list determines which dungeon is being used, and is used to access the methods in each dungeon object
+To mod, create a new dungeon object, add it to the list, and determine which mission it should be used in
+Then make absolutely sure you've set the currentDungeon int correctly in the mission, and it should play properly
 
 TEXT/HOW DOES GAME() WORK
 Void - Mission(mission_num)_(cutscene number) Plays a cutscene

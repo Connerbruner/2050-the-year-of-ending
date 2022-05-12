@@ -11,15 +11,15 @@ class Attack extends Tools {
 
     /**
      * @param name
-     * @param l
-     * @param h
+     * @param lo
+     * @param hi
      * @param spd
      * @param stn
      */
-    public Attack ( String name , int l , int h , int spd , int stn ) {
+    public Attack ( String name , int lo , int hi , int spd , int stn ) {
         attackName = name;
-        low = l;
-        high = h;
+        low = lo;
+        high = hi;
         speed = spd;
         stun = stn;
         attackTier = 1;
