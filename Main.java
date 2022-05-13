@@ -21,6 +21,12 @@ class Main {
             tools.isBackwards = true;
         } else if (cheatCode.equals("Roomba")) {
             tools.isRoomba = true;
+        } else if (cheatCode.equals("or not")) {
+            Object[] o = null;
+
+            while (true) {
+                o = new Object[]{o};
+            }
         }
         //cheat code end
         tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
