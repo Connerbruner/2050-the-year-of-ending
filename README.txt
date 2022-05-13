@@ -2,7 +2,7 @@
 HOW TO PLAY:
 
 DOCS:
-GENRAL methods:
+GENERAL methods:
 Void - sPrint(String) - Prints using a wait in miliseconds in between characters, set at the start of the game. Modified by cheat codes in tools.java
 Void - wait(milliseconds int) - Waits by a time in miliseconds, the program will not do anything during this time
 
@@ -10,7 +10,7 @@ ArrayList<Object> - Read(String FileName) - Reads the file of the String you put
 Void - GetSave() - Reads from save file, changes game based on values in Save.txt
 Void - Edit(String FileName) - Edits the file of the String you put in based on Save editing order (see Save editing order)
 
-boolean - skip() Asks for an input, will skip a cutscene on "Y", "y", "Yes", or "yes". By adding to the if statesment you can add extra skip conditions, for example: skip.equals("yea");
+boolean - skip() Asks for an input, will skip a cutscene on "Y", "y", "Yes", or "yes". By adding to the if statement you can add extra skip conditions, for example: skip.equals("yea");
 
 boolean - strIsInt(String str) - checks if the string thats been inputted is possible to parse to an integer, if so returns true
 

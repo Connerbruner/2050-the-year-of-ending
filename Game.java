@@ -74,7 +74,7 @@ class Game extends Tools {
             String choice;
             HP2069 = HPmax;
             sPrint("Type 1 -> " + missionNum + " to try that Mission");
-            if(dungeonList[currentDungeon].getStarsUnlocked()){
+            if (dungeonList[currentDungeon].getStarsUnlocked()) {
                 sPrint("Input a star difficulty for this mission");
                 dungeonList[currentDungeon].setStar(scanner.nextInt());
             }
@@ -92,6 +92,7 @@ class Game extends Tools {
                     text.mission1_1();
                     text.mission1_2();
                 }
+                currentDungeon = 0;
                 subway.start();
                 while (subway.dungeonLength > subway.amountMoved) {
                     subway.move();
@@ -118,6 +119,7 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission2_1();
                 }
+                currentDungeon = 3;
                 city.start();
                 while (city.dungeonLength > city.amountMoved) {
                     city.move();
@@ -143,7 +145,9 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission3_1();
                 }
+                currentDungeon = 1;
                 local6_11.start();
+
                 while (local6_11.dungeonLength > local6_11.amountMoved) {
                     local6_11.move();
                     battle();
@@ -174,6 +178,7 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission4_1();
                 }
+                currentDungeon = 4;
                 highway.start();
                 while (highway.dungeonLength > highway.amountMoved) {
                     highway.move();
@@ -196,6 +201,7 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission5_1();
                 }
+                currentDungeon = 1;
                 local6_11.start();
                 while (local6_11.dungeonLength > local6_11.amountMoved) {
                     local6_11.move();
@@ -220,6 +226,7 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission6_1();
                 }
+                currentDungeon = 4;
                 highway.start();
                 while (highway.dungeonLength > highway.amountMoved) {
                     highway.move();
@@ -242,6 +249,7 @@ class Game extends Tools {
                 if (skip()) {
                     text.mission7_1();
                 }
+                currentDungeon = 2;
                 factory.start();
                 while (factory.dungeonLength > factory.amountMoved) {
                     factory.move();
@@ -263,6 +271,7 @@ class Game extends Tools {
             if ((missionNum >= 8) && (choice.equals("8"))) {
                 sPrintln("MISSION 8 When I Step off");
                 text.mission8_1();
+                currentDungeon = 4;
                 highway.start();
                 while (highway.dungeonLength > highway.amountMoved) {
                     highway.move();
@@ -289,7 +298,7 @@ class Game extends Tools {
                 if (missionNum < 9) {
                     dungeonList[currentDungeon].setStarsUnlocked(true);
                     missionNum = 9;
-                    sPrintln("MISSION 9 UNLOCKED");
+                    sPrintln("MISSION 10 UNLOCKED");
                 }
             }
 //Mission 10
@@ -457,47 +466,37 @@ class Game extends Tools {
         return num;
 
     }
-        public int attack3() {
+
+    public int attack3() {
         sPrintln("2048's turn");
         sPrintln("LASER RUSH");
-        num=3;
-        int max = (int)(maxhit/2);
-        for(int d=0; num!=0; d++)
-        {
-            num=random(0,max);
-            sPrint("2048 deals "+num+" damage");
-            d+=num;
+        num = 3;
+        int max = (int) (maxHit / 2);
+        int total = 0;
+        while (num != 0) {
+            num = random(0, max);
+            sPrint("2048 deals " + num + " damage");
+            total += num;
         }
-        sPrintln("2048 Deals " + d + " Damage");
-        return d;
+        return total;
 
     }
-        public int attack4() {
-        if(HP2069<15)
-        {
-            Sprintln("Oh looks like you need some healing");
-            if(choice("Take a Potion? "))
-            {
-                num=random(-10,20);
-                Sprintln("2069 heals "+num+" damage");
-                HP2069+=num;
-            }
-            
-            
-            }
-        num=3;
-        int da=0;
-        int max = (int)(maxhit/2);
-        for(while)
-        {
-            num=random(0,max);
-            sPrint("2048 deals "+num+" damage");
-            da+=num;
-        }
-        return num;
 
+    public int attack4() {
+        if (HP2069 < 15) {
+            sPrintln("Oh looks like you need some healing");
+            if (choice("Take a Potion? ")) {
+                num = random(-10, 20);
+                sPrintln("2069 heals " + num + " damage");
+                HP2069 += num;
+            }
+
+
+        }
+        return HP2069;
     }
-        public void chainAttack(int HP) {
+
+    public void chainAttack(int HP) {
         int health = HP;
         int damage = 0;
         int speed = 15;
@@ -513,7 +512,7 @@ class Game extends Tools {
                 mul += attackStun / 10;
                 damage += attack2();
                 damage += attack3();
-                }
+            }
         }
 
 
