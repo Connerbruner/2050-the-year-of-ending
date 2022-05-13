@@ -12,6 +12,7 @@ class Main {
         tools.setTSpeed( 20 );
         //main starts here
         //cheat code start
+        tools.sPrint(tools.SCREEN_CLEAR);
         tools.sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );
@@ -22,11 +23,7 @@ class Main {
         } else if (cheatCode.equals("Roomba")) {
             tools.isRoomba = true;
         } else if (cheatCode.equals("or not")) {
-            Object[] o = null;
-
-            while (true) {
-                o = new Object[]{o};
-            }
+            Crash crash = new Crash();
         }
         //cheat code end
         tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
@@ -51,4 +48,5 @@ class Main {
 
 
     }
+    
 }

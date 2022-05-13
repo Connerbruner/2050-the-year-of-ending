@@ -9,7 +9,6 @@ class Dungeon extends Tools {
     boolean starsUnlocked;
 
     /**
-     *
      * @param name
      * @param length
      * @param stars
@@ -21,6 +20,7 @@ class Dungeon extends Tools {
         dungeonName = name;
         dungeonLength = length;
         starsUnlocked = starUnlock;
+        amountMoved=0;
     }
 
     public boolean getStarsUnlocked(){
@@ -48,7 +48,7 @@ class Dungeon extends Tools {
 
     public void move() {
         int steps = random(1, 5);
-        amountMoved = steps;
+        amountMoved += steps;
         sPrintln("You move " + steps + " feet");
     }
 

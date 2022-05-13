@@ -120,11 +120,7 @@ class Game extends Tools {
                     text.mission2_1();
                 }
                 currentDungeon = 3;
-                city.start();
-                while (city.dungeonLength > city.amountMoved) {
-                    city.move();
-                    battle();
-                }
+
 
                 if (skip()) {
                     text.mission2_2();
@@ -325,6 +321,14 @@ class Game extends Tools {
         }
 
     }
+    public void dungeon(Dungeon dungeon) {
+        dungeon.start();
+        while (dungeon.dungeonLength > dungeon.amountMoved) {
+            dungeon.move();
+            battle();
+        }
+    }
+
 
     //shows you what attacks you can use
     public void attack() {
@@ -752,6 +756,9 @@ class Game extends Tools {
         }
         exp1 += 100;
         levelUp();
+    }
+    public void missionComplete(int mission){
+        
     }
 //don't pass this comment
 }
