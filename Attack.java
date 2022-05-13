@@ -11,15 +11,15 @@ class Attack extends Tools {
 
     /**
      * @param name
-     * @param l
-     * @param h
+     * @param lo
+     * @param hi
      * @param spd
      * @param stn
      */
-    public Attack ( String name , int l , int h , int spd , int stn ) {
+    public Attack ( String name , int lo , int hi , int spd , int stn ) {
         attackName = name;
-        low = l;
-        high = h;
+        low = lo;
+        high = hi;
         speed = spd;
         stun = stn;
         attackTier = 1;
@@ -47,13 +47,14 @@ class Attack extends Tools {
         if ( style ) {
             return speed;
         } else {
-            return speed * 2;
+            return (int)(speed * 1.5);
         }
     }
 
     public int getAttackTier ( ) {
         return attackTier;
     }
+    
 
     /**
      * @param attackTier
@@ -79,10 +80,10 @@ class Attack extends Tools {
     public int attack ( double power , boolean style ) {
         if ( style ) {
             sPrint( "Fast " + attackName );
-            num = ( int ) ( ( random( low , high ) * attackTier ) * ( power * 2 ) );
+            num = ( int ) ( ( random( low , high ) * attackTier ) * ( power ) );
         } else {
             sPrint( "Powerful " + attackName );
-            num = ( int ) ( ( random( low , high ) * attackTier ) * power );
+            num = ( int ) ( ( random( low , high ) * attackTier ) * power * 2);
 
         }
         sPrintln( "2069 deals " + num + " damage" );

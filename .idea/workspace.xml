@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Added hecking code comments so I can read Conner's code">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2022_7_23_AM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2022_7_23_AM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
-    </list>
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Star system *SHOULD BE* finished" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -230,7 +223,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652141053956</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added stars - Need to be finished&#10;Added roomba cheat code&#10;Added dungeon and star documentation in README.txt">
+      <created>1652369414891</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1652369414891</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Star system *SHOULD BE* finished">
+      <created>1652458203927</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1652458203927</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -261,6 +268,9 @@
     <MESSAGE value="boss is done" />
     <MESSAGE value="Txt is fixed also emmi does not work" />
     <MESSAGE value="Worked on battle and FOMRATED CODE" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on battle and FOMRATED CODE" />
+    <MESSAGE value="Added stars - Need to be finished&#10;Added roomba cheat code&#10;Added dungeon documentation in README.txt" />
+    <MESSAGE value="Added stars - Need to be finished&#10;Added roomba cheat code&#10;Added dungeon and star documentation in README.txt" />
+    <MESSAGE value="Star system *SHOULD BE* finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Star system *SHOULD BE* finished" />
   </component>
 </project>

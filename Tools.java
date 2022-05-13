@@ -16,8 +16,12 @@ class Tools {
     public static final String PURPLE = "\u001B[35m";
     public static final String CYAN = "\u001B[36m";
     public static final String WHITE = "\u001B[37m";
+    //start of cheat codes
     public boolean isGay = false;
     public boolean isBackwards = false;
+
+    public boolean isRoomba = false;
+    //end of cheat codes
     int tSpeed;
     String[] colors = new String[]{ RED , GREEN , BLUE , PURPLE , CYAN };
     Scanner scanner = new Scanner( System.in );
@@ -201,5 +205,28 @@ class Tools {
         boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
         return ! yesSkip;
     }
+    public boolean choice (String str ) {
+        sPrint( str );
+        String skip = scanner.nextLine( );
+        boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
+        return ! yesSkip;
+    }
+    public void loading()
+    {
+          int i=176;
+      long startTime = System.currentTimeMillis( );
+      while ( startTime + 2000 > System.currentTimeMillis( ) )
+       {
+           System.out.print((char)(i));
+           i++;
+           if(i==2000)
+           {
+               i=176;
+           }
+       }
+      System.out.println("\033[H\033[2J");
+      System.out.flush( );
+
+  }
 
 }
