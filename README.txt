@@ -3,25 +3,31 @@ HOW TO PLAY:
 
 DOCS:
 GENRAL methods:
-Void - print_slow(String) - 2069s upgraded print methods
-Void - wait(milliseconds int) - Wait in milliseconds
+Void - sPrint(String) - Prints using a wait in miliseconds in between characters, set at the start of the game. Modified by cheat codes in tools.java
+Void - wait(milliseconds int) - Waits by a time in miliseconds, the program will not do anything during this time
 
-ArrayList<Object> - Read(String FileName) - Reads the file of the String you put in based on Save editing order (look at Save editing order)
-Void - GetSave() - Uses Read to update game
-Void - Edit(String FileName) - Edits the file of the String you put in based on Save editing order (look at Save editing order)
+ArrayList<Object> - Read(String FileName) - Reads the file of the String you put in based on Save editing order (see Save editing order)
+Void - GetSave() - Reads from save file, changes game based on values in Save.txt
+Void - Edit(String FileName) - Edits the file of the String you put in based on Save editing order (see Save editing order)
 
-boolean - skip() checks if you want to skip the cutscene
-boolean - strIsInt(String str) - is that String castAble to a int
+boolean - skip() Asks for an input, will skip a cutscene on "Y", "y", "Yes", or "yes". By adding to the if statesment you can add extra skip conditions, for example: skip.equals("yea");
+
+boolean - strIsInt(String str) - checks if the string thats been inputted is possible to parse to an integer, if so returns true
 
 
 GOTCHA methods:
-Void - pull() Start/Setup Gotcha 
-Void - roll() Random weighted prize
+Void - pull()  Rolls gotcha, lower odds for higher rolls, no duplicates, the more exp that is put in the more likely you are to get a higher tier attack
+
 
 BOSS methods:
 
 Void - attack_(name)() The bosses attack
 Void - (Name of boss)() The boss fight its self
+
+HOW TO MAKE YOUR OWN BOSS:
+
+- Create an attack array, for example: Attack[] elon = new Attack[]{Laser, blast, Shield};
+- NOTE, you must create each attack individually before adding to the array: Attack blast = new Attack("");
 
 EXP methods:
 Void - gain() gives you exp for killing a enemy
@@ -65,41 +71,19 @@ VARIABLES:
     public static final String PURPLE = makes text purple
     public static final String CYAN = makes text cyan
     public static final String WHITE = makes text white
-    int emmi_HP = enemie HP
-    int emmi_level = enemie level
-    String emmi_type = enemie name
-    int mp1 = 2069 mp
     int HP1 = 2069 hp
-    int HP2 = 2077 hp
-    int bill_HP = bill gates HP
-    int Elon_HP = Elon HP
-    int target = who is being attacked by bill gates
-    int Tri_HP = Tech giant
-    int Mark_Zuckerberg = Zuckerberg HP
     int missionnum = missions unlocked
     int HP1m = 2069 max HP
-    int HP2m = 2077 max HP
-    int attack1_1mp = mp cost
     int attack1_tier = tier of the move
     int level1 = 2069 level
-    int level2 = 2077 level
     int exp1 = 2069 exp
-    int exp2 = 2077 exp
     int levelr1 = level up Requirement 2069
-    int levelr2 = level up Requirement 2077
-    String attack1_1 = attack name
-    String customspace_1 = spacing attack
     int max_hit = number of damage per hit
-    int dungeon_length = length of dungeon
     int num = placeholder
     int type_num = placeholder
-    int speed = text speed
-    int num1 = placeholder
-    int num2 = placeholder
-    int bonus = placeholder exp
     int hit = placeholder
     int damage = damage placeholder
-    int attack1_power = null
+    int tSpeed = text speed
     int move_tier = power of move
 
 Save editing order:

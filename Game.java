@@ -457,6 +457,98 @@ class Game extends Tools {
         return num;
 
     }
+        public int attack3() {
+        sPrintln("2048's turn");
+        sPrintln("LASER RUSH");
+        num=3;
+        int max = (int)(maxhit/2);
+        for(int d=0; num!=0; d++)
+        {
+            num=random(0,max);
+            sPrint("2048 deals "+num+" damage");
+            d+=num;
+        }
+        sPrintln("2048 Deals " + d + " Damage");
+        return d;
+
+    }
+        public int attack4() {
+        if(HP2069<15)
+        {
+            Sprintln("Oh looks like you need some healing");
+            if(choice("Take a Potion? "))
+            {
+                num=random(-10,20);
+                Sprintln("2069 heals "+num+" damage");
+                HP2069+=num;
+            }
+            
+            
+            }
+        num=3;
+        int da=0;
+        int max = (int)(maxhit/2);
+        for(while)
+        {
+            num=random(0,max);
+            sPrint("2048 deals "+num+" damage");
+            da+=num;
+        }
+        return num;
+
+    }
+        public void chainAttack(int HP) {
+        int health = HP;
+        int damage = 0;
+        int speed = 15;
+        int mul = 1;
+        sPrintln("2051: I SEE AN OPENING");
+        sPrintln("CHAIN ATTACK START");
+        for (int round = 1; speed > 30; round++) {
+            sPrint("Round: " + round);
+            sPrint("2051: You have " + speed + " time left before the opening is gone");
+            attack();
+            if (speed < attackTime) {
+                damage += choseAttack(mul);
+                mul += attackStun / 10;
+                damage += attack2();
+                damage += attack3();
+                }
+        }
+
+
+    }
+
+    //fight enemies
+    public void battle() {
+        num = level2069;
+        if (num > 8) {
+            num = 8;
+        }
+        Emmi emmi;
+        if (isRoomba) {
+            emmi = new Emmi(1, level2069 + dungeonList[currentDungeon].getStar());
+        } else {
+            emmi = new Emmi(random(1, num), level2069);
+        }
+        while (emmi.emmi_HP > 0) {
+            sPrint("2069 health " + HP2069);
+            sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
+            System.out.println();
+            emmi.emmi_prep();
+            attack();
+            if (attackTime < emmi.emmi_attack.speed) {
+                emmi.emmi_HP -= choseAttack(1);
+            }
+            if (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num * 2)) {
+                HP2069 -= emmi.emmi_attack.attack();
+            }
+            restart();
+        }
+
+        levelUp();
+
+    }
 
 
     public void mission1_4() {
@@ -567,59 +659,6 @@ class Game extends Tools {
             sPrintln("2069 has" + (levelR1 - exp1) + "exp till leveling up");
         }
 
-
-    }
-
-    public void chainAttack(int HP) {
-        int health = HP;
-        int damage = 0;
-        int speed = 15;
-        int mul = 1;
-        sPrintln("2051: I SEE AN OPENING");
-        sPrintln("CHAIN ATTACK START");
-        for (int round = 1; speed > 30; round++) {
-            sPrint("Round: " + round);
-            sPrint("2051: You have " + speed + " time left before the opening is gone");
-            attack();
-            if (speed < attackTime) {
-                damage += choseAttack(mul);
-                mul += attackStun / 10;
-                damage += attack2();
-
-            }
-        }
-
-
-    }
-
-    //fight enemies
-    public void battle() {
-        num = level2069;
-        if (num > 8) {
-            num = 8;
-        }
-        Emmi emmi;
-        if (isRoomba) {
-            emmi = new Emmi(1, level2069 + dungeonList[currentDungeon].getStar());
-        } else {
-            emmi = new Emmi(random(1, num), level2069);
-        }
-        while (emmi.emmi_HP > 0) {
-            sPrint("2069 health " + HP2069);
-            sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
-            System.out.println();
-            emmi.emmi_prep();
-            attack();
-            if (attackTime < emmi.emmi_attack.speed) {
-                emmi.emmi_HP -= choseAttack(1);
-            }
-            if (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num * 2)) {
-                HP2069 -= emmi.emmi_attack.attack();
-            }
-            restart();
-        }
-
-        levelUp();
 
     }
 

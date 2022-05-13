@@ -205,6 +205,12 @@ class Tools {
         boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
         return ! yesSkip;
     }
+    public boolean choice (String str ) {
+        sPrint( str );
+        String skip = scanner.nextLine( );
+        boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
+        return ! yesSkip;
+    }
     public void loading()
     {
           int i=176;
