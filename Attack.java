@@ -80,10 +80,10 @@ class Attack extends Tools {
     public int attack ( double power , boolean style ) {
         if ( style ) {
             sPrint( "Fast " + attackName );
-            num = ( int ) ( ( random( low , high ) * attackTier ) * ( power * 2 ) );
+            num = ( int ) ( ( random( low , high ) * attackTier ) * ( power ) );
         } else {
             sPrint( "Powerful " + attackName );
-            num = ( int ) ( ( random( low , high ) * attackTier ) * power );
+            num = ( int ) ( ( random( low , high ) * attackTier ) * power * 2);
 
         }
         sPrintln( "2069 deals " + num + " damage" );
