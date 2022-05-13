@@ -1,0 +1,303 @@
+Index: Emmi.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>class Emmi extends Tools {\r\n    String emmi_type;\r\n    int emmi_HP;\r\n    int emmi_level;\r\n    int emmi_attackNum;\r\n    Attack emmi_attack;\r\n    /**\r\n     *\r\n     */\r\n    public Emmi(int type1, int level) {\r\n        emmi_level = level;\r\n        if (type1 == 1) {\r\n            emmi_type = \"Roomba\";\r\n            \r\n            emmi_HP = 30 + (emmi_level * 2);\r\n            sPrintln(\"A Roomba appears\");\r\n        }\r\n        if (type1 == 2) {\r\n            emmi_type = \"Dog bot\";\r\n\r\n            emmi_HP = 35 + (emmi_level * 3);\r\n            sPrintln(\"A Dog bot appears\");\r\n        }\r\n        if (type1 == 3) {\r\n            emmi_type = \"Robot with a spear\";\r\n\r\n            emmi_HP = 25 + (emmi_level * 2);\r\n            sPrintln(\"A Robot with a spear appears\");\r\n        }\r\n        if (type1 == 4) {\r\n            emmi_type = \"Robot with a sword\";\r\n\r\n            emmi_HP = 30 + (emmi_level * 3);\r\n            sPrintln(\"A Robot with a sword appears\");\r\n        }\r\n\r\n        if (type1 == 5) {\r\n            emmi_type = \"Robot with a gun\";\r\n\r\n            emmi_HP = 40 + (emmi_level * 4);\r\n            sPrintln(\"A Robot with a gun appears\");\r\n        }\r\n        if (type1 == 6) {\r\n            emmi_type = \"Mech\";\r\n\r\n            emmi_HP = 200 + (emmi_level * 5);\r\n            sPrintln(\"A Mech appears\");\r\n        }\r\n\r\n        if (type1 == 7) {\r\n            emmi_type = \"Mini Mech\";\r\n\r\n            emmi_HP = 150 + (emmi_level * 4);\r\n            sPrintln(\"A Mini Mech appears\");\r\n        }\r\n        if (type1 == 8) {\r\n            emmi_type = \"Cyborg\";\r\n\r\n            emmi_HP = 125 + (emmi_level * 4);\r\n            sPrintln(\"A Cyborg appears\");\r\n        }\r\n    }\r\n\r\n    /**\r\n     *\r\n     */\r\n    public Emmi(int level) {\r\n        emmi_type = \"Giga Mech\";\r\n        emmi_level = level;\r\n        emmi_HP = 200 + (emmi_level * 20);\r\n        sPrintln(\"Giga Mech crashes down\");\r\n    }\r\n\r\n    /**\r\n     *\r\n     */\r\n    public double[] attack_emmi(int attackTime, int attackStun) {\r\n        double power = 1;\r\n        int num = 0;\r\n        \r\n        \r\n        return new double[]{num, power};\r\n    }\r\n\r\n    public void emmi_prep() {\r\n        emmi_attackNum = random(1, 3);\r\n        if (emmi_type.equals(\"Roomba\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"ROOMBA RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"ROOMBA RUSH\",emmi_HP-10,emmi_HP,20);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"DARK RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"DARK RUSH\",1,15,15);\r\n\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Dog bot\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"SPEED TACKLE\");\r\n                emmi_attack = new Attack(emmi_type,\"SPEED TACKLE\",1,5,10);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"BITE FURY\");\r\n                emmi_attack = new Attack(emmi_type,\"BITE FURY\",7,17,15);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Robot with a sword\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"TRIPLE SLASH\");\r\n                emmi_attack = new Attack(emmi_type,\"TRIPLE SLASH\",10,20,17);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"BLADE OF DESTRUCTION\");\r\n                emmi_attack = new Attack(emmi_type,\"BLADE OF DESTRUCTION\",1,50,30);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"ZERO RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"ZERO RUSH\",5,11,10);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Robot with a gun\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"BULLET STORM\");\r\n                emmi_attack = new Attack(emmi_type,\"BULLET STORM\",10,15,30);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"ZERO RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"ZERO RUSH\",5,11,10);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"POWER SHOT\");\r\n                emmi_attack = new Attack(emmi_type,\"POWER SHOT\",5,20,30);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Robot with a spear\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"SPEAR RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"SPEAR RUSH\",5,10,7);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"ZERO RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"ZERO RUSH\",5,11,10);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"ULTIMATE SPEAR\");\r\n                emmi_attack = new Attack(emmi_type,\"ULTIMATE SPEAR\",5,30,20);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Giga Mech\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"LASER RAIN\");\r\n                emmi_attack = new Attack(emmi_type,\"ZERO RUSH\",5,11,10);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"DUAL BLADE\");\r\n                emmi_attack = new Attack(emmi_type,\"ZERO RUSH\",5,11,10);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"ZERO RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"ZERO RUSH\",5,11,10);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Mech\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"LASER RAIN\");\r\n                emmi_attack = new Attack(emmi_type,\"LASER RAIN\",5,25,20);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"POWER BURST\");\r\n                emmi_attack = new Attack(emmi_type,\"LASER RAIN\",1,50,20);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"ULTIMATE RUSH\");\r\n                emmi_attack = new Attack(emmi_type,\"ULTIMATE RUSH\",1,100,30);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Mini Mech\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"LASER SHOT\");\r\n                emmi_attack = new Attack(emmi_type,\"LASER SHOT\",1,100,30);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"POWER BURST\");\r\n                emmi_attack = new Attack(emmi_type,\"POWER BURST\",10,50,30);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"TRIPLE SLASH\");\r\n                emmi_attack = new Attack(emmi_type,\"TRIPLE SLASH\",10,20,10);\r\n            }\r\n        }\r\n        if (emmi_type.equals(\"Cyborg\")) {\r\n            if (emmi_attackNum == 1) {\r\n                sPrintln(\"LASER SHOT\");\r\n                emmi_attack = new Attack(emmi_type,\"POWER BURST\",10,50,30);\r\n            }\r\n            if (emmi_attackNum == 2) {\r\n                sPrintln(\"LASER SLASH\");\r\n                emmi_attack = new Attack(emmi_type,\"LASER SLASH\",10,20,10);\r\n            }\r\n            if (emmi_attackNum == 3) {\r\n                sPrintln(\"CHARGE BEAM\");\r\n            }\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Emmi.java b/Emmi.java
+--- a/Emmi.java	(revision 234e7ecf5e967d19da1f504cfbfba51aac67dc9d)
++++ b/Emmi.java	(date 1652139804284)
+@@ -2,8 +2,8 @@
+     String emmi_type;
+     int emmi_HP;
+     int emmi_level;
+-    int emmi_attackNum;
+-    Attack emmi_attack;
++    int emmi_attack;
++
+     /**
+      *
+      */
+@@ -11,7 +11,7 @@
+         emmi_level = level;
+         if (type1 == 1) {
+             emmi_type = "Roomba";
+-            
++
+             emmi_HP = 30 + (emmi_level * 2);
+             sPrintln("A Roomba appears");
+         }
+@@ -78,127 +78,157 @@
+         double power = 1;
+         int num = 0;
+         
+-        
++        //Roomba attacks
++        if (emmi_type.equals("Roomba")) {
++            if (emmi_attack == 1 && attackStun < 5) {
++
++                power = 0.3;
++                sPrintln("ROOMBA RUSH");
++                num = emmi_HP * 2;
++                sPrintln("Roomba deals " + num + " damage");
++            }
++
++            if (emmi_attack == 2 &&  attackStun < 3) {
++
++                sPrintln("RECHARGE");
++                num = (int) (emmi_HP * 0.5);
++                sPrintln("Roomba heals " + num + " damage");
++            }
++
++            if (emmi_attack == 3 && attackStun < 6) {
++                power = 0.6;
++                sPrintln("CHARGE BEAM");
++                num = (emmi_HP * random(1, 3));
++                sPrintln("Roomba deals " + num + " damage");
++            }
++
++        }
++        //Dog bot attacks
++        if (emmi_type.equals("Dog bot")) {
++            if (emmi_attack == 1 && attackTime < 12 && attackStun < 3) {
++
++                power = 0.9;
++                sPrintln("SPEED TACKLE");
++                num = random(10, 15);
++                sPrintln("Dog Bot deals " + num + " damage");
++            }
++
++            if (emmi_attack == 2 && attackStun < 7) {
++
++                power = 0.2;
++                sPrintln("BATTERY RAM");
++                num = random(10, 50);
++                sPrintln("Dog Bot deals " + num + " damage");
++            }
++
++            if (emmi_attack == 3 && attackStun < 4) {
++                power = 0.75;
++                sPrintln("BITE RUSH");
++                num = random(5, 25);
++                sPrintln("Dog Bot deals " + num + " damage");
++            }
++        }
+         return new double[]{num, power};
+     }
+ 
+     public void emmi_prep() {
+-        emmi_attackNum = random(1, 3);
++        emmi_attack = random(1, 3);
+         if (emmi_type.equals("Roomba")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("ROOMBA RUSH");
+-                emmi_attack = new Attack(emmi_type,"ROOMBA RUSH",emmi_HP-10,emmi_HP,20);
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 2) {
++                sPrintln("RECHARGE");
++            }
++            if (emmi_attack == 3) {
+                 sPrintln("DARK RUSH");
+-                emmi_attack = new Attack(emmi_type,"DARK RUSH",1,15,15);
+-
+             }
+         }
+         if (emmi_type.equals("Dog bot")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("SPEED TACKLE");
+-                emmi_attack = new Attack(emmi_type,"SPEED TACKLE",1,5,10);
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 2) {
++                sPrintln("BATTERY RAM");
++            }
++            if (emmi_attack == 3) {
+                 sPrintln("BITE FURY");
+-                emmi_attack = new Attack(emmi_type,"BITE FURY",7,17,15);
+             }
+         }
+         if (emmi_type.equals("Robot with a sword")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("TRIPLE SLASH");
+-                emmi_attack = new Attack(emmi_type,"TRIPLE SLASH",10,20,17);
+             }
+-            if (emmi_attackNum == 2) {
++            if (emmi_attack == 2) {
+                 sPrintln("BLADE OF DESTRUCTION");
+-                emmi_attack = new Attack(emmi_type,"BLADE OF DESTRUCTION",1,50,30);
+             }
+-            if (emmi_attackNum == 3) {
+-                sPrintln("ZERO RUSH");
+-                emmi_attack = new Attack(emmi_type,"ZERO RUSH",5,11,10);
++            if (emmi_attack == 3) {
++                sPrintln("ZERO SLASH");
+             }
+         }
+         if (emmi_type.equals("Robot with a gun")) {
+-            if (emmi_attackNum == 1) {
+-                sPrintln("BULLET STORM");
+-                emmi_attack = new Attack(emmi_type,"BULLET STORM",10,15,30);
++            if (emmi_attack == 1) {
++                sPrintln("BULLET RUSH");
+             }
+-            if (emmi_attackNum == 2) {
+-                sPrintln("ZERO RUSH");
+-                emmi_attack = new Attack(emmi_type,"ZERO RUSH",5,11,10);
++            if (emmi_attack == 2) {
++                sPrintln("ZERO BLAST");
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 3) {
+                 sPrintln("POWER SHOT");
+-                emmi_attack = new Attack(emmi_type,"POWER SHOT",5,20,30);
+             }
+         }
+         if (emmi_type.equals("Robot with a spear")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("SPEAR RUSH");
+-                emmi_attack = new Attack(emmi_type,"SPEAR RUSH",5,10,7);
+             }
+-            if (emmi_attackNum == 2) {
+-                sPrintln("ZERO RUSH");
+-                emmi_attack = new Attack(emmi_type,"ZERO RUSH",5,11,10);
++            if (emmi_attack == 2) {
++                sPrintln("ZERO SPEAR");
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 3) {
+                 sPrintln("ULTIMATE SPEAR");
+-                emmi_attack = new Attack(emmi_type,"ULTIMATE SPEAR",5,30,20);
+             }
+         }
+         if (emmi_type.equals("Giga Mech")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("LASER RAIN");
+-                emmi_attack = new Attack(emmi_type,"ZERO RUSH",5,11,10);
+             }
+-            if (emmi_attackNum == 2) {
++            if (emmi_attack == 2) {
+                 sPrintln("DUAL BLADE");
+-                emmi_attack = new Attack(emmi_type,"ZERO RUSH",5,11,10);
+             }
+-            if (emmi_attackNum == 3) {
+-                sPrintln("ZERO RUSH");
+-                emmi_attack = new Attack(emmi_type,"ZERO RUSH",5,11,10);
++            if (emmi_attack == 3) {
++                sPrintln("ZERO BEAM");
+             }
+         }
+         if (emmi_type.equals("Mech")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("LASER RAIN");
+-                emmi_attack = new Attack(emmi_type,"LASER RAIN",5,25,20);
+             }
+-            if (emmi_attackNum == 2) {
++            if (emmi_attack == 2) {
+                 sPrintln("POWER BURST");
+-                emmi_attack = new Attack(emmi_type,"LASER RAIN",1,50,20);
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 3) {
+                 sPrintln("ULTIMATE RUSH");
+-                emmi_attack = new Attack(emmi_type,"ULTIMATE RUSH",1,100,30);
+             }
+         }
+         if (emmi_type.equals("Mini Mech")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("LASER SHOT");
+-                emmi_attack = new Attack(emmi_type,"LASER SHOT",1,100,30);
+             }
+-            if (emmi_attackNum == 2) {
++            if (emmi_attack == 2) {
+                 sPrintln("POWER BURST");
+-                emmi_attack = new Attack(emmi_type,"POWER BURST",10,50,30);
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 3) {
+                 sPrintln("TRIPLE SLASH");
+-                emmi_attack = new Attack(emmi_type,"TRIPLE SLASH",10,20,10);
+             }
+         }
+         if (emmi_type.equals("Cyborg")) {
+-            if (emmi_attackNum == 1) {
++            if (emmi_attack == 1) {
+                 sPrintln("LASER SHOT");
+-                emmi_attack = new Attack(emmi_type,"POWER BURST",10,50,30);
+             }
+-            if (emmi_attackNum == 2) {
++            if (emmi_attack == 2) {
+                 sPrintln("LASER SLASH");
+-                emmi_attack = new Attack(emmi_type,"LASER SLASH",10,20,10);
+             }
+-            if (emmi_attackNum == 3) {
++            if (emmi_attack == 3) {
+                 sPrintln("CHARGE BEAM");
+             }
+         }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"e05d7108-5656-4894-ad3c-0429e0ec9f67\" name=\"Changes\" comment=\"boss is done\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Attack.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Attack.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Emmi.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Emmi.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Game.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Game.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/README.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/README.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Save.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Save.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/Tools.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/Tools.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProblemsViewState\">\r\n    <option name=\"autoscrollToSource\" value=\"true\" />\r\n    <option name=\"selectedTabId\" value=\"CurrentFile\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"28JiixBV0OfYmxFjH39iKGGUPLs\" />\r\n  <component name=\"ProjectLevelVcsManager\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/ConnerBrunner/IdeaProjects/2050-the-year-off-ending&quot;,\r\n    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"$USER_HOME$/.jdks/openjdk-18\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <module name=\"2050-the-year-off-ending\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"Application\" factoryName=\"Application\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"$USER_HOME$/.jdks/openjdk-18\" />\r\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main.java\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list />\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JarApplication\">\r\n      <option name=\"ALTERNATIVE_JRE_PATH\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"Java Scratch\" editBeforeRun=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Main\" />\r\n      <shortenClasspath name=\"NONE\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"e05d7108-5656-4894-ad3c-0429e0ec9f67\" name=\"Changes\" comment=\"\" />\r\n      <created>1650941219669</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1650941219669</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"giving the evil roombas a way to kill people\">\r\n      <created>1651016300757</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651016300757</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Formatting code and more deadly killer robots\">\r\n      <created>1651025240803</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651025240803</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"climate_Rush() and more killer robot stuff\">\r\n      <created>1651113549453</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651113549453</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"more killer robot stuff\">\r\n      <created>1651269234214</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651269234214</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Done with killer robot stuff\">\r\n      <created>1651351910264</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651351910264</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Ember stuff\">\r\n      <created>1651356899884</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651356899884</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"ATTACK IS DONE\">\r\n      <created>1651430881233</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651430881233</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Fixing attack becuase 2069 can level cities\">\r\n      <created>1651460982476</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651460982476</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Setup for fixing boss\">\r\n      <created>1651720074255</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651720074255</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Boss update\">\r\n      <created>1651883218741</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651883218741</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Boss is here just need to fix a couple of small things also new code spacing style\">\r\n      <created>1651955340591</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651955340591</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Boss is here just need to fix a couple of small things also new code spacing style\">\r\n      <created>1651955376899</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651955376899</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Boss is fixed\">\r\n      <created>1651963193923</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651963193923</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Starting making some bosses plus boss class was tested\">\r\n      <created>1651967487469</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1651967487469</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"boss is done\">\r\n      <created>1652047317766</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1652047317766</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"16\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"giving the evil roombas a way to kill people\" />\r\n    <MESSAGE value=\"Formatting code and more deadly killer robots\" />\r\n    <MESSAGE value=\"climate_Rush() and more killer robot stuff\" />\r\n    <MESSAGE value=\"more killer robot stuff\" />\r\n    <MESSAGE value=\"Done with killer robot stuff\" />\r\n    <MESSAGE value=\"Ember stuff\" />\r\n    <MESSAGE value=\"ATTACK IS DONE\" />\r\n    <MESSAGE value=\"Fixing attack becuase 2069 can level cities\" />\r\n    <MESSAGE value=\"Setup for fixing boss\" />\r\n    <MESSAGE value=\"Boss update\" />\r\n    <MESSAGE value=\"Boss is here just need to fix a couple of small things also new code spacing style\" />\r\n    <MESSAGE value=\"Boss is fixed\" />\r\n    <MESSAGE value=\"Starting making some bosses plus boss class was tested\" />\r\n    <MESSAGE value=\"boss is done\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"boss is done\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 234e7ecf5e967d19da1f504cfbfba51aac67dc9d)
++++ b/.idea/workspace.xml	(date 1652139812200)
+@@ -1,18 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+   <component name="ChangeListManager">
+-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="boss is done">
++    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Txt is fixed also emmi does not work">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/Attack.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/Emmi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Emmi.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/README.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Save.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/README.txt" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -218,7 +211,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1652047317766</updated>
+     </task>
+-    <option name="localTasksCounter" value="16" />
++    <task id="LOCAL-00016" summary="Txt is fixed also emmi does not work">
++      <created>1652061415445</created>
++      <option name="number" value="00016" />
++      <option name="presentableId" value="LOCAL-00016" />
++      <option name="project" value="LOCAL" />
++      <updated>1652061415445</updated>
++    </task>
++    <option name="localTasksCounter" value="17" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -247,6 +247,7 @@
+     <MESSAGE value="Boss is fixed" />
+     <MESSAGE value="Starting making some bosses plus boss class was tested" />
+     <MESSAGE value="boss is done" />
+-    <option name="LAST_COMMIT_MESSAGE" value="boss is done" />
++    <MESSAGE value="Txt is fixed also emmi does not work" />
++    <option name="LAST_COMMIT_MESSAGE" value="Txt is fixed also emmi does not work" />
+   </component>
+ </project>
+\ No newline at end of file
