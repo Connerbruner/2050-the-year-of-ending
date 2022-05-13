@@ -40,15 +40,6 @@ class Game extends Tools {
     Attack revenge = new Attack("Elon musk", "REVENGE OF THE SPEAR", 5, 25, 20);
     Attack powerful = new Attack("Elon musk", "ULTRA SPEAR", 1, 30, 20);
     Attack[] attacksElon = {spear, powerful, revenge};
-    Phase Elon = new Phase(attacksElon, 500, "Elon Musk");
-    Phase Gates = new Phase(attacksElon, 500, "Bill Gates");
-    Phase Jeff = new Phase(attacksElon, 500, "Jeff bezos");
-    Phase[] arrTri1 = {Elon, Gates, Jeff};
-    Boss boss = new Boss(arrTri1);
-    Phase ElonP = new Phase(attacksElon, 750, "Elon Musk");
-    Phase GatesP = new Phase(attacksElon, 750, "Bill Gates");
-    Phase JeffP = new Phase(attacksElon, 750, "Bill Gates");
-    Phase[] arrTri2 = {ElonP, GatesP, JeffP};
     //jeff bezos
     Attack roomba = new Attack("Jeff bezos", "ROOMBA INVASION", 15, 25, 25);
     Attack mech = new Attack("Jeff bezos", "MECH CANNON", 10, 30, 30);
@@ -65,6 +56,18 @@ class Game extends Tools {
     Attack lasershot = new Attack("Lasershot", 7, 10, 8, 6);
     Attack ember = new Attack("Ember", 17, 30, 15, 10);
     Text text = new Text();
+    //Phases and Phase[]
+    Phase Elon = new Phase(attacksElon, 500, "Elon Musk");
+    Phase Gates = new Phase(attacksElon, 500, "Bill Gates");
+    Phase Jeff = new Phase(attacksElon, 500, "Jeff bezos");
+    Phase[] arrTri1 = {Elon, Gates, Jeff};
+    Boss boss = new Boss(arrTri1);
+    Phase ElonP = new Phase(attacksElon, 750, "Elon Musk");
+    Phase GatesP = new Phase(attacksElon, 750, "Bill Gates");
+    Phase JeffP = new Phase(attacksElon, 750, "Bill Gates");
+    Phase[] arrTri2 = {ElonP, GatesP, JeffP};
+    //bosses
+    Boss Tri = new Boss( arrTri1 );
 
     //Starts up 2069
     public void game() {
@@ -758,7 +761,21 @@ class Game extends Tools {
         levelUp();
     }
     public void missionComplete(int mission){
-        
+        sPrintln( "MISSION "+mission+" COMPLETE" );
+        if(mission==missionNum)
+        {
+            dungeonList[currentDungeon].setStarsUnlocked(true);
+            missionNum++;
+            sPrintln( "MISSION "+missionNum+" UNLOCKED" );
+            sPrintln( "MISSION "+mission+"+ UNLOCKED" );
+            num+=random( mission*10,mission*100 );
+        }
+        else
+        {
+            arrTri1[0].loseHP( 100 );
+            Tri.checkArray();
+            num+=random( mission*10,mission*100 )-missionNum*10;
+        }
     }
 //don't pass this comment
 }
