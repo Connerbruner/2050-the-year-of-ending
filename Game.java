@@ -255,7 +255,8 @@ class Game extends Tools {
                     battle();
                 }
                 Emmi giga = new Emmi(level2069);
-                battle();
+                battle(giga);
+                giga = null;
 
                 if (skip()) {
                     text.mission7_2();
@@ -277,7 +278,8 @@ class Game extends Tools {
                     battle();
                 }
                 Emmi giga = new Emmi(level2069);
-                battle();
+                battle(giga);
+                giga = null;
 
                 text.mission8_2();
                 if (missionNum < 9) {
@@ -290,7 +292,8 @@ class Game extends Tools {
             if ((missionNum >= 9) && (choice.equals("9"))) {
                 sPrintln("Mission 9: Face-Off On The Grand Tower");
                 Emmi giga = new Emmi(level2069);
-                battle();
+                battle(giga);
+                giga = null;
 
                 text.mission9_1();
                 text.mission9_2();
@@ -321,6 +324,7 @@ class Game extends Tools {
 
 
             Edit("Save.txt", arrList);
+            System.gc();
         }
 
     }
@@ -537,6 +541,26 @@ class Game extends Tools {
         } else {
             emmi = new Emmi(random(1, num), level2069);
         }
+        while (emmi.emmi_HP > 0) {
+            sPrint("2069 health " + HP2069);
+            sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
+            System.out.println();
+            emmi.emmi_prep();
+            attack();
+            if (attackTime < emmi.emmi_attack.speed) {
+                emmi.emmi_HP -= choseAttack(1);
+            }
+            if (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num * 2)) {
+                HP2069 -= emmi.emmi_attack.attack();
+            }
+            restart();
+        }
+        emmi = null;
+        levelUp();
+
+    }
+    public void battle(Emmi emmi) {
+        num = level2069;
         while (emmi.emmi_HP > 0) {
             sPrint("2069 health " + HP2069);
             sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
@@ -776,6 +800,7 @@ class Game extends Tools {
             Tri.checkArray();
             num+=random( mission*10,mission*100 )-missionNum*10;
         }
+        sPrint( "REWARDS:" );
     }
 //don't pass this comment
 }
