@@ -52,8 +52,8 @@ class Game extends Tools {
     Attack[] attacksMark = {finalSlash, dualHit, zero};
     Scanner scanner = new Scanner(System.in);
     //2069 attacks
-    Attack aqua = new Attack("Aqua", 7, 15, 8, 3);
-    Attack lasershot = new Attack("Lasershot", 7, 10, 10, 5);
+    Attack aqua = new Attack("Aqua", 7, 15, 6, 0);
+    Attack lasershot = new Attack("Lasershot", 7, 10, 12, 3);
     Attack ember = new Attack("Ember", 17, 30, 15, 10);
     Text text = new Text();
     //Phases and Phase[]
@@ -550,7 +550,7 @@ class Game extends Tools {
             if (attackTime < emmi.emmi_attack.speed) {
                 emmi.emmi_HP -= choseAttack(1);
             }
-            if (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num * 2)) {
+            if (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_level * 1.1)) {
                 HP2069 -= emmi.emmi_attack.attack();
             }
             restart();
