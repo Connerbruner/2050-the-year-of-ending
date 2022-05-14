@@ -52,8 +52,8 @@ class Game extends Tools {
     Attack[] attacksMark = {finalSlash, dualHit, zero};
     Scanner scanner = new Scanner(System.in);
     //2069 attacks
-    Attack aqua = new Attack("Aqua", 7, 15, 10, 8);
-    Attack lasershot = new Attack("Lasershot", 7, 10, 8, 6);
+    Attack aqua = new Attack("Aqua", 7, 15, 8, 3);
+    Attack lasershot = new Attack("Lasershot", 7, 10, 10, 5);
     Attack ember = new Attack("Ember", 17, 30, 15, 10);
     Text text = new Text();
     //Phases and Phase[]
@@ -801,6 +801,8 @@ class Game extends Tools {
             num+=random( mission*10,mission*100 )-missionNum*10;
         }
         sPrint( "REWARDS:" );
+        sPrint( "2069 gains "+ num+" exp");
+        exp1+=num;
     }
 //don't pass this comment
 }
