@@ -32,6 +32,7 @@ class Attack extends Tools {
         speed = spd;
         attackUser = user;
         attackTier = 1;
+        stun=2;
     }
 
     public String getAttackName ( ) {

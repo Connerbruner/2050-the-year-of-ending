@@ -2,8 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 class Tools {
-
-
+    Runtime run = Runtime.getRuntime();
     //the Colors of gay
     public static final String GO_BACK = "\"\\u001B[A\"";
     public static final String SCREEN_CLEAR = "\033[H\033[2J";
@@ -58,6 +57,7 @@ class Tools {
             File txt = new File( file );
             FileReader fileRead = new FileReader( txt );
             BufferedReader reader = new BufferedReader( fileRead );
+            int i=0;
             Object[] arr = new Object[ 12 ];
 
             for ( int r = 0; r < arr.length; r++ ) {
@@ -69,7 +69,7 @@ class Tools {
             return arr;
         } catch ( IOException e ) {
             e.printStackTrace( );
-            return new Object[ 12 ];
+            return new Object[ 0 ];
         }
 
 
@@ -227,20 +227,13 @@ class Tools {
       System.out.flush( );
 
   }
-public static long getMaxMemory() {
-    return Runtime.getRuntime().maxMemory();
-}
 
-public static long getUsedMemory() {
-    return getMaxMemory() - getFreeMemory();
-}
 
-public static long getTotalMemory() {
-    return Runtime.getRuntime().totalMemory();
+public long getUsedMemory() {
+    return (run.maxMemory( ) - run.freeMemory())/1073741824;
 }
-
-public static long getFreeMemory() {
-    return Runtime.getRuntime().freeMemory();
+public long byteToGB(long bytes)
+{
+    return bytes/1073741824;
 }
-
 }

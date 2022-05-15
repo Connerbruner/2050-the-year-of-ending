@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="2069 is now a fair game">
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Emmi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Emmi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/Attack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Save.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Text.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Tools.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Tools.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,8 +261,26 @@
       <option name="project" value="LOCAL" />
       <updated>1652551781465</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun.">
+      <created>1652585986315</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1652585986315</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -294,6 +315,7 @@
     <MESSAGE value="Star system *SHOULD BE* finished" />
     <MESSAGE value="gc" />
     <MESSAGE value="2069 is now a fair game" />
-    <option name="LAST_COMMIT_MESSAGE" value="2069 is now a fair game" />
+    <MESSAGE value="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun." />
+    <option name="LAST_COMMIT_MESSAGE" value="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun." />
   </component>
 </project>

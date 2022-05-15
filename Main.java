@@ -13,7 +13,7 @@ class Main {
         //main starts here
         //cheat code start
         tools.sPrint(tools.SCREEN_CLEAR);
-        System.out.println( "Max mem "+tools.getMaxMemory()/64 );
+        System.out.println( "Max mem "+ tools.byteToGB( tools.run.maxMemory() ));
         tools.sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );
@@ -31,7 +31,6 @@ class Main {
         tools.sPrint( "what should the text speed be?   " );
         tools.setTSpeed( scanner.nextInt( ) );
         System.out.println( );
-
         tools.sPrintln( Tools.RED + "This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence." );
         System.out.println("BEGIN LOADING IN 3");
         tools.wait(500);
@@ -45,6 +44,7 @@ class Main {
         tools.wait(1000);
         System.out.println(tools.SCREEN_CLEAR);
         System.out.flush();
+        System.out.println( "Used mem"+tools.getUsedMemory() );
         game.game( );
 
 
