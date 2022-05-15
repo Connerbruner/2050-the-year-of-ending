@@ -5,6 +5,7 @@ class Emmi extends Tools {
     int emmi_attackNum;
   int emmi_num;
     Attack emmi_attack;
+    int emmi_HPM;
 
     /**
      *
@@ -61,6 +62,7 @@ class Emmi extends Tools {
             emmi_HP = 200 + ( emmi_level * 5 );
             sPrintln( "A Mech appears" );
         }
+        emmi_HPM=emmi_HP;
     }
 
     /**
@@ -71,6 +73,7 @@ class Emmi extends Tools {
         emmi_num=10;
         emmi_level = level;
         emmi_HP = 200 + ( emmi_level * 20 );
+        emmi_HPM=emmi_HP;
         sPrintln( "Giga Mech crashes down" );
     }
 

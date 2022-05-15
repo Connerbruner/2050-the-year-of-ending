@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Star system *SHOULD BE* finished" />
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="2069 is now a fair game">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Emmi.java" beforeDir="false" afterPath="$PROJECT_DIR$/Emmi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Save.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -237,7 +244,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652458203927</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="gc">
+      <created>1652494370045</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1652494370045</updated>
+    </task>
+    <task id="LOCAL-00021" summary="2069 is now a fair game">
+      <created>1652551781465</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1652551781465</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,6 +292,8 @@
     <MESSAGE value="Added stars - Need to be finished&#10;Added roomba cheat code&#10;Added dungeon documentation in README.txt" />
     <MESSAGE value="Added stars - Need to be finished&#10;Added roomba cheat code&#10;Added dungeon and star documentation in README.txt" />
     <MESSAGE value="Star system *SHOULD BE* finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Star system *SHOULD BE* finished" />
+    <MESSAGE value="gc" />
+    <MESSAGE value="2069 is now a fair game" />
+    <option name="LAST_COMMIT_MESSAGE" value="2069 is now a fair game" />
   </component>
 </project>

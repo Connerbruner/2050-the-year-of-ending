@@ -58,19 +58,18 @@ class Tools {
             File txt = new File( file );
             FileReader fileRead = new FileReader( txt );
             BufferedReader reader = new BufferedReader( fileRead );
-            Object[] arr = new Object[ 10 ];
+            Object[] arr = new Object[ 12 ];
 
             for ( int r = 0; r < arr.length; r++ ) {
                 Object var = reader.readLine( );
                 arr[ r ] = var;
-
             }
             reader.close( );
             System.out.println( "READ DONE" );
             return arr;
         } catch ( IOException e ) {
             e.printStackTrace( );
-            return new Object[ 10 ];
+            return new Object[ 12 ];
         }
 
 

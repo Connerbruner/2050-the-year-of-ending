@@ -13,6 +13,7 @@ class Main {
         //main starts here
         //cheat code start
         tools.sPrint(tools.SCREEN_CLEAR);
+        System.out.println( "Max mem "+tools.getMaxMemory()/64 );
         tools.sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );
