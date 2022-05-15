@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun.">
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="2051 2048 done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Attack.java" beforeDir="false" afterPath="$PROJECT_DIR$/Attack.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Save.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Text.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Tools.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Tools.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Attack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Attack.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,19 +40,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/ConnerBrunner/IdeaProjects/2050-the-year-off-ending",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/ConnerBrunner/IdeaProjects/2050-the-year-off-ending&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-18" />
@@ -269,7 +266,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652585986315</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="2051 2048 done">
+      <created>1652641977085</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1652641977085</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -317,6 +321,7 @@
     <MESSAGE value="gc" />
     <MESSAGE value="2069 is now a fair game" />
     <MESSAGE value="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun." />
-    <option name="LAST_COMMIT_MESSAGE" value="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun." />
+    <MESSAGE value="2051 2048 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="2051 2048 done" />
   </component>
 </project>

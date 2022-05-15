@@ -125,7 +125,7 @@ class Tools {
 
         }
         //Tech giant talking RED
-        else if ( str.contains( "Mark Zuckerberg:" ) || str.contains( "Elon musk:" ) || str.contains( "Bill gates:" ) || str.contains( "Jeff bezos:" ) ) {
+        else if ( str.contains( "Mark Zuckerberg:" ) || str.contains( "Elon musk:" ) || str.contains( "Bill Gates:" ) || str.contains( "Jeff bezos:" ) ) {
             for ( int i = 0; i < str.length( ); i++ ) {
                 System.out.print( RED + str.charAt( i ) );
                 wait( tSpeed );

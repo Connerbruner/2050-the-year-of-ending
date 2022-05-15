@@ -22,6 +22,7 @@ class Game extends Tools {
     //misc
     int       num            = 0;
     //obj
+    ///dungeons
     Dungeon   subway         = new Dungeon( "Underground subway" , 20 , 0 , false );
     Dungeon   local6_11      = new Dungeon( "Rubble filled 6-11" , 10 , 0 , false );
     Dungeon   factory        = new Dungeon( "Run down Factory" , 30 , 0 , false );
@@ -29,6 +30,9 @@ class Game extends Tools {
     Dungeon   highway        = new Dungeon( "Highway 101" , 30 , 0 , false );
     Dungeon[] dungeonList    = { subway , local6_11 , factory , city , highway };
     int       currentDungeon = 0;
+    //bosses
+    //attacks and attack[]
+    
     //bill gates
     Attack    triSlash       = new Attack( "Bill Gates" , "TRIPLE SLASH" , 7 , 21 , 15 );
     Attack    ultraSlash     = new Attack( "Bill Gates" , "ULTRA SLASH" , 10 , 20 , 20 );
@@ -39,18 +43,6 @@ class Game extends Tools {
     Attack    revenge        = new Attack( "Elon musk" , "REVENGE OF THE SPEAR" , 5 , 25 , 20 );
     Attack    powerful       = new Attack( "Elon musk" , "ULTRA SPEAR" , 1 , 30 , 20 );
     Attack[]  attacksElon    = { spear , powerful , revenge };
-    //Phases and Phase[]
-    Phase     Elon           = new Phase( attacksElon , 500 , "Elon Musk" );
-    Phase     Gates          = new Phase( attacksElon , 500 , "Bill Gates" );
-    Phase     Jeff           = new Phase( attacksElon , 500 , "Jeff bezos" );
-    Phase[]   arrTri1        = { Elon , Gates , Jeff };
-    Boss      boss           = new Boss( arrTri1 );
-    //bosses
-    Boss      Tri            = new Boss( arrTri1 );
-    Phase     ElonP          = new Phase( attacksElon , 750 , "Elon Musk" );
-    Phase     GatesP         = new Phase( attacksElon , 750 , "Bill Gates" );
-    Phase     JeffP          = new Phase( attacksElon , 750 , "Bill Gates" );
-    Phase[]   arrTri2        = { ElonP , GatesP , JeffP };
     //jeff bezos
     Attack    roomba         = new Attack( "Jeff bezos" , "ROOMBA INVASION" , 15 , 25 , 25 );
     Attack    mech           = new Attack( "Jeff bezos" , "MECH CANNON" , 10 , 30 , 30 );
@@ -61,12 +53,38 @@ class Game extends Tools {
     Attack    dualHit        = new Attack( "Mark Zuckerberg" , "DUAL SLASH" , 25 , 50 , 15 );
     Attack    zero           = new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 );
     Attack[]  attacksMark    = { finalSlash , dualHit , zero };
-    Scanner   scanner        = new Scanner( System.in );
+    
+    //Phases and Phase[]
+    Phase     Elon           = new Phase( attacksElon , 500 , "Elon Musk" );
+    Phase     Gates          = new Phase( attackGates , 500 , "Bill Gates" );
+    Phase     Jeff           = new Phase( attacksJeff , 500 , "Jeff bezos" );
+    Phase[]   arrTri1        = { Elon , Gates , Jeff };
+    
+    Phase     ElonP          = new Phase( attacksElon , 750 , "Elon Musk" );
+    Phase     GatesP         = new Phase( attackGates , 750 , "Bill Gates" );
+    Phase     JeffP          = new Phase( attacksJeff , 750 , "Bill Gates" );
+    Phase[]   arrTri2        = { ElonP , GatesP , JeffP };
+    //boss
+    //single phase
+    Boss elon = new Boss(Elon);
+    Boss elonP = new Boss(ElonP);
+    Boss gates = new Boss(Gates);
+    Boss gatesP = new Boss(GatesP);
+    Boss jeff = new Boss(Jeff);
+    Boss jeffP = new Boss(JeffP);
+    //trio
+    Boss Tri = new Boss( arrTri1 );
+    Boss Tri2 = new Boss(arrTri2);
+    
+    
     //2069 attacks
     Attack    aqua           = new Attack( "Aqua" , 7 , 15 , 6 , 0 );
     Attack    lasershot      = new Attack( "Lasershot" , 7 , 10 , 12 , 3 );
     Attack    ember          = new Attack( "Ember" , 17 , 30 , 15 , 10 );
+    
+    //other obj
     Text      text           = new Text( );
+    Scanner   scanner        = new Scanner( System.in );
     
     //Starts up 2069
     public
@@ -96,11 +114,7 @@ class Game extends Tools {
                     text.mission1_2( );
                 }
                 currentDungeon = 0;
-                subway.start( );
-                while ( subway.dungeonLength > subway.amountMoved ) {
-                    subway.move( );
-                    battle( );
-                }
+                dungeon(subway);
                 
                 
                 if ( skip( ) ) {
@@ -123,19 +137,18 @@ class Game extends Tools {
                     text.mission2_1( );
                 }
                 currentDungeon = 3;
-                
-                
+                dungeon(city);
+    
                 if ( skip( ) ) {
                     text.mission2_2( );
                 }
+                bossFight( gates );
                 
                 if ( skip( ) ) {
                     text.mission2_3( );
                 }
                 if ( missionNum < 3 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 3;
-                    sPrintln( "MISSION 3 UNLOCKED" );
+                    missionComplete( 2 );
                 }
             }
 //Mission 3
@@ -145,30 +158,23 @@ class Game extends Tools {
                     text.mission3_1( );
                 }
                 currentDungeon = 1;
-                local6_11.start( );
-                
-                while ( local6_11.dungeonLength > local6_11.amountMoved ) {
-                    local6_11.move( );
-                    battle( );
-                }
-                
+                dungeon(local6_11);
+    
                 if ( skip( ) ) {
                     text.mission3_2( );
                 }
+                bossFight( elon );
                 
                 if ( skip( ) ) {
                     text.mission3_3( );
                 }
-                
+                dungeon( subway );
                 if ( skip( ) ) {
                     text.mission3_4( );
                 }
                 if ( missionNum < 4 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 4;
-                    sPrintln( "MISSION 4 UNLOCKED" );
+                    missionComplete( 3 );
                 }
-                sPrintln( "MISSION 3 END" );
             }
 //Mission 4
             if ( ( missionNum >= 4 ) && ( choice.equals( "4" ) ) ) {
@@ -178,19 +184,17 @@ class Game extends Tools {
                     text.mission4_1( );
                 }
                 currentDungeon = 4;
-                highway.start( );
-                while ( highway.dungeonLength > highway.amountMoved ) {
-                    highway.move( );
-                    battle( );
-                }
+                dungeon( highway );
                 
                 if ( skip( ) ) {
                     text.mission4_2( );
                 }
+                bossFight( jeff );
+                if ( skip( ) ) {
+                    text.mission4_3( );
+                }
                 if ( missionNum < 5 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 5;
-                    sPrintln( "mission 5 UNLOCKED" );
+                    missionComplete(4);
                 }
             }
 //Mission 5
@@ -201,12 +205,8 @@ class Game extends Tools {
                     text.mission5_1( );
                 }
                 currentDungeon = 1;
-                local6_11.start( );
-                while ( local6_11.dungeonLength > local6_11.amountMoved ) {
-                    local6_11.move( );
-                    battle( );
-                }
-                
+                dungeon(highway);
+    
                 if ( skip( ) ) {
                     text.mission5_2( );
                 }
@@ -214,9 +214,7 @@ class Game extends Tools {
                     text.mission5_3( );
                 }
                 if ( missionNum < 6 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 6;
-                    sPrintln( "MISSION 6 UNLOCKED" );
+                    missionComplete(5);
                 }
             }
 //Mission 6
@@ -226,19 +224,13 @@ class Game extends Tools {
                     text.mission6_1( );
                 }
                 currentDungeon = 4;
-                highway.start( );
-                while ( highway.dungeonLength > highway.amountMoved ) {
-                    highway.move( );
-                    battle( );
-                }
+                dungeon( highway );
                 
                 if ( skip( ) ) {
                     text.mission6_2( );
                 }
                 if ( missionNum < 7 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 7;
-                    sPrintln( "MISSION 7 UNLOCKED" );
+                    missionComplete(6);
                 }
             }
 //Mission 7
@@ -249,11 +241,8 @@ class Game extends Tools {
                     text.mission7_1( );
                 }
                 currentDungeon = 2;
-                factory.start( );
-                while ( factory.dungeonLength > factory.amountMoved ) {
-                    factory.move( );
-                    battle( );
-                }
+                dungeon( factory );
+                
                 Emmi giga = new Emmi( level2069 );
                 battle( giga );
                 giga = null;
@@ -262,9 +251,7 @@ class Game extends Tools {
                     text.mission7_2( );
                 }
                 if ( missionNum < 8 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 8;
-                    sPrintln( "MISSION 8 UNLOCKED" );
+                    missionComplete(7);
                 }
             }
 //Mission 8
@@ -272,20 +259,15 @@ class Game extends Tools {
                 sPrintln( "MISSION 8 When I Step off" );
                 text.mission8_1( );
                 currentDungeon = 4;
-                highway.start( );
-                while ( highway.dungeonLength > highway.amountMoved ) {
-                    highway.move( );
-                    battle( );
-                }
+                dungeon( highway );
+                
                 Emmi giga = new Emmi( level2069 );
                 battle( giga );
                 giga = null;
                 
                 text.mission8_2( );
                 if ( missionNum < 9 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 9;
-                    sPrintln( "MISSION 9 UNLOCKED" );
+                    missionComplete(8);
                 }
             }
 //Mission 9
@@ -297,10 +279,9 @@ class Game extends Tools {
                 
                 text.mission9_1( );
                 text.mission9_2( );
+                
                 if ( missionNum < 9 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 9;
-                    sPrintln( "MISSION 10 UNLOCKED" );
+                    missionComplete(9);
                 }
             }
 //Mission 10
@@ -308,11 +289,6 @@ class Game extends Tools {
                 sPrintln( "mission 10: 2 Sides Of The Same Coin" );
                 text.mission10_1( );
                 text.mission10_2( );
-                if ( missionNum < 11 ) {
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 11;
-                    sPrintln( "MISSION 11 UNLOCKED" );
-                }
             }
 
 //Gotcha system
@@ -329,6 +305,32 @@ class Game extends Tools {
             System.gc( );
         }
         
+    }
+    public
+    void missionComplete ( int mission ) {
+        sPrintln( "MISSION " + mission + " COMPLETE" );
+        if ( mission == missionNum ) {
+            dungeonList[ currentDungeon ].setStarsUnlocked( true );
+            missionNum++;
+            sPrintln( "MISSION " + missionNum + " UNLOCKED" );
+            num += random( mission * 10 , mission * 100 );
+        }
+        else {
+            if(!Tri.differntPhases.isEmpty())
+            {
+                Tri.differntPhases.get(0).loseHP( 100 );
+                Tri.checkArray( );
+            }
+            else if(!Tri2.differntPhases.isEmpty())
+            {
+                Tri2.differntPhases.get(0).loseHP( 100 );
+                Tri2.checkArray( );
+            }
+            num += random( mission * 10 , mission * 100 ) - missionNum * 10;
+        }
+        sPrint( "REWARDS:" );
+        sPrint( "2069 gains " + num + " exp" );
+        exp1 += num;
     }
     
     public
@@ -373,11 +375,11 @@ class Game extends Tools {
             
             tackType = scanner.nextLine( );
             
-            if ( tackType.equals( "Power" ) ) {
+            if ( tackType.equals( "power" ) ) {
                 attackType     = false;
                 typeDetermined = true;
             }
-            else if ( tackType.equals( "Speed" ) ) {
+            else if ( tackType.equals( "speed" ) ) {
                 attackType     = true;
                 typeDetermined = true;
             }
@@ -604,6 +606,7 @@ class Game extends Tools {
             restart( );
         }
         emmi = null;
+        exp1+=(emmi.emmi_level* emmi.emmi_num)*2;
         levelUp( );
         
     }
@@ -634,7 +637,7 @@ class Game extends Tools {
             }
             restart( );
         }
-        
+        exp1+=(emmi.emmi_level* emmi.emmi_num)*2;
         levelUp( );
         
     }
@@ -664,7 +667,6 @@ class Game extends Tools {
             exp1 = 0;
             
             while ( pull_num > 0 ) {
-                
                 int[] odds = new int[] { 1 , 1 , 1 , 1 , 2 , 2 , 2 , 3 , 3 , 3 , 4 , 4 , 5 , 6 , 7 };
                 int   tier = odds[ random( 0 , odds.length - 1 ) ];
                 if ( tier == 1 ) {
@@ -859,24 +861,6 @@ class Game extends Tools {
         levelUp( );
     }
     
-    public
-    void missionComplete ( int mission ) {
-        sPrintln( "MISSION " + mission + " COMPLETE" );
-        if ( mission == missionNum ) {
-            dungeonList[ currentDungeon ].setStarsUnlocked( true );
-            missionNum++;
-            sPrintln( "MISSION " + missionNum + " UNLOCKED" );
-            sPrintln( "MISSION " + mission + "+ UNLOCKED" );
-            num += random( mission * 10 , mission * 100 );
-        }
-        else {
-            arrTri1[ 0 ].loseHP( 100 );
-            Tri.checkArray( );
-            num += random( mission * 10 , mission * 100 ) - missionNum * 10;
-        }
-        sPrint( "REWARDS:" );
-        sPrint( "2069 gains " + num + " exp" );
-        exp1 += num;
-    }
+
 //don't pass this comment
 }

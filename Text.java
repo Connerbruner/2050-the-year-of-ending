@@ -54,8 +54,8 @@ public class Text extends Tools {
     public void mission2_2 ( ) {
         sPrintln( "2069: Finally, I have not ran so fast in my life" );
         sPrintln( "*the mech's face shield opens up*" );
-        sPrintln( "Bill gates: Heh..." );
-        sPrintln( "Bill gates: You can't be any slower, can you?" );
+        sPrintln( "Bill Gates: Heh..." );
+        sPrintln( "Bill Gates: You can't be any slower, can you?" );
         sPrintln( "2077: Bill? You're the one behind this?" );
         sPrintln( "2069: You leave us no choice." );
         sPrintln( "2077: FOR HUMANITY!!" );
@@ -86,15 +86,16 @@ public class Text extends Tools {
     }
 
     public void mission3_2 ( ) {
-        sPrintln( "Elon musk: What are you guys doing" );
-        sPrintln( "Elon musk: ...." );
-        sPrintln( "Elon musk: The 2..." );
+        sPrintln( "Elon Musk: What are you guys doing" );
+        sPrintln( "Elon Musk: ...." );
+        sPrintln( "Elon Musk: The 2..." );
+        sPrintln( "Elon Musk: Time to deal with threat");
         sPrintln( "2077: We will be dealing with you " );
         sPrintln( "*Elon musk pulls out a spear*" );
     }
 
     public void mission3_3 ( ) {
-        sPrintln( "Elon musk: I must leave I have a meeting to attend to" );
+        sPrintln( "Elon Musk: I must leave I have a meeting to attend to" );
         sPrintln( "Elon musk fades away" );
         sPrintln( "2077: YOUR GOING PAY FOR THIS" );
         sPrintln( "2069: Lets take this chance to turn off the power" );
@@ -124,8 +125,16 @@ public class Text extends Tools {
     public void mission4_2 ( ) {
         sPrintln( "2069: It appears that california is very dangerous" );
         sPrintln( "2077: I bet that the group responsible for this has their headquarters in california" );
+        sPrintln("Jeff Bezos: You are not wrong");
+        sPrintln("Jeff Bezos: But, You are going to die");
     }
+    public void mission4_3 ( ) {
+        sPrintln( "Jeff Bezos: Meeting time" );
+        sPrintln( "2077: COWARD" );
 
+    }
+    
+    
     public void mission5_1 ( ) {
         sPrintln( "2069: We should find a 6-11 to stop and rest at" );
         sPrintln( "2077: I am so tired" );
@@ -140,18 +149,18 @@ public class Text extends Tools {
         sPrintln( "Later in washington" );
         sPrintln( "2069:It appears that the power is on" );
         sPrintln( "Suddenly 2 mechs crash down in-front of 2069,2020 and 2077" );
-        sPrintln( "Jeff bezos: It appears that they have shown up early" );
-        sPrintln( "Bill gates: Your guys are faster than normal" );
-        sPrintln( "Jeff bezos: Let me take care of them" );
+        sPrintln( "Jeff Bezos: It appears that they have shown up early" );
+        sPrintln( "Bill Gates: Your guys are faster than normal" );
+        sPrintln( "Jeff Bezos: Let me take care of them" );
         sPrintln( "2077: WE WILL TAKE YOU BOTH" );
-        sPrintln( "Bill gates: Fine I guess I will join in" );
+        sPrintln( "Bill Gates: Fine I guess I will join in" );
 
     }
 
     public void mission5_3 ( ) {
-        sPrintln( "Jeff bezos: You did not tell me that these kids could put up a fight" );
-        sPrintln( "Bill gates: Never-mind that we need to leave NOW" );
-        sPrintln( "Jeff bezos: Right" );
+        sPrintln( "Jeff Bezos: You did not tell me that these kids could put up a fight" );
+        sPrintln( "Bill Gates: Never-mind that we need to leave NOW" );
+        sPrintln( "Jeff Bezos: Right" );
     }
 
     public void mission6_1 ( ) {
@@ -226,19 +235,19 @@ public class Text extends Tools {
         sPrintln( "2069: We need to get to the top floor" );
         sPrintln( "2077: Okay (Press up on the elevator" );
         sPrintln( "*Suddenly the elevator stops*" );
-        sPrintln( "Elon musk: I SEE THAT YOU HAVE FOUND YOUR WAY TO OUR HIDEOUT" );
-        sPrintln( "Bill gates: Lets clean up this error in our plan" );
+        sPrintln( "Elon Musk: I SEE THAT YOU HAVE FOUND YOUR WAY TO OUR HIDEOUT" );
+        sPrintln( "Bill Gates: Lets clean up this error in our plan" );
     }
 
     public void mission9_2 ( ) {
-        sPrintln( "Elon musk: ...THESE KIDS" );
-        sPrintln( "Jeff bezos: We need to retreat" );
+        sPrintln( "Elon Musk: ...THESE KIDS" );
+        sPrintln( "Jeff Bezos: We need to retreat" );
         sPrintln( "2077: NEVER" );
         sPrintln( "2069: You will pay for what you have done" );
         sPrintln( "2069: LETS FINISH THIS" );
         sPrintln( "2069: EMBER" );
-        sPrintln( "Elon musk: ...My final words" );
-        sPrintln( "Elon musk: You are the winner and I am the..." );
+        sPrintln( "Elon Musk: ...My final words" );
+        sPrintln( "Elon Musk: You are the winner and I am the..." );
         sPrintln( "2077: They deserve to die alone" );
         sPrintln( "2069: Right to the elevator" );
     }
