@@ -133,8 +133,6 @@ public class Text extends Tools {
         sPrintln( "2077: COWARD" );
 
     }
-    
-    
     public void mission5_1 ( ) {
         sPrintln( "2069: We should find a 6-11 to stop and rest at" );
         sPrintln( "2077: I am so tired" );
@@ -148,12 +146,13 @@ public class Text extends Tools {
         sPrintln( "2077: right..." );
         sPrintln( "Later in washington" );
         sPrintln( "2069:It appears that the power is on" );
-        sPrintln( "Suddenly 2 mechs crash down in-front of 2069,2020 and 2077" );
         sPrintln( "Jeff Bezos: It appears that they have shown up early" );
+        sPrintln( "Elon Musk: The kids have speed up" );
         sPrintln( "Bill Gates: Your guys are faster than normal" );
         sPrintln( "Jeff Bezos: Let me take care of them" );
-        sPrintln( "2077: WE WILL TAKE YOU BOTH" );
+        sPrintln( "2077: WE WILL TAKE YOU ALL ON" );
         sPrintln( "Bill Gates: Fine I guess I will join in" );
+        sPrintln( "Elon Musk: I'll join party" );
 
     }
 
@@ -161,22 +160,29 @@ public class Text extends Tools {
         sPrintln( "Jeff Bezos: You did not tell me that these kids could put up a fight" );
         sPrintln( "Bill Gates: Never-mind that we need to leave NOW" );
         sPrintln( "Jeff Bezos: Right" );
+        sPrintln( "Elon Musk: Thats no fun" );
     }
 
     public void mission6_1 ( ) {
         sPrintln( "*Power flashes on everywhere*" );
         sPrintln( "2069: What the..." );
-        sPrintln( "mark zuckerberg (on tv): Hello everyone it appears that 4 of us are rebelling against our new way of life" );
+        sPrintln( "Mark Zuckerberg (on tv): Hello everyone it appears that 5 of us are rebelling against our new way of life" );
         sPrintln( "2077: We need to get to california and fast" );
         sPrintln( "2069: right lets go!" );
         sPrintln( "2020: Got the car started" );
+    }
+    public void mission6_2()
+    {
         sPrintln( "*Later down the road*" );
-        sPrintln( "2069: Bad news 2 mechs are coming in on us on the left" );
-        sPrintln( "2069: Worse 2 mechs right" );
+        sPrintln( "Elon Musk: Bad news! I am here" );
+        sPrintln( "2077: Worse your gonna die" );
         sPrintln( "2020: We need to deal with them" );
     }
 
-    public void mission6_2 ( ) {
+    
+
+    public void mission6_3 ( ) {
+        sPrintln( "Elon Musk: Seams like you kids are just to powerful" );
         sPrintln( "2077: Piece of cake " );
         sPrintln( "2069: Easy for you to say" );
         sPrintln( "2020: We have a issue the car has broken down we are going to have to walk the rest of the way" );

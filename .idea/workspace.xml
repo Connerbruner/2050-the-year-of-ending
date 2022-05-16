@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="2051 2048 done">
+    <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Combat is done. Bosses are be added missions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tools.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Attack.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Attack.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2050-the-year-off-ending/Save.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -273,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652641977085</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Combat is done. Bosses are be added missions">
+      <created>1652655114627</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1652655114627</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -322,6 +325,7 @@
     <MESSAGE value="2069 is now a fair game" />
     <MESSAGE value="ChainAttack is mostly done. 2051 2048 are attacks done. Working on runtime fun." />
     <MESSAGE value="2051 2048 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="2051 2048 done" />
+    <MESSAGE value="Combat is done. Bosses are be added missions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Combat is done. Bosses are be added missions" />
   </component>
 </project>

@@ -27,7 +27,7 @@ class Game extends Tools {
     Dungeon   local6_11      = new Dungeon( "Rubble filled 6-11" , 10 , 0 , false );
     Dungeon   factory        = new Dungeon( "Run down Factory" , 30 , 0 , false );
     Dungeon   city           = new Dungeon( "Rubble filled City" , 35 , 0 , false );
-    Dungeon   highway        = new Dungeon( "Highway 101" , 30 , 0 , false );
+    Dungeon   highway        = new Dungeon( "Highway 101" , 20 , 0 , false );
     Dungeon[] dungeonList    = { subway , local6_11 , factory , city , highway };
     int       currentDungeon = 0;
     //bosses
@@ -190,6 +190,7 @@ class Game extends Tools {
                     text.mission4_2( );
                 }
                 bossFight( jeff );
+                
                 if ( skip( ) ) {
                     text.mission4_3( );
                 }
@@ -199,17 +200,19 @@ class Game extends Tools {
             }
 //Mission 5
             if ( ( missionNum >= 5 ) && ( choice.equals( "5" ) ) ) {
-                sPrintln( "Mission 5: Rematch Squared" );
+                sPrintln( "Mission 5: Rematch Cubed" );
                 
                 if ( skip( ) ) {
                     text.mission5_1( );
                 }
                 currentDungeon = 1;
-                dungeon(highway);
+                dungeon(local6_11);
     
                 if ( skip( ) ) {
                     text.mission5_2( );
                 }
+                bossFight( Tri );
+                
                 if ( skip( ) ) {
                     text.mission5_3( );
                 }
@@ -220,12 +223,12 @@ class Game extends Tools {
 //Mission 6
             if ( ( missionNum >= 6 ) && ( choice.equals( "6" ) ) ) {
                 sPrintln( "Mission 6: The Smoking Gun" );
+                currentDungeon = 4;
+                dungeon( highway );
                 if ( skip( ) ) {
                     text.mission6_1( );
                 }
-                currentDungeon = 4;
-                dungeon( highway );
-                
+                bossFight( elonP );
                 if ( skip( ) ) {
                     text.mission6_2( );
                 }
