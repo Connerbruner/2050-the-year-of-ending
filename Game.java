@@ -27,7 +27,7 @@ class Game extends Tools {
     Dungeon   local6_11      = new Dungeon( "Rubble filled 6-11" , 10 , 0 , false );
     Dungeon   factory        = new Dungeon( "Run down Factory" , 30 , 0 , false );
     Dungeon   city           = new Dungeon( "Rubble filled City" , 35 , 0 , false );
-    Dungeon   highway        = new Dungeon( "Highway 101" , 20 , 0 , false );
+    Dungeon   highway        = new Dungeon( "Highway 101" , 30 , 0 , false );
     Dungeon[] dungeonList    = { subway , local6_11 , factory , city , highway };
     int       currentDungeon = 0;
     //bosses
@@ -109,44 +109,25 @@ class Game extends Tools {
             //mission 1
             if ( choice.equals( "1" ) ) {
                 sPrintln( "Mission 1: The Awakening of  The Revolution" );
-                if ( skip( ) ) {
-                    text.mission1_1( );
-                    text.mission1_2( );
-                }
+                
                 currentDungeon = 0;
                 dungeon(subway);
-                
-                
-                if ( skip( ) ) {
-                    text.mission1_3( );
-                }
-                mission1_4( );
-                
+                dungeon(local)
                 if ( missionNum < 2 ) {
                     
-                    dungeonList[ currentDungeon ].setStarsUnlocked( true );
-                    missionNum = 2;
-                    sPrintln( "MISSION 2 UNLOCKED" );
+                   missionComplete( 1 );
                 }
             }
 //Mission 2
             if ( ( choice.equals( "2" ) ) && ( missionNum >= 2 ) ) {
                 sPrintln( "Mission 2: First Encounters" );
                 
-                if ( skip( ) ) {
-                    text.mission2_1( );
-                }
+
                 currentDungeon = 3;
                 dungeon(city);
-    
-                if ( skip( ) ) {
-                    text.mission2_2( );
-                }
+
                 bossFight( gates );
-                
-                if ( skip( ) ) {
-                    text.mission2_3( );
-                }
+
                 if ( missionNum < 3 ) {
                     missionComplete( 2 );
                 }
@@ -154,24 +135,14 @@ class Game extends Tools {
 //Mission 3
             if ( ( missionNum >= 3 ) && ( choice.equals( "3" ) ) ) {
                 sPrintln( "MISSION 3: Rest In The Rubble" );
-                if ( skip( ) ) {
-                    text.mission3_1( );
-                }
+
                 currentDungeon = 1;
                 dungeon(local6_11);
-    
-                if ( skip( ) ) {
-                    text.mission3_2( );
-                }
+
                 bossFight( elon );
-                
-                if ( skip( ) ) {
-                    text.mission3_3( );
-                }
+
                 dungeon( subway );
-                if ( skip( ) ) {
-                    text.mission3_4( );
-                }
+
                 if ( missionNum < 4 ) {
                     missionComplete( 3 );
                 }
@@ -180,69 +151,44 @@ class Game extends Tools {
             if ( ( missionNum >= 4 ) && ( choice.equals( "4" ) ) ) {
                 sPrintln( "Mission 4: 101 battles" );
                 
-                if ( skip( ) ) {
-                    text.mission4_1( );
-                }
+
                 currentDungeon = 4;
                 dungeon( highway );
-                
-                if ( skip( ) ) {
-                    text.mission4_2( );
-                }
+
                 bossFight( jeff );
-                
-                if ( skip( ) ) {
-                    text.mission4_3( );
-                }
+
                 if ( missionNum < 5 ) {
                     missionComplete(4);
                 }
             }
 //Mission 5
             if ( ( missionNum >= 5 ) && ( choice.equals( "5" ) ) ) {
-                sPrintln( "Mission 5: Rematch Cubed" );
+                sPrintln( "Mission 5: Rematch Squared" );
                 
-                if ( skip( ) ) {
-                    text.mission5_1( );
-                }
+
                 currentDungeon = 1;
-                dungeon(local6_11);
+                dungeon(highway);
     
-                if ( skip( ) ) {
-                    text.mission5_2( );
-                }
-                bossFight( Tri );
-                
-                if ( skip( ) ) {
-                    text.mission5_3( );
-                }
                 if ( missionNum < 6 ) {
                     missionComplete(5);
                 }
             }
 //Mission 6
             if ( ( missionNum >= 6 ) && ( choice.equals( "6" ) ) ) {
-                sPrintln( "Mission 6: The Smoking Gun" );
+                sPrintln( "Mission 6: Battle on the highway" );
+
                 currentDungeon = 4;
                 dungeon( highway );
-                if ( skip( ) ) {
-                    text.mission6_1( );
-                }
-                bossFight( elonP );
-                if ( skip( ) ) {
-                    text.mission6_2( );
-                }
+
                 if ( missionNum < 7 ) {
                     missionComplete(6);
                 }
             }
 //Mission 7
             if ( ( missionNum >= 7 ) && ( choice.equals( "7" ) ) ) {
-                sPrintln( "Mission 7: The Rules Of The Roomba" );
+                sPrintln( "Mission 7: Face off in the factory" );
                 
-                if ( skip( ) ) {
-                    text.mission7_1( );
-                }
+
                 currentDungeon = 2;
                 dungeon( factory );
                 
@@ -250,17 +196,14 @@ class Game extends Tools {
                 battle( giga );
                 giga = null;
                 
-                if ( skip( ) ) {
-                    text.mission7_2( );
-                }
+
                 if ( missionNum < 8 ) {
                     missionComplete(7);
                 }
             }
 //Mission 8
             if ( ( missionNum >= 8 ) && ( choice.equals( "8" ) ) ) {
-                sPrintln( "MISSION 8 When I Step off" );
-                text.mission8_1( );
+                sPrintln( "MISSION 8: Highway to the future" );
                 currentDungeon = 4;
                 dungeon( highway );
                 
@@ -268,7 +211,6 @@ class Game extends Tools {
                 battle( giga );
                 giga = null;
                 
-                text.mission8_2( );
                 if ( missionNum < 9 ) {
                     missionComplete(8);
                 }
@@ -280,9 +222,7 @@ class Game extends Tools {
                 battle( giga );
                 giga = null;
                 
-                text.mission9_1( );
-                text.mission9_2( );
-                
+  
                 if ( missionNum < 9 ) {
                     missionComplete(9);
                 }
@@ -290,8 +230,7 @@ class Game extends Tools {
 //Mission 10
             if ( ( missionNum >= 10 ) && ( choice.equals( "10" ) ) ) {
                 sPrintln( "mission 10: 2 Sides Of The Same Coin" );
-                text.mission10_1( );
-                text.mission10_2( );
+                
             }
 
 //Gotcha system
@@ -321,12 +260,12 @@ class Game extends Tools {
         else {
             if(!Tri.differntPhases.isEmpty())
             {
-                Tri.differntPhases.get(0).loseHP( 100 );
+                Tri.differntPhases.get(0).loseHP( 50 );
                 Tri.checkArray( );
             }
             else if(!Tri2.differntPhases.isEmpty())
             {
-                Tri2.differntPhases.get(0).loseHP( 100 );
+                Tri2.differntPhases.get(0).loseHP( 50 );
                 Tri2.checkArray( );
             }
             num += random( mission * 10 , mission * 100 ) - missionNum * 10;
@@ -608,8 +547,8 @@ class Game extends Tools {
             }
             restart( );
         }
-        emmi = null;
         exp1+=(emmi.emmi_level* emmi.emmi_num)*2;
+        emmi = null;
         levelUp( );
         
     }
