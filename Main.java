@@ -23,7 +23,7 @@ class Main {
         } else if (cheatCode.equals("Roomba")) {
             tools.isRoomba = true;
         } else if (cheatCode.equals("or not")) {
-            Crash crash = new Crash();
+            tools.run.exit(69420);
         }
         //cheat code end
         tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
