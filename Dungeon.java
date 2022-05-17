@@ -14,32 +14,14 @@ class Dungeon extends Tools {
      * @param stars
      * @param starUnlock
      */
-    public Dungeon(String name, int length, int stars, boolean starUnlock) {
+    public Dungeon(String name, int length) {
 
-        star = stars;
         dungeonName = name;
         dungeonLength = length;
-        starsUnlocked = starUnlock;
         amountMoved=0;
     }
 
-    public boolean getStarsUnlocked(){
-        return starsUnlocked;
-    }
 
-    public void setStarsUnlocked(boolean starsUnlocked) {
-        this.starsUnlocked = starsUnlocked;
-    }
-
-    public int getStar() {
-        return star;
-    }
-
-    public void setStar(int star) {
-        if(starsUnlocked) {
-            this.star = star;
-        }
-    }
 
     public void start() {
         sPrint("Welcome to the " + dungeonName + " (length: " + dungeonLength + " )");

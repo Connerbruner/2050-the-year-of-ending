@@ -58,7 +58,7 @@ class Tools {
             FileReader fileRead = new FileReader( txt );
             BufferedReader reader = new BufferedReader( fileRead );
             int i=0;
-            Object[] arr = new Object[ 12 ];
+            Object[] arr = new Object[ 13 ];
 
             for ( int r = 0; r < arr.length; r++ ) {
                 Object var = reader.readLine( );
@@ -232,7 +232,7 @@ class Tools {
 public long getUsedMemory() {
     return (run.maxMemory( ) - run.freeMemory())/1073741824;
 }
-public long byteToGB(long bytes)
+public double byteToGB(long bytes)
 {
     return bytes/1073741824;
 }

@@ -2,13 +2,13 @@ import java.util.Scanner;
 
 //Main class
 class Game extends Tools {
-    //2069 and 2077 vars (non save)
     int       HP2069;
     int       attackNum      = 0;
     boolean   attackType;
     int       lastAttack     = 0;
     int       attackTime     = 0;
     int       attackStun     = 0;
+    int       stars          = 0;
     // Array vars (placed in Save.txt)
     int       missionNum     = 10;
     int       HPmax          = 50;
@@ -19,17 +19,17 @@ class Game extends Tools {
     int       maxHit         = 5;
     boolean   join2051       = false;
     boolean   join2048       = false;
+    boolean   cupsUnlock     = false;
     //misc
     int       num            = 0;
     //obj
     ///dungeons
-    Dungeon   subway         = new Dungeon( "Underground subway" , 20 , 0 , false );
-    Dungeon   local6_11      = new Dungeon( "Rubble filled 6-11" , 10 , 0 , false );
-    Dungeon   factory        = new Dungeon( "Run down Factory" , 30 , 0 , false );
-    Dungeon   city           = new Dungeon( "Rubble filled City" , 35 , 0 , false );
-    Dungeon   highway        = new Dungeon( "Highway 101" , 30 , 0 , false );
-    Dungeon[] dungeonList    = { subway , local6_11 , factory , city , highway };
-    int       currentDungeon = 0;
+    Dungeon   subway         = new Dungeon( "Underground subway" , 20);
+    Dungeon   local6_11      = new Dungeon( "Rubble filled 6-11" , 10);
+    Dungeon   factory        = new Dungeon( "Run down Factory" , 30 );
+    Dungeon   city           = new Dungeon( "Rubble filled City" , 35 );
+    Dungeon   highway        = new Dungeon( "Highway 101" , 30 );
+
     //bosses
     //attacks and attack[]
     
@@ -92,170 +92,153 @@ class Game extends Tools {
         
         //Runs mission forever
         while ( true ) {
-            String choice;
             HP2069 = HPmax;
             sPrint( "Type 1 -> " + missionNum + " to try that Mission" );
-            if ( dungeonList[ currentDungeon ].getStarsUnlocked( ) ) {
-                sPrint( "Input a star difficulty for this mission" );
-                dungeonList[ currentDungeon ].setStar( scanner.nextInt( ) );
-            }
             //Tells you how to roll the gotcha
             if ( missionNum > 1 ) {
-                sPrint( "Type 'exp' to trade exp for new moves" );
+                sPrint( "Type 0 to trade exp for new moves" );
             }
-            sPrint( "which Mission would you like to try?   " );
-            choice = scanner.nextLine( );
+            int choice = scanner.nextInt( );
+            if(choice<missionNum && choice>0) {
+                sPrint( "How many stars would like to add (makes mission harder)" );
+                int stars = scanner.nextInt( );
+            }
+            else {
+                stars=0;
+            }
             System.out.println( );
-            //mission 1
-            if ( choice.equals( "1" ) ) {
+//mission 1
+            if ( choice==1 ) {
                 sPrintln( "Mission 1: The Awakening of  The Revolution" );
-                
-                currentDungeon = 0;
+
                 dungeon(subway);
-                dungeon(local)
-                if ( missionNum < 2 ) {
-                    
-                   missionComplete( 1 );
+                if(stars>10)
+                {
+                dungeon(city);   
                 }
+                if(stars>5)
+                {
+                dungeon(local6_11);
+                fightMech();
+                }
+                missionComplete( 1 );
+                
             }
 //Mission 2
-            if ( ( choice.equals( "2" ) ) && ( missionNum >= 2 ) ) {
+            if ( ( choice==2 ) && ( missionNum >= 2 ) ) {
                 sPrintln( "Mission 2: First Encounters" );
-                
-
-                currentDungeon = 3;
-                dungeon(city);
-
-                bossFight( gates );
-
-                if ( missionNum < 3 ) {
-                    missionComplete( 2 );
+                if(stars>5)
+                {
+                  dungeon(city);  
                 }
+                bossFight( gates );
+                missionComplete( 2 );
+                
             }
 //Mission 3
-            if ( ( missionNum >= 3 ) && ( choice.equals( "3" ) ) ) {
+            if ( ( missionNum >= 3 ) && ( choice==3 ) ) {
                 sPrintln( "MISSION 3: Rest In The Rubble" );
 
-                currentDungeon = 1;
                 dungeon(local6_11);
-
                 bossFight( elon );
-
                 dungeon( subway );
-
-                if ( missionNum < 4 ) {
-                    missionComplete( 3 );
-                }
+                missionComplete( 3 );
+                
             }
 //Mission 4
-            if ( ( missionNum >= 4 ) && ( choice.equals( "4" ) ) ) {
+            if ( ( missionNum >= 4 ) && ( choice==4 ) ) {
                 sPrintln( "Mission 4: 101 battles" );
                 
 
-                currentDungeon = 4;
                 dungeon( highway );
-
                 bossFight( jeff );
-
-                if ( missionNum < 5 ) {
-                    missionComplete(4);
-                }
+                missionComplete(4);
+                
             }
 //Mission 5
-            if ( ( missionNum >= 5 ) && ( choice.equals( "5" ) ) ) {
-                sPrintln( "Mission 5: Rematch Squared" );
+            if ( ( missionNum >= 5 ) && ( choice==5 ) ) {
+                sPrintln( "Mission 5: Rematch Cubed" );
+                        
+                bossFight(Tri);
+                missionComplete(5);
                 
-
-                currentDungeon = 1;
-                dungeon(highway);
-    
-                if ( missionNum < 6 ) {
-                    missionComplete(5);
-                }
             }
 //Mission 6
-            if ( ( missionNum >= 6 ) && ( choice.equals( "6" ) ) ) {
+            if ( ( missionNum >= 6 ) && ( choice==6) ) {
                 sPrintln( "Mission 6: Battle on the highway" );
 
-                currentDungeon = 4;
                 dungeon( highway );
-
-                if ( missionNum < 7 ) {
-                    missionComplete(6);
-                }
+                missionComplete(6);
+                
             }
 //Mission 7
-            if ( ( missionNum >= 7 ) && ( choice.equals( "7" ) ) ) {
+            if (  missionNum >= 7  && choice==6 )  {
                 sPrintln( "Mission 7: Face off in the factory" );
-                
 
-                currentDungeon = 2;
                 dungeon( factory );
+                bossFight(elonP);
+                missionComplete(7);
                 
-                Emmi giga = new Emmi( level2069 );
-                battle( giga );
-                giga = null;
-                
-
-                if ( missionNum < 8 ) {
-                    missionComplete(7);
-                }
             }
 //Mission 8
-            if ( ( missionNum >= 8 ) && ( choice.equals( "8" ) ) ) {
+            if ( ( missionNum >= 8 ) && ( choice==8 ) ) {
                 sPrintln( "MISSION 8: Highway to the future" );
-                currentDungeon = 4;
                 dungeon( highway );
+                missionComplete(8);
                 
-                Emmi giga = new Emmi( level2069 );
-                battle( giga );
-                giga = null;
-                
-                if ( missionNum < 9 ) {
-                    missionComplete(8);
-                }
             }
 //Mission 9
-            if ( ( missionNum >= 9 ) && ( choice.equals( "9" ) ) ) {
+            if ( ( missionNum >= 9 ) && ( choice==9 ) ) {
                 sPrintln( "Mission 9: Face-Off On The Grand Tower" );
-                Emmi giga = new Emmi( level2069 );
-                battle( giga );
-                giga = null;
+                missionComplete(9);
                 
-  
-                if ( missionNum < 9 ) {
-                    missionComplete(9);
-                }
             }
 //Mission 10
-            if ( ( missionNum >= 10 ) && ( choice.equals( "10" ) ) ) {
+            if ( ( missionNum >= 10 ) && ( choice==10 ) ) {
                 sPrintln( "mission 10: 2 Sides Of The Same Coin" );
-                
+                missionComplete(10);
             }
 
 //Gotcha system
-            if ( ( choice.equals( "exp" ) ) && ( missionNum > 1 ) ) {
+            if ( ( choice==0 ) && ( missionNum > 1 ) ) {
                 pull( );
             }
+            if( choice==11 && cupsUnlock)
+            {
+                
+            }
+//edits txt
             Object[] arrList = new Object[] {
                     missionNum , HPmax , level2069 , levelR1 , exp1 , aqua.attackTier , lasershot.attackTier ,
-                    cureTier , ember.attackTier , maxHit , join2048 , join2051
+                    cureTier , ember.attackTier , maxHit , join2048 , join2051 , cupsUnlock
             };
-            
-            
             Edit( "Save.txt" , arrList );
             System.gc( );
         }
         
     }
-    public
-    void missionComplete ( int mission ) {
+//fights giga mech
+    public void fightMech()
+    {
+        Emmi giga = new Emmi( level2069+5 );
+        battle( giga );
+        giga = null;
+    }
+//Mission Rewards
+    public void missionComplete ( int mission ) {
         sPrintln( "MISSION " + mission + " COMPLETE" );
         if ( mission == missionNum ) {
-            dungeonList[ currentDungeon ].setStarsUnlocked( true );
-            missionNum++;
-            sPrintln( "MISSION " + missionNum + " UNLOCKED" );
-            num += random( mission * 10 , mission * 100 );
+            if( mission > 10) {
+                missionNum++;
+                sPrintln( "MISSION " + missionNum + " UNLOCKED" );
+                num += random( mission * 10 , mission * 25 ); 
+            }
+            else {
+                cupsUnlock=true;
+                sPrintln( "ARENA OF SUFFERING UNLOCKED" );
+                num += random( mission * 10 , mission * 25 ); 
+            }
+
         }
         else {
             if(!Tri.differntPhases.isEmpty())
@@ -268,11 +251,42 @@ class Game extends Tools {
                 Tri2.differntPhases.get(0).loseHP( 50 );
                 Tri2.checkArray( );
             }
-            num += random( mission * 10 , mission * 100 ) - missionNum * 10;
+            num += random( mission * 10 , mission * 30 );
         }
         sPrint( "REWARDS:" );
         sPrint( "2069 gains " + num + " exp" );
         exp1 += num;
+    }
+//boss fight
+    public void bossFight ( Boss boss ) {
+        
+        if(!boss.differntPhases.isEmpty( ))
+        {
+            
+        while ( ! boss.differntPhases.isEmpty( ) ) {
+            
+            boss.checkArray( );
+            Phase current = boss.differntPhases.get( 0 );
+            sPrint( current.name + "'s Health " + current.getHP( ) );
+            sPrintln( "2069's Health " + HP2069 );
+            
+            current.pickAttack( );
+            Attack bossAttack = current.attacks[ current.curAttack ];
+            attack( );
+            if ( attackTime <= bossAttack.speed ) {
+                current.loseHP( choseAttack( 1 ) );
+                current.loseHP( attackSupport( ) );
+            }
+            else if ( attackStun > 10 || attackTime > bossAttack.speed ) {
+                HP2069 -= bossAttack.attack( );
+            }
+            restart( );
+            
+        }
+        exp1 += 100;
+        levelUp( );            
+        }
+
     }
     
     public
@@ -399,10 +413,10 @@ class Game extends Tools {
     /**
      * @return 2077s damage dealt
      */
-    public
-    int attack2 ( ) {
-        sPrintln( "2077's turn" );
-
+    public int attackSupport ( ) {
+        int total=0;
+        
+            sPrintln( "2077's turn" );
 //starts quicktime event
         long startTime = System.currentTimeMillis( );
         int  i         = 0;
@@ -421,54 +435,40 @@ class Game extends Tools {
                 }
                 
             }
-            i++;
-            
+            i++; 
         }
-        num = i * maxHit;
-        sPrintln( "2077 Deals " + num + " Damage" );
-        return num;
-        
-    }
-    
-    public
-    int attack3 ( ) {
-        sPrintln( "2048's turn" );
-        sPrintln( "LASER RUSH" );
-        num = 3;
-        int max   = maxHit / 2;
-        int total = 0;
-        while ( num != 0 ) {
-            num = random( 0 , max );
-            sPrint( "2048 deals " + num + " damage" );
-            total += num;
+        total += i * maxHit;
+        sPrintln( "2077 Deals " + i * maxHit + " Damage" );
+
+        if(join2048)
+        {
+            sPrintln( "2048's turn" );
+            sPrintln( "LASER RUSH" );
+            num = 3;
+            int max   = maxHit / 2;
+            while ( num != 0 ) {
+                num = random( 0 , max );
+                sPrint( "2048 deals " + num + " damage" );
+                total += num;
         }
-        return total;
-        
-    }
-    
-    public
-    int attack4 ( ) {
-        if ( HP2069 < 15 ) {
+        }
+        if(join2051)
+        {
+            if ( HP2069 < 15 ) {
             sPrintln( "2051: Oh looks like you need some healing" );
             if ( choice( "Take a Potion? " ) ) {
                 num = random( - 10 , 20 );
                 sPrintln( "2069 heals " + num + " damage" );
                 HP2069 += num;
-                return 0;
             }
-            else if ( random( 1 , 30 - maxHit ) == 30 - maxHit ) {
-                sPrintln( "BANG" );
-                sPrintln( "2051 deals 100 damage" );
-                return 100;
             }
-            
-            
+        
         }
-        return 0;
+        return total;
     }
     
-    public
-    int chainAttack ( int HP ) {
+    
+public int chainAttack ( int HP ) {
         int     health   = HP;
         int     damage   = 0;
         int     speed    = 15;
@@ -485,11 +485,7 @@ class Game extends Tools {
             if ( speed < attackTime || overkill ) {
                 damage += choseAttack( mul );
                 mul += attackStun / 10;
-                damage += attack2( );
-                if ( join2048 ) {
-                    damage += attack3( );
-                }
-                damage += attack4( );
+                damage += attackSupport( );
                 
             }
             sPrintln( "DAMAGE: " + damage );
@@ -517,7 +513,7 @@ class Game extends Tools {
         }
         Emmi emmi;
         if ( isRoomba ) {
-            emmi = new Emmi( 1 , level2069 + dungeonList[ currentDungeon ].getStar( ) );
+            emmi = new Emmi( 1 , level2069 + stars );
         }
         else {
             emmi = new Emmi( random( 1 , num ) , level2069 );
@@ -530,17 +526,12 @@ class Game extends Tools {
             attack( );
             if ( attackTime < emmi.emmi_attack.speed ) {
                 emmi.emmi_HP -= choseAttack( 1 );
-                emmi.emmi_HP -= attack2( );
-                if ( join2048 ) {
-                    emmi.emmi_HP -= attack3( );
-                }
-                if ( join2051 ) {
-                    emmi.emmi_HP -= attack4( );
-                }
+                emmi.emmi_HP -= attackSupport( );
                 
             }
             if ( attackTime > emmi.emmi_attack.speed || attackStun < ( emmi.emmi_level * 1.1 ) ) {
                 HP2069 -= emmi.emmi_attack.attack( );
+            
             }
             else if ( join2051 && ( emmi.emmi_HPM / 3 ) < emmi.emmi_HP ) {
                 emmi.emmi_HP -= chainAttack( emmi.emmi_HP );
@@ -563,13 +554,8 @@ class Game extends Tools {
             attack( );
             if ( attackTime < emmi.emmi_attack.speed ) {
                 emmi.emmi_HP -= choseAttack( 1 );
-                emmi.emmi_HP -= attack2( );
-                if ( join2048 ) {
-                    emmi.emmi_HP -= attack3( );
-                }
-                if ( join2051 ) {
-                    emmi.emmi_HP -= attack4( );
-                }
+                emmi.emmi_HP -= attackSupport( );
+
             }
             if ( attackTime > emmi.emmi_attack.speed || attackStun < 10 ) {
                 HP2069 -= emmi.emmi_attack.attack( );
@@ -691,14 +677,14 @@ class Game extends Tools {
                 HP2069 = HPmax;
                 sPrintln( "2048: can't handle things on your own" );
                 sPrintln( "2069: 2048!" );
-                sPrintln( "2048 has joined the team" );
+                sPrintln( "*2048 has joined the team*" );
                 join2048 = true;
             }
             else if ( ! join2051 && random( missionNum , 30 ) == 30 ) {
                 HP2069 = HPmax;
                 sPrintln( "2051: Playtime is over" );
                 sPrintln( "2069: 2051!" );
-                sPrintln( "2051 has joined the team" );
+                sPrintln( "*2051 has joined the team*" );
                 join2051 = true;
             }
             else {
@@ -771,37 +757,16 @@ class Game extends Tools {
                 if ( s == 11 ) {
                     join2051 = Boolean.parseBoolean( Save[ s ].toString( ) );
                 }
+
+                if ( s == 13 ) {
+                    cupsUnlock = Boolean.parseBoolean( Save[ s ].toString( ) );
+                }
             }
         }
         sPrint( "Save grabbed" );
         
     }
     
-    public
-    void bossFight ( Boss boss ) {
-        
-        while ( ! boss.differntPhases.isEmpty( ) ) {
-            
-            boss.checkArray( );
-            Phase current = boss.differntPhases.get( 0 );
-            sPrint( current.name + "'s Health " + current.getHP( ) );
-            sPrintln( "2069's Health " + HP2069 );
-            
-            current.pickAttack( );
-            Attack bossAttack = current.attacks[ current.curAttack ];
-            attack( );
-            if ( attackTime <= bossAttack.speed ) {
-                current.loseHP( choseAttack( 1 ) );
-            }
-            else if ( attackStun > 10 || attackTime > bossAttack.speed ) {
-                HP2069 -= bossAttack.attack( );
-            }
-            restart( );
-            
-        }
-        exp1 += 100;
-        levelUp( );
-    }
     
 
 //don't pass this comment

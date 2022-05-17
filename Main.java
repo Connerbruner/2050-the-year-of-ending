@@ -3,16 +3,16 @@ import java.util.Scanner;
 class Main {
 
     public static void main ( String[] args ) {
+        
         System.out.println( );
         Tools tools = new Tools( );
         Game game = new Game( );
-        //clears the screen
-        
         Scanner scanner = new Scanner( System.in );
         tools.setTSpeed( 20 );
         //main starts here
         //cheat code start
         tools.sPrint(tools.SCREEN_CLEAR);
+        tools.sPrint(tools.run.maxMemory()+"");
         tools.sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );
