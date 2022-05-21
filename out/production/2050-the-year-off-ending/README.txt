@@ -1,4 +1,4 @@
-# 2050-the-year-off-ending
+# 2050-the-year-of-ending
 HOW TO PLAY:
 
 DOCS:

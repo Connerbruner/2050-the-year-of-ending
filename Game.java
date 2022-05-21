@@ -53,6 +53,7 @@ class Game extends Tools {
     Attack    dualHit        = new Attack( "Mark Zuckerberg" , "DUAL SLASH" , 25 , 50 , 15 );
     Attack    zero           = new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 );
     Attack[]  attacksMark    = { finalSlash , dualHit , zero };
+    Phase mark = new Phase(attacksMark,1000,"Mark Zuckerberg");
     
     //Phases and Phase[]
     Phase     Elon           = new Phase( attacksElon , 500 , "Elon Musk" );
@@ -75,6 +76,7 @@ class Game extends Tools {
     //trio
     Boss Tri = new Boss( arrTri1 );
     Boss Tri2 = new Boss(arrTri2);
+    Boss Zuckerberg = new Boss(mark);
     
     
     //2069 attacks
@@ -142,6 +144,9 @@ class Game extends Tools {
                 dungeon(local6_11);
                 bossFight( elon );
                 dungeon( subway );
+                if(stars>5)
+                {}
+                dungeon(local6_11);
                 missionComplete( 3 );
                 
             }
@@ -151,6 +156,10 @@ class Game extends Tools {
                 
 
                 dungeon( highway );
+                if(stars>5)
+                {
+                    dungeon(local6_11);
+                }
                 bossFight( jeff );
                 missionComplete(4);
                 
@@ -158,7 +167,8 @@ class Game extends Tools {
 //Mission 5
             if ( ( missionNum >= 5 ) && ( choice==5 ) ) {
                 sPrintln( "Mission 5: Rematch Cubed" );
-                        
+
+
                 bossFight(Tri);
                 missionComplete(5);
                 
@@ -168,6 +178,7 @@ class Game extends Tools {
                 sPrintln( "Mission 6: Battle on the highway" );
 
                 dungeon( highway );
+                bossFight(jeffP);
                 missionComplete(6);
                 
             }
@@ -184,18 +195,22 @@ class Game extends Tools {
             if ( ( missionNum >= 8 ) && ( choice==8 ) ) {
                 sPrintln( "MISSION 8: Highway to the future" );
                 dungeon( highway );
+                bossFight(gatesP);
                 missionComplete(8);
                 
             }
 //Mission 9
             if ( ( missionNum >= 9 ) && ( choice==9 ) ) {
                 sPrintln( "Mission 9: Face-Off On The Grand Tower" );
+                bossFight(Tri2);
                 missionComplete(9);
-                
+
+
             }
 //Mission 10
             if ( ( missionNum >= 10 ) && ( choice==10 ) ) {
                 sPrintln( "mission 10: 2 Sides Of The Same Coin" );
+                bossFight(Zuckerberg);
                 missionComplete(10);
             }
 
