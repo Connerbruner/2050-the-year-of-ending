@@ -1,8 +1,10 @@
 import java.io.*;
 import java.util.Scanner;
+import java.time.*;
 
 class Tools {
     Runtime run = Runtime.getRuntime();
+    LocalDateTime localDate = LocalDateTime.now();
     //the Colors of gay
     public static final String GO_BACK = "\"\\u001B[A\"";
     public static final String SCREEN_CLEAR = "\033[H\033[2J";

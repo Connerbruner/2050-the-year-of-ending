@@ -1,8 +1,8 @@
 # 2050-the-year-of-ending
 HOW TO PLAY:
 
-DOCS:
-GENERAL methods:
+# DOCS:
+## GENERAL methods:
 Void - sPrint(String) - Prints using a wait in miliseconds in between characters, set at the start of the game. Modified by cheat codes in tools.java
 Void - wait(milliseconds int) - Waits by a time in miliseconds, the program will not do anything during this time
 
@@ -15,52 +15,46 @@ boolean - skip() Asks for an input, will skip a cutscene on "Y", "y", "Yes", or 
 boolean - strIsInt(String str) - checks if the string thats been inputted is possible to parse to an integer, if so returns true
 
 
-GOTCHA methods:
+## GOTCHA methods:
 Void - pull()  Rolls gotcha, lower odds for higher rolls, no duplicates, the more exp that is put in the more likely you are to get a higher tier attack
 
 
-BOSS methods:
+## BOSS methods:
 
-Void - attack_(name)() The bosses attack
-Void - (Name of boss)() The boss fight its self
-
-HOW TO MAKE YOUR OWN BOSS:
+### HOW TO MAKE YOUR OWN BOSS:
 
 - Create an attack array, for example: Attack[] elon = new Attack[]{Laser, blast, Shield};
 - NOTE, you must create each attack individually before adding to the array: Attack blast = new Attack("");
 
-EXP methods:
-Void - gain() gives you exp for killing a enemy
+## EXP method:
 Void - levelup() Checks for level up
 
-ATTACK  methods:
+## ATTACK  methods:
 
 Void - attack1() 2069s attack method
-Void - attack2() 2077s attack method
 
-Star methods:
+
+## Star methods:
 The star setter and getters are for changing the difficulty of missions
 They're a little complicated but basically, the star setter method will only work if stars are unlocked
 Stars are unlocked after beating the mission once
 Each star adds 1 enemy level above the current player level
 If you wish to add another dungeon, you must check if the stars are unlocked upon each calling of the object
 
-Dungeons:
+## Dungeons:
 Dungeons take 4 variables, and each dungeon that is added must be put in the dungeon list as well
 The dungeon list determines which dungeon is being used, and is used to access the methods in each dungeon object
 To mod, create a new dungeon object, add it to the list, and determine which mission it should be used in
 Then make absolutely sure you've set the currentDungeon int correctly in the mission, and it should play properly
 
-TEXT/HOW DOES GAME() WORK
-Void - Mission(mission_num)_(cutscene number) Plays a cutscene
+## TEXT/HOW DOES GAME() WORK
+Void - Mission(mission_num)_(cutscene number) Plays a cutscene (non are used)
 Void - Game() Starts Game and Lets you chose a Mission 
 
-DUNGEONS
-Void - Battle() - fight enemies
-Void - Battle2() - fight enemies 2069 only
-Void - Dungeons(number) - dungeon
+##DUNGEONS
 
-VARIABLES:
+
+## VARIABLES:
  public static final String SCREEN_CLEAR = "\u001b[H\u001b[2J";
     public static final String RESET = reset Screen
     public static final String BLACK = makes text black
@@ -86,7 +80,7 @@ VARIABLES:
     int tSpeed = text speed
     int move_tier = power of move
 
-Save editing order:
+# Save editing order:
     missionnum
     HP1m
     level1

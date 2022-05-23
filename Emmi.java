@@ -16,7 +16,7 @@ class Emmi extends Tools {
         if ( type1 == 1 ) {
             emmi_type = "Roomba";
 
-            emmi_HP = 30 + ( emmi_level * 2 );
+            emmi_HP = 35 + ( emmi_level * 2 );
             sPrintln( "A Roomba appears" );
         }
         if ( type1 == 2 ) {
@@ -103,7 +103,7 @@ class Emmi extends Tools {
         if ( emmi_type.equals( "Dog bot" ) ) {
             if ( emmi_attackNum == 1 ) {
                 sPrintln( "SPEED TACKLE" );
-                emmi_attack = new Attack( emmi_type , "SPEED TACKLE" , 1 , 5+emmi_level , 1 );
+                emmi_attack = new Attack( emmi_type , "SPEED TACKLE" , 1 , 3+emmi_level , 5 );
             }
             if ( emmi_attackNum == 2 ) {
                 sPrintln( "BITE FURY" );

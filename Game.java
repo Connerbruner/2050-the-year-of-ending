@@ -9,6 +9,8 @@ class Game extends Tools {
     int       attackTime     = 0;
     int       attackStun     = 0;
     int       stars          = 0;
+    int speed=0; 
+    int stun=0;
     // Array vars (placed in Save.txt)
     int       missionNum     = 10;
     int       HPmax          = 50;
@@ -56,14 +58,14 @@ class Game extends Tools {
     Phase mark = new Phase(attacksMark,1000,"Mark Zuckerberg");
     
     //Phases and Phase[]
-    Phase     Elon           = new Phase( attacksElon , 500 , "Elon Musk" );
-    Phase     Gates          = new Phase( attackGates , 500 , "Bill Gates" );
-    Phase     Jeff           = new Phase( attacksJeff , 500 , "Jeff bezos" );
+    Phase     Elon           = new Phase( attacksElon , 250 , "Elon Musk" );
+    Phase     Gates          = new Phase( attackGates , 250 , "Bill Gates" );
+    Phase     Jeff           = new Phase( attacksJeff , 250 , "Jeff bezos" );
     Phase[]   arrTri1        = { Elon , Gates , Jeff };
     
-    Phase     ElonP          = new Phase( attacksElon , 750 , "Elon Musk" );
-    Phase     GatesP         = new Phase( attackGates , 750 , "Bill Gates" );
-    Phase     JeffP          = new Phase( attacksJeff , 750 , "Bill Gates" );
+    Phase     ElonP          = new Phase( attacksElon , 500 , "Elon Musk" );
+    Phase     GatesP         = new Phase( attackGates , 500 , "Bill Gates" );
+    Phase     JeffP          = new Phase( attacksJeff , 500 , "Bill Gates" );
     Phase[]   arrTri2        = { ElonP , GatesP , JeffP };
     //boss
     //single phase
@@ -80,8 +82,8 @@ class Game extends Tools {
     
     
     //2069 attacks
-    Attack    aqua           = new Attack( "Aqua" , 7 , 15 , 6 , 0 );
-    Attack    lasershot      = new Attack( "Lasershot" , 7 , 10 , 12 , 3 );
+    Attack    aqua           = new Attack( "Aqua" , 7 , 10 , 6 , 0 );
+    Attack    lasershot      = new Attack( "Lasershot" , 1 , 5 , 8 , 7 );
     Attack    ember          = new Attack( "Ember" , 17 , 30 , 15 , 10 );
     
     //other obj
@@ -94,16 +96,18 @@ class Game extends Tools {
         
         //Runs mission forever
         while ( true ) {
+            levelUp();
             HP2069 = HPmax;
             sPrint( "Type 1 -> " + missionNum + " to try that Mission" );
             //Tells you how to roll the gotcha
             if ( missionNum > 1 ) {
                 sPrint( "Type 0 to trade exp for new moves" );
             }
+            
             int choice = scanner.nextInt( );
             if(choice<missionNum && choice>0) {
                 sPrint( "How many stars would like to add (makes mission harder)" );
-                int stars = scanner.nextInt( );
+                stars = scanner.nextInt( );
             }
             else {
                 stars=0;
@@ -144,9 +148,6 @@ class Game extends Tools {
                 dungeon(local6_11);
                 bossFight( elon );
                 dungeon( subway );
-                if(stars>5)
-                {}
-                dungeon(local6_11);
                 missionComplete( 3 );
                 
             }
@@ -243,15 +244,15 @@ class Game extends Tools {
     public void missionComplete ( int mission ) {
         sPrintln( "MISSION " + mission + " COMPLETE" );
         if ( mission == missionNum ) {
-            if( mission > 10) {
+            num = random( mission * 10 , mission * 25 ); 
+            if( mission < 10) {
                 missionNum++;
                 sPrintln( "MISSION " + missionNum + " UNLOCKED" );
-                num += random( mission * 10 , mission * 25 ); 
+                
             }
             else {
                 cupsUnlock=true;
                 sPrintln( "ARENA OF SUFFERING UNLOCKED" );
-                num += random( mission * 10 , mission * 25 ); 
             }
 
         }
@@ -266,11 +267,12 @@ class Game extends Tools {
                 Tri2.differntPhases.get(0).loseHP( 50 );
                 Tri2.checkArray( );
             }
-            num += random( mission * 10 , mission * 30 );
+            num = random( mission * 10 , mission * 30 );
         }
         sPrint( "REWARDS:" );
         sPrint( "2069 gains " + num + " exp" );
         exp1 += num;
+        levelUp();
     }
 //boss fight
     public void bossFight ( Boss boss ) {
@@ -280,7 +282,7 @@ class Game extends Tools {
             
         while ( ! boss.differntPhases.isEmpty( ) ) {
             
-            boss.checkArray( );
+            
             Phase current = boss.differntPhases.get( 0 );
             sPrint( current.name + "'s Health " + current.getHP( ) );
             sPrintln( "2069's Health " + HP2069 );
@@ -292,9 +294,14 @@ class Game extends Tools {
                 current.loseHP( choseAttack( 1 ) );
                 current.loseHP( attackSupport( ) );
             }
-            else if ( attackStun > 10 || attackTime > bossAttack.speed ) {
-                HP2069 -= bossAttack.attack( );
+            if ( attackStun < 15 || attackTime > bossAttack.speed ) {
+                if(current.HP>0)
+                {
+                    HP2069 -= bossAttack.attack( );    
+                }
+                
             }
+            boss.checkArray( );
             restart( );
             
         }
@@ -309,8 +316,14 @@ class Game extends Tools {
         dungeon.start( );
         while ( dungeon.dungeonLength > dungeon.amountMoved ) {
             dungeon.move( );
-            battle( );
+            if( dungeon.dungeonLength > dungeon.amountMoved )
+            {
+            sPrintln((dungeon.dungeonLength-dungeon.amountMoved)+" left to go");
+            battle( );    
+            }
+            
         }
+        sPrintln("Cleared "+dungeon.dungeonName);
     }
     
     //shows you what attacks you can use
@@ -378,6 +391,10 @@ class Game extends Tools {
         if ( attackNum == 3 ) {
             attackStun = 0;
         }
+        attackNum+=stun;
+        attackTime-=speed;
+        stun=0;
+        speed=0;
     }
     
     /**
@@ -385,6 +402,7 @@ class Game extends Tools {
      */
     public
     int choseAttack ( double power ) {
+        num=0;
         if ( attackNum == 1 ) {
             num = aqua.attack( power , attackType );
         }
@@ -393,11 +411,11 @@ class Game extends Tools {
         }
         if ( attackNum == 3 ) {
             cure( power );
+            num=0;
         }
         if ( attackNum == 4 ) {
             num = ember.attack( power , attackType );
         }
-        lastAttack = attackNum;
         return num;
     }
     
@@ -413,7 +431,7 @@ class Game extends Tools {
         }
         else {
             sPrintln( "Cure shield" );
-            num = ( int ) ( random( cureTier * 5 , cureTier * 20 ) * power );
+            num = ( int ) ( random( cureTier * 5 , cureTier * 15 ) * power );
         }
         HP2069 += num;
         sPrintln( "2069 heals " + num + " damage" );
@@ -423,10 +441,9 @@ class Game extends Tools {
     }
     
     
-    //2077's code
     
     /**
-     * @return 2077s damage dealt
+     * @return surports damage dealt
      */
     public int attackSupport ( ) {
         int total=0;
@@ -439,44 +456,52 @@ class Game extends Tools {
             sPrint( "Type Kick" );
             while ( startTime + 10000 > System.currentTimeMillis( ) ) {
                 if ( scanner.nextLine( ).equals( "Kick" ) ) {
+                    i++;
                     break;
+                    
                 }
                 
             }
             sPrint( "Type Punch" );
             while ( startTime + 10000 > System.currentTimeMillis( ) ) {
                 if ( scanner.nextLine( ).equals( "Punch" ) ) {
+                    i++;
                     break;
+                    
                 }
                 
             }
-            i++; 
+             
         }
-        total += i * maxHit;
+        total +=(int)( i * (maxHit/2));
         sPrintln( "2077 Deals " + i * maxHit + " Damage" );
 
         if(join2048)
         {
             sPrintln( "2048's turn" );
-            sPrintln( "LASER RUSH" );
-            num = 3;
-            int max   = maxHit / 2;
-            while ( num != 0 ) {
-                num = random( 0 , max );
-                sPrint( "2048 deals " + num + " damage" );
-                total += num;
-        }
+            num=random(1,2);
+            if(num==1)
+            {
+                sPrintln("TIME WARP");
+                speed=3;
+                sPrintln("You attacks are 3 seocnds faster");
+            }
+            if(num==2)
+            {
+                sPrintln("STUN RUSH");
+                stun=3;
+                sPrintln("You attacks are now more likely to stun someone");
+
+            }
         }
         if(join2051)
         {
-            if ( HP2069 < 15 ) {
-            sPrintln( "2051: Oh looks like you need some healing" );
-            if ( choice( "Take a Potion? " ) ) {
+            if ( choice( "2051: need some healing? " ) ) {
                 num = random( - 10 , 20 );
                 sPrintln( "2069 heals " + num + " damage" );
                 HP2069 += num;
             }
-            }
+            
         
         }
         return total;
@@ -531,7 +556,7 @@ public int chainAttack ( int HP ) {
             emmi = new Emmi( 1 , level2069 + stars );
         }
         else {
-            emmi = new Emmi( random( 1 , num ) , level2069 );
+        emmi = new Emmi( random( 1 , num ) , level2069+stars );
         }
         while ( emmi.emmi_HP > 0 ) {
             sPrint( "2069 health " + HP2069 );
@@ -544,7 +569,7 @@ public int chainAttack ( int HP ) {
                 emmi.emmi_HP -= attackSupport( );
                 
             }
-            if ( attackTime > emmi.emmi_attack.speed || attackStun < ( emmi.emmi_level * 1.1 ) ) {
+            if ( emmi.emmi_HP>1 && (attackTime > emmi.emmi_attack.speed || attackStun < ( emmi.emmi_level * 1.1 ) )) {
                 HP2069 -= emmi.emmi_attack.attack( );
             
             }
@@ -554,6 +579,7 @@ public int chainAttack ( int HP ) {
             restart( );
         }
         exp1+=(emmi.emmi_level* emmi.emmi_num)*2;
+        sPrintln("You gain "+(emmi.emmi_level* emmi.emmi_num)*2+" exp");
         emmi = null;
         levelUp( );
         
@@ -581,19 +607,11 @@ public int chainAttack ( int HP ) {
             restart( );
         }
         exp1+=(emmi.emmi_level* emmi.emmi_num)*2;
+        sPrintln("You gain "+(emmi.emmi_level* emmi.emmi_num)*2+" exp");
         levelUp( );
         
     }
     
-    public
-    void mission1_4 ( ) {
-        sPrintln( "old man: Thank you. I can't thank you enough. I am forever in your debt." );
-        sPrintln( "old man: As a gift here is 100xp" );
-        exp1 += 100;
-        levelUp( );
-        sPrintln( "Old Man: Oh I should tell you my name. Its 2020" );
-        sPrintln( "2020: I can teach you new abilities in trade for " );
-    }
     
     public
     void pull ( ) {
@@ -678,7 +696,7 @@ public int chainAttack ( int HP ) {
             HPmax++;
             level2069++;
             levelR1 = exp1 + 20 * ( level2069 * level2069 ) / 2;
-            sPrintln( "2069 has" + ( levelR1 - exp1 ) + "exp till leveling up" );
+            sPrintln( "2069 has " + ( levelR1 - exp1 ) + " exp till leveling up" );
         }
         
         

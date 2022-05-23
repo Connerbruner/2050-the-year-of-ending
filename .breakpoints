@@ -3,17 +3,17 @@
     "Game.java": [
       {
         "id": "29d347c1-3e33-4bed-a659-80e39227896d",
-        "line": 5,
-        "version": 14816,
-        "index": 67
+        "line": 1,
+        "version": 16418,
+        "index": 0
       }
     ],
     "Main.java": [
       {
         "id": "c20dd291-dc40-4df2-a500-0fd47d02b475",
-        "line": 16,
-        "version": 3015,
-        "index": 425
+        "line": 2,
+        "version": 3707,
+        "index": 26
       }
     ]
   }

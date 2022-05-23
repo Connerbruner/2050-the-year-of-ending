@@ -10,9 +10,8 @@ class Main {
         Scanner scanner = new Scanner( System.in );
         tools.setTSpeed( 20 );
         //main starts here
+        System.out.print(tools.SCREEN_CLEAR);
         //cheat code start
-        tools.sPrint(tools.SCREEN_CLEAR);
-        tools.sPrint(tools.run.maxMemory()+"");
         tools.sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );

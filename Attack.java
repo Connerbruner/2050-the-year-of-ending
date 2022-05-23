@@ -74,7 +74,7 @@ class Attack extends Tools {
         if ( style ) {
             return stun / 2;
         } else {
-            return stun * 2;
+            return stun;
         }
     }
 
@@ -84,7 +84,7 @@ class Attack extends Tools {
             num = ( int ) ( ( random( low , high ) * attackTier ) * ( power ) );
         } else {
             sPrint( "Powerful " + attackName );
-            num = ( int ) ( ( random( low , high ) * attackTier ) * power * 2);
+            num = ( int ) ( ( random( low , high ) * ((attackTier/4)+0.75) ) * power * 1.5);
 
         }
         sPrintln( "2069 deals " + num + " damage" );

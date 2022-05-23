@@ -29,7 +29,7 @@ class Dungeon extends Tools {
     }
 
     public void move() {
-        int steps = random(1, 5);
+        int steps = random(3, 5);
         amountMoved += steps;
         sPrintln("You move " + steps + " feet");
     }
