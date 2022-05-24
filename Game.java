@@ -36,19 +36,19 @@ class Game extends Tools {
     //attacks and attack[]
     
     //bill gates
-    Attack    triSlash       = new Attack( "Bill Gates" , "TRIPLE SLASH" , 7 , 21 , 15 );
-    Attack    ultraSlash     = new Attack( "Bill Gates" , "ULTRA SLASH" , 10 , 20 , 20 );
-    Attack    laserBlast     = new Attack( "Bill Gates" , "LASER BLAST" , 5 , 30 , 30 );
+    Attack    triSlash       = new Attack( "Bill Gates" , "TRIPLE SLASH" , 10 , 12 , 15 );
+    Attack    ultraSlash     = new Attack( "Bill Gates" , "ULTRA SLASH" , 7 , 15 , 20 );
+    Attack    laserBlast     = new Attack( "Bill Gates" , "LASER BLAST" , 5 , 20 , 30 );
     Attack[]  attackGates    = { triSlash , ultraSlash , laserBlast };
     //Elon musk
-    Attack    spear          = new Attack( "Elon musk" , "SPEAR RUSH" , 10 , 20 , 10 );
-    Attack    revenge        = new Attack( "Elon musk" , "REVENGE OF THE SPEAR" , 5 , 25 , 20 );
+    Attack    spear          = new Attack( "Elon musk" , "SPEAR RUSH" , 5 , 20 , 10 );
+    Attack    revenge        = new Attack( "Elon musk" , "REVENGE OF THE SPEAR" , 12 , 10 , 20 );
     Attack    powerful       = new Attack( "Elon musk" , "ULTRA SPEAR" , 1 , 30 , 20 );
     Attack[]  attacksElon    = { spear , powerful , revenge };
     //jeff bezos
-    Attack    roomba         = new Attack( "Jeff bezos" , "ROOMBA INVASION" , 15 , 25 , 25 );
-    Attack    mech           = new Attack( "Jeff bezos" , "MECH CANNON" , 10 , 30 , 30 );
-    Attack    laser          = new Attack( "Jeff bezos" , "DUAL LASER" , 12 , 25 , 15 );
+    Attack    roomba         = new Attack( "Jeff bezos" , "ROOMBA INVASION" , 7 , 15 , 25 );
+    Attack    mech           = new Attack( "Jeff bezos" , "MECH CANNON" , 5 , 20 , 30 );
+    Attack    laser          = new Attack( "Jeff bezos" , "DUAL LASER" , 12 , 20 , 15 );
     Attack[]  attacksJeff    = { roomba , mech , laser };
     //Mark Zuckerberg
     Attack    finalSlash     = new Attack( "Mark Zuckerberg" , "FINAL SLASH" , 1 , 100 , 30 );
@@ -82,8 +82,8 @@ class Game extends Tools {
     
     
     //2069 attacks
-    Attack    aqua           = new Attack( "Aqua" , 7 , 10 , 6 , 0 );
-    Attack    lasershot      = new Attack( "Lasershot" , 1 , 5 , 8 , 7 );
+    Attack    aqua           = new Attack( "Aqua" , 7 , 12 , 6 , 0 );
+    Attack    lasershot      = new Attack( "Lasershot" , 3 , 10 , 6 , 8 );
     Attack    ember          = new Attack( "Ember" , 17 , 30 , 15 , 10 );
     
     //other obj
@@ -223,15 +223,20 @@ class Game extends Tools {
             {
                 
             }
+            save();
 //edits txt
-            Object[] arrList = new Object[] {
+
+        }
+        
+    }
+    public void save()
+    {
+                Object[] arrList = new Object[] {
                     missionNum , HPmax , level2069 , levelR1 , exp1 , aqua.attackTier , lasershot.attackTier ,
                     cureTier , ember.attackTier , maxHit , join2048 , join2051 , cupsUnlock
             };
-            Edit( "Save.txt" , arrList );
-            System.gc( );
-        }
-        
+        Edit( "Save.txt" , arrList );
+        System.gc( );
     }
 //fights giga mech
     public void fightMech()
@@ -279,7 +284,7 @@ class Game extends Tools {
         
         if(!boss.differntPhases.isEmpty( ))
         {
-            
+        HP2069 = HPmax;
         while ( ! boss.differntPhases.isEmpty( ) ) {
             
             
@@ -427,11 +432,11 @@ class Game extends Tools {
     void cure ( double power ) {
         if ( attackType ) {
             sPrintln( "dodging Cure" );
-            num = ( int ) ( random( cureTier * 2 , cureTier * 5 ) * power ) * 2;
+            num = ( int ) ( random(  10 , 12 ) *((cureTier/4)+0.75) * power );
         }
         else {
             sPrintln( "Cure shield" );
-            num = ( int ) ( random( cureTier * 5 , cureTier * 15 ) * power );
+            num = ( int ) ( random(  5 ,  20 ) *((cureTier/4)+0.75) * power );
         }
         HP2069 += num;
         sPrintln( "2069 heals " + num + " damage" );
@@ -474,7 +479,7 @@ class Game extends Tools {
              
         }
         total +=(int)( i * (maxHit/2));
-        sPrintln( "2077 Deals " + i * maxHit + " Damage" );
+        sPrintln( "2077 Deals " +  (int)(i * (maxHit/2)) + " Damage" );
 
         if(join2048)
         {
@@ -582,7 +587,7 @@ public int chainAttack ( int HP ) {
         sPrintln("You gain "+(emmi.emmi_level* emmi.emmi_num)*2+" exp");
         emmi = null;
         levelUp( );
-        
+        save();
     }
     
     public
@@ -609,23 +614,23 @@ public int chainAttack ( int HP ) {
         exp1+=(emmi.emmi_level* emmi.emmi_num)*2;
         sPrintln("You gain "+(emmi.emmi_level* emmi.emmi_num)*2+" exp");
         levelUp( );
-        
+        save();
     }
     
     
     public
     void pull ( ) {
         
-        if ( exp1 > 0 ) {
+        if ( exp1 >= 25 ) {
             sPrintln( "2069 exp " + exp1 );
             sPrint( "how much exp would you like to use? " );
             num = scanner.nextInt( );
             int pull_num = num / 25;
             exp1 -= num;
-            if ( exp1 < 0 ) {
-                num = - exp1;
+            if ( exp1 < num ) {
+                num = exp1;
             }
-            exp1 = 0;
+            num-=exp1;
             
             while ( pull_num > 0 ) {
                 int[] odds = new int[] { 1 , 1 , 1 , 1 , 2 , 2 , 2 , 3 , 3 , 3 , 4 , 4 , 5 , 6 , 7 };
@@ -656,7 +661,7 @@ public int chainAttack ( int HP ) {
                 if ( num == 1 ) {
                     if ( tier > aqua.attackTier ) {
                         sPrintln( "Aqua leveled up" );
-                        sPrintln( aqua.attackName + " --> " + tier );
+                        sPrintln( aqua.attackTier + " --> " + tier );
                         aqua.setAttackTier( tier );
                     }
                 }
@@ -679,6 +684,7 @@ public int chainAttack ( int HP ) {
                 }
                 sPrintln( "roll complete" );
                 pull_num -= 1;
+                save();
             }
         }
         else {
@@ -724,7 +730,7 @@ public int chainAttack ( int HP ) {
                 sPrintln( "The world around you begins to fade to black" );
                 sPrintln( "???: Welcome back to this world of nothingness " );
                 sPrintln( "2069: no..." );
-                sPrintln( "???: Your only hope now is to turn back the hands of time" );
+                sPrintln( "???: I will help you get out of this" );
                 sPrintln( "2077:I see nothing wrong with that" );
                 sPrintln( "2069: Please help us" );
                 String choice = "How are you doing";
@@ -733,7 +739,7 @@ public int chainAttack ( int HP ) {
                     choice = scanner.nextLine( );
                 }
                 System.out.println( );
-                
+                save();
                 game( );
             }
             

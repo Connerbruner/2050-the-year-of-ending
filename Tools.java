@@ -168,6 +168,7 @@ class Tools {
      *
      */
     public void wait ( int time ) {
+
         long startTime = System.currentTimeMillis( );
         while ( startTime + time > System.currentTimeMillis( ) ) ;
     }
