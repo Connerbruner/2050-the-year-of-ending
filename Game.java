@@ -361,14 +361,14 @@ class Game extends Tools {
         while ( ! typeDetermined ) {
             
             sPrint( "Out Power or Out Speed" );
-            
+            scanner.nextLine();
             tackType = scanner.nextLine( );
             
-            if ( tackType.equals( "power" ) ) {
+            if ( tackType.equals( "power" ) || tackType.equals("Power")) {
                 attackType     = false;
                 typeDetermined = true;
             }
-            else if ( tackType.equals( "speed" ) ) {
+            else if ( tackType.equals( "speed" ) || tackType.equals("Speed") ) {
                 attackType     = true;
                 typeDetermined = true;
             }
