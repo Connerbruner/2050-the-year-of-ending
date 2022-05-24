@@ -589,7 +589,7 @@ public int chainAttack ( int HP ) {
             if ( emmi.emmi_HP>1 && (attackTime > emmi.emmi_attack.speed || attackStun < ( emmi.emmi_level * 1.1 ) )) {
                 if(block==1 && (attackStun-( emmi.emmi_level * 1.1 ))>0)
                 {
-                    block-=(attackStun-( emmi.emmi_level * 1.1 ))/10
+                    block-=(attackStun-( emmi.emmi_level * 1.1 ))/10;
                 }
                 HP2069 -= emmi.emmi_attack.attack( block );
             
