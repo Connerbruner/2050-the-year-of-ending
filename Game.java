@@ -12,6 +12,7 @@ class Game extends Tools {
     int speed=0; 
     int stun=0;
     int login=0;
+    double block;
     // Array vars (placed in Save.txt)
     int       missionNum     = 10;
     int       HPmax          = 50;
@@ -280,10 +281,11 @@ new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
             }
             num = random( mission * 10 , mission * 30 );
         }
-        sPrint( "REWARDS:" );
-        sPrint( "2069 gains " + num + " exp" );
+        sPrintln( "REWARDS:" );
+        sPrintln( "2069 gains " + num + " exp" );
         exp1 += num;
         levelUp();
+        System.out.println(CLEAR_SCREEN);
     }
 //boss fight
     public void bossFight ( Boss boss ) {
@@ -426,7 +428,9 @@ new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
         }
         if ( attackNum == 4 ) {
             num = ember.attack( power , attackType );
+            block=1.1;
         }
+        
         return num;
     }
     
@@ -439,10 +443,12 @@ new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
         if ( attackType ) {
             sPrintln( "dodging Cure" );
             num = ( int ) ( random(  10 , 12 ) *((cureTier/4)+0.75) * power );
+            block=random(0,random(1,2));
         }
         else {
             sPrintln( "Cure shield" );
             num = ( int ) ( random(  5 ,  20 ) *((cureTier/4)+0.75) * power );
+            block=0.5;
         }
         HP2069 += num;
         sPrintln( "2069 heals " + num + " damage" );
@@ -581,7 +587,11 @@ public int chainAttack ( int HP ) {
                 
             }
             if ( emmi.emmi_HP>1 && (attackTime > emmi.emmi_attack.speed || attackStun < ( emmi.emmi_level * 1.1 ) )) {
-                HP2069 -= emmi.emmi_attack.attack( );
+                if(block==1 && (attackStun-( emmi.emmi_level * 1.1 ))>0)
+                {
+                    block-=(attackStun-( emmi.emmi_level * 1.1 ))/10
+                }
+                HP2069 -= emmi.emmi_attack.attack( block );
             
             }
             else if ( join2051 && ( emmi.emmi_HPM / 3 ) < emmi.emmi_HP ) {

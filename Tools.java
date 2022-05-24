@@ -111,7 +111,7 @@ class Tools {
                 wait(tSpeed);
             }
 
-        }else if ( str.contains( "2069:" ) ) {
+        }else if ( str.contains( "2069" ) ) {
             for ( int i = 0; i < str.length( ); i++ ) {
                 System.out.print( BLUE + str.charAt( i ) );
                 wait( tSpeed );
@@ -119,7 +119,7 @@ class Tools {
         }
 
         //if 2077 is talking CYAN
-        else if ( str.contains( "2077:" ) ) {
+        else if ( str.contains( "2077" ) ) {
             for ( int i = 0; i < str.length( ); i++ ) {
                 System.out.print( CYAN + str.charAt( i ) );
                 wait( tSpeed );
@@ -127,9 +127,20 @@ class Tools {
 
         }
         //Tech giant talking RED
-        else if ( str.contains( "Mark Zuckerberg:" ) || str.contains( "Elon musk:" ) || str.contains( "Bill Gates:" ) || str.contains( "Jeff bezos:" ) ) {
+        else if ( str.contains( "Mark Zuckerberg" ) || str.contains( "Elon musk" ) || str.contains( "Bill Gates" ) || str.contains( "Jeff bezos" ) ) {
             for ( int i = 0; i < str.length( ); i++ ) {
                 System.out.print( RED + str.charAt( i ) );
+                wait( tSpeed );
+            }
+        }
+        //??? talks
+        else if ( str.contains( "???" ) ) {
+            for ( int i = 0; i < str.length( ); i++ ) {
+                if ( random( 0 , 15 ) == 10 ) {
+                    System.out.print( ( char ) ( random( 0 , 256 ) ) );
+                } else {
+                    System.out.print( PURPLE + str.charAt( i ) );
+                }
                 wait( tSpeed );
             }
         }
@@ -140,17 +151,7 @@ class Tools {
                 wait( tSpeed );
             }
         }
-        //??? talks
-        else if ( str.contains( "???:" ) ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                if ( random( 0 , 15 ) == 10 ) {
-                    System.out.print( ( char ) ( random( 0 , 256 ) ) );
-                } else {
-                    System.out.print( PURPLE + str.charAt( i ) );
-                }
-                wait( tSpeed );
-            }
-        }
+
         //Anything else
         else {
             for ( int i = 0; i < str.length( ); i++ ) {
