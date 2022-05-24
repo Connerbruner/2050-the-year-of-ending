@@ -285,7 +285,7 @@ new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
         sPrintln( "2069 gains " + num + " exp" );
         exp1 += num;
         levelUp();
-        System.out.println(CLEAR_SCREEN);
+        System.out.println(SCREEN_CLEAR);
     }
 //boss fight
     public void bossFight ( Boss boss ) {
@@ -587,7 +587,7 @@ public int chainAttack ( int HP ) {
                 
             }
             if ( emmi.emmi_HP>1 && (attackTime > emmi.emmi_attack.speed || attackStun < ( emmi.emmi_level * 1.1 ) )) {
-                if(block==1 && (attackStun-( emmi.emmi_level * 1.1 ))>0)
+                if(block>=1 && (attackStun-( emmi.emmi_level * 1.1 ))>0)
                 {
                     block-=(attackStun-( emmi.emmi_level * 1.1 ))/10;
                 }
@@ -620,7 +620,11 @@ public int chainAttack ( int HP ) {
 
             }
             if ( attackTime > emmi.emmi_attack.speed || attackStun < 10 ) {
-                HP2069 -= emmi.emmi_attack.attack( );
+                if(block>=1 && (attackStun-( emmi.emmi_level * 1.1 ))>0)
+                {
+                    block-=(attackStun-( emmi.emmi_level * 1.1 ))/10;
+                }
+                HP2069 -= emmi.emmi_attack.attack( block );
             }
             else if ( join2051 && ( emmi.emmi_HPM / 3 ) < emmi.emmi_HP ) {
                 emmi.emmi_HP -= chainAttack( emmi.emmi_HP );
