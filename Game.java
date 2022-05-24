@@ -11,6 +11,7 @@ class Game extends Tools {
     int       stars          = 0;
     int speed=0; 
     int stun=0;
+    int login=0;
     // Array vars (placed in Save.txt)
     int       missionNum     = 10;
     int       HPmax          = 50;
@@ -226,6 +227,7 @@ new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
             {
                 
             }
+            
             save();
 //edits txt
 
@@ -234,9 +236,10 @@ new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
     }
     public void save()
     {
-                Object[] arrList = new Object[] {
+        String time = System.currentTimeMillis()/3600000+"";        
+        Object[] arrList = new Object[] {
                     missionNum , HPmax , level2069 , levelR1 , exp1 , aqua.attackTier , lasershot.attackTier ,
-                    cureTier , ember.attackTier , maxHit , join2048 , join2051 , cupsUnlock
+                    cureTier , ember.attackTier , maxHit , join2048 , join2051 , cupsUnlock, time
             };
         Edit( "Save.txt" , arrList );
         System.gc( );
@@ -802,9 +805,11 @@ public int chainAttack ( int HP ) {
                 if ( s == 11 ) {
                     join2051 = Boolean.parseBoolean( Save[ s ].toString( ) );
                 }
-
-                if ( s == 13 ) {
+                if ( s == 12 ) {
                     cupsUnlock = Boolean.parseBoolean( Save[ s ].toString( ) );
+                }
+                if ( s == 13 ) {
+                    login = val;
                 }
             }
         }

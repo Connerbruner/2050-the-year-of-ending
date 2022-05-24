@@ -42,6 +42,18 @@ class Main {
         tools.wait(1000);
         System.out.println(tools.SCREEN_CLEAR);
         System.out.flush();
+        double passedTime = (double)(System.currentTimeMillis()/3600000)-game.login;
+        if(passedTime>0)
+        {
+            int total = (int)(passedTime*game.missionNum*2);
+            tools.sPrintln("Last login was "+passedTime+" Hours ago Earned: "+total+" exp");
+            game.exp1+=total;
+            game.save();
+            if(tools.choice("Are you a part of the discord server? "))
+            {
+                tools.sPrintln("Screen shot for "+total+"C");
+            }
+        }
         game.game( );
 
 

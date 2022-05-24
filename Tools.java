@@ -60,7 +60,7 @@ class Tools {
             FileReader fileRead = new FileReader( txt );
             BufferedReader reader = new BufferedReader( fileRead );
             int i=0;
-            Object[] arr = new Object[ 13 ];
+            Object[] arr = new Object[ 14 ];
 
             for ( int r = 0; r < arr.length; r++ ) {
                 Object var = reader.readLine( );
