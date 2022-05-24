@@ -36,25 +36,28 @@ class Game extends Tools {
     //attacks and attack[]
     
     //bill gates
-    Attack    triSlash       = new Attack( "Bill Gates" , "TRIPLE SLASH" , 10 , 12 , 15 );
-    Attack    ultraSlash     = new Attack( "Bill Gates" , "ULTRA SLASH" , 7 , 15 , 20 );
-    Attack    laserBlast     = new Attack( "Bill Gates" , "LASER BLAST" , 5 , 20 , 30 );
-    Attack[]  attackGates    = { triSlash , ultraSlash , laserBlast };
+    Attack[]  attackGates    = { 
+                                new Attack( "Bill Gates" , "TRIPLE SLASH" , 10 , 12 , 15 ),
+                                new Attack( "Bill Gates" , "ULTRA SLASH" , 7 , 15 , 20 ),
+                                new Attack( "Bill Gates" , "LASER BLAST" , 5 , 20 , 30 )
+                               };
     //Elon musk
-    Attack    spear          = new Attack( "Elon musk" , "SPEAR RUSH" , 5 , 20 , 10 );
-    Attack    revenge        = new Attack( "Elon musk" , "REVENGE OF THE SPEAR" , 12 , 10 , 20 );
-    Attack    powerful       = new Attack( "Elon musk" , "ULTRA SPEAR" , 1 , 30 , 20 );
-    Attack[]  attacksElon    = { spear , powerful , revenge };
+    Attack[]  attacksElon    = {
+     new Attack( "Elon musk" , "SPEAR RUSH" , 5 , 20 , 10 ),
+new Attack( "Elon musk" , "REVENGE OF THE SPEAR" , 12 , 10 , 20 ),
+new Attack( "Elon musk" , "ULTRA SPEAR" , 1 , 30 , 20 )
+};
     //jeff bezos
-    Attack    roomba         = new Attack( "Jeff bezos" , "ROOMBA INVASION" , 7 , 15 , 25 );
-    Attack    mech           = new Attack( "Jeff bezos" , "MECH CANNON" , 5 , 20 , 30 );
-    Attack    laser          = new Attack( "Jeff bezos" , "DUAL LASER" , 12 , 20 , 15 );
-    Attack[]  attacksJeff    = { roomba , mech , laser };
+    Attack[]  attacksJeff    = {
+    new Attack( "Jeff bezos" , "ROOMBA INVASION" , 7 , 15 , 25 ),
+    new Attack( "Jeff bezos" , "MECH CANNON" , 5 , 20 , 30 ),
+  new Attack( "Jeff bezos" , "DUAL LASER" , 12 , 20 , 15 ) };
     //Mark Zuckerberg
-    Attack    finalSlash     = new Attack( "Mark Zuckerberg" , "FINAL SLASH" , 1 , 100 , 30 );
-    Attack    dualHit        = new Attack( "Mark Zuckerberg" , "DUAL SLASH" , 25 , 50 , 15 );
-    Attack    zero           = new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 );
-    Attack[]  attacksMark    = { finalSlash , dualHit , zero };
+    Attack[]  attacksMark    = { 
+new Attack( "Mark Zuckerberg" , "FINAL SLASH" , 1 , 100 , 30 ),
+new Attack( "Mark Zuckerberg" , "DUAL SLASH" , 25 , 50 , 15 ),
+new Attack( "Mark Zuckerberg" , "ZERO SLASH" , 5 , 10 , 1 )
+};
     Phase mark = new Phase(attacksMark,1000,"Mark Zuckerberg");
     
     //Phases and Phase[]
@@ -634,12 +637,14 @@ public int chainAttack ( int HP ) {
             
             while ( pull_num > 0 ) {
                 int[] odds = new int[] { 1 , 1 , 1 , 1 , 2 , 2 , 2 , 3 , 3 , 3 , 4 , 4 , 5 , 6 , 7 };
-                int   tier = odds[ random( 0 , odds.length - 1 ) ];
+                int tier = odds[ random( 0 , odds.length - 1 ) ];
                 if ( tier == 1 ) {
                     HPmax += 2;
                     sPrintln( "2069's max Hp increased by 2" );
                 }
-                else if ( ( tier == 2 ) || ( tier == 3 ) || ( tier == 4 ) || ( tier == 5 ) ) num = random( 1 , 4 );
+                else if ( tier > 6 ) 
+                {
+                num = random( 1 , 4 );
                 //Ember level up
                 if ( num == 4 ) {
                     if ( tier > ember.attackTier ) {
@@ -647,15 +652,15 @@ public int chainAttack ( int HP ) {
                         sPrintln( ember.attackTier + " --> " + tier );
                         ember.setAttackTier( tier );
                     }
+                }
                     // Cure level up
                     if ( num == 3 ) {
                         if ( tier > cureTier ) {
                             sPrintln( "Cure leveled up" );
                             sPrintln( cureTier + " -->" + tier );
                             cureTier = tier;
-                        }
-                        
                     }
+                        
                 }
                 //aqua level up
                 if ( num == 1 ) {
@@ -674,11 +679,12 @@ public int chainAttack ( int HP ) {
                         
                     }
                 }
-                if ( tier == 6 ) {
+                }
+                else if ( tier == 6 ) {
                     maxHit += 1;
                     sPrintln( "The power of supporting members increased by 1" );
                 }
-                if ( tier == 7 ) {
+                else if ( tier == 7 ) {
                     maxHit += 2;
                     sPrintln( "The power of supporting members increased by 1" );
                 }
