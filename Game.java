@@ -22,15 +22,14 @@ class Game extends Tools {
     int exp1 = 0;
     int levelR1 = 20;
     int maxHit = 5;
-    boolean join2051 = false;
-    boolean join2048 = false;
+    boolean is2051joined = false;
+    boolean is2048joined = false;
     boolean cupsUnlock = false;
     //misc
     int num = 0;
     //obj
     ///dungeons
-    Dungeon subway = new Dungeon("Underground subway", 20);
-    Dungeon local6_11 = new Dungeon("Rubble filled 6-11", 10);
+    Dungeon subway = new Dungeon("Underground subway", 20);Dungeon local6_11 = new Dungeon("Rubble filled 6-11", 10);
     Dungeon factory = new Dungeon("Run down Factory", 30);
     Dungeon city = new Dungeon("Rubble filled City", 35);
     Dungeon highway = new Dungeon("Highway 101", 30);
@@ -105,7 +104,7 @@ class Game extends Tools {
             System.out.println();
 //mission 1
             if (choice == 1) {
-                sPrintln("Mission 1: The Awakening of  The Revolution");
+                sPrintln("Mission 1: The Awakening of The Revolution");
 
                 dungeon(subway);
                 if (stars > 10) {
@@ -196,7 +195,7 @@ class Game extends Tools {
             }
 //Mission 10
             if ((missionNum >= 10) && (choice == 10)) {
-                sPrintln("mission 10: 2 Sides Of The Same Coin");
+                sPrintln("Mission 10: 2 Sides Of The Same Coin");
                 bossFight(Zuckerberg);
                 missionComplete(10);
             }
@@ -206,7 +205,7 @@ class Game extends Tools {
                 pull();
             }
             if (choice == 11 && cupsUnlock) {
-
+                //to be implemented
             }
             if (choice == 12) {
                 sPrint("ScreenShot for "+C+"C");
@@ -222,7 +221,7 @@ class Game extends Tools {
 
     public void save() {
         String time = System.currentTimeMillis() / 3600000 + "";
-        Object[] arrList = new Object[]{missionNum, HPmax, level2069, levelR1, exp1, aqua.attackTier, lasershot.attackTier, cureTier, ember.attackTier, maxHit, join2048, join2051, cupsUnlock, time};
+        Object[] arrList = new Object[]{missionNum, HPmax, level2069, levelR1, exp1, aqua.attackTier, lasershot.attackTier, cureTier, ember.attackTier, maxHit, is2048joined, is2051joined, cupsUnlock, time};
         Edit("Save.txt", arrList);
         System.gc();
     }
@@ -408,6 +407,7 @@ class Game extends Tools {
 
     /**
      *
+     * @param power
      */
     //cure method
     public void cure(double power) {
@@ -462,7 +462,7 @@ class Game extends Tools {
         total += i * (maxHit / 2);
         sPrintln("2077 Deals " + (i * (maxHit / 2)) + " Damage");
 
-        if (join2048) {
+        if (is2048joined) {
             sPrintln("2048's turn");
             num = random(1, 2);
             if (num == 1) {
@@ -477,7 +477,7 @@ class Game extends Tools {
 
             }
         }
-        if (join2051) {
+        if (is2051joined) {
             if (choice("2051: need some healing? ")) {
                 num = random(-10, 20);
                 sPrintln("2069 heals " + num + " damage");
@@ -528,6 +528,7 @@ class Game extends Tools {
     }
 
     //fight enemies
+
     public void battle() {
         num = level2069;
         if (num > 8) {
@@ -557,7 +558,7 @@ class Game extends Tools {
                 }
                 HP2069 -= emmi.emmi_attack.attack(block);
 
-            } else if (join2051 && (emmi.emmi_HPM / 3) < emmi.emmi_HP) {
+            } else if (is2051joined && (emmi.emmi_HPM / 3) < emmi.emmi_HP) {
                 emmi.emmi_HP -= chainAttack(emmi.emmi_HP);
             }
             restart();
@@ -589,7 +590,7 @@ class Game extends Tools {
                     block -= (attackStun - (emmi.emmi_num + 5)) / 10;
                 }
                 HP2069 -= emmi.emmi_attack.attack(block);
-            } else if (join2051 && (emmi.emmi_HPM / 3) < emmi.emmi_HP) {
+            } else if (is2051joined && (emmi.emmi_HPM / 3) < emmi.emmi_HP) {
                 emmi.emmi_HP -= chainAttack(emmi.emmi_HP);
             }
             restart();
@@ -691,18 +692,18 @@ class Game extends Tools {
     //Game Over
     public void restart() {
         if (HP2069 < 0) {
-            if (!join2048 && random(missionNum*2, 30) == 30) {
+            if (!is2048joined && random(missionNum*2, 30) == 30) {
                 HP2069 = HPmax;
                 sPrintln("2048: can't handle things on your own");
                 sPrintln("2069: 2048!");
                 sPrintln("*2048 has joined the team*");
-                join2048 = true;
-            } else if (!join2051 && random(missionNum*2, 30) == 30) {
+                is2048joined = true;
+            } else if (!is2051joined && random(missionNum*2, 30) == 30) {
                 HP2069 = HPmax;
                 sPrintln("2051: Playtime is over");
                 sPrintln("2069: 2051!");
                 sPrintln("*2051 has joined the team*");
-                join2051 = true;
+                is2051joined = true;
             } else {
                 sPrintln("The world around you begins to fade to black");
                 sPrintln("???: Welcome back to this world of nothingness ");
@@ -767,10 +768,10 @@ class Game extends Tools {
                     maxHit = val;
                 }
                 if (s == 10) {
-                    join2048 = Boolean.parseBoolean(Save[s].toString());
+                    is2048joined = Boolean.parseBoolean(Save[s].toString());
                 }
                 if (s == 11) {
-                    join2051 = Boolean.parseBoolean(Save[s].toString());
+                    is2051joined = Boolean.parseBoolean(Save[s].toString());
                 }
                 if (s == 12) {
                     cupsUnlock = Boolean.parseBoolean(Save[s].toString());
