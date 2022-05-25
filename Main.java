@@ -4,7 +4,6 @@ class Main {
 
     public static void main ( String[] args ) {
         
-        System.out.println( );
         Tools tools = new Tools( );
         Game game = new Game( );
         Scanner scanner = new Scanner( System.in );

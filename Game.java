@@ -261,8 +261,6 @@ class Game extends Tools {
         if (!boss.differntPhases.isEmpty()) {
             HP2069 = HPmax;
             while (!boss.differntPhases.isEmpty()) {
-
-
                 Phase current = boss.differntPhases.get(0);
                 sPrint(current.name + "'s Health " + current.getHP());
                 sPrintln("2069's Health " + HP2069);
@@ -274,10 +272,11 @@ class Game extends Tools {
                     current.loseHP(choseAttack(1));
                     current.loseHP(attackSupport());
                 }
-                if (attackStun < 15 || attackTime > bossAttack.speed) {
-                    if (current.HP > 0) {
-                        HP2069 -= bossAttack.attack();
-                    }
+                if (current.HP > 1 && (attackTime > bossAttack.speed || attackStun < (emmi.emmi_num+5))) {
+                if ((attackStun - (emmi.emmi_num + 5)) > 0) {
+                    block -= (attackStun - (emmi.emmi_num + 5)) / 10;
+                }
+                HP2069 -= emmi.emmi_attack.attack(block);
 
                 }
                 boss.checkArray();
@@ -539,8 +538,8 @@ class Game extends Tools {
                     emmi.emmi_HP -= attackSupport();
                 }
             }
-            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_level * 1.1))) {
-                if (block >= 1 && (attackStun - (emmi.emmi_num + 5)) > 0) {
+            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num+5))) {
+                if ((attackStun - (emmi.emmi_num + 5)) > 0) {
                     block -= (attackStun - (emmi.emmi_num + 5)) / 10;
                 }
                 HP2069 -= emmi.emmi_attack.attack(block);
@@ -566,12 +565,14 @@ class Game extends Tools {
             attack();
             if (attackTime < emmi.emmi_attack.speed) {
                 emmi.emmi_HP -= choseAttack(1);
-                emmi.emmi_HP -= attackSupport();
+                if (attackNum != 3) {
+                    emmi.emmi_HP -= attackSupport();
+                }
 
             }
-            if (attackTime > emmi.emmi_attack.speed || attackStun < 10) {
-                if (block >= 1 && (attackStun - (emmi.emmi_level * 1.1)) > 0) {
-                    block -= (attackStun - (emmi.emmi_level * 1.1)) / 10;
+            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num+5))) {
+                if ((attackStun - (emmi.emmi_num + 5)) > 0) {
+                    block -= (attackStun - (emmi.emmi_num + 5)) / 10;
                 }
                 HP2069 -= emmi.emmi_attack.attack(block);
             } else if (join2051 && (emmi.emmi_HPM / 3) < emmi.emmi_HP) {
@@ -648,7 +649,6 @@ class Game extends Tools {
                     maxHit += 2;
                     sPrintln("The power of supporting members increased by 1");
                 }
-                sPrintln("roll complete");
                 pull_num -= 1;
                 save();
             }
@@ -659,13 +659,13 @@ class Game extends Tools {
     }
 
     public void levelUp() {
-        if (exp1 >= levelR1) {
+        while (exp1 >= levelR1) {
             sPrintln("LEVEL UP");
             sPrintln(level2069 + " --> " + (level2069 + 1));
             sPrintln("2069: max health +1");
             HPmax++;
             level2069++;
-            levelR1 = exp1 + 20 * (level2069 * level2069) / 2;
+            levelR1 = 20 * (level2069 * level2069) / 2;
             sPrintln("2069 has " + (levelR1 - exp1) + " exp till leveling up");
         }
 
@@ -675,13 +675,13 @@ class Game extends Tools {
     //Game Over
     public void restart() {
         if (HP2069 < 0) {
-            if (!join2048 && random(missionNum, 30) == 30) {
+            if (!join2048 && random(missionNum*2, 30) == 30) {
                 HP2069 = HPmax;
                 sPrintln("2048: can't handle things on your own");
                 sPrintln("2069: 2048!");
                 sPrintln("*2048 has joined the team*");
                 join2048 = true;
-            } else if (!join2051 && random(missionNum, 30) == 30) {
+            } else if (!join2051 && random(missionNum*2, 30) == 30) {
                 HP2069 = HPmax;
                 sPrintln("2051: Playtime is over");
                 sPrintln("2069: 2051!");
