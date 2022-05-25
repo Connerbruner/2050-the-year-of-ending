@@ -1,6 +1,11 @@
 # MISSION 2051
 HOW TO PLAY:
 
+### Battling enemies
+
+
+
+
 # DOCS:
 ## GENERAL methods:
 Void - sPrint(String) - Prints using a wait in miliseconds in between characters, set at the start of the game. Modified by cheat codes in tools.java
