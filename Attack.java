@@ -74,7 +74,7 @@ class Attack extends Tools {
         if ( style ) {
             return stun / 2;
         } else {
-            return stun*(attackTier/4)+0.75);
+            return (int)(stun*((attackTier/4)+0.75));
         }
     }
 

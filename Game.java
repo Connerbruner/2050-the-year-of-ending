@@ -91,6 +91,7 @@ class Game extends Tools {
                 if(isDiscord)
                 {
                     sPrint("Type 12 to leave and claim C");
+                    
                 }
             }        
 
@@ -206,6 +207,10 @@ class Game extends Tools {
             }
             if (choice == 11 && cupsUnlock) {
 
+            }
+            if (choice == 12) {
+                sPrint("ScreenShot for "+C+"C");
+                run.exit(69420);
             }
 
             save();

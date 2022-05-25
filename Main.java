@@ -1,62 +1,62 @@
 import java.util.Scanner;
 
-class Main {
+class Main extends Game {
 
     public static void main ( String[] args ) {
-        
-        Tools tools = new Tools( );
-        Game game = new Game( );
+        Main main = new Main();
+        main.play();
+    }
+    public void play()
+    {
         Scanner scanner = new Scanner( System.in );
-        tools.setTSpeed( 20 );
+        setTSpeed( 20 );
         //main starts here
-        System.out.print(tools.SCREEN_CLEAR);
+        System.out.print(SCREEN_CLEAR);
         //cheat code start
-        tools.sPrint( "ENTER CHEAT CODE (or not)" );
+        sPrint( "ENTER CHEAT CODE (or not)" );
         String cheatCode;
         cheatCode = scanner.nextLine( );
         if ( cheatCode.equals( "gay" ) ) {
-            tools.isGay = true;
+            isGay = true;
         } else if (cheatCode.equals("backwards")) {
-            tools.isBackwards = true;
+            isBackwards = true;
         } else if (cheatCode.equals("Roomba")) {
-            tools.isRoomba = true;
+            isRoomba = true;
         } else if (cheatCode.equals("or not")) {
-            tools.run.exit(69420);
+            run.exit(69420);
         }
-        Tools.isDiscord = tools.choice("Are you a part of the discord server? ")
+        isDiscord = choice("Are you a part of the discord server? ");
         //cheat code end
-        tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
-        tools.sPrint( "what should the text speed be?   " );
-        tools.setTSpeed( scanner.nextInt( ) );
+        sPrintln( GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
+        sPrint( "what should the text speed be?   " );
+        setTSpeed( scanner.nextInt( ) );
         System.out.println( );
-        tools.sPrintln( Tools.RED + "This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence." );
+        sPrintln( RED + "This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence." );
         System.out.println("BEGIN LOADING IN 3");
-        tools.wait(500);
+        wait(500);
         System.out.println("BEGIN LOADING IN 2");
-        tools.wait(500);
+        wait(500);
         System.out.println("BEGIN LOADING IN 1");
-        tools.wait(500);
-        game.grabSave( );
-        tools.loading( );
+        wait(500);
+        grabSave( );
+        loading( );
         System.out.println("LOAD COMPLETE");
-        tools.wait(1000);
-        System.out.println(tools.SCREEN_CLEAR);
+        wait(1000);
+        System.out.println(SCREEN_CLEAR);
         System.out.flush();
-        double passedTime = (double)(System.currentTimeMillis()/3600000)-game.login;
+        double passedTime = (double)(System.currentTimeMillis()/3600000)-login;
         if(passedTime>0)
         {
-            int total = (int)(passedTime*game.missionNum*2);
-            tools.sPrintln("Last login was "+passedTime+" Hours ago Earned: "+total+" exp");
-            game.exp1+=total;
-            game.save();
-            if(Tools.isDiscord)
+            int total = (int)(passedTime*missionNum*2);
+            sPrintln("Last login was "+passedTime+" Hours ago Earned: "+total+" exp");
+            exp1+=total;
+            save();
+            if(isDiscord)
             {
                 C+=total;
             }
         }
-        game.game( );
-
-
+        game( );
     }
     
 }

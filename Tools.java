@@ -21,7 +21,6 @@ class Tools {
     public boolean isGay = false;
     public boolean isBackwards = false;
     public boolean isDiscord = false;
-
     public boolean isRoomba = false;
     //end of cheat codes
     int tSpeed;
@@ -209,12 +208,14 @@ class Tools {
         boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
         return ! yesSkip;
     }
+    
     public boolean choice (String str ) {
         sPrint( str );
         String skip = scanner.nextLine( );
         boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
-        return ! yesSkip;
+        return yesSkip;
     }
+    
     public void loading()
     {
           int i=176;
