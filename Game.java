@@ -4,6 +4,7 @@ import java.util.Scanner;
 class Game extends Tools {
     int HP2069;
     int attackNum = 0;
+    int C=0;
     boolean attackType;
     int lastAttack = 0;
     int attackTime = 0;
@@ -87,7 +88,11 @@ class Game extends Tools {
             //Tells you how to roll the gotcha
             if (missionNum > 1) {
                 sPrint("Type 0 to trade exp for new moves");
-            }
+                if(isDiscord)
+                {
+                    sPrint("Type 12 to leave and claim C");
+                }
+            }        
 
             int choice = scanner.nextInt();
             if (choice < missionNum && choice > 0) {
@@ -251,6 +256,7 @@ class Game extends Tools {
         sPrintln("REWARDS:");
         sPrintln("2069 gains " + num + " exp");
         exp1 += num;
+        C += num;
         levelUp();
         System.out.println(SCREEN_CLEAR);
     }
@@ -284,6 +290,7 @@ class Game extends Tools {
 
             }
             exp1 += 100;
+            C += 100;
             levelUp();
         }
 
@@ -510,6 +517,7 @@ class Game extends Tools {
         if (overkill) {
             exp1 += Math.abs(HP - damage);
             sPrintln("BONUS EXP: " + Math.abs(HP - damage));
+            C += Math.abs(HP - damage);
         }
         return damage;
     }
@@ -551,6 +559,7 @@ class Game extends Tools {
         }
         exp1 += (emmi.emmi_level * emmi.emmi_num) * 2;
         sPrintln("You gain " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
+        C += (emmi.emmi_level * emmi.emmi_num) * 2;
         emmi = null;
         levelUp();
         save();
@@ -582,6 +591,7 @@ class Game extends Tools {
         }
         exp1 += (emmi.emmi_level * emmi.emmi_num) * 2;
         sPrintln("You gain " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
+        C += (emmi.emmi_level * emmi.emmi_num) * 2;
         levelUp();
         save();
     }
@@ -667,6 +677,7 @@ class Game extends Tools {
             level2069++;
             levelR1 = 20 * (level2069 * level2069) / 2;
             sPrintln("2069 has " + (levelR1 - exp1) + " exp till leveling up");
+            C += 30;
         }
 
 

@@ -20,6 +20,7 @@ class Tools {
     //start of cheat codes
     public boolean isGay = false;
     public boolean isBackwards = false;
+    public boolean isDiscord = false;
 
     public boolean isRoomba = false;
     //end of cheat codes

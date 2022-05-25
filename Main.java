@@ -23,6 +23,7 @@ class Main {
         } else if (cheatCode.equals("or not")) {
             tools.run.exit(69420);
         }
+        Tools.isDiscord = tools.choice("Are you a part of the discord server? ")
         //cheat code end
         tools.sPrintln( Tools.GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
         tools.sPrint( "what should the text speed be?   " );
@@ -48,9 +49,9 @@ class Main {
             tools.sPrintln("Last login was "+passedTime+" Hours ago Earned: "+total+" exp");
             game.exp1+=total;
             game.save();
-            if(tools.choice("Are you a part of the discord server? "))
+            if(Tools.isDiscord)
             {
-                tools.sPrintln("Screen shot for "+total+"C");
+                C+=total;
             }
         }
         game.game( );
