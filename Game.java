@@ -272,11 +272,11 @@ class Game extends Tools {
                     current.loseHP(choseAttack(1));
                     current.loseHP(attackSupport());
                 }
-                if (current.HP > 1 && (attackTime > bossAttack.speed || attackStun < (emmi.emmi_num+5))) {
-                if ((attackStun - (emmi.emmi_num + 5)) > 0) {
-                    block -= (attackStun - (emmi.emmi_num + 5)) / 10;
+                if (current.HP > 1 && (attackTime > bossAttack.speed || attackStun < 10)) {
+                if ((attackStun - 10) > 0) {
+                    block -= (attackStun - 10) / 10;
                 }
-                HP2069 -= emmi.emmi_attack.attack(block);
+                HP2069 -= bossAttack.attack(block);
 
                 }
                 boss.checkArray();
