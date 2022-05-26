@@ -2,6 +2,9 @@ import java.util.Scanner;
 
 //Main class
 class Game extends Tools {
+
+    Object[] Save = null;
+    String savePath = null;
     int HP2069;
     int attackNum = 0;
     int C=0;
@@ -222,7 +225,9 @@ class Game extends Tools {
     public void save() {
         String time = System.currentTimeMillis() / 3600000 + "";
         Object[] arrList = new Object[]{missionNum, HPmax, level2069, levelR1, exp1, aqua.attackTier, lasershot.attackTier, cureTier, ember.attackTier, maxHit, is2048joined, is2051joined, cupsUnlock, time};
-        Edit("Save.txt", arrList);
+        Edit(savePath, arrList);
+        Object[] templateTxt = new Object[]{1,50,1,20,0,1,1,1,1,5,false,false,false,time};
+        Edit("SaveTemplate.txt", templateTxt);
         System.gc();
     }
 
@@ -727,8 +732,28 @@ class Game extends Tools {
 
     //uses READ to update save
     public void grabSave() {
-        Object[] Save = Read("Save.txt");
 
+
+        sPrint("Which save file would you like to access? 1-3");
+        boolean isSaveSelected = false;
+
+        while (!isSaveSelected) {
+            int saveFile = scanner.nextInt();
+
+            if (saveFile == 1) {
+                Save = Read("Save.txt");
+                savePath = "Save.txt";
+                isSaveSelected = true;
+            } else if (saveFile == 2) {
+                Save = Read("Save1.txt");
+                savePath = "Save1.txt";
+                isSaveSelected = true;
+            } else if (saveFile == 3) {
+                Save = Read("Save2.txt");
+                savePath = "Save2.txt";
+                isSaveSelected = true;
+            }
+        }
         for (int s = 0; s < Save.length; s++) {
 
             if (Save[s] != null) {

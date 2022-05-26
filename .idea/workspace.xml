@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e05d7108-5656-4894-ad3c-0429e0ec9f67" name="Changes" comment="Combat + format">
-      <change afterPath="$PROJECT_DIR$/spite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Save1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Save2.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/SaveTemplate.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
