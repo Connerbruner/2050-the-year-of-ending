@@ -11,8 +11,6 @@ class Dungeon extends Tools {
     /**
      * @param name
      * @param length
-     * @param stars
-     * @param starUnlock
      */
     public Dungeon(String name, int length) {
 

@@ -742,8 +742,6 @@ class Game extends Tools {
             int saveOverwrite = scanner.nextInt();
             if (saveOverwrite == 1) {
                  Edit("Save.txt",Read("SaveTemplate.txt"));
-
-            
             } else if (saveOverwrite == 2) {
                 Edit("Save1.txt",Read("SaveTemplate.txt"));
             } else if (saveOverwrite == 3) {
@@ -764,8 +762,17 @@ class Game extends Tools {
                 savePath = "Save.txt";
                 isSaveSelected = true;
             } else if (saveFile == 2) {
-                Save = Read("Save1.txt");
-                savePath = "Save1.txt";
+                //special procedure for the dev file
+                Edit("tempsave.txt", Read("Save1.txt"));
+                sPrint("This is a developer test file, which requires a pin to access, please input the pin");
+                int pin = scanner.nextInt();
+                //attempt at decrypting
+                Edit("tempsave.txt", decrypt(Read("Tempsave.txt"), "Tempsave.txt", pin ));
+                //checksum
+                Object[] checksum = Read("tempsave.txt");
+                if(strIsInt(checksum[14].toString())){
+
+                }
                 isSaveSelected = true;
             } else if (saveFile == 3) {
                 Save = Read("Save2.txt");

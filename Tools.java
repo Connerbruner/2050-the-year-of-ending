@@ -1,10 +1,8 @@
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.Scanner;
-import java.time.*;
 
 class Tools {
-    Runtime run = Runtime.getRuntime();
-    LocalDateTime localDate = LocalDateTime.now();
     //the Colors of gay
     public static final String GO_BACK = "\"\\u001B[A\"";
     public static final String SCREEN_CLEAR = "\033[H\033[2J";
@@ -22,30 +20,32 @@ class Tools {
     public boolean isBackwards = false;
     public boolean isDiscord = false;
     public boolean isRoomba = false;
+    Runtime run = Runtime.getRuntime();
+    LocalDateTime localDate = LocalDateTime.now();
     //end of cheat codes
     int tSpeed;
-    String[] colors = new String[]{ RED , GREEN , BLUE , PURPLE , CYAN };
-    Scanner scanner = new Scanner( System.in );
+    String[] colors = new String[]{RED, GREEN, BLUE, PURPLE, CYAN};
+    Scanner scanner = new Scanner(System.in);
 
-    public static void Edit ( String filePath , Object[] arr ) {
-        File fileToBeModified = new File( filePath );
+    public static void Edit(String filePath, Object[] arr) {
+        File fileToBeModified = new File(filePath);
         FileWriter writer = null;
         try {
-            writer = new FileWriter( fileToBeModified );
-            for ( int i = 0; i < arr.length; i++ ) {
-                String print = arr[ i ].toString( ) + "\n";
-                writer.write( print );
+            writer = new FileWriter(fileToBeModified);
+            for (int i = 0; i < arr.length; i++) {
+                String print = arr[i].toString() + "\n";
+                writer.write(print);
             }
 
-        } catch ( IOException e ) {
-            e.printStackTrace( );
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             try {
                 //Closing the resources
                 assert writer != null;
-                writer.close( );
-            } catch ( IOException e ) {
-                e.printStackTrace( );
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -53,136 +53,135 @@ class Tools {
     /**
      * @return array of saved vars
      */
-    public static Object[] Read ( String file ) {
+    public static Object[] Read(String file) {
 
         try {
-            File txt = new File( file );
-            FileReader fileRead = new FileReader( txt );
-            BufferedReader reader = new BufferedReader( fileRead );
-            int i=0;
-            Object[] arr = new Object[ 14 ];
+            File txt = new File(file);
+            FileReader fileRead = new FileReader(txt);
+            BufferedReader reader = new BufferedReader(fileRead);
+            int i = 0;
+            Object[] arr = new Object[14];
 
-            for ( int r = 0; r < arr.length; r++ ) {
-                Object var = reader.readLine( );
-                arr[ r ] = var;
+            for (int r = 0; r < arr.length; r++) {
+                Object var = reader.readLine();
+                arr[r] = var;
             }
-            reader.close( );
-            System.out.println( "READ DONE" );
+            reader.close();
+            System.out.println("READ DONE");
             return arr;
-        } catch ( IOException e ) {
-            e.printStackTrace( );
-            return new Object[ 0 ];
+        } catch (IOException e) {
+            e.printStackTrace();
+            return new Object[0];
         }
 
 
     }
 
     /**
-     *
      * @param num
      */
-    public void setTSpeed ( int num ) {
+    public void setTSpeed(int num) {
         tSpeed = num;
     }
 
     /**
      * @return RANDOM NUMBER between low and high iirc LETS GO
      */
-    public int random ( int low , int high ) {
+    public int random(int low, int high) {
         int range = high - low + 1;
-        return ( int ) ( Math.random( ) * range ) + low;
+        return (int) (Math.random() * range) + low;
     }
 
     /**
      *
      */
     //print method
-    public void sPrintln ( String str ) {
+    public void sPrintln(String str) {
         //if 2069 is talking BLUE
-        if ( isGay ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                System.out.print( str.charAt( i ) );
-                System.out.print( colors[ i % colors.length ] );
-                wait( tSpeed );
+        if (isGay) {
+            for (int i = 0; i < str.length(); i++) {
+                System.out.print(str.charAt(i));
+                System.out.print(colors[i % colors.length]);
+                wait(tSpeed);
             }
-        }else if (isBackwards) {
-            for (int i = str.length()-1; i > 0; i--){
+        } else if (isBackwards) {
+            for (int i = str.length() - 1; i > 0; i--) {
                 System.out.print(str.charAt(i));
                 wait(tSpeed);
             }
 
-        }else if ( str.contains( "2069" ) ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                System.out.print( BLUE + str.charAt( i ) );
-                wait( tSpeed );
+        } else if (str.contains("2069")) {
+            for (int i = 0; i < str.length(); i++) {
+                System.out.print(BLUE + str.charAt(i));
+                wait(tSpeed);
             }
         }
 
         //if 2077 is talking CYAN
-        else if ( str.contains( "2077" ) ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                System.out.print( CYAN + str.charAt( i ) );
-                wait( tSpeed );
+        else if (str.contains("2077")) {
+            for (int i = 0; i < str.length(); i++) {
+                System.out.print(CYAN + str.charAt(i));
+                wait(tSpeed);
             }
 
         }
         //Tech giant talking RED
-        else if ( str.contains( "Mark Zuckerberg" ) || str.contains( "Elon musk" ) || str.contains( "Bill Gates" ) || str.contains( "Jeff bezos" ) ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                System.out.print( RED + str.charAt( i ) );
-                wait( tSpeed );
+        else if (str.contains("Mark Zuckerberg") || str.contains("Elon musk") || str.contains("Bill Gates") || str.contains("Jeff bezos")) {
+            for (int i = 0; i < str.length(); i++) {
+                System.out.print(RED + str.charAt(i));
+                wait(tSpeed);
             }
         }
         //??? talks
-        else if ( str.contains( "???" ) ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                if ( random( 0 , 15 ) == 10 ) {
-                    System.out.print( ( char ) ( random( 0 , 256 ) ) );
+        else if (str.contains("???")) {
+            for (int i = 0; i < str.length(); i++) {
+                if (random(0, 15) == 10) {
+                    System.out.print((char) (random(0, 256)));
                 } else {
-                    System.out.print( PURPLE + str.charAt( i ) );
+                    System.out.print(PURPLE + str.charAt(i));
                 }
-                wait( tSpeed );
+                wait(tSpeed);
             }
         }
         //if sounds then
-        else if ( str.contains( "*" ) ) {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                System.out.print( GREEN + str.charAt( i ) );
-                wait( tSpeed );
+        else if (str.contains("*")) {
+            for (int i = 0; i < str.length(); i++) {
+                System.out.print(GREEN + str.charAt(i));
+                wait(tSpeed);
             }
         }
 
         //Anything else
         else {
-            for ( int i = 0; i < str.length( ); i++ ) {
-                System.out.print( str.charAt( i ) );
-                wait( tSpeed );
+            for (int i = 0; i < str.length(); i++) {
+                System.out.print(str.charAt(i));
+                wait(tSpeed);
             }
         }
-        System.out.println( );
-        System.out.println( RESET );
-        System.out.println( "> enter <" );
-        scanner.nextLine( );
+        System.out.println();
+        System.out.println(RESET);
+        System.out.println("> enter <");
+        scanner.nextLine();
     }
 
     /**
      *
      */
-    public void wait ( int time ) {
+    public void wait(int time) {
 
-        long startTime = System.currentTimeMillis( );
-        while ( startTime + time > System.currentTimeMillis( ) ) ;
+        long startTime = System.currentTimeMillis();
+        while (startTime + time > System.currentTimeMillis()) ;
     }
 
     /**
      *
      */
-    public void sPrint ( String str ) {
-        for ( int i = 0; i < str.length( ); i++ ) {
-            System.out.print( str.charAt( i ) );
-            wait( tSpeed );
+    public void sPrint(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            System.out.print(str.charAt(i));
+            wait(tSpeed);
         }
-        System.out.println( );
+        System.out.println();
 
 
     }
@@ -190,11 +189,11 @@ class Tools {
     /**
      * @return Is that string castable
      */
-    public boolean strIsInt ( String string ) {
+    public boolean strIsInt(String string) {
         try {
-            int value = Integer.parseInt( string );
+            int value = Integer.parseInt(string);
             return true;
-        } catch ( NumberFormatException e ) {
+        } catch (NumberFormatException e) {
             return false;
         }
     }
@@ -202,63 +201,78 @@ class Tools {
     /**
      * Returns false on "Yes, yes, y, or Y"
      */
-    public boolean skip ( ) {
-        sPrint( "Skip cutscene?   " );
-        String skip = scanner.nextLine( );
-        boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
-        return ! yesSkip;
+    public boolean skip() {
+        sPrint("Skip cutscene?   ");
+        String skip = scanner.nextLine();
+        boolean yesSkip = skip.equals("yes") || skip.equals("Yes") || skip.equals("Y") || skip.equals("y");
+        return !yesSkip;
     }
-    
-    public boolean choice (String str ) {
-        sPrint( str );
-        String skip = scanner.nextLine( );
-        boolean yesSkip = skip.equals( "yes" ) || skip.equals( "Yes" ) || skip.equals( "Y" ) || skip.equals( "y" );
+
+    public boolean choice(String str) {
+        sPrint(str);
+        String skip = scanner.nextLine();
+        boolean yesSkip = skip.equals("yes") || skip.equals("Yes") || skip.equals("Y") || skip.equals("y");
         return yesSkip;
     }
-    
-    public void loading()
-    {
-          int i=176;
-      long startTime = System.currentTimeMillis( );
-      while ( startTime + 2000 > System.currentTimeMillis( ) )
-       {
-           System.out.print((char)(i));
-           i++;
-           if(i==2000)
-           {
-               i=176;
-           }
-       }
-      System.out.println("\033[H\033[2J");
-      System.out.flush( );
 
-  }
-
-
-public long getUsedMemory() {
-    return (run.maxMemory( ) - run.freeMemory())/1073741824;
-}
-public double byteToGB(long bytes)
-{
-    return bytes/1073741824;
-}
-    public Object[] encrypt(Object[] data, String textName, int mod){
-      Object[] encryptedData = new Object[data.length];
-    String temp = "";
-    String built = "";
-    for(int i = 0; i < data.length; i++){
-       temp = data[i].toString();
-        for(int j = 0; j < temp.length(); j++){
-          Character charTemp = (char)((int)temp.charAt(j) + mod);
-          built += charTemp.toString();
+    public void loading() {
+        int i = 176;
+        long startTime = System.currentTimeMillis();
+        while (startTime + 2000 > System.currentTimeMillis()) {
+            System.out.print((char) (i));
+            i++;
+            if (i == 2000) {
+                i = 176;
+            }
         }
-      encryptedData[i] = built;
-      temp = "";
-      built = "";
+        System.out.println("\033[H\033[2J");
+        System.out.flush();
+
     }
-      return encryptedData;
 
 
-    
-  }
+    public long getUsedMemory() {
+        return (run.maxMemory() - run.freeMemory()) / 1073741824;
+    }
+
+    public double byteToGB(long bytes) {
+        return bytes / 1073741824;
+    }
+
+    public Object[] encrypt(Object[] data, String textName, int mod) {
+        Object[] encryptedData = new Object[data.length];
+        String temp = "";
+        String built = "";
+        for (int i = 0; i < data.length; i++) {
+            temp = data[i].toString();
+            for (int j = 0; j < temp.length(); j++) {
+                Character charTemp = (char) ((int) temp.charAt(j) + mod);
+                built += charTemp.toString();
+            }
+            encryptedData[i] = built;
+            temp = "";
+            built = "";
+        }
+        return encryptedData;
+
+    }
+
+    public Object[] decrypt(Object[] data, String textName, int mod) {
+        mod = -mod;
+        Object[] encryptedData = new Object[data.length];
+        String temp = "";
+        String built = "";
+        for (int i = 0; i < data.length; i++) {
+            temp = data[i].toString();
+            for (int j = 0; j < temp.length(); j++) {
+                Character charTemp = (char) ((int) temp.charAt(j) + mod);
+                built += charTemp.toString();
+            }
+            encryptedData[i] = built;
+            temp = "";
+            built = "";
+        }
+        return encryptedData;
+
+    }
 }
