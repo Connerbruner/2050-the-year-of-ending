@@ -1,16 +1,14 @@
 compile = "javac -classpath .:target/dependency/* -d . $(find . -type f -name '*.java')"
-run = ["java", "-classpath", ".:target/dependency/*", "end"]
+run = ["java", "-classpath", ".:target/dependency/*", "Main"]
 
-entrypoint = "give.java"
+entrypoint = "Main.java"
 hidden = ["**/*.class"]
-onBoot="BOOTED"
 
 [packager]
 language = "java"
 
 [packager.features]
 packageSearch = true
-guessImports = true
 
 [languages.java]
 pattern = "**/*.java"
@@ -59,4 +57,4 @@ type = "request"
 
 [debugger.interactive.launchMessage.arguments]
 classPaths = ["."]
-mainClass = "up"
+mainClass = "Main"

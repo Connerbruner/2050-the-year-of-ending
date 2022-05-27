@@ -2,7 +2,9 @@ import java.util.Scanner;
 
 //Main class
 class Game extends Tools {
-
+    
+  
+   
     Object[] Save = null;
     String savePath = null;
     int HP2069;
@@ -216,7 +218,7 @@ class Game extends Tools {
             }
 
             save();
-//edits txt
+//Edits txt
 
         }
 
@@ -624,6 +626,7 @@ class Game extends Tools {
             while (pull_num > 0) {
                 int[] odds = new int[]{1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, 7};
                 int tier = odds[random(0, odds.length - 1)];
+                sPrintln("Tier "+tier+" pull");
                 if (tier == 1) {
                     HPmax += 2;
                     sPrintln("2069's max Hp increased by 2");
@@ -732,8 +735,24 @@ class Game extends Tools {
 
     //uses READ to update save
     public void grabSave() {
+      scanner.nextLine();
+      if(choice("Would you like to overwrite a save file? (Returns the file to the start of the game)")){
+          if(choice("Are you sure?")){
+            sPrint("Which save would you like to overwrite?");
+            int saveOverwrite = scanner.nextInt();
+            if (saveOverwrite == 1) {
+                 Edit("Save.txt",Read("SaveTemplate.txt"));
 
-
+            
+            } else if (saveOverwrite == 2) {
+                Edit("Save1.txt",Read("SaveTemplate.txt"));
+            } else if (saveOverwrite == 3) {
+                Edit("Save2.txt",Read("SaveTemplate.txt"));
+          }
+        }
+    }
+              
+      
         sPrint("Which save file would you like to access? 1-3");
         boolean isSaveSelected = false;
 
@@ -810,6 +829,6 @@ class Game extends Tools {
 
     }
 
-
+  
 //don't pass this comment
 }
