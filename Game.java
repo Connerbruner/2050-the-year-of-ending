@@ -4,7 +4,7 @@ import java.util.Scanner;
 class Game extends Tools {
     
   
-   
+    int pin = 0;
     Object[] Save = null;
     String savePath = null;
     int HP2069;
@@ -227,10 +227,15 @@ class Game extends Tools {
     public void save() {
         String time = System.currentTimeMillis() / 3600000 + "";
         Object[] arrList = new Object[]{missionNum, HPmax, level2069, levelR1, exp1, aqua.attackTier, lasershot.attackTier, cureTier, ember.attackTier, maxHit, is2048joined, is2051joined, cupsUnlock, time};
-        Edit(savePath, arrList);
+        if(savePath.equals("Save1.txt")){
+          Edit("Save1.txt", encrypt(arrList, "Save1.txt", pin));
+        }else{
+          Edit(savePath, arrList);
+        }
         Object[] templateTxt = new Object[]{1,50,1,20,0,1,1,1,1,5,false,false,false,time};
         Edit("SaveTemplate.txt", templateTxt);
         System.gc();
+        
     }
 
     //fights giga mech
@@ -383,7 +388,7 @@ class Game extends Tools {
         if (attackNum == 3) {
             attackStun = 0;
         }
-        attackNum += stun;
+        attackStun += stun;
         attackTime -= speed;
         stun = 0;
         speed = 0;
@@ -594,7 +599,7 @@ class Game extends Tools {
             }
             if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num+5))) {
                 if ((attackStun - (emmi.emmi_num + 5)) > 0) {
-                    block -= (attackStun - (emmi.emmi_num + 5)) / 10;
+                    block -= (attackStun - (emmi.emmi_num + 5)) / 20;
                 }
                 HP2069 -= emmi.emmi_attack.attack(block);
             } else if (is2051joined && (emmi.emmi_HPM / 3) < emmi.emmi_HP) {
@@ -624,13 +629,14 @@ class Game extends Tools {
             num -= exp1;
 
             while (pull_num > 0) {
-                int[] odds = new int[]{1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, 7};
+                int[] odds = new int[]{1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, 7};
                 int tier = odds[random(0, odds.length - 1)];
                 sPrintln("Tier "+tier+" pull");
                 if (tier == 1) {
                     HPmax += 2;
                     sPrintln("2069's max Hp increased by 2");
-                } else if (tier > 6) {
+                } else if (tier < 6) {
+                    sPrint("One of your moves is leveling up");
                     num = random(1, 4);
                     //Ember level up
                     if (num == 4) {
@@ -736,15 +742,14 @@ class Game extends Tools {
     //uses READ to update save
     public void grabSave() {
       scanner.nextLine();
+      
       if(choice("Would you like to overwrite a save file? (Returns the file to the start of the game)")){
           if(choice("Are you sure?")){
             sPrint("Which save would you like to overwrite?");
             int saveOverwrite = scanner.nextInt();
             if (saveOverwrite == 1) {
                  Edit("Save.txt",Read("SaveTemplate.txt"));
-            } else if (saveOverwrite == 2) {
-                Edit("Save1.txt",Read("SaveTemplate.txt"));
-            } else if (saveOverwrite == 3) {
+            }else if (saveOverwrite == 3) {
                 Edit("Save2.txt",Read("SaveTemplate.txt"));
           }
         }
@@ -765,13 +770,22 @@ class Game extends Tools {
                 //special procedure for the dev file
                 Edit("tempsave.txt", Read("Save1.txt"));
                 sPrint("This is a developer test file, which requires a pin to access, please input the pin");
-                int pin = scanner.nextInt();
+                pin = scanner.nextInt();
                 //attempt at decrypting
-                Edit("tempsave.txt", decrypt(Read("Tempsave.txt"), "Tempsave.txt", pin ));
+                Edit("tempsave.txt", decrypt(Read("tempsave.txt"), "tempsave.txt", pin ));
                 //checksum
                 Object[] checksum = Read("tempsave.txt");
-                if(strIsInt(checksum[14].toString())){
-
+                if(strIsInt(checksum[13].toString())){
+                Save = Read("tempsave.txt");
+                savePath = "Save1.txt";
+                Edit("tempsave.txt", Read("SaveTemplate.txt"));
+                for(int i = 0; i < checksum.length; i++){
+                  checksum[i] = 0;
+                }
+                sPrint("Pin successfully entered");
+                }else{ //exits on bad pin
+                  sPrintln("???: You're not a dev! Don't try to access this file again <3!");
+                  System.exit(46);
                 }
                 isSaveSelected = true;
             } else if (saveFile == 3) {
