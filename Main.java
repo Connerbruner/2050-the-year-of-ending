@@ -11,12 +11,16 @@ class Main extends Game {
     {
         Scanner scanner = new Scanner( System.in );
         setTSpeed( 20 );
+        sPrintln("???: Hello, Welcome to Last breath of the Billionaires");
+        sPrintln("???: Lets start with Text speed");
+        sPrintln( GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
+        sPrint( "what should the text speed be?" );
+        setTSpeed( scanner.nextInt( ) );
+        System.out.println( );
         //main starts here
         System.out.print(SCREEN_CLEAR);
-        sPrintln("???: Hello, Welcome to Last breath of the Billionares");
-        sPrintln("???: Please enter a cheat code");
+        sPrintln("???: Next enter a cheat code");
         sPrint( "ENTER CHEAT CODE (or not)" );
-        
         //cheat code start
         String cheatCode;
         cheatCode = scanner.nextLine( );
@@ -30,12 +34,15 @@ class Main extends Game {
             run.exit(69420);
         }
         //cheat code end
-        isDiscord = choice("Are you a part of the discord server? ");
 
+        isDiscord = choice("Are you a part of the discord server? ");
+        sPrintln("???: Quick warnings");
         sPrintln( RED + "This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence." );
+        sPrintln(RED+"Your actions are being watch by a discord bot and reported to a server");
         grabSave( );
+        sPrintln("LOADING BEGINNING");
         loading( );
-        System.out.println("LOAD COMPLETE");
+        sPrintln("LOAD COMPLETE");
         wait(1000);
         System.out.println(SCREEN_CLEAR);
         System.out.flush();

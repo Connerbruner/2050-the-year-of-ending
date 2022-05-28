@@ -24,6 +24,7 @@ class Tools {
     LocalDateTime localDate = LocalDateTime.now();
     //end of cheat codes
     int tSpeed;
+    String user = "UNKNOWN";
     String[] colors = new String[]{RED, GREEN, BLUE, PURPLE, CYAN};
     Scanner scanner = new Scanner(System.in);
 

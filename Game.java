@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 //Main class
 class Game extends Tools {
-    
-  
+
+
     int pin = 0;
     Object[] Save = null;
     String savePath = null;
     int HP2069;
     int attackNum = 0;
-    int C=0;
+    int C = 0;
     boolean attackType;
     int lastAttack = 0;
     int attackTime = 0;
@@ -34,7 +34,8 @@ class Game extends Tools {
     int num = 0;
     //obj
     ///dungeons
-    Dungeon subway = new Dungeon("Underground subway", 20);Dungeon local6_11 = new Dungeon("Rubble filled 6-11", 10);
+    Dungeon subway = new Dungeon("Underground subway", 20);
+    Dungeon local6_11 = new Dungeon("Rubble filled 6-11", 10);
     Dungeon factory = new Dungeon("Run down Factory", 30);
     Dungeon city = new Dungeon("Rubble filled City", 35);
     Dungeon highway = new Dungeon("Highway 101", 30);
@@ -92,12 +93,11 @@ class Game extends Tools {
             //Tells you how to roll the gotcha
             if (missionNum > 1) {
                 sPrint("Type 0 to trade exp for new moves");
-                if(isDiscord)
-                {
+                if (isDiscord) {
                     sPrint("Type 12 to leave and claim C");
-                    
+
                 }
-            }        
+            }
 
             int choice = scanner.nextInt();
             if (choice < missionNum && choice > 0) {
@@ -213,7 +213,7 @@ class Game extends Tools {
                 //to be implemented
             }
             if (choice == 12) {
-                sPrint("ScreenShot for "+C+"C");
+                sPrint("ScreenShot for " + C + "C");
                 run.exit(69420);
             }
 
@@ -227,15 +227,15 @@ class Game extends Tools {
     public void save() {
         String time = System.currentTimeMillis() / 3600000 + "";
         Object[] arrList = new Object[]{missionNum, HPmax, level2069, levelR1, exp1, aqua.attackTier, lasershot.attackTier, cureTier, ember.attackTier, maxHit, is2048joined, is2051joined, cupsUnlock, time};
-        if(savePath.equals("Save1.txt")){
-          Edit("Save1.txt", encrypt(arrList, "Save1.txt", pin));
-        }else{
-          Edit(savePath, arrList);
+        if (savePath.equals("Save1.txt")) {
+            Edit("Save1.txt", encrypt(arrList, "Save1.txt", pin));
+        } else {
+            Edit(savePath, arrList);
         }
-        Object[] templateTxt = new Object[]{1,50,1,20,0,1,1,1,1,5,false,false,false,time};
+        Object[] templateTxt = new Object[]{1, 50, 1, 20, 0, 1, 1, 1, 1, 5, false, false, false, time};
         Edit("SaveTemplate.txt", templateTxt);
         System.gc();
-        
+
     }
 
     //fights giga mech
@@ -271,6 +271,7 @@ class Game extends Tools {
         }
         sPrintln("REWARDS:");
         sPrintln("2069 gains " + num + " exp");
+        sendToBot(user+" Completed mission"+mission);
         exp1 += num;
         C += num;
         levelUp();
@@ -279,9 +280,9 @@ class Game extends Tools {
 
     //boss fight
     public void bossFight(Boss boss) {
-
         if (!boss.differntPhases.isEmpty()) {
             HP2069 = HPmax;
+            sendToBot(user+" begins to fight "+boss.differntPhases.get(0).name);
             while (!boss.differntPhases.isEmpty()) {
                 Phase current = boss.differntPhases.get(0);
                 sPrint(current.name + "'s Health " + current.getHP());
@@ -295,16 +296,17 @@ class Game extends Tools {
                     current.loseHP(attackSupport());
                 }
                 if (current.HP > 1 && (attackTime > bossAttack.speed || attackStun < 10)) {
-                if ((attackStun - 10) > 0) {
-                    block -= (attackStun - 10) / 10;
-                }
-                HP2069 -= bossAttack.attack(block);
+                    if ((attackStun - 10) > 0) {
+                        block -= (attackStun - 10) / 10;
+                    }
+                    HP2069 -= bossAttack.attack(block);
 
                 }
                 boss.checkArray();
                 restart();
-
+                sendToBot(user+"defeated a Boss");
             }
+
             exp1 += 100;
             C += 100;
             levelUp();
@@ -418,7 +420,6 @@ class Game extends Tools {
     }
 
     /**
-     *
      * @param power
      */
     //cure method
@@ -552,6 +553,7 @@ class Game extends Tools {
         } else {
             emmi = new Emmi(random(1, num), level2069 + stars);
         }
+        sendToBot(user+" just found a "+emmi.emmi_type);
         while (emmi.emmi_HP > 0) {
             sPrint("2069 health " + HP2069);
             sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
@@ -564,7 +566,7 @@ class Game extends Tools {
                     emmi.emmi_HP -= attackSupport();
                 }
             }
-            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num+5))) {
+            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num + 5))) {
                 if ((attackStun - (emmi.emmi_num + 5)) > 0) {
                     block -= (attackStun - (emmi.emmi_num + 5)) / 10;
                 }
@@ -578,12 +580,14 @@ class Game extends Tools {
         exp1 += (emmi.emmi_level * emmi.emmi_num) * 2;
         sPrintln("You gain " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
         C += (emmi.emmi_level * emmi.emmi_num) * 2;
+        sendToBot(user+" gains " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
         emmi = null;
         levelUp();
         save();
     }
 
     public void battle(Emmi emmi) {
+        sendToBot(user+" gains " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
         while (emmi.emmi_HP > 0) {
             sPrint("2069 health " + HP2069);
             sPrint(emmi.emmi_type + " health " + emmi.emmi_HP);
@@ -597,7 +601,7 @@ class Game extends Tools {
                 }
 
             }
-            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num+5))) {
+            if (emmi.emmi_HP > 1 && (attackTime > emmi.emmi_attack.speed || attackStun < (emmi.emmi_num + 5))) {
                 if ((attackStun - (emmi.emmi_num + 5)) > 0) {
                     block -= (attackStun - (emmi.emmi_num + 5)) / 20;
                 }
@@ -609,6 +613,7 @@ class Game extends Tools {
         }
         exp1 += (emmi.emmi_level * emmi.emmi_num) * 2;
         sPrintln("You gain " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
+        sendToBot(user+" gains " + (emmi.emmi_level * emmi.emmi_num) * 2 + " exp");
         C += (emmi.emmi_level * emmi.emmi_num) * 2;
         levelUp();
         save();
@@ -631,10 +636,11 @@ class Game extends Tools {
             while (pull_num > 0) {
                 int[] odds = new int[]{1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5, 6, 7};
                 int tier = odds[random(0, odds.length - 1)];
-                sPrintln("Tier "+tier+" pull");
+                sPrintln("Tier " + tier + " pull");
                 if (tier == 1) {
                     HPmax += 2;
                     sPrintln("2069's max Hp increased by 2");
+                    sendToBot(user+"'s Max HP increased by 2");
                 } else if (tier < 6) {
                     sPrint("One of your moves is leveling up");
                     num = random(1, 4);
@@ -643,6 +649,7 @@ class Game extends Tools {
                         if (tier > ember.attackTier) {
                             sPrintln("ember leveled up");
                             sPrintln(ember.attackTier + " --> " + tier);
+                            sendToBot(user+"'s ember leveled up "+ember.attackTier + " --> " + tier);
                             ember.setAttackTier(tier);
                         }
                     }
@@ -651,6 +658,7 @@ class Game extends Tools {
                         if (tier > cureTier) {
                             sPrintln("Cure leveled up");
                             sPrintln(cureTier + " -->" + tier);
+                            sendToBot(user+"'s Cure leveled up "+cureTier + " --> " + tier);
                             cureTier = tier;
                         }
 
@@ -660,6 +668,7 @@ class Game extends Tools {
                         if (tier > aqua.attackTier) {
                             sPrintln("Aqua leveled up");
                             sPrintln(aqua.attackTier + " --> " + tier);
+                            sendToBot(user+"'s Aqua leveled up "+aqua.attackTier + " --> " + tier);
                             aqua.setAttackTier(tier);
                         }
                     }
@@ -668,6 +677,7 @@ class Game extends Tools {
                         if (tier > lasershot.attackTier) {
                             sPrintln("Laser leveled up");
                             sPrintln(lasershot.attackTier + " --> " + tier);
+                            sendToBot(user+"'s Laser leveled up "+lasershot.attackTier + " --> " + tier);
                             lasershot.setAttackTier(tier);
 
                         }
@@ -675,9 +685,11 @@ class Game extends Tools {
                 } else if (tier == 6) {
                     maxHit += 1;
                     sPrintln("The power of supporting members increased by 1");
+                    sendToBot(user+"'s power of supporting members increased by 1");
                 } else if (tier == 7) {
                     maxHit += 2;
-                    sPrintln("The power of supporting members increased by 1");
+                    sPrintln("The power of supporting members increased by 2");
+                    sendToBot(user+"'s power of supporting members increased by 2");
                 }
                 pull_num -= 1;
                 save();
@@ -697,6 +709,7 @@ class Game extends Tools {
             level2069++;
             levelR1 = 20 * (level2069 * level2069) / 2;
             sPrintln("2069 has " + (levelR1 - exp1) + " exp till leveling up");
+            sendToBot(user+" Just leveled up. They are now level "+level2069+". They got "+levelR1+" till leveling up");
             C += 30;
         }
 
@@ -706,18 +719,20 @@ class Game extends Tools {
     //Game Over
     public void restart() {
         if (HP2069 < 0) {
-            if (!is2048joined && random(missionNum*2, 30) == 30) {
+            if (!is2048joined && random(missionNum * 2, 30) == 30) {
                 HP2069 = HPmax;
                 sPrintln("2048: can't handle things on your own");
                 sPrintln("2069: 2048!");
                 sPrintln("*2048 has joined the team*");
                 is2048joined = true;
-            } else if (!is2051joined && random(missionNum*2, 30) == 30) {
+                sendToBot("2048 just joined "+user+"'s party");
+            } else if (!is2051joined && random(missionNum * 2, 30) == 30) {
                 HP2069 = HPmax;
                 sPrintln("2051: Playtime is over");
                 sPrintln("2069: 2051!");
                 sPrintln("*2051 has joined the team*");
                 is2051joined = true;
+                sendToBot("2051 just joined "+user+"'s party");
             } else {
                 sPrintln("The world around you begins to fade to black");
                 sPrintln("???: Welcome back to this world of nothingness ");
@@ -732,6 +747,7 @@ class Game extends Tools {
                 }
                 System.out.println();
                 save();
+                sendToBot(user+" has fallen. Good thing ??? is here");
                 game();
             }
 
@@ -741,22 +757,22 @@ class Game extends Tools {
 
     //uses READ to update save
     public void grabSave() {
-      scanner.nextLine();
-      
-      if(choice("Would you like to overwrite a save file? (Returns the file to the start of the game)")){
-          if(choice("Are you sure?")){
-            sPrint("Which save would you like to overwrite?");
-            int saveOverwrite = scanner.nextInt();
-            if (saveOverwrite == 1) {
-                 Edit("Save.txt",Read("SaveTemplate.txt"));
-            }else if (saveOverwrite == 3) {
-                Edit("Save2.txt",Read("SaveTemplate.txt"));
-          }
+        scanner.nextLine();
+
+        if (choice("Would you like to overwrite a save file? (Returns the file to the start of the game)")) {
+            if (choice("Are you sure?")) {
+                sPrint("Which save would you like to overwrite?");
+                int saveOverwrite = scanner.nextInt();
+                if (saveOverwrite == 1) {
+                    Edit("Save.txt", Read("SaveTemplate.txt"));
+                } else if (saveOverwrite == 3) {
+                    Edit("Save2.txt", Read("SaveTemplate.txt"));
+                }
+            }
         }
-    }
-              
-      
-        sPrint("Which save file would you like to access? 1-3");
+
+
+        sPrint("Which save file would you like to access? 1-3 ( 2 is dev only and needs a pin )");
         boolean isSaveSelected = false;
 
         while (!isSaveSelected) {
@@ -769,23 +785,23 @@ class Game extends Tools {
             } else if (saveFile == 2) {
                 //special procedure for the dev file
                 Edit("tempsave.txt", Read("Save1.txt"));
-                sPrint("This is a developer test file, which requires a pin to access, please input the pin");
+                sPrint("???: This is a developer test file, which requires a pin to access, please input the pin");
                 pin = scanner.nextInt();
                 //attempt at decrypting
-                Edit("tempsave.txt", decrypt(Read("tempsave.txt"), "tempsave.txt", pin ));
+                Edit("tempsave.txt", decrypt(Read("tempsave.txt"), "tempsave.txt", pin));
                 //checksum
                 Object[] checksum = Read("tempsave.txt");
-                if(strIsInt(checksum[13].toString())){
-                Save = Read("tempsave.txt");
-                savePath = "Save1.txt";
-                Edit("tempsave.txt", Read("SaveTemplate.txt"));
-                for(int i = 0; i < checksum.length; i++){
-                  checksum[i] = 0;
-                }
-                sPrint("Pin successfully entered");
-                }else{ //exits on bad pin
-                  sPrintln("???: You're not a dev! Don't try to access this file again <3!");
-                  System.exit(46);
+                if (strIsInt(checksum[13].toString())) {
+                    Save = Read("tempsave.txt");
+                    savePath = "Save1.txt";
+                    Edit("tempsave.txt", Read("SaveTemplate.txt"));
+                    for (int i = 0; i < checksum.length; i++) {
+                        checksum[i] = 0;
+                    }
+                    sPrintln("???: That is the correct pin. Hello Floof or C1nner");
+                } else { //exits on bad pin
+                    sPrintln("???: You're not a dev! GET OUT! Don't try to access this file again !");
+                    System.exit(46);
                 }
                 isSaveSelected = true;
             } else if (saveFile == 3) {
@@ -794,6 +810,7 @@ class Game extends Tools {
                 isSaveSelected = true;
             }
         }
+        sendToBot(user+" Just loaded up the game using "+savePath);
         for (int s = 0; s < Save.length; s++) {
 
             if (Save[s] != null) {
@@ -850,6 +867,6 @@ class Game extends Tools {
 
     }
 
-  
+
 //don't pass this comment
 }
