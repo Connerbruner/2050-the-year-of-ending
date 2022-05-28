@@ -135,7 +135,7 @@ class Tools {
         //??? talks
         else if (str.contains("???")) {
             for (int i = 0; i < str.length(); i++) {
-                if (random(0, 15) == 10) {
+                if (random(0, 15) == 10 &&  str.charAt( i )!=63) {
                     System.out.print((char) (random(0, 256)));
                 } else {
                     System.out.print(PURPLE + str.charAt(i));
@@ -229,15 +229,19 @@ class Tools {
         System.out.flush();
 
     }
-
-
-    public long getUsedMemory() {
-        return (run.maxMemory() - run.freeMemory()) / 1073741824;
+    public void sendToBot(String str)
+    {
+        File fileToBeModified = new File("text.txt");
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter(fileToBeModified);
+            writer.write(str);
+            }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    public double byteToGB(long bytes) {
-        return bytes / 1073741824;
-    }
 
     public Object[] encrypt(Object[] data, String textName, int mod) {
         Object[] encryptedData = new Object[data.length];

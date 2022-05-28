@@ -13,8 +13,11 @@ class Main extends Game {
         setTSpeed( 20 );
         //main starts here
         System.out.print(SCREEN_CLEAR);
-        //cheat code start
+        sPrintln("???: Hello, Welcome to Last breath of the Billionares");
+        sPrintln("???: Please enter a cheat code");
         sPrint( "ENTER CHEAT CODE (or not)" );
+        
+        //cheat code start
         String cheatCode;
         cheatCode = scanner.nextLine( );
         if ( cheatCode.equals( "gay" ) ) {
@@ -26,19 +29,10 @@ class Main extends Game {
         } else if (cheatCode.equals("or not")) {
             run.exit(69420);
         }
-        isDiscord = choice("Are you a part of the discord server? ");
         //cheat code end
-        sPrintln( GREEN + "The text is currently at a speed of 20, if you lower that number it will speed up the text, if you raise the number it will move slower" );
-        sPrint( "what should the text speed be?   " );
-        setTSpeed( scanner.nextInt( ) );
-        System.out.println( );
+        isDiscord = choice("Are you a part of the discord server? ");
+
         sPrintln( RED + "This game does not condone any violence. This is a work of fiction, and any resemblance to characters, real or fictional, is a coincidence." );
-        System.out.println("BEGIN LOADING IN 3");
-        wait(500);
-        System.out.println("BEGIN LOADING IN 2");
-        wait(500);
-        System.out.println("BEGIN LOADING IN 1");
-        wait(500);
         grabSave( );
         loading( );
         System.out.println("LOAD COMPLETE");
