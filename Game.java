@@ -757,7 +757,6 @@ class Game extends Tools {
 
     //uses READ to update save
     public void grabSave() {
-        scanner.nextLine();
 
         if (choice("Would you like to overwrite a save file? (Returns the file to the start of the game)")) {
             if (choice("Are you sure?")) {

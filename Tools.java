@@ -68,7 +68,6 @@ class Tools {
                 arr[r] = var;
             }
             reader.close();
-            System.out.println("READ DONE");
             return arr;
         } catch (IOException e) {
             e.printStackTrace();
@@ -232,12 +231,13 @@ class Tools {
     }
     public void sendToBot(String str)
     {
-        File fileToBeModified = new File("text.txt");
-        FileWriter writer = null;
+        File fileToBeModified = new File("bot.txt");
+        FileWriter wr = null;
         try {
-            writer = new FileWriter(fileToBeModified);
-            writer.write(str);
-            }
+            wr = new FileWriter(fileToBeModified);
+            wr.write(str);
+            wr.close();
+        }
         catch (IOException e) {
             e.printStackTrace();
         }
